@@ -7,13 +7,13 @@
                 Create Your Account
                 </h2>
                 <div class="form-fields">
-                <input id="user_name" name="username" type="text" placeholder="Full name">
+                <input id="user_name" name="username" type="text" placeholder="Full name" required>
                 </div>
                 <div class="form-fields">
-                <input id="email" name="email" type="text" placeholder="Email Address">
+                <input id="email" name="email" type="text" placeholder="Email Address required">
                 </div>
                 <div class="form-fields">
-                <input id="password" name="password" type="text" placeholder="Password">
+                <input id="password" name="password" type="password" placeholder="Password" required>
                 </div>
                 <div class="form-fields">
                 <button class="createaccount" name="commit" type="submit">
@@ -25,8 +25,9 @@
                 <div>
                     <p class="center">
                         By signing up you agree to the
-                        <a href="#">Terms of Service</a>.
+                        <a href="/termsofservice">Terms of Service</a>.
                     </p>
+                    <p></p>
                 </div>
             </div>
         </form>
