@@ -23,8 +23,6 @@
                     Create your account
                 </button>
                 </div>
-                <!-- <div class="login-choice"><span>or sign up with</span></div>
-                <SocialSignUp />-->
                 <div> 
                     <p class="center">
                         By signing up you agree to the
@@ -41,11 +39,33 @@
 </template>
 
 <script>
-// import SocialSignUp from '@/components/SocialLogin'
 export default {
-  name: 'signup',
-  components: {
+    data() {
+        return { //gives it to the database???
+            firstName: "",
+            lastName: "",
+            email: "",
+            password: "",
+            password_confirmation: "",
+            is_admin: false
+        }
+    },
+    methods: {
+            register: function () { // register is the name of the function
+                let data = {
+                    name: this.name,
+                    email: this.email,
+                    password: this.password,
+                    is_admin: this.is_admin
+                }
+                this.$store.dispatch('register', data)
+               .then(() => this.$router.push('/'))
+               .catch(err => console.log(err))
+            }
+        }
+//   name: 'signup',
+//   components: {
     
-  }
+//   }
 }
 </script>

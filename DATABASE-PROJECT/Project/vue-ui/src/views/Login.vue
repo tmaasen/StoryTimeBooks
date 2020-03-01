@@ -5,32 +5,46 @@
       <div class="box-container">
         <h2 class="heading">Sign In</h2>
         <div class="form-fields" style="padding-top:50px">
-          <input id="email" name="email" type="text" placeholder="Email Address" required>
+          <input id="email" name="email" type="text" placeholder="Email Address" required />
         </div>
         <div class="form-fields">
-          <input id="password" name="password" type="password" placeholder="Password" required>
+          <input id="password" name="password" type="password" placeholder="Password" required />
         </div>
         <div class="form-fields">
-          <button class="signIn" name="commit" type="submit">
-            Sign In
-          </button>
+          <button class="signIn" name="commit" type="submit">Sign In</button>
         </div>
-        <!-- <div class="login-choice"><span>or Sign In with</span></div>
-        <SocialLogin /> -->
       </div>
     </form>
     <div class="footer">
-       <p>Don't have an account? <a href="/signup"> Create one now</a></p>
+      <p>
+        Don't have an account?
+        <a href="/signup">Create one now</a>
+      </p>
     </div>
   </div>
 </template>
 
 <script>
-// import SocialLogin from '@/components/SocialLogin'
 export default {
-  name: 'login',
-  components: {
-    
+  data() {
+    return {
+      email: "",
+      password: ""
+    };
+  },
+  methods: {
+    login: function() {
+      let email = this.email;
+      let password = this.password;
+      this.$store
+        .dispatch("login", { email, password }) // Do I need logic here to check if there is a match???
+        .then(() => this.$router.push("/"))
+        .catch(err => console.log(err));
+    }
   }
-}
+  // name: 'login',
+  // components: {
+
+  // }
+};
 </script>
