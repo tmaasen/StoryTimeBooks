@@ -4,7 +4,7 @@
     <form>
       <div class="box-container">
         <h2 class="heading">Sign In</h2>
-        <div class="form-fields">
+        <div class="form-fields" style="padding-top:50px">
           <input id="email" name="email" type="text" placeholder="Email Address" required>
         </div>
         <div class="form-fields">
@@ -15,8 +15,8 @@
             Sign In
           </button>
         </div>
-        <div class="login-choice"><span>or Sign In with</span></div>
-        <SocialLogin />
+        <!-- <div class="login-choice"><span>or Sign In with</span></div>
+        <SocialLogin /> -->
       </div>
     </form>
     <div class="footer">
@@ -26,11 +26,11 @@
 </template>
 
 <script>
-import SocialLogin from '@/components/SocialLogin'
+// import SocialLogin from '@/components/SocialLogin'
 export default {
   name: 'login',
   components: {
-    SocialLogin
+    
   }
 }
 </script>

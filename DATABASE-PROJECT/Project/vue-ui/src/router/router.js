@@ -11,27 +11,43 @@ Vue.use(VueRouter)
 let baseRoutes = [
   {
     path: '/',
-    redirect: '/login'
+    redirect: '/home'
   },
   {
     path: '/home',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta: {
+      auth: true,
+      title: 'StoryTime Books'
+    }
   },
   {
     path: '/login',
     name: 'Login',
-    component: Login
+    component: Login,
+    meta: {
+      auth: true,
+      title: 'Login'
+    }
   },
   {
     path: '/signup',
     name: 'SignUp',
-    component: SignUp
+    component: SignUp,
+    meta: {
+      auth: true,
+      title: 'Create Account'
+    }
   },
   {
     path: '/termsofservice',
     name: 'TermsOfService',
-    component: TermsOfService
+    component: TermsOfService,
+    meta: {
+      auth: true,
+      title: 'Terms of Service'
+    }
   },
   {
     path: '*',
@@ -42,14 +58,16 @@ let baseRoutes = [
 
 const router = new VueRouter({
   mode: 'history',
-  linkExactActiveClass: 'active',
-  base: process.env.BASE_URL, // WHERE THE HOME PAGE IS SPECIFIED
+  //linkExactActiveClass: 'active',
+  //base: process.env.HOME, // WHERE THE HOME PAGE IS SPECIFIED
   routes: baseRoutes
 })
 
 router.beforeEach((to, from, next) => {
-  // redirect to login page if not logged in and trying to access a restricted page
-  const publicPages = ['/login', '/signup', '/termsofservice']
+  document.title = to.meta.title; // renders the correct router title associated with its view
+
+  //redirect to login page if not logged in and trying to access a restricted page
+  const publicPages = ['/login', '/signup', '/termsofservice', '/home']
   const authRequired = !publicPages.includes(to.path)
   const loggedIn = localStorage.getItem('user')
 

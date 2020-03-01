@@ -10,19 +10,22 @@
                 <input id="user_name" name="username" type="text" placeholder="Full name" required>
                 </div>
                 <div class="form-fields">
-                <input id="email" name="email" type="text" placeholder="Email Address required">
+                <input id="email" name="email" type="text" placeholder="Email Address" required>
                 </div>
                 <div class="form-fields">
                 <input id="password" name="password" type="password" placeholder="Password" required>
+                </div>
+                <div class="form-fields">
+                <input id="password" name="password" type="password" placeholder="Confirm Password" required>
                 </div>
                 <div class="form-fields">
                 <button class="createaccount" name="commit" type="submit">
                     Create your account
                 </button>
                 </div>
-                <div class="login-choice"><span>or sign up with</span></div>
-                <SocialSignUp />
-                <div>
+                <!-- <div class="login-choice"><span>or sign up with</span></div>
+                <SocialSignUp />-->
+                <div> 
                     <p class="center">
                         By signing up you agree to the
                         <a href="/termsofservice">Terms of Service</a>.
@@ -38,11 +41,11 @@
 </template>
 
 <script>
-import SocialSignUp from '@/components/SocialLogin'
+// import SocialSignUp from '@/components/SocialLogin'
 export default {
   name: 'signup',
   components: {
-    SocialSignUp
+    
   }
 }
 </script>

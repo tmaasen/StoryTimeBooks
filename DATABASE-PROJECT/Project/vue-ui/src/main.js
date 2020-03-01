@@ -2,6 +2,14 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router/router'
 import store from './store/store'
+import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
+
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'popper.js/dist/esm/popper.js'
+
+Vue.use(BootstrapVue)
+Vue.use(BootstrapVueIcons)
 
 import '@/assets/style.css'
 //import './registerServiceWorker'
