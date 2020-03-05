@@ -5,6 +5,7 @@ import Login from '@/views/Login'
 import SignUp from '@/views/SignUp'
 import TermsOfService from '@/views/TermsOfService'
 import PageNotFound from '@/components/PageNotFound'
+import TestFile from '@/views/TestFile'
 
 Vue.use(VueRouter)
 
@@ -44,6 +45,15 @@ let baseRoutes = [
     path: '/termsofservice',
     name: 'TermsOfService',
     component: TermsOfService,
+    meta: {
+      auth: true,
+      title: 'Terms of Service'
+    }
+  },
+  {
+    path: '/TestFile',
+    name: 'TermsOfService',
+    component: TestFile,
     meta: {
       auth: true,
       title: 'Terms of Service'

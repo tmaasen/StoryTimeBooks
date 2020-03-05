@@ -1,7 +1,7 @@
 <template>
     <div class="main-container">
         <h1 class="store-name">StoryTime Books</h1>
-        <form>
+        <form onSubmit="register">
             <div class="box-container">
                 <h2 class="heading">
                 Create Your Account
