@@ -5,14 +5,15 @@
       <div class="heading">Terms of Service</div>
       <div class="form-fields">
         <p>Welcome to storytimebooks.com!</p>
+        <a href="/TestFile">API Call</a>
 
         <p>These terms and conditions outline the rules and regulations for the use of StoryTime Books's Website, located at https://www.storytimebooks.com.</p>
 
         <p>
           By accessing this website we assume you accept these terms and conditions. Do not continue to use storytimebooks.com if you do not agree to take all of the terms and conditions stated on this page. Our Terms and Conditions were created with the help of the
-          <a href="https://www.termsandconditionsgenerator.com">Terms And Conditions Generator</a> and the
+          <a href="https://www.termsandconditionsgenerator.com" target="_blank">Terms And Conditions Generator</a> and the
           <a
-            href="https://www.privacypolicyonline.com/terms-conditions-generator/"
+            href="https://www.privacypolicyonline.com/terms-conditions-generator/" target="_blank"
           >Free Terms & Conditions Generator</a>.
         </p>
 

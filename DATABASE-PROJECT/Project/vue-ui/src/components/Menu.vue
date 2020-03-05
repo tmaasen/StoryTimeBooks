@@ -7,8 +7,11 @@
 </template>
 
 <script>
+
 import router from '@/router/router'
 import { removeItem } from '@/config/utils'
+
+
 export default {
   name: 'signup_header',
   methods: {

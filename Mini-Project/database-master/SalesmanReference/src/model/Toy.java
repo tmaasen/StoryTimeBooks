@@ -53,11 +53,11 @@ public class Toy implements Serializable {
 		return this.toyID;
 	}
 
-	public Date getInspectionDateTime() {
+	public Date getInspectionTime() {
 		return this.inspectionTime;
 	}
 
-	public void setInspectionDateTime(Date inspectionTime) {
+	public void setInspectionTime(Date inspectionTime) {
 		this.inspectionTime = inspectionTime;
 	}
 

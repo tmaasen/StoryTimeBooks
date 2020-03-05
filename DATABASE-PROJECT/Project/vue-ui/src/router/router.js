@@ -9,7 +9,7 @@ import PageNotFound from '@/components/PageNotFound'
 Vue.use(VueRouter)
 
 let baseRoutes = [
-  {
+  { // default route
     path: '/',
     redirect: '/home'
   },
@@ -52,7 +52,10 @@ let baseRoutes = [
   {
     path: '*',
     name: 'PageNotFound',
-    component: PageNotFound
+    component: PageNotFound,
+    meta: {
+      title: 'StoryTime Books: 404 Error'
+    }
   }
 ]
 
@@ -67,7 +70,7 @@ router.beforeEach((to, from, next) => {
   document.title = to.meta.title; // renders the correct router title associated with its view
 
   //redirect to login page if not logged in and trying to access a restricted page
-  const publicPages = ['/login', '/signup', '/termsofservice', '/home']
+  const publicPages = ['/login', '/signup', '/termsofservice', '/home', '/TestFile']
   const authRequired = !publicPages.includes(to.path)
   const loggedIn = localStorage.getItem('user')
 

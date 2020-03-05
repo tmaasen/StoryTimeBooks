@@ -39,23 +39,22 @@ public class Controller extends HttpServlet {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-			// LOAD METHOD
 		if (request.getParameter("btnLoad") != null) {
-			EntityManagerFactory emf = Persistence.createEntityManagerFactory("TalkingSalesman");
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("SalesmanReference");
 			EntityManager em = emf.createEntityManager();
 
 			Toy myToy = em.find(Toy.class, Integer.parseInt(request.getParameter("txtToyID")));
 			request.setAttribute("toy", myToy);
-			// SAVE METHOD
 		} else if (request.getParameter("btnSave") != null) {
-			EntityManagerFactory emf = Persistence.createEntityManagerFactory("TalkingSalesman");
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("SalesmanReference");
 			EntityManager em = emf.createEntityManager();
 
 			Toy myToy = new Toy();
 			myToy.setInspector(request.getParameter("txtInspector"));
-			myToy.setInspectionDateTime(new Date());
+			myToy.setInspectionTime(new Date());
 			myToy.setToyCode(Integer.parseInt(request.getParameter("txtCode")));
 			Circuit circuit1 = new Circuit();
 			circuit1.setVoltage(Double.parseDouble(request.getParameter("txtVoltage1")));
@@ -72,10 +71,8 @@ public class Controller extends HttpServlet {
 			em.getTransaction().begin();
 			em.persist(myToy);
 			em.getTransaction().commit();
-			
-			// DELETE METHOD
 		} else if (request.getParameter("btnDelete") != null) {
-			EntityManagerFactory emf = Persistence.createEntityManagerFactory("TalkingSalesman");
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("SalesmanReference");
 			EntityManager em = emf.createEntityManager();
 
 			em.getTransaction().begin();

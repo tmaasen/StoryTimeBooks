@@ -7,7 +7,6 @@
 
 #circuit1, #circuit2 {
 	border: 1px solid black;
-	padding:5px;
 }
 input {
 	width:95%;
