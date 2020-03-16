@@ -30,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    public $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -53,8 +53,8 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
-            'emailAddress' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'userPassword' => ['required', 'string', 'confirmed']
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'confirmed']
         ]);
     }
 
@@ -69,10 +69,8 @@ class RegisterController extends Controller
         return User::create([
             'firstname' => $data['firstname'],
             'lastname' => $data['lastname'],
-            'emailAddress' => $data['emailAddress'],
-            //'userPassword' => $data['userPassword'],
-
-            'userPassword' => Hash::make($data['userPassword'])
+            'email' => $data['email'],
+            'password' => Hash::make($data['password'])
         ]);
     }
     /**
@@ -83,16 +81,26 @@ class RegisterController extends Controller
      */
     protected function store(Request $request)
     {
+        // $this->validate($request, [
+        //     'firstname' => ['required', 'string', 'max:255'],
+        //     'lastname' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        //     'password' => ['required', 'string', 'max:50'],
+        //     'password-corfirm' => ['required', 'string', 'confirmed'],
+        // ]);
 
         $user = new User;
-
-        $user->firstname = $request->input('firstname');
-        $user->lastname = $request->input('lastname');
-        $user->emailAddress = $request->input('emailAddress');
-        $user->userPassword = $request->input('userPassword');
+        // CustID not needed
+        $user->FirstName = $request->input('firstname');
+        $user->LastName = $request->input('lastname');
+        $user->Email = $request->input('email');
+        $user->PasswordHash = Hash::make($request->input('password'));
+        // isAdmin and isDeleted are defaulted to 0
+        // $user->remember_token(); //doesn't work
+        // createdAt and updatedAt columns are set automatically
 
         $user->save();
-
-        $redirectTo;
+    
+       return view('home');
     }    
 }

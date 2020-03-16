@@ -11,12 +11,14 @@ class User extends Model
      *
      * @var string
      */
-    public $table = 'USERS';
+    public $table = 'users';
     /**
      * Indicates if the model should be timestamped.
      *
      * @var bool
      */
-    public $timestamps = false;
+    public $timestamps = true;
+    const CreatedAt = 'creation_date';
+    const UpdatedAt = 'last_update';
 
 }

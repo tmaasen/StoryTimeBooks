@@ -46,9 +46,9 @@
                             <label class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="emailAddress" type="email" class="form-control @error('email') is-invalid @enderror" name="emailAddress" value="{{ old('emailAddress') }}" required autocomplete="email">
+                                <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
-                                @error('emailAddress')
+                                @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -60,9 +60,9 @@
                             <label class="col-md-4 col-form-label text-md-right">Password</label>
 
                             <div class="col-md-6">
-                                <input id="userPassword" type="password" class="form-control @error('password') is-invalid @enderror" name="userPassword" required autocomplete="new-password">
+                                <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
 
-                                @error('userPassword')
+                                @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -74,7 +74,7 @@
                             <label class="col-md-4 col-form-label text-md-right">Confirm Password</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirm" required autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirm" required>
                             </div>
                         </div>
                         {{--Terms of Service link--}}

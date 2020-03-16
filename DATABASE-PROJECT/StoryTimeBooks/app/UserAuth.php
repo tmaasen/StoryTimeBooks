@@ -16,7 +16,7 @@ class UserAuth extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'firstname', 'lastname', 'emailAddress'
+        'firstname', 'lastname', 'email'
     ];
 
     /**
@@ -25,15 +25,6 @@ class UserAuth extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'userPassword', 'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
+        'PasswordHash', 'remember_token',
     ];
 }
