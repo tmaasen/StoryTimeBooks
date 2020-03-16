@@ -17,6 +17,14 @@ class HomeController extends Controller
     }
 
     /**
+     * Splits up the Closure problem in api.php. It was a Laravel bug I researched that wouldn't
+     * compile when the php artisan route:cache command is ran.
+     */
+    public function AuthRouteAPI(Request $request){
+        return $request->user();
+     }
+
+    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable

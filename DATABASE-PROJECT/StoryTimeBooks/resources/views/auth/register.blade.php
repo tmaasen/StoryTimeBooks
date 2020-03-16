@@ -12,7 +12,7 @@
                         @csrf
                         {{--First Name Input--}}
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label>
+                            <label class="col-md-4 col-form-label text-md-right">First Name</label>
 
                             <div class="col-md-6">
                                 <input id="firstname" type="text" class="form-control @error('firstname') is-invalid @enderror" name="firstname" value="{{ old('firstname') }}" required>
@@ -26,7 +26,7 @@
                         </div>
                         {{--Last Name Input--}}
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Last Name') }}</label>
+                            <label class="col-md-4 col-form-label text-md-right">Last Name</label>
 
                             <div class="col-md-6">
                                 <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}" required>
@@ -38,9 +38,10 @@
                                 @enderror
                             </div>
                         </div>
+            {{--Will add Address info on My Account page Input--}}
                         {{--Email Address Input--}}
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -54,7 +55,7 @@
                         </div>
                         {{--Password Input--}}
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label class="col-md-4 col-form-label text-md-right">Password</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
@@ -68,13 +69,15 @@
                         </div>
                         {{--Confirm Password Input--}}
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            <label class="col-md-4 col-form-label text-md-right">Confirm Password</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirm" required autocomplete="new-password">
                             </div>
                         </div>
-                        {{--Terms of Service link--}}
+                        
+                        {{--Terms of Service link goes here--}}
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
