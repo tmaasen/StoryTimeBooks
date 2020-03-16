@@ -75,8 +75,10 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirm" required autocomplete="new-password">
                             </div>
                         </div>
-                        
-                        {{--Terms of Service link goes here--}}
+                        {{--Terms of Service link--}}
+                        <div class="linksToTermsOfService">
+                            <a href="{{  url('/TermsOfService') }}">Terms Of Service</a>
+                        </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
