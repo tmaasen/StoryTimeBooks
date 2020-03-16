@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+<head>
+    <title>StoryTime | Create Account</title>
+</head>
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -8,7 +10,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ action('Auth\RegisterController@store') }}">
                         @csrf
                         {{--First Name Input--}}
                         <div class="form-group row">
@@ -44,9 +46,9 @@
                             <label class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="emailAddress" type="email" class="form-control @error('email') is-invalid @enderror" name="emailAddress" value="{{ old('emailAddress') }}" required autocomplete="email">
 
-                                @error('email')
+                                @error('emailAddress')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -58,9 +60,9 @@
                             <label class="col-md-4 col-form-label text-md-right">Password</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="userPassword" type="password" class="form-control @error('password') is-invalid @enderror" name="userPassword" required autocomplete="new-password">
 
-                                @error('password')
+                                @error('userPassword')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

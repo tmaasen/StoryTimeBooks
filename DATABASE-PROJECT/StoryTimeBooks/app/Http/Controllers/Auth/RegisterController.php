@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -52,8 +53,8 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'emailAddress' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'userPassword' => ['required', 'string', 'confirmed']
         ]);
     }
 
@@ -68,8 +69,10 @@ class RegisterController extends Controller
         return User::create([
             'firstname' => $data['firstname'],
             'lastname' => $data['lastname'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'emailAddress' => $data['emailAddress'],
+            //'userPassword' => $data['userPassword'],
+
+            'userPassword' => Hash::make($data['userPassword'])
         ]);
     }
     /**
@@ -80,15 +83,16 @@ class RegisterController extends Controller
      */
     protected function store(Request $request)
     {
-        // Validate the request...if validate and create functions pass, create row
 
         $user = new User;
 
-        $user->firstname = $request->firstname;
-        $user->lastname = $request->lastname;
-        $user->email = $request->email;
-        $user->password = $request->password;
+        $user->firstname = $request->input('firstname');
+        $user->lastname = $request->input('lastname');
+        $user->emailAddress = $request->input('emailAddress');
+        $user->userPassword = $request->input('userPassword');
 
         $user->save();
+
+        $redirectTo;
     }    
 }

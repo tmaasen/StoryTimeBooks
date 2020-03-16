@@ -3,3 +3,6 @@ php artisan view:clear
 php artisan route:clear
 php artisan optimize // clears config and route cache
 php artisan 
+
+composer update // refreshes and updates all project dependencies
+composer dump-autoload // autolaods all the model tables from the db once you have configured them

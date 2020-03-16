@@ -38,7 +38,7 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', 'ec2-18-208-149-183.compute-1.amazonaws.com'),
+            'host' => env('DB_HOST', 'ec2-18-208-149-183.compute-1.amazonaws.com'), // update ip
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'storytimebooks'),
             'username' => env('DB_USERNAME', 'tmaasen'),

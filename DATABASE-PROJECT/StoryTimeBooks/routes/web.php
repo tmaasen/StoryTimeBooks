@@ -13,19 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/TermsOfService', function () {
-    return view('TermsOfService');
-});
-
-Auth::routes();
+Route::view('/TermsOfService', 'TermsOfService');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/submit', 'RegisterController@store');
+Route::post('/submit', 'Auth\RegisterController@store');

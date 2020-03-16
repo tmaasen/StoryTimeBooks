@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+  <head>
+    <title>StoryTime | Terms of Service</title>
+  </head>
 @section('content')
     <div class="main-container" style="margin: 5px 300px;">
       <h1 class="store-name">StoryTime Books</h1>
