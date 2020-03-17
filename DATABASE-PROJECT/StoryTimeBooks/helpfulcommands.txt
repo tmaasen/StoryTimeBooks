@@ -1,3 +1,4 @@
+---PHP Commands---
 php artisan cache:clear
 php artisan view:clear
 php artisan route:clear
@@ -7,4 +8,9 @@ php artisan serve
 composer update // refreshes and updates all project dependencies
 composer dump-autoload // autolaods all the model tables from the db once you have configured them
 
+---MySQL Helpful Hints---
 mysql root password: CaptainMarvel1!
+
+---VS Code Shortcuts---
+Ctrl+Alt+Shift+J :: selects all occurances of something in a file
+Alt+Shift+F :: autoformats code

@@ -13,77 +13,6 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
-        <!--JavaSCript-->
-<script>
-/*Textbox Events*/
-$(document).on('focusin', 'navbar input.search-textbox', function(){
-    if($(this).val() <= 0){
-        var parent = $(this).closest('div.search');
-        parent.addClass('focused');
-    }
-});
-$(document).on('focusout', 'navbar input.search-textbox', function(){
-    if($(this).val() <= 0){
-        var parent = $(this).closest('div.search');
-        parent.removeClass('focused');
-    }
-});
-$(document).on('click', 'navbar .search', function(){
-    $(this).children('input.search-textbox').focus();
-});
-
-/*Text Key Events for Animating Icons i.e. .ico-btn*/
-$(document).on('keyup', 'navbar input.search-textbox', function(){
-    var parent = $(this).closest('div.search');
-    var phrase = $(this).val(),
-        phrase_length = phrase.length;
-
-    if(phrase_length >= 2){
-        parent.addClass('multi-char');
-        if(!parent.hasClass('not-null')){
-            parent.addClass('not-null');
-        }
-
-    }
-    else if(phrase_length == 1){
-        parent.addClass('not-null');
-        parent.removeClass('multi-char');
-    }
-    else if(phrase_length <= 0){
-        parent.removeClass('not-null');
-        parent.removeClass('multi-char');
-    }
-});
-
-/*Tab Highlighter Functionality*/
-$(document).on('click', 'navbar .tabs ul.navbar-body li a', function(){
-    var $this = $(this);
-    TabHighlighter.set($this);
-    $this.closest('li').siblings('.active').removeClass('active');
-    $this.closest('li').addClass('active');
-});
-var TabHighlighter = {
-    set: function($this){
-        $('.tab-highlighter').css({
-            'left':  $this.closest('li').offset().left,
-            'width': $this.closest('li').outerWidth()
-        });
-    },
-    refresh: function(){
-        var $this = $('.tabs ul.navbar-body li.active a');
-        $('.tab-highlighter').css({
-            'left':  $this.closest('li').offset().left,
-            'width': $this.closest('li').outerWidth()
-        });
-    }
-};
-$(window).resize(function(){
-    TabHighlighter.refresh();
-});
-$(document).ready(function(){
-	TabHighlighter.refresh();
-});
-</script>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -105,22 +34,84 @@ $(document).ready(function(){
                 <div class="title m-b-md">
                     StoryTime Books
                 </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
             </div>
         </div>
     </body>
+<footer inline-template>></footer>
 
-<!-- Footer -->
+        <!--JavaSCript-->
+        <script>
+            /*Textbox Events*/
+            $(document).on('focusin', 'navbar input.search-textbox', function(){
+                if($(this).val() <= 0){
+                    var parent = $(this).closest('div.search');
+                    parent.addClass('focused');
+                }
+            });
+            $(document).on('focusout', 'navbar input.search-textbox', function(){
+                if($(this).val() <= 0){
+                    var parent = $(this).closest('div.search');
+                    parent.removeClass('focused');
+                }
+            });
+            $(document).on('click', 'navbar .search', function(){
+                $(this).children('input.search-textbox').focus();
+            });
+            
+            /*Text Key Events for Animating Icons i.e. .ico-btn*/
+            $(document).on('keyup', 'navbar input.search-textbox', function(){
+                var parent = $(this).closest('div.search');
+                var phrase = $(this).val(),
+                    phrase_length = phrase.length;
+            
+                if(phrase_length >= 2){
+                    parent.addClass('multi-char');
+                    if(!parent.hasClass('not-null')){
+                        parent.addClass('not-null');
+                    }
+            
+                }
+                else if(phrase_length == 1){
+                    parent.addClass('not-null');
+                    parent.removeClass('multi-char');
+                }
+                else if(phrase_length <= 0){
+                    parent.removeClass('not-null');
+                    parent.removeClass('multi-char');
+                }
+            });
+            
+            /*Tab Highlighter Functionality*/
+            $(document).on('click', 'navbar .tabs ul.navbar-body li a', function(){
+                var $this = $(this);
+                TabHighlighter.set($this);
+                $this.closest('li').siblings('.active').removeClass('active');
+                $this.closest('li').addClass('active');
+            });
+            var TabHighlighter = {
+                set: function($this){
+                    $('.tab-highlighter').css({
+                        'left':  $this.closest('li').offset().left,
+                        'width': $this.closest('li').outerWidth()
+                    });
+                },
+                refresh: function(){
+                    var $this = $('.tabs ul.navbar-body li.active a');
+                    $('.tab-highlighter').css({
+                        'left':  $this.closest('li').offset().left,
+                        'width': $this.closest('li').outerWidth()
+                    });
+                }
+            };
+            $(window).resize(function(){
+                TabHighlighter.refresh();
+            });
+            $(document).ready(function(){
+                TabHighlighter.refresh();
+            });
+            </script>
+
+{{-- <!-- Footer -->
     <footer id="footer" class="footer-1">
 <div class="main-footer widgets-dark typo-light">
 <div class="container">
@@ -200,7 +191,7 @@ target="_blank">PROJECTS</a></div>
 </div>
 </div>
 </div>
-</footer>
+</footer> --}}
 
 <!-- Styles -->
 <style>
@@ -255,358 +246,5 @@ target="_blank">PROJECTS</a></div>
         margin-bottom: 30px;
     }
 
-    /*==================== 
-	Footer 
-====================== */
-
-/* Main Footer */
-footer .main-footer{	padding: 20px 0;	background: #252525;}
-footer ul{	padding-left: 0;	list-style: none;}
-
-/* Copy Right Footer */
-.footer-copyright {	background: #222;	padding: 5px 0;}
-.footer-copyright .logo {    display: inherit;}
-.footer-copyright nav {    float: right;    margin-top: 5px;}
-.footer-copyright nav ul {	list-style: none;	margin: 0;	padding: 0;}
-.footer-copyright nav ul li {	border-left: 1px solid #505050;	display: inline-block;	line-height: 12px;	margin: 0;	padding: 0 8px;}
-.footer-copyright nav ul li a{	color: #969696;}
-.footer-copyright nav ul li:first-child {	border: medium none;	padding-left: 0;}
-.footer-copyright p {	color: white; font-size: 20px;	margin: 1px 0 0;}
-
-/* Footer Top */
-.footer-top{	background: #252525;	padding-bottom: 30px;	margin-bottom: 30px;	border-bottom: 3px solid #222;}
-
-/* Footer transparent */
-footer.transparent .footer-top, footer.transparent .main-footer{	background: transparent;}
-footer.transparent .footer-copyright{	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.3) ;}
-
-/* Footer light */
-footer.light .footer-top{	background: #f9f9f9;}
-footer.light .main-footer{	background: #f9f9f9;}
-footer.light .footer-copyright{	background: none repeat scroll 0 0 rgba(255, 255, 255, 0.3) ;}
-
-/* Footer 4 */
-.footer- .logo {    display: inline-block;}
-
-/*==================== 
-	Widgets 
-====================== */
-.widget{	padding: 20px;	margin-bottom: 40px;}
-.widget.widget-last{	margin-bottom: 0px;}
-.widget.no-box{	padding: 0;	background-color: transparent;	margin-bottom: 40px;
-	box-shadow: none; -webkit-box-shadow: none; -moz-box-shadow: none; -ms-box-shadow: none; -o-box-shadow: none;}
-.widget.subscribe p{	margin-bottom: 18px;}
-.widget li a{	color: #ff8d1e;}
-.widget li a:hover{	color: #4b92dc;}
-.widget-title {margin-bottom: 20px;}
-.widget-title span {background: #839FAD none repeat scroll 0 0;display: block; height: 1px;margin-top: 25px;position: relative;width: 20%;}
-.widget-title span::after {background: inherit;content: "";height: inherit;    position: absolute;top: -4px;width: 50%;}
-.widget-title.text-center span,.widget-title.text-center span::after {margin-left: auto;margin-right:auto;left: 0;right: 0;}
-.widget .badge{	float: right;	background: #7f7f7f;}
-
-.typo-light h1, 
-.typo-light h2, 
-.typo-light h3, 
-.typo-light h4, 
-.typo-light h5, 
-.typo-light h6,
-.typo-light p,
-.typo-light div,
-.typo-light span,
-.typo-light small{	color: #fff;}
-
-ul.social-footer2 {	margin: 0;padding: 0;	width: auto;}
-ul.social-footer2 li {display: inline-block;padding: 0;}
-ul.social-footer2 li a:hover {background-color:#ff8d1e;}
-ul.social-footer2 li a {display: block;	height:30px;width: 30px;text-align: center;}
-.btn{background-color: #ff8d1e; color:#fff;}
-.btn:hover, .btn:focus, .btn.active {background: #4b92dc;color: #fff;
--webkit-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
--moz-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
--ms-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
--o-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
--webkit-transition: all 250ms ease-in-out 0s;
--moz-transition: all 250ms ease-in-out 0s;
--ms-transition: all 250ms ease-in-out 0s;
--o-transition: all 250ms ease-in-out 0s;
-transition: all 250ms ease-in-out 0s;
-}
-
-
-
-/** NAVBAR STYLING **/
-/*Styling links*/
-navbar a{
-    font-size: 16px;
-    font-weight: 300;
-    font-family: "Montserrat", sans-serif;
-    -webkit-transition: all 0.2s ease;
-    -moz-transition: all 0.2s ease;
-    -ms-transition: all 0.2s ease;
-    -o-transition: all 0.2s ease;
-    transition: all 0.2s ease;
-    padding: 10px;
-    -webkit-border-radius:2px;
-    -moz-border-radius:2px;
-    border-radius:2px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    cursor:pointer;
-    margin: 4px;
-}
-navbar a:hover, navbar a:active, navbar a{
-    text-decoration: none;
-    color: rgba(0,0,0,0.6);
-}
-navbar a:hover{
-    background: rgba(0,0,0,0.06);
-}
-navbar a:active{
-    color: rgba(0,0,0,0.9);
-    background: rgba(0,0,0,0.1);
-}
-navbar a{
-    color: #5bc0de;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 500;
-    font-size: 14px;
-    float: right;
-}
-
-/*Shadow*/
-navbar .paper-shadow-bottom-z-2 {
-    box-shadow: 0 8px 17px 0 rgba(0,0,0,.2);
-}
-
-/*Setting Up Navbar Layouts*/
-navbar .navbar-inverse{
-    color: #000;
-    background: #fff;
-    border:none;
-    min-height: 50px;
-    max-height: 50px;
-    height: 50px;
-}
-navbar .container-fluid{
-    position: absolute;
-    top:0; bottom: 0;
-    right:0;
-    left:0;
-}
-navbar .navbar-body{
-    display: flex;
-    display: -webkit-flex;
-    flex-direction: row;
-    align-items: center;
-    -webkit-align-items: center;
-    justify-content: space-between;
-    height: 100%;
-    position: relative;
-}
-navbar div.navbar-end{
-    align-items: flex-start;
-    -webkit-align-items: flex-start;
-}
-navbar div.navbar-start,
-navbar div.navbar-end{
-    flex: 1;
-    -webkit-flex: 1;
-    display: flex;
-    display: -webkit-flex;
-    flex-direction: row;
-    align-items: center;
-    -webkit-align-items: center;
-    justify-content: space-around;
-}
-navbar div.navbar-start .logo{
-    opacity: 0.6;
-    width:30px;
-}
-
-/*Integrating Two Navbars Together*/
-navbar .nav{
-    z-index: 2;
-}
-navbar .tabs{
-    margin-top: 50px;
-    z-index: 1;
-    position: relative;
-}
-navbar .tabs .navbar-body{
-    padding: 0;
-    margin-bottom: 0;
-}
-
-/*Styling Search Textbox*/
-
-navbar div.search{
-    background: rgba(0,0,0,0.12);
-    flex: 3;
-    -webkit-flex: 3;
-    margin:6px;
-    -webkit-border-radius:2px;
-    -moz-border-radius:2px;
-    border-radius:2px;
-    cursor: pointer;
-    text-align: center;
-    position: relative;
-    -webkit-transition: all 0.3s cubic-bezier(0.21, 0.61, 0.36, 1);
-    -moz-transition: all 0.3s cubic-bezier(0.21, 0.61, 0.36, 1);
-    -ms-transition: all 0.3s cubic-bezier(0.21, 0.61, 0.36, 1);
-    -o-transition: all 0.3s cubic-bezier(0.21, 0.61, 0.36, 1);
-    transition: all 0.3s cubic-bezier(0.21, 0.61, 0.36, 1);
-}
-navbar div.search{
-    display: flex;
-    display: -webkit-flex;
-    flex-direction: row;
-    justify-content: center;
-    -webkit-justify-content: center;
-    align-items: center;
-    -webkit-align-items: center;
-    height: 42px;
-    padding: 0 9px;
-    overflow-x: hidden;
-}
-navbar div.search.focused{
-    background: rgba(0,0,0,0.05);
-}
-navbar div.search .search-textbox{
-    position: relative;
-    width:60px;
-    height: 100%;
-    background: transparent;
-    border: none;
-    font-family: "Montserrat", sans-serif;
-    font-size: 16px;
-    text-align: start;
-    color: rgba(0,0,0,1);
-    outline: none;
-    -webkit-transition: all 0.5s cubic-bezier(0.21, 0.61, 0.36, 1);
-    -moz-transition: all 0.5s cubic-bezier(0.21, 0.61, 0.36, 1);
-    -ms-transition: all 0.5s cubic-bezier(0.21, 0.61, 0.36, 1);
-    -o-transition: all 0.5s cubic-bezier(0.21, 0.61, 0.36, 1);
-    transition: all 0.5s cubic-bezier(0.21, 0.61, 0.36, 1);
-    cursor: pointer;
-
-}
-navbar div.search.focused .search-textbox{
-    width:100%;
-    cursor: text;
-}
-navbar div.search:hover span{
-    -webkit-transform: translateX(40%);
-    -moz-transform: translateX(40%);
-    -ms-transform: translateX(40%);
-    -o-transform: translateX(40%);
-    transform: translateX(40%);
-}
-navbar .ico-btn{
-    position: relative;
-    width: 30px;
-    height:30px;
-    -webkit-border-radius:50%;
-    -moz-border-radius:50%;
-    border-radius:50%;
-    padding:5px;
-}
-navbar .ico-btn.search-btn, .ico-btn.clear-btn{
-    padding:3px;
-    margin: 3px;
-    opacity: 0;
-    visibility: hidden;
-
-}
-navbar .ico-btn.clear-btn{
-    margin-right: -30px;
-    -webkit-animation:0.3s SwiftSlideToRight cubic-bezier(0.21, 0.61, 0.36, 1) 0.2s;
-    -o-animation:0.3s SwiftSlideToRight cubic-bezier(0.21, 0.61, 0.36, 1) 0.2s;
-    animation:0.3s SwiftSlideToRight cubic-bezier(0.21, 0.61, 0.36, 1) 0.2s;
-    -webkit-animation-delay: 0.2s;
-    -moz-animation-delay: 0.2s;
-    -o-animation-delay: 0.2s;
-    animation-delay: 0.2s;
-}
-navbar div.search.focused.not-null.multi-char .ico-btn.clear-btn{
-    margin-right: 0;
-    opacity: 1;
-    visibility: visible;
-    -webkit-animation:0.3s SwiftSlide cubic-bezier(0.21, 0.61, 0.36, 1);
-    -o-animation:0.3s SwiftSlide cubic-bezier(0.21, 0.61, 0.36, 1);
-    animation:0.3s SwiftSlide cubic-bezier(0.21, 0.61, 0.36, 1);
-    -webkit-animation-delay: 0.2s;
-    -moz-animation-delay: 0.2s;
-    -o-animation-delay: 0.2s;
-    animation-delay: 0.2s;
-}
-navbar .ico-btn{
-    -webkit-transition: all 0.2s cubic-bezier(0.21, 0.61, 0.36, 1);
-    -moz-transition: all 0.2s cubic-bezier(0.21, 0.61, 0.36, 1);
-    -ms-transition: all 0.2s cubic-bezier(0.21, 0.61, 0.36, 1);
-    -o-transition: all 0.2s cubic-bezier(0.21, 0.61, 0.36, 1);
-    transition: all 0.2s cubic-bezier(0.21, 0.61, 0.36, 1);
-}
-navbar div.search.focused.not-null .ico-btn.search-btn{
-    visibility: visible;
-    opacity: 1;
-    -webkit-transition-duration: 0.6s;
-    -moz-transition-duration: 0.6s;
-    -ms-transition-duration: 0.6s;
-    -o-transition-duration: 0.6s;
-    transition-duration: 0.6s;
-}
-
-/*Styling Tabs*/
-navbar .tabs .navbar-body li.active a{
-    color: #333;
-}
-navbar .tabs .navbar-body li{
-    -webkit-transition: all 0.2s cubic-bezier(0.21, 0.61, 0.36, 1);
-    -moz-transition: all 0.2s cubic-bezier(0.21, 0.61, 0.36, 1);
-    -ms-transition: all 0.2s cubic-bezier(0.21, 0.61, 0.36, 1);
-    -o-transition: all 0.2s cubic-bezier(0.21, 0.61, 0.36, 1);
-    transition: all 0.2s cubic-bezier(0.21, 0.61, 0.36, 1);
-}
-navbar .tabs .navbar-body li:hover{
-    background: rgba(0,0,0,0.02);
-}
-navbar .tabs .navbar-body li:active{
-    background: rgba(0,0,0,0.05);
-}
-navbar .tabs .navbar-body li a:hover, .tabs .navbar-body li a:active{
-    background: rgba(0,0,0,0);
-    color: #5bc0de;
-}
-
-/*Styling Tab Highlighter*/
-navbar .tab-highlighter{
-    height:2px;
-    width: 50px;
-    margin-top: -2px;
-    background: #000;
-    position: absolute;
-    -webkit-transition: all 0.6s cubic-bezier(0.21, 0.61, 0.36, 1);
-    -moz-transition: all 0.6s cubic-bezier(0.21, 0.61, 0.36, 1);
-    -ms-transition: all 0.6s cubic-bezier(0.21, 0.61, 0.36, 1);
-    -o-transition: all 0.6s cubic-bezier(0.21, 0.61, 0.36, 1);
-    transition: all 0.6s cubic-bezier(0.21, 0.61, 0.36, 1);
-}
-
-/*Keyframes*/
-@keyframes SwiftSlide {
-    100%{
-        margin-right: 0;
-        opacity: 1;
-    }
-}
-@keyframes SwiftSlideToRight {
-    100%{
-        opacity:0;
-        margin-right: -30px;
-    }
-}
 </style>
 </html>
