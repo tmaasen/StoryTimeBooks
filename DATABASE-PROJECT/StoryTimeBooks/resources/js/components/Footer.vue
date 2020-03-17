@@ -70,7 +70,7 @@
                 <span></span>
               </h5>
               <p>Register now and become our customer.</p>
-              <a class="btn" href="{{ route('register') }}" target="_blank">Register Now</a>
+              <a class="btn" href="#" target="_blank">Register Now</a> 
             </div>
           </div>
 
@@ -160,9 +160,9 @@
 
 <script>
 export default {
-    components: {
-        footer,
-    },
+    mounted() {
+      console.log('Footer mounted');
+    }
 };
 </script>
 
