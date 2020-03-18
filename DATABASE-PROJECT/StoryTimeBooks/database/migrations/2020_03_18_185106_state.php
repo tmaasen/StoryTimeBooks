@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Sogu extends Migration
+class State extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,13 @@ class Sogu extends Migration
      */
     public function up()
     {
-        //We use this up() function to create tables and define columns.
+        //
+        Schema::create('state', 
+            function (Blueprint $table) {
+                $table->increments('StateID');
+                $table->string('State');
+                
+        });
     }
 
     /**
@@ -23,6 +29,7 @@ class Sogu extends Migration
      */
     public function down()
     {
-        //ex)if this happens, then drop the table.
+        //
+        Schema::dropIfExists('state');
     }
 }
