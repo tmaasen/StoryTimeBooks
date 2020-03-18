@@ -16,9 +16,11 @@
     </head>
     <body>
         <div id="app">
-            <h1 class="flex-center position-ref full-height">StoryTime Books</h1>
-            <Home></Home>
+             {{-- <navtop /> --}}
+            {{-- <navbottom /> --}}
+            <Home />
         </div>
+    <h1 class="flex-center position-ref full-height">StoryTime Books</h1>
 
         <script type="text/javascript" src="js/app.js"></script>
         {{-- <div class="flex-center position-ref full-height">

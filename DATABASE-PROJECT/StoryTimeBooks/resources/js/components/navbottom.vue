@@ -1,8 +1,4 @@
-
-
 <template>
-  <!-- Footer -->
-  
   <footer id="footer" class="footer-1">
     <div class="main-footer widgets-dark typo-light">
       <div class="container">
@@ -164,7 +160,7 @@
 <script>
 export default {
     mounted() {
-      console.log('Footer mounted');
+      console.log('navbottom mounted');
     }
 };
 </script>
@@ -197,7 +193,6 @@ footer ul {
 /* Copy Right Footer */
 .footer-copyright {
   background: #222;
-  padding: 5px 0;
 }
 .footer-copyright .logo {
   display: inherit;

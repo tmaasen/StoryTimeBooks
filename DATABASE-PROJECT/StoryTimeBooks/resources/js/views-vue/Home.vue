@@ -1,7 +1,7 @@
 <template>
 
   <div>
-    <Navbar />
+    <navtop />
     <!--<div class="container">
       <div class="row justify-content-center">
         <div class="col-md-8">
@@ -14,20 +14,16 @@
           </div>
         </div>
       </div>-->
-      <Footer />
+      <navbottom />
   </div>
     <!--</div>
   </div>-->
 </template>
    
 <script>
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
+import navtop from '../components/navtop'
+import navbottom from '../components/navbottom'
 export default {
-  components: {
-    Navbar,
-    Footer,
-  },
   mounted() {
     console.log("Home mounted.");
   },

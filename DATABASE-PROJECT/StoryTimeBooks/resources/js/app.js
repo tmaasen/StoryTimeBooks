@@ -9,6 +9,7 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 require('./bootstrap');
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
+
 window.Vue = require('vue');
 // import VueRouter from 'vue-router';
 
@@ -30,8 +31,8 @@ window.Vue = require('vue');
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-Vue.component('Navbar', require('./components/Navbar.vue'));
-Vue.component('Footer', require('./components/Footer.vue'));
+Vue.component('navtop', require('./components/navtop.vue').default);
+Vue.component('navbottom', require('./components/navbottom.vue').default);
 Vue.component('Home', require('./views-vue/Home.vue').default);
 
 /**
@@ -40,7 +41,6 @@ Vue.component('Home', require('./views-vue/Home.vue').default);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-//const app = new Vue({ router }).$mount('#app')
 const app = new Vue({
-    el: '#app'
+    el: '#app',
 })
