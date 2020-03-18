@@ -1,5 +1,8 @@
+
+
 <template>
   <!-- Footer -->
+  
   <footer id="footer" class="footer-1">
     <div class="main-footer widgets-dark typo-light">
       <div class="container">
@@ -177,6 +180,14 @@ footer .main-footer {
   padding: 20px 0;
   background: #252525;
 }
+
+.footer-1 {
+  position: absolute;
+  bottom: 0;
+  min-width:100%;
+  max-width:100%;  
+}
+
 footer ul {
   padding-left: 0;
   list-style: none;

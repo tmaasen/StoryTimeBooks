@@ -44,4 +44,3 @@ Vue.component('Home', require('./views-vue/Home.vue').default);
 const app = new Vue({
     el: '#app'
 })
-
