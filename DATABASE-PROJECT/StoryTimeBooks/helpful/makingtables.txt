@@ -1,0 +1,27 @@
+Process for creating new db tables:
+1. Make the Model first
+	"php artisan make:model NAME -m"
+	The '-m' makes the migration along with the model
+	when it runs
+
+2. Code in the migration file like we have before to make
+the columns
+NOTES: 
+- The code '$table->timestamps()' auto creates two columns
+  on the end of your table: created_at and updated_at that are
+  just used as timestamp columns for documenting when a change 
+  occurred. Think about if you need this in your column
+- Don't create a foreign key before creating the table that
+the foreign key is referencing. It matters because of the order 
+of the migration to occur. If my migration file has a FK to 
+another migration that was created after I made the FK, it will
+error when I try to run the migration because of the order I
+made my creations.
+
+3. Look to see if you need to do anything in the Model file
+before migrating
+
+4. php artisan migrate
+NOTE: If you ever have to make a change after a migration has
+occurred, either rollback the migration (see documentation) or
+make a new migration just for the change (see documentation) 
