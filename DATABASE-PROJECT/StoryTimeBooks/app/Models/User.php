@@ -12,6 +12,12 @@ class User extends Model
      * @var string
      */
     public $table = 'users';
+     /**
+     * The primary key associated with the table.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'CustID';
     /**
      * Indicates if the model should be timestamped.
      *

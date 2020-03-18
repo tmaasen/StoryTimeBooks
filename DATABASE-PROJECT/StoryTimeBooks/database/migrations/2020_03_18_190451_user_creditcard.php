@@ -17,6 +17,7 @@ class UserCreditcard extends Migration
         Schema::create('user_creditcard', 
         function (Blueprint $table) {
             $table->increments('CardID');
+            $table->unsignedInteger('CustID');
             $table->foreign('CustID')->references('CustID')->on('users');
             $table->string('CardType');
             $table->string('CardNumberHash');
