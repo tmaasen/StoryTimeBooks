@@ -182,7 +182,7 @@ footer .main-footer {
   bottom: 0;
   min-width:100%;
   max-width:100%;  
-  max-height: 40%;
+  max-height: 100%;
 }
 
 footer ul {

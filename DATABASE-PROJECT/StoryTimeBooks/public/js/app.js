@@ -2079,11 +2079,9 @@ __webpack_require__.r(__webpack_exports__);
 /*!*****************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/navtop.vue?vue&type=script&lang=js& ***!
   \*****************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -2172,73 +2170,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-// import navbottom from './navbottom'
-/* harmony default export */ __webpack_exports__["default"] = ({
-  // components: {
-  //   navbottom
-  // },
-  mounted: function mounted() {
-    console.log("navtop mounted");
-  }
+$('#showList li').on('click', function () {
+  $('#showSelect').val($(this).text());
 });
 
 /***/ }),
@@ -43888,7 +43821,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/*==================== \r\n\tFooter \r\n====================== */\r\n\r\n/* Main Footer */\nfooter .main-footer {\r\n  padding: 20px 0;\r\n  background: #252525;\n}\n.footer-1 {\r\n  position: absolute;\r\n  bottom: 0;\r\n  min-width:100%;\r\n  max-width:100%;  \r\n  max-height: 40%;\n}\nfooter ul {\r\n  padding-left: 0;\r\n  list-style: none;\n}\r\n\r\n/* Copy Right Footer */\n.footer-copyright {\r\n  background: #222;\n}\n.footer-copyright .logo {\r\n  display: inherit;\n}\n.footer-copyright nav {\r\n  float: right;\r\n  margin-top: 5px;\n}\n.footer-copyright nav ul {\r\n  list-style: none;\r\n  margin: 0;\r\n  padding: 0;\n}\n.footer-copyright nav ul li {\r\n  border-left: 1px solid #505050;\r\n  display: inline-block;\r\n  line-height: 12px;\r\n  margin: 0;\r\n  padding: 0 8px;\n}\n.footer-copyright nav ul li a {\r\n  color: #969696;\n}\n.footer-copyright nav ul li:first-child {\r\n  border: medium none;\r\n  padding-left: 0;\n}\n.footer-copyright p {\r\n  color: white;\r\n  font-size: 20px;\r\n  margin: 1px 0 0;\n}\r\n\r\n/* Footer Top */\n.footer-top {\r\n  background: #252525;\r\n  padding-bottom: 30px;\r\n  margin-bottom: 30px;\r\n  border-bottom: 3px solid #222;\n}\r\n\r\n/* Footer transparent */\nfooter.transparent .footer-top,\r\nfooter.transparent .main-footer {\r\n  background: transparent;\n}\nfooter.transparent .footer-copyright {\r\n  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.3);\n}\r\n\r\n/* Footer light */\nfooter.light .footer-top {\r\n  background: #f9f9f9;\n}\nfooter.light .main-footer {\r\n  background: #f9f9f9;\n}\nfooter.light .footer-copyright {\r\n  background: none repeat scroll 0 0 rgba(255, 255, 255, 0.3);\n}\r\n\r\n/* Footer 4 */\n.footer- .logo {\r\n  display: inline-block;\n}\r\n\r\n/*==================== \r\n\tWidgets \r\n====================== */\n.widget {\r\n  padding: 20px;\r\n  margin-bottom: 40px;\n}\n.widget.widget-last {\r\n  margin-bottom: 0px;\n}\n.widget.no-box {\r\n  padding: 0;\r\n  background-color: transparent;\r\n  margin-bottom: 40px;\r\n  box-shadow: none;\r\n  -webkit-box-shadow: none;\r\n  -moz-box-shadow: none;\r\n  -ms-box-shadow: none;\r\n  -o-box-shadow: none;\n}\n.widget.subscribe p {\r\n  margin-bottom: 18px;\n}\n.widget li a {\r\n  color: #ff8d1e;\n}\n.widget li a:hover {\r\n  color: #4b92dc;\n}\n.widget-title {\r\n  margin-bottom: 20px;\n}\n.widget-title span {\r\n  background: #839fad none repeat scroll 0 0;\r\n  display: block;\r\n  height: 1px;\r\n  margin-top: 25px;\r\n  position: relative;\r\n  width: 20%;\n}\n.widget-title span::after {\r\n  background: inherit;\r\n  content: \"\";\r\n  height: inherit;\r\n  position: absolute;\r\n  top: -4px;\r\n  width: 50%;\n}\n.widget-title.text-center span,\r\n.widget-title.text-center span::after {\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n  left: 0;\r\n  right: 0;\n}\n.widget .badge {\r\n  float: right;\r\n  background: #7f7f7f;\n}\n.typo-light h1,\r\n.typo-light h2,\r\n.typo-light h3,\r\n.typo-light h4,\r\n.typo-light h5,\r\n.typo-light h6,\r\n.typo-light p,\r\n.typo-light div,\r\n.typo-light span,\r\n.typo-light small {\r\n  color: #fff;\n}\nul.social-footer2 {\r\n  margin: 0;\r\n  padding: 0;\r\n  width: auto;\n}\nul.social-footer2 li {\r\n  display: inline-block;\r\n  padding: 0;\n}\nul.social-footer2 li a:hover {\r\n  background-color: #ff8d1e;\n}\nul.social-footer2 li a {\r\n  display: block;\r\n  height: 30px;\r\n  width: 30px;\r\n  text-align: center;\n}\n.btn {\r\n  background-color: #ff8d1e;\r\n  color: #fff;\n}\n.btn:hover,\r\n.btn:focus,\r\n.btn.active {\r\n  background: #4b92dc;\r\n  color: #fff;\r\n  -ms-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);\r\n  -o-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);\r\n  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);\r\n  transition: all 250ms ease-in-out 0s;\n}\r\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/*==================== \r\n\tFooter \r\n====================== */\r\n\r\n/* Main Footer */\nfooter .main-footer {\r\n  padding: 20px 0;\r\n  background: #252525;\n}\n.footer-1 {\r\n  position: absolute;\r\n  bottom: 0;\r\n  min-width:100%;\r\n  max-width:100%;  \r\n  max-height: 100%;\n}\nfooter ul {\r\n  padding-left: 0;\r\n  list-style: none;\n}\r\n\r\n/* Copy Right Footer */\n.footer-copyright {\r\n  background: #222;\n}\n.footer-copyright .logo {\r\n  display: inherit;\n}\n.footer-copyright nav {\r\n  float: right;\r\n  margin-top: 5px;\n}\n.footer-copyright nav ul {\r\n  list-style: none;\r\n  margin: 0;\r\n  padding: 0;\n}\n.footer-copyright nav ul li {\r\n  border-left: 1px solid #505050;\r\n  display: inline-block;\r\n  line-height: 12px;\r\n  margin: 0;\r\n  padding: 0 8px;\n}\n.footer-copyright nav ul li a {\r\n  color: #969696;\n}\n.footer-copyright nav ul li:first-child {\r\n  border: medium none;\r\n  padding-left: 0;\n}\n.footer-copyright p {\r\n  color: white;\r\n  font-size: 20px;\r\n  margin: 1px 0 0;\n}\r\n\r\n/* Footer Top */\n.footer-top {\r\n  background: #252525;\r\n  padding-bottom: 30px;\r\n  margin-bottom: 30px;\r\n  border-bottom: 3px solid #222;\n}\r\n\r\n/* Footer transparent */\nfooter.transparent .footer-top,\r\nfooter.transparent .main-footer {\r\n  background: transparent;\n}\nfooter.transparent .footer-copyright {\r\n  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.3);\n}\r\n\r\n/* Footer light */\nfooter.light .footer-top {\r\n  background: #f9f9f9;\n}\nfooter.light .main-footer {\r\n  background: #f9f9f9;\n}\nfooter.light .footer-copyright {\r\n  background: none repeat scroll 0 0 rgba(255, 255, 255, 0.3);\n}\r\n\r\n/* Footer 4 */\n.footer- .logo {\r\n  display: inline-block;\n}\r\n\r\n/*==================== \r\n\tWidgets \r\n====================== */\n.widget {\r\n  padding: 20px;\r\n  margin-bottom: 40px;\n}\n.widget.widget-last {\r\n  margin-bottom: 0px;\n}\n.widget.no-box {\r\n  padding: 0;\r\n  background-color: transparent;\r\n  margin-bottom: 40px;\r\n  box-shadow: none;\r\n  -webkit-box-shadow: none;\r\n  -moz-box-shadow: none;\r\n  -ms-box-shadow: none;\r\n  -o-box-shadow: none;\n}\n.widget.subscribe p {\r\n  margin-bottom: 18px;\n}\n.widget li a {\r\n  color: #ff8d1e;\n}\n.widget li a:hover {\r\n  color: #4b92dc;\n}\n.widget-title {\r\n  margin-bottom: 20px;\n}\n.widget-title span {\r\n  background: #839fad none repeat scroll 0 0;\r\n  display: block;\r\n  height: 1px;\r\n  margin-top: 25px;\r\n  position: relative;\r\n  width: 20%;\n}\n.widget-title span::after {\r\n  background: inherit;\r\n  content: \"\";\r\n  height: inherit;\r\n  position: absolute;\r\n  top: -4px;\r\n  width: 50%;\n}\n.widget-title.text-center span,\r\n.widget-title.text-center span::after {\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n  left: 0;\r\n  right: 0;\n}\n.widget .badge {\r\n  float: right;\r\n  background: #7f7f7f;\n}\n.typo-light h1,\r\n.typo-light h2,\r\n.typo-light h3,\r\n.typo-light h4,\r\n.typo-light h5,\r\n.typo-light h6,\r\n.typo-light p,\r\n.typo-light div,\r\n.typo-light span,\r\n.typo-light small {\r\n  color: #fff;\n}\nul.social-footer2 {\r\n  margin: 0;\r\n  padding: 0;\r\n  width: auto;\n}\nul.social-footer2 li {\r\n  display: inline-block;\r\n  padding: 0;\n}\nul.social-footer2 li a:hover {\r\n  background-color: #ff8d1e;\n}\nul.social-footer2 li a {\r\n  display: block;\r\n  height: 30px;\r\n  width: 30px;\r\n  text-align: center;\n}\n.btn {\r\n  background-color: #ff8d1e;\r\n  color: #fff;\n}\n.btn:hover,\r\n.btn:focus,\r\n.btn.active {\r\n  background: #4b92dc;\r\n  color: #fff;\r\n  -ms-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);\r\n  -o-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);\r\n  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);\r\n  transition: all 250ms ease-in-out 0s;\n}\r\n", ""]);
 
 // exports
 
@@ -43907,7 +43840,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#shoppingCart {\r\n  color: #ff8d1e;\n}\nsvg {\r\n  fill: #ff8d1e;\n}\r\n/* \r\n#searchBtn {\r\n  margin-left: 10%;\r\n} */\n.searchFilter {\r\n  margin-bottom: 20px;\n}\n.searchFilter.btn {\r\n  display: inline-block;\r\n  font-weight: 400;\r\n  line-height: 1.25;\r\n  text-align: center;\r\n  white-space: nowrap;\r\n  vertical-align: middle;\r\n  cursor: pointer;\r\n  -webkit-user-select: none;\r\n  -moz-user-select: none;\r\n  -ms-user-select: none;\r\n  user-select: none;\r\n  border: 1px solid transparent;\r\n  padding: 0.5rem 1rem;\r\n  font-size: 16px;\r\n  border-radius: 0.25rem;\r\n  height: 50px;\r\n  min-width: 20px;\n}\n.searchFilter .btn-secondary {\r\n  color: #373a3c;\r\n  background-color: #fff;\r\n  border: 1px solid #ccc;\n}\n.searchFilter .btn-secondary:hover {\r\n  color: #373a3c;\r\n  background-color: #e6e6e6;\r\n  border-color: #adadad;\n}\n.searchFilter .btn-search {\r\n  background-color: #ff8d1e;\r\n  color: #fff;\r\n  border: 1px solid #ff8d1e;\n}\n.searchFilter .btn-search:hover {\r\n  background-color: #4b92dc;\r\n  color: #fff;\r\n  border: 1px solid #4b92dc;\n}\n.searchFilter .label-icon {\r\n  display: none;\n}\n.searchFilter .glyphicon {\r\n  margin-right: -15px;\n}\n.searchFilter .dropdown-menu .category_filters {\r\n  min-width: 178px;\r\n  width: 100%;\r\n  margin: 15px 0 0 -25px;\n}\n.searchFilter .dropdown-menu-right {\r\n  right: 170px;\r\n  min-width: 175px;\r\n  top: 90%;\n}\n.searchFilter .dropdown-menu .category_filters li {\r\n  list-style-type: none;\r\n  padding: 2px 10px;\r\n  font-size: 18px;\n}\n.searchFilter .dropdown-menu .category_filters label {\r\n  margin-left: 15px;\n}\n@media (min-width: 1400px) {\n.ct-header .ct-jumbotron .inner {\r\n    max-width: 470px;\r\n    min-height: 230px;\n}\n}\n@media (max-width: 1400px) {\n.ct-header-slider .item {\r\n    background-size: contain;\r\n    background-repeat: no-repeat;\r\n    background-position: center top;\n}\n}\n@media (min-width: 769px) and (max-width: 1400px) {\n.ct-header-slider .item {\r\n    height: auto;\n}\n}\n@media (max-width: 1260px) {\n#dots-container {\r\n    display: none;\n}\n}\n@media (min-width: 992px) {\n.ct-footer2 .ct-newsletter {\r\n    max-width: 100%;\n}\n#dots-container {\r\n    bottom: 100px;\n}\n}\n@media (min-width: 768px) {\n.ct-searchbar:before {\r\n    height: 92px;\r\n    bottom: -1px;\n}\n.page-scrolled .navbar .navbar-nav li > * {\r\n    min-height: 67px;\r\n    height: 67px;\n}\n.page-scrolled .navbar .navbar-nav {\r\n    height: 100% !important;\n}\n.ct-current-facts h2 {\r\n    margin: 0 auto 0px;\n}\n.contentNews .ct-recent-news {\r\n    flex-direction: inherit;\n}\n.contentFaq .faq_question .col-sm-11 {\r\n    padding-right: 0px;\n}\n.peopleDetail h2 {\r\n    margin-top: -5px;\n}\n.searchFilter .btn {\r\n    min-width: 172px;\n}\n.searchFilter .label-icon {\r\n    display: inline-block;\n}\n.searchFilter .glyphicon {\r\n    margin-right: -5px;\n}\n.ct-header .ct-jumbotron {\r\n    top: 0;\r\n    margin-top: 5%;\n}\n.ct-header .ct-jumbotron h1 {\r\n    font-size: 2.5em;\n}\n.ct-news.ct-news--bigger h3 {\r\n    font-size: 41px;\r\n    line-height: 1.4;\n}\n}\n@media (max-width: 768px) {\n.ct-header .ct-jumbotron {\r\n    width: 80%;\r\n    margin: 20px 10px;\r\n    top: 40%;\r\n    width: 95%;\n}\n.ct-header .ct-jumbotron .inner {\r\n    max-width: 100%;\n}\n#dots-container {\r\n    display: none;\n}\n.main-section {\r\n    margin-top: -80px;\n}\n.searchFilter .dropdown-menu-right {\r\n    right: 0px;\n}\n}\n#n1,\r\n#n2,\r\n#table_filter {\r\n  display: inline-block;\r\n  vertical-align: middle;\n}\r\n\r\n/* .container {\r\n  margin-top: 15px;\r\n} */\nhtml {\r\n  overflow-y: scroll;\n}\r\n", ""]);
+exports.push([module.i, "\n.bg-info {\r\n  background-color: #373b40 !important;\n}\n.btn-group,\r\n.btn-group-vertical {\r\n  position: relative;\r\n  display: inline-flex;\r\n  vertical-align: middle;\r\n  margin-left: 5px;\n}\n.dropdown-menu {\r\n  position: absolute;\r\n  top: 100%;\r\n  left: 0;\r\n  z-index: 1000;\r\n  display: none;\r\n  float: left;\r\n  min-width: 9.5rem;\r\n  padding: 0.5rem 0;\r\n  margin: 0.125rem 0 0;\r\n  font-size: 1rem;\r\n  color: #212529;\r\n  text-align: left;\r\n  list-style: none;\r\n  background-color: #fff;\r\n  background-clip: padding-box;\r\n  border: 1px solid rgba(0, 0, 0, 0.15);\r\n  border-radius: 0.25rem;\n}\r\n", ""]);
 
 // exports
 
@@ -76347,385 +76280,172 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "nav",
-      {
-        staticClass: "navbar navbar-expand-lg",
-        staticStyle: { "background-color": "#252525" }
-      },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _vm._m(1),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "collapse navbar-collapse",
-            attrs: { id: "navbarSupportedContent" }
-          },
-          [
-            _vm._m(2),
-            _vm._v(" "),
-            _vm._m(3),
-            _vm._v(" "),
-            _c("div", [
-              _c(
-                "a",
-                {
-                  staticClass: "navbar-brand",
-                  attrs: { id: "shoppingCart", href: "#" }
-                },
-                [
-                  _c("span", { staticClass: "input-group-addon" }, [
-                    _c(
-                      "svg",
-                      {
-                        attrs: {
-                          xmlns: "http://www.w3.org/2000/svg",
-                          height: "30",
-                          viewBox: "0 0 24 24",
-                          width: "30"
-                        }
-                      },
-                      [
-                        _c("path", {
-                          attrs: {
-                            d:
-                              "M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("path", {
-                          attrs: { d: "M0 0h24v24H0z", fill: "none" }
-                        })
-                      ]
-                    )
-                  ]),
-                  _vm._v("\r\n          Cart\r\n        ")
-                ]
-              )
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "b-dropdown",
-          {
-            attrs: { variant: "primary" },
-            scopedSlots: _vm._u([
-              {
-                key: "button-content",
-                fn: function() {
-                  return [
-                    _c("b-icon", {
-                      attrs: { icon: "person-fill", "aria-hidden": "true" }
-                    }),
-                    _vm._v("My Account\r\n      ")
-                  ]
-                },
-                proxy: true
+  return _c(
+    "div",
+    [
+      _c(
+        "b-navbar",
+        { attrs: { toggleable: "lg", type: "dark", variant: "info" } },
+        [
+          _c("a", { attrs: { href: "http://127.0.0.1:8000/" } }, [
+            _c("img", {
+              staticClass: "navbar-brand",
+              attrs: {
+                src: __webpack_require__(/*! ../assets/StoryTime-1.png */ "./resources/js/assets/StoryTime-1.png"),
+                width: "200",
+                alt: "Go to Home"
               }
-            ])
-          },
-          [
-            _vm._v(" "),
-            _c(
-              "b-dropdown-item-button",
-              [
-                _c("b-icon", {
-                  attrs: { icon: "blank", "aria-hidden": "true" }
-                }),
-                _vm._v("Profile\r\n        "),
-                _c("span", { staticClass: "sr-only" }, [
-                  _vm._v("(Not selected)")
-                ])
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "b-dropdown-item-button",
-              [
-                _c("b-icon", {
-                  attrs: { icon: "blank", "aria-hidden": "true" }
-                }),
-                _vm._v("Logout\r\n        "),
-                _c("span", { staticClass: "sr-only" }, [_vm._v("(Selected)")])
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c("b-dropdown-divider"),
-            _vm._v(" "),
-            _c(
-              "b-dropdown-item-button",
-              { attrs: { variant: "danger" } },
-              [
-                _c("b-icon", {
-                  attrs: { icon: "trash-fill", "aria-hidden": "true" }
-                }),
-                _vm._v("Remove Account\r\n        "),
-                _c("span", { staticClass: "sr-only" }, [
-                  _vm._v("(Not selected)")
-                ])
-              ],
-              1
-            )
-          ],
-          1
-        )
-      ],
-      1
-    )
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#" } }, [
-      _c("img", {
-        staticClass: "navbar-brand",
-        attrs: {
-          src: __webpack_require__(/*! ../assets/StoryTime.png */ "./resources/js/assets/StoryTime.png"),
-          width: "200",
-          alt: "Go to Home"
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "navbar-toggler",
-        attrs: {
-          type: "button",
-          "data-toggle": "collapse",
-          "data-target": "#navbarSupportedContent",
-          "aria-controls": "navbarSupportedContent",
-          "aria-expanded": "false",
-          "aria-label": "Toggle navigation"
-        }
-      },
-      [_c("span", { staticClass: "navbar-toggler-icon" })]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("ul", { staticClass: "navbar-nav mr-auto" }, [
-      _c("li", { staticClass: "nav-item" }, [
-        _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-          _vm._v("Link")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("form", { staticClass: "form-inline my-2 my-lg-0" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "row searchFilter", attrs: { id: "n4" } }, [
-          _c("div", { staticClass: "col-md-12" }, [
-            _c("div", { staticClass: "input-group" }, [
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  id: "table_filter",
-                  type: "text",
-                  "aria-label": "Text input with segmented button dropdown"
-                }
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "input-group-btn" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass:
-                      "btn btn-secondary dropdown-toggle dropdown-toggle-split",
-                    attrs: {
-                      type: "button",
-                      "data-toggle": "dropdown",
-                      "aria-haspopup": "true",
-                      "aria-expanded": "false",
-                      id: "n2"
-                    }
-                  },
-                  [
-                    _c("span", { staticClass: "label-icon" }, [
-                      _vm._v("Category")
-                    ]),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "caret" }, [_vm._v(" ")])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "dropdown-menu dropdown-menu-right",
-                    attrs: { id: "n3" }
-                  },
-                  [
-                    _c("ul", { staticClass: "category_filters" }, [
-                      _c("li", [
-                        _c("div", { staticClass: "col-xs-4" }, [
-                          _c("input", {
-                            staticClass: "cat_type category-input",
-                            attrs: {
-                              "data-label": "All",
-                              id: "all",
-                              value: "",
-                              name: "radios",
-                              type: "radio"
-                            }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("label", { attrs: { for: "all" } }, [_vm._v("All")])
-                      ]),
-                      _vm._v(" "),
-                      _c("li", [
-                        _c("input", {
-                          attrs: {
-                            type: "radio",
-                            name: "radios",
-                            id: "Design",
-                            value: "Design"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "category-label",
-                            attrs: { for: "Design" }
-                          },
-                          [_vm._v("Design")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("li", [
-                        _c("input", {
-                          attrs: {
-                            type: "radio",
-                            name: "radios",
-                            id: "Marketing",
-                            value: "Marketing"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "category-label",
-                            attrs: { for: "Marketing" }
-                          },
-                          [_vm._v("Marketing")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("li", [
-                        _c("input", {
-                          attrs: {
-                            type: "radio",
-                            name: "radios",
-                            id: "Programming",
-                            value: "Programming"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "category-label",
-                            attrs: { for: "Programming" }
-                          },
-                          [_vm._v("Programming")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("li", [
-                        _c("input", {
-                          attrs: {
-                            type: "radio",
-                            name: "radios",
-                            id: "Sales",
-                            value: "Sales"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "category-label",
-                            attrs: { for: "Sales" }
-                          },
-                          [_vm._v("Sales")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("li", [
-                        _c("input", {
-                          attrs: {
-                            type: "radio",
-                            name: "radios",
-                            id: "Support",
-                            value: "Support"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "category-label",
-                            attrs: { for: "Support" }
-                          },
-                          [_vm._v("Support")]
-                        )
-                      ])
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", { attrs: { id: "n1" } }, [
+            })
+          ]),
+          _vm._v(" "),
+          _c("b-navbar-toggle", { attrs: { target: "nav-collapse" } }),
+          _vm._v(" "),
+          _c(
+            "b-collapse",
+            { attrs: { id: "nav-collapse", "is-nav": "" } },
+            [
+              _c(
+                "b-navbar-nav",
+                { staticClass: "ml-auto" },
+                [
                   _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-secondary btn-search",
-                      attrs: { id: "searchBtn", type: "button" }
-                    },
+                    "b-nav-item-dropdown",
+                    { attrs: { id: "showSelect", text: "Type", right: "" } },
                     [
-                      _c(
-                        "span",
-                        { staticClass: "glyphicon glyphicon-search" },
-                        [_vm._v(" ")]
-                      ),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "label-icon" }, [
-                        _vm._v("Search")
+                      _c("div", { attrs: { id: "showList" } }, [
+                        _c(
+                          "li",
+                          [
+                            _c("b-dropdown-item", { attrs: { href: "#" } }, [
+                              _vm._v("Title")
+                            ])
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "li",
+                          [
+                            _c("b-dropdown-item", { attrs: { href: "#" } }, [
+                              _vm._v("Author")
+                            ])
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "li",
+                          [
+                            _c("b-dropdown-item", { attrs: { href: "#" } }, [
+                              _vm._v("Publisher")
+                            ])
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "li",
+                          [
+                            _c("b-dropdown-item", { attrs: { href: "#" } }, [
+                              _vm._v("Year")
+                            ])
+                          ],
+                          1
+                        )
                       ])
                     ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-nav-form",
+                    [
+                      _c("b-form-input", {
+                        staticClass: "mr-sm-2",
+                        attrs: { size: "md", placeholder: "Search" }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "b-button",
+                        {
+                          staticClass: "my-2 my-sm-0",
+                          attrs: { size: "md", type: "submit" }
+                        },
+                        [_vm._v("Search")]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-dropdown",
+                    {
+                      attrs: { variant: "primary" },
+                      scopedSlots: _vm._u([
+                        {
+                          key: "button-content",
+                          fn: function() {
+                            return [
+                              _c("b-icon", {
+                                attrs: {
+                                  icon: "person-fill",
+                                  "aria-hidden": "true"
+                                }
+                              }),
+                              _vm._v("My Account\n          ")
+                            ]
+                          },
+                          proxy: true
+                        }
+                      ])
+                    },
+                    [
+                      _vm._v(" "),
+                      _c(
+                        "b-dropdown-item-button",
+                        [
+                          _c("b-icon", {
+                            attrs: { icon: "blank", "aria-hidden": "true" }
+                          }),
+                          _vm._v("Profile\n            "),
+                          _c("span", { staticClass: "sr-only" }, [
+                            _vm._v("(Not selected)")
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-dropdown-item-button",
+                        [
+                          _c("b-icon", {
+                            attrs: { icon: "blank", "aria-hidden": "true" }
+                          }),
+                          _vm._v("Logout\n            "),
+                          _c("span", { staticClass: "sr-only" }, [
+                            _vm._v("(Selected)")
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("b-dropdown-divider")
+                    ],
+                    1
                   )
-                ])
-              ])
-            ])
-          ])
-        ])
-      ])
-    ])
-  }
-]
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -88969,14 +88689,14 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 
 /***/ }),
 
-/***/ "./resources/js/assets/StoryTime.png":
-/*!*******************************************!*\
-  !*** ./resources/js/assets/StoryTime.png ***!
-  \*******************************************/
+/***/ "./resources/js/assets/StoryTime-1.png":
+/*!*********************************************!*\
+  !*** ./resources/js/assets/StoryTime-1.png ***!
+  \*********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/StoryTime.png?8b646dc2dc4d088f26ed6603c1f03a88";
+module.exports = "/images/StoryTime-1.png?847ce50f5d154cdafda793a1fc4ee882";
 
 /***/ }),
 
@@ -89116,14 +88836,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!********************************************!*\
   !*** ./resources/js/components/navtop.vue ***!
   \********************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _navtop_vue_vue_type_template_id_71f78b46___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./navtop.vue?vue&type=template&id=71f78b46& */ "./resources/js/components/navtop.vue?vue&type=template&id=71f78b46&");
 /* harmony import */ var _navtop_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./navtop.vue?vue&type=script&lang=js& */ "./resources/js/components/navtop.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _navtop_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./navtop.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/navtop.vue?vue&type=style&index=0&lang=css&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _navtop_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _navtop_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _navtop_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./navtop.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/navtop.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -89155,13 +88876,15 @@ component.options.__file = "resources/js/components/navtop.vue"
 /*!*********************************************************************!*\
   !*** ./resources/js/components/navtop.vue?vue&type=script&lang=js& ***!
   \*********************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_navtop_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./navtop.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/navtop.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_navtop_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_navtop_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_navtop_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_navtop_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_navtop_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_navtop_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -89286,8 +89009,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\tmaas\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\tmaas\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\User\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\User\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
