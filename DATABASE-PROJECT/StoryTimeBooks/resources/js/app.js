@@ -11,17 +11,18 @@ Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 
 window.Vue = require('vue');
-// import VueRouter from 'vue-router';
+import VueRouter from 'vue-router';
 
-// window.Vue.use(VueRouter);
+window.Vue.use(VueRouter);
 
-// const routes = [
-//     { path: '/', component: require('./views-vue/Home.vue') },
-//   ];
+const routes = [
+     { path: '/home', component: require('./views-vue/Home.vue'), name: 'Home' },
+  ];
 
-// const router = new VueRouter({
-//     routes 
-//   });
+const router = new VueRouter({
+    mode: history,
+    routes 
+  });
 
 /**
  * The following block of code may be used to automatically register your
@@ -43,4 +44,5 @@ Vue.component('Home', require('./views-vue/Home.vue').default);
 
 const app = new Vue({
     el: '#app',
+    router
 })

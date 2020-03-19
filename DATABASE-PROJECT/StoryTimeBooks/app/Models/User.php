@@ -12,6 +12,23 @@ class User extends Model
      * @var string
      */
     public $table = 'users';
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'FirstName', 'LastName', 'Email'
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'PasswordHash', 'remember_token',
+    ];
      /**
      * The primary key associated with the table.
      *

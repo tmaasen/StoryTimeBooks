@@ -16,14 +16,13 @@
     </head>
     <body>
         <div id="app">
-             {{-- <navtop /> --}}
-            {{-- <navbottom /> --}}
             <Home />
+            {{-- <router-view></router-view> --}}
         </div>
     <h1 class="flex-center position-ref full-height">StoryTime Books</h1>
 
         <script type="text/javascript" src="js/app.js"></script>
-        {{-- <div class="flex-center position-ref full-height">
+        <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -37,7 +36,7 @@
                     @endauth
                 </div>
             @endif
-        </div> --}}
+        </div>
     </body>
 
         <!--JavaScript-->

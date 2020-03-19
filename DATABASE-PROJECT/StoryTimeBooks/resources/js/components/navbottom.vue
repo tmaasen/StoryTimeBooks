@@ -23,7 +23,7 @@
           <div class="col-xs-12 col-sm-6 col-md-3">
             <div class="widget no-box">
               <h5 class="widget-title">
-                About
+                Learn More
                 <span></span>
               </h5>
               <ul class="thumbnail-widget">
@@ -32,22 +32,17 @@
                     <a
                       href="https://www.cberkstresser.name/home/admProjectTaskManagement.php?lang=en&ProjectID=31&Project=70239802-62d5-11ea-9313-02b8dd7b079a"
                       target="_blank"
-                    >PROJECTS</a>
+                    >OUR PROJECT</a>
                   </div>
                 </li>
                 <li>
                   <div class="thumb-content">
-                    <a href="#." target="_blank">ABOUT US</a>
+                    <a href="https://www.w3schools.com/" target="_blank">USEFUL WEBSITES</a>
                   </div>
                 </li>
                 <li>
                   <div class="thumb-content">
-                    <a href="#." target="_blank">USEFUL WEBSITES</a>
-                  </div>
-                </li>
-                <li>
-                  <div class="thumb-content">
-                    <a href="#." target="_blank">DONATE</a>
+                    <a href="https://covid19responsefund.org/" target="_blank">DONATE</a>
                   </div>
                 </li>
                 <li>
@@ -69,7 +64,9 @@
                 <span></span>
               </h5>
               <p>Register now and become our customer.</p>
-              <a class="btn" href="#" target="_blank">Register Now</a> 
+              <router-link to="{name: 'register'}">
+              <a class="btn" target="_blank">Register Now</a> 
+              </router-link>
             </div>
           </div>
 

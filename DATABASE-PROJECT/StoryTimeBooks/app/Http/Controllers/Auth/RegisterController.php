@@ -81,14 +81,6 @@ class RegisterController extends Controller
      */
     protected function store(Request $request)
     {
-        // $this->validate($request, [
-        //     'firstname' => ['required', 'string', 'max:255'],
-        //     'lastname' => ['required', 'string', 'max:255'],
-        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        //     'password' => ['required', 'string', 'max:50'],
-        //     'password-corfirm' => ['required', 'string', 'confirmed'],
-        // ]);
-
         $user = new User;
         // CustID not needed
         $user->FirstName = $request->input('firstname');
