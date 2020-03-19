@@ -2198,28 +2198,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log("Home mounted.");
-  },
-  props: []
+  }
 });
 
 /***/ }),
@@ -91639,7 +91623,6 @@ var routes = [{
   name: 'Home'
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__["default"]({
-  mode: history,
   routes: routes
 });
 /**
