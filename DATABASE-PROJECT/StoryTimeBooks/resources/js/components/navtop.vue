@@ -1,17 +1,16 @@
 <template>
   <div>
-    <b-navbar toggleable="lg" type="dark" variant="info">
-      <a href="http://127.0.0.1:8000/">
-        <img src="../assets/StoryTime-1.png" width="200" class="navbar-brand" alt="Go to Home" />
+    <b-navbar toggleable="lg" type="dark" style="background-color: #252525">
+      <a href="#">
+        <img src="../assets/StoryTime.png" width="200" class="navbar-brand" alt="Go to Home" />
       </a>
-
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
           <b-nav-item-dropdown id="showSelect" text="Type" right>
-            <div id="showList">
+            <div id="showList" class="hoverable">
               <li>
                 <b-dropdown-item href="#">Title</b-dropdown-item>
               </li>
@@ -35,15 +34,14 @@
             <template v-slot:button-content>
               <b-icon icon="person-fill" aria-hidden="true"></b-icon>My Account
             </template>
-            <b-dropdown-item-button>
+            <b-dropdown-item-button href="#">
               <b-icon icon="blank" aria-hidden="true"></b-icon>Profile
               <span class="sr-only">(Not selected)</span>
             </b-dropdown-item-button>
-            <b-dropdown-item-button>
+            <b-dropdown-item-button href="#">
               <b-icon icon="blank" aria-hidden="true"></b-icon>Logout
               <span class="sr-only">(Selected)</span>
             </b-dropdown-item-button>
-            <b-dropdown-divider></b-dropdown-divider>
           </b-dropdown>
         </b-navbar-nav>
       </b-collapse>
@@ -53,7 +51,11 @@
 
 <style>
 .bg-info {
-  background-color: #373b40 !important;
+  background-color: #252525 !important;
+}
+.hoverable a:hover {
+  background-color: #252525;
+  color:#fff;
 }
 
 .btn-group,
@@ -63,6 +65,11 @@
   display: inline-flex;
   vertical-align: middle;
   margin-left: 5px;
+}
+
+.dropdown-menu a:hover {
+  background-color: #252525;
+  color:#fff;
 }
 
 .dropdown-menu {
@@ -76,7 +83,7 @@
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
   font-size: 1rem;
-  color: #212529;
+  color: #252525;
   text-align: left;
   list-style: none;
   background-color: #fff;

@@ -2170,6 +2170,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 $('#showList li').on('click', function () {
   $('#showSelect').val($(this).text());
 });
@@ -43840,7 +43847,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.bg-info {\r\n  background-color: #373b40 !important;\n}\n.btn-group,\r\n.btn-group-vertical {\r\n  position: relative;\r\n  display: inline-flex;\r\n  vertical-align: middle;\r\n  margin-left: 5px;\n}\n.dropdown-menu {\r\n  position: absolute;\r\n  top: 100%;\r\n  left: 0;\r\n  z-index: 1000;\r\n  display: none;\r\n  float: left;\r\n  min-width: 9.5rem;\r\n  padding: 0.5rem 0;\r\n  margin: 0.125rem 0 0;\r\n  font-size: 1rem;\r\n  color: #212529;\r\n  text-align: left;\r\n  list-style: none;\r\n  background-color: #fff;\r\n  background-clip: padding-box;\r\n  border: 1px solid rgba(0, 0, 0, 0.15);\r\n  border-radius: 0.25rem;\n}\r\n", ""]);
+exports.push([module.i, "\n.bg-info {\r\n  background-color: #252525 !important;\n}\n.hoverable a:hover {\r\n  background-color: #252525;\r\n  color:#fff;\n}\n.btn-group,\r\n.btn-group-vertical {\r\n  position: relative;\r\n  display: inline-flex;\r\n  vertical-align: middle;\r\n  margin-left: 5px;\n}\n.dropdown-menu a:hover {\r\n  background-color: #252525;\r\n  color:#fff;\n}\n.dropdown-menu {\r\n  position: absolute;\r\n  top: 100%;\r\n  left: 0;\r\n  z-index: 1000;\r\n  display: none;\r\n  float: left;\r\n  min-width: 9.5rem;\r\n  padding: 0.5rem 0;\r\n  margin: 0.125rem 0 0;\r\n  font-size: 1rem;\r\n  color: #252525;\r\n  text-align: left;\r\n  list-style: none;\r\n  background-color: #fff;\r\n  background-clip: padding-box;\r\n  border: 1px solid rgba(0, 0, 0, 0.15);\r\n  border-radius: 0.25rem;\n}\r\n", ""]);
 
 // exports
 
@@ -76285,13 +76292,16 @@ var render = function() {
     [
       _c(
         "b-navbar",
-        { attrs: { toggleable: "lg", type: "dark", variant: "info" } },
+        {
+          staticStyle: { "background-color": "#252525" },
+          attrs: { toggleable: "lg", type: "dark" }
+        },
         [
-          _c("a", { attrs: { href: "http://127.0.0.1:8000/" } }, [
+          _c("a", { attrs: { href: "#" } }, [
             _c("img", {
               staticClass: "navbar-brand",
               attrs: {
-                src: __webpack_require__(/*! ../assets/StoryTime-1.png */ "./resources/js/assets/StoryTime-1.png"),
+                src: __webpack_require__(/*! ../assets/StoryTime.png */ "./resources/js/assets/StoryTime.png"),
                 width: "200",
                 alt: "Go to Home"
               }
@@ -76312,47 +76322,51 @@ var render = function() {
                     "b-nav-item-dropdown",
                     { attrs: { id: "showSelect", text: "Type", right: "" } },
                     [
-                      _c("div", { attrs: { id: "showList" } }, [
-                        _c(
-                          "li",
-                          [
-                            _c("b-dropdown-item", { attrs: { href: "#" } }, [
-                              _vm._v("Title")
-                            ])
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "li",
-                          [
-                            _c("b-dropdown-item", { attrs: { href: "#" } }, [
-                              _vm._v("Author")
-                            ])
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "li",
-                          [
-                            _c("b-dropdown-item", { attrs: { href: "#" } }, [
-                              _vm._v("Publisher")
-                            ])
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "li",
-                          [
-                            _c("b-dropdown-item", { attrs: { href: "#" } }, [
-                              _vm._v("Year")
-                            ])
-                          ],
-                          1
-                        )
-                      ])
+                      _c(
+                        "div",
+                        { staticClass: "hoverable", attrs: { id: "showList" } },
+                        [
+                          _c(
+                            "li",
+                            [
+                              _c("b-dropdown-item", { attrs: { href: "#" } }, [
+                                _vm._v("Title")
+                              ])
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            [
+                              _c("b-dropdown-item", { attrs: { href: "#" } }, [
+                                _vm._v("Author")
+                              ])
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            [
+                              _c("b-dropdown-item", { attrs: { href: "#" } }, [
+                                _vm._v("Publisher")
+                              ])
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            [
+                              _c("b-dropdown-item", { attrs: { href: "#" } }, [
+                                _vm._v("Year")
+                              ])
+                            ],
+                            1
+                          )
+                        ]
+                      )
                     ]
                   ),
                   _vm._v(" "),
@@ -76402,6 +76416,7 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "b-dropdown-item-button",
+                        { attrs: { href: "#" } },
                         [
                           _c("b-icon", {
                             attrs: { icon: "blank", "aria-hidden": "true" }
@@ -76416,6 +76431,7 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "b-dropdown-item-button",
+                        { attrs: { href: "#" } },
                         [
                           _c("b-icon", {
                             attrs: { icon: "blank", "aria-hidden": "true" }
@@ -76426,9 +76442,7 @@ var render = function() {
                           ])
                         ],
                         1
-                      ),
-                      _vm._v(" "),
-                      _c("b-dropdown-divider")
+                      )
                     ],
                     1
                   )
@@ -88689,14 +88703,14 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 
 /***/ }),
 
-/***/ "./resources/js/assets/StoryTime-1.png":
-/*!*********************************************!*\
-  !*** ./resources/js/assets/StoryTime-1.png ***!
-  \*********************************************/
+/***/ "./resources/js/assets/StoryTime.png":
+/*!*******************************************!*\
+  !*** ./resources/js/assets/StoryTime.png ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/StoryTime-1.png?847ce50f5d154cdafda793a1fc4ee882";
+module.exports = "/images/StoryTime.png?847ce50f5d154cdafda793a1fc4ee882";
 
 /***/ }),
 
@@ -89009,8 +89023,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\User\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\User\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\tmaas\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\tmaas\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
