@@ -15,19 +15,19 @@ class UserAddress extends Migration
     {
         Schema::create('user_address', 
             function (Blueprint $table) {
-                $table->increments('AddressID');
+                $table->increments('AddressID'); //added to model
                 $table->unsignedInteger('CustID');
                 $table->foreign('CustID')->references('CustID')->on('users');
-                $table->string('AddressLine1');
-                $table->string('SuiteNo');
-                $table->string('City');
+                $table->string('AddressLine1'); //added to model
+                $table->string('SuiteNo');  //added to model
+                $table->string('City'); //added to model
                 $table->unsignedInteger('StateID');
                 if (Schema::hasTable('state')) {
                 $table->foreign('StateID')->references('StateID')->on('state');
                 }
-                $table->string('RowGuid');
-                $table->string('HomePhone');
-                $table->string('WorkPhone');
+                $table->string('RowGuid');      //added to model
+                $table->string('HomePhone');    //added to model
+                $table->string('WorkPhone');    //added to model
                 
         });
     }
