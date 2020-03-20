@@ -92,9 +92,3 @@
   border-radius: 0.25rem;
 }
 </style>
-
-<script>
-$('#showList li').on('click', function() {
-  $('#showSelect').val($(this).text());
-});
-</script>

@@ -12,5 +12,9 @@ export default {
   mounted() {
     console.log("Home mounted.");
   },
+  components: {
+    navtop,
+    navbottom,
+  }
 };
 </script>

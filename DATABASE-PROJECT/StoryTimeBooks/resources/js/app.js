@@ -1,47 +1,32 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
 import Vue from 'vue'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import VueRouter from 'vue-router'
 
-require('./bootstrap');
-Vue.use(BootstrapVue)
-Vue.use(IconsPlugin)
+
+import Home from './pages/Home'
+import Login from './pages/Login'
+import Register from './pages/Register'
+import navtop from './components/navtop'
+import navbottom from './components/navbottom'
 
 window.Vue = require('vue');
-import VueRouter from 'vue-router';
+window.Vue = require('./bootstrap')
+Vue.use(BootstrapVue)
+Vue.use(IconsPlugin)
+Vue.use(VueRouter)
 
-window.Vue.use(VueRouter);
+Vue.component('Home', require('./pages/Home'));
 
 const routes = [
-     { path: '/home', component: require('./views-vue/Home.vue'), name: 'Home' },
-  ];
-
-const router = new VueRouter({
-    routes 
-  });
-
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-
-Vue.component('navtop', require('./components/navtop.vue').default);
-Vue.component('navbottom', require('./components/navbottom.vue').default);
-Vue.component('Home', require('./views-vue/Home.vue').default);
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+    { path: '/', component: Home, name: 'Home', template: '<div>home</div>'},
+    { path: '/login', component: Login, name: 'Login', template: '<div>login</div>'},
+    { path: '/register', component: Register, name: 'Register', template: '<div>register</div>'},
+    { path: '/navtop', component: navtop, name: 'navtop'},
+    { path: '/navbottom', component: navbottom, name: 'navbottom'},
+]
+const router = new VueRouter({routes, mode: 'history', base: process.env.BASE_URL}); 
 
 const app = new Vue({
-    el: '#app',
-    router
-})
+  router
+}).$mount('#app')
+

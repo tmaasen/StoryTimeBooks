@@ -64,8 +64,8 @@
                 <span></span>
               </h5>
               <p>Register now and become our customer.</p>
-              <router-link to="{name: 'register'}">
-              <a class="btn" target="_blank">Register Now</a> 
+              <router-link to='/register'>
+              <a class="btn" target="_blank" style="color:white">Register Now</a> 
               </router-link>
             </div>
           </div>
@@ -79,10 +79,10 @@
 
               <p>
                 <a
-                  href="haseokwoo@gmail.com"
+                  href="mailto:haseokwoo@gmail.com"
                   title="glorythemes"
                   target="_blank"
-                >haseokwoo@gmail.com</a>
+                >Email</a>
               </p>
               <p>100 Opportunity Ave. Point Lookout, MO 65726, US</p>
               <p>
@@ -170,7 +170,7 @@ export default {
 
 /* Main Footer */
 footer .main-footer {
-  padding: 20px 0;
+  padding-top: 20px ;
   background: #252525;
 }
 
@@ -189,7 +189,7 @@ footer ul {
 
 /* Copy Right Footer */
 .footer-copyright {
-  background: #222;
+  background: #252525;
 }
 .footer-copyright .logo {
   display: inherit;
