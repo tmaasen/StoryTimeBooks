@@ -12,14 +12,7 @@ class State extends Model
      * @var string
      */
     public $table = 'state';
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'State',
-    ];
+     
      /**
      * The primary key associated with the table.
      *

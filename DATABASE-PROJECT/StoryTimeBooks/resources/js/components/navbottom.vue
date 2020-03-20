@@ -37,12 +37,12 @@
                 </li>
                 <li>
                   <div class="thumb-content">
-                    <a href="https://www.w3schools.com/" target="_blank">USEFUL WEBSITES</a>
+                    <a href="https://www.w3schools.com/" title="W3Schools" target="_blank">USEFUL WEBSITES</a>
                   </div>
                 </li>
                 <li>
                   <div class="thumb-content">
-                    <a href="https://covid19responsefund.org/" target="_blank">DONATE</a>
+                    <a href="https://covid19responsefund.org/" title="COVID-19" target="_blank">DONATE</a>
                   </div>
                 </li>
                 <li>
@@ -80,7 +80,7 @@
               <p>
                 <a
                   href="mailto:haseokwoo@gmail.com"
-                  title="glorythemes"
+                  title="Email Seokwoo"
                   target="_blank"
                 >Email</a>
               </p>
