@@ -21,4 +21,5 @@ Route::get('/{any?}', function () {
 
 Route::view('/TermsOfService', 'TermsOfService');
 
-Route::post('/submit', 'Auth\RegisterController@store');
+Route::post('/auth/submit', 'Auth\RegisterController@store');
+Route::post('/auth/login', 'Auth\LoginController@authenticate');

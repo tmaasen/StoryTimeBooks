@@ -1,5 +1,8 @@
 <template>
   <div>
+    <head>
+      <title>StoryTime | Home</title>
+    </head>
     <navtop />
     <navbottom />
   </div>

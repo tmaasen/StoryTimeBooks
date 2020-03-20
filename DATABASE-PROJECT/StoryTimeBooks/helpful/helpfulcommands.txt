@@ -10,6 +10,8 @@ composer dump-autoload // autolaods all the model tables from the db once you ha
 
 ---MySQL Helpful Hints---
 mysql root password: CaptainMarvel1!
+test account email: tj@gmail.com
+test account password: helloworld
 
 ---VS Code Shortcuts---
 Ctrl+Alt+Shift+J :: selects all occurances of something in a file
