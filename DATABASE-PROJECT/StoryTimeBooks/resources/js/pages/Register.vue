@@ -3,6 +3,7 @@
   <head>
     <title>StoryTime | Create Account</title>
   </head>
+  <authnav />
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8">
@@ -93,7 +94,7 @@
                 </div>
               </div>
               <div class="linksToTermsOfService">
-                <router-link to="/termsofservice">Terms Of Service</router-link>
+                <router-link to="/terms">Terms Of Service</router-link>
               </div>
 
               <div class="form-group row mb-0">
@@ -111,7 +112,12 @@
 </template>
 
 <script>
-export default {};
+import authnav from '../components/authnav'
+export default {
+  components: {
+    authnav,
+  }
+};
 </script>
 
 <style>

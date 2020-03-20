@@ -93,6 +93,6 @@ class RegisterController extends Controller
 
         $user->save();
     
-       return view('home');
+       return view('welcome').header("Refresh: 1; url=/");
     }    
 }

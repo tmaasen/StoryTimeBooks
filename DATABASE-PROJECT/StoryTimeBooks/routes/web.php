@@ -13,12 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Auth::routes();
+Auth::routes();
 
 Route::get('/{any?}', function () {
     return view('welcome');
 });
 
-// Route::view('/TermsOfService', 'TermsOfService');
+Route::view('/TermsOfService', 'TermsOfService');
 
-// Route::post('/submit', 'Auth\RegisterController@store');
+Route::post('/submit', 'Auth\RegisterController@store');
