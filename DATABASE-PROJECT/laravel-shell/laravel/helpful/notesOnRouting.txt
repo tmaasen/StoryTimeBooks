@@ -1,0 +1,7 @@
+
+If you look at app\Http\Kernel.php you'll notice the distinction between the web and the api group.
+
+web.php - process "standard" requests - they need a session, checking against a user that logged in globally in the app, processing web requests. Web UI things
+
+api.php - process stateless API requests, will most likely always consume and return json
+I usually keep the API routes in the api.php, prefix it with a version and load the controllers from the API namespace. This makes it a little more maintainable because v1 methods can be extended by a potential v2 version

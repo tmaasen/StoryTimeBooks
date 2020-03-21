@@ -7,6 +7,8 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Hash;
 
 
 
@@ -29,10 +31,10 @@ class LoginController extends Controller
      *
      * @return void
      */
-    // public function __construct()
-    // {
-    //     $this->middleware('guest')->except('logout');
-    // }
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
 
     /**
      * Handle an authentication attempt.
@@ -43,9 +45,13 @@ class LoginController extends Controller
      */
     public function authenticate(Request $request)
     {
-        $credentials = $request->only('Email', 'password');
-
-        if (Auth::attempt($credentials)) { // put remember token here{
+        $email = $request->input('email');
+        $password = bcrypt($request->input('password'));
+        // $credentials = $request->only('email', 'password');
+        $credentials = [$email, $password];
+        Log::info($credentials);
+        
+        if (Auth::attempt(['Email' => $email, 'PasswordHash' => $password])) {
             // Authentication passed...
             return view('welcome');
         } else {
