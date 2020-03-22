@@ -37,12 +37,20 @@
                 </li>
                 <li>
                   <div class="thumb-content">
-                    <a href="https://www.w3schools.com/" title="W3Schools" target="_blank">USEFUL WEBSITES</a>
+                    <a
+                      href="https://www.w3schools.com/"
+                      title="W3Schools"
+                      target="_blank"
+                    >USEFUL WEBSITES</a>
                   </div>
                 </li>
                 <li>
                   <div class="thumb-content">
-                    <a href="https://covid19responsefund.org/" title="COVID-19" target="_blank">DONATE</a>
+                    <a
+                      href="https://covid19responsefund.org/"
+                      title="COVID-19"
+                      target="_blank"
+                    >DONATE</a>
                   </div>
                 </li>
                 <li>
@@ -64,7 +72,9 @@
                 <span></span>
               </h5>
               <p>Register now and become our customer.</p>
-              <a v-on:click="gotoregister" href='/signup' class="btn" target="_blank" style="color:white">Register Now</a> 
+              <router-link to="/register">
+                <a class="btn" style="color:white">Register Now</a>
+                </router-link>
             </div>
           </div>
 
@@ -76,11 +86,7 @@
               </h5>
 
               <p>
-                <a
-                  href="mailto:haseokwoo@gmail.com"
-                  title="Email Seokwoo"
-                  target="_blank"
-                >Email</a>
+                <a href="mailto:haseokwoo@gmail.com" title="Email Seokwoo" target="_blank">Email</a>
               </p>
               <p>100 Opportunity Ave. Point Lookout, MO 65726, US</p>
               <p>
@@ -158,10 +164,15 @@ export default {
       console.log('navbottom mounted');
     },
     methods: {
-      gotoregister() {
-                axios.post('/register')
-                    .then(response => this.response)
-                    .catch(response => console.log(response.data));
+      gotoregister: function() {
+                axios.get('/register')
+                    .then(response => {
+                        console.log(response)
+                    })
+                    .catch(error => {
+                        console.log(error)
+                        this.errored = true
+                    });
             }
     }
 };
@@ -175,15 +186,15 @@ export default {
 
 /* Main Footer */
 footer .main-footer {
-  padding-top: 20px ;
+  padding-top: 20px;
   background: #252525;
 }
 
 .footer-1 {
   position: absolute;
   bottom: 0;
-  min-width:100%;
-  max-width:100%;  
+  min-width: 100%;
+  max-width: 100%;
   max-height: 100%;
 }
 
