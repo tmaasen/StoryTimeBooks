@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-navbar toggleable="lg" type="dark" style="background-color: #252525">
-      <a href="#">
+      <a href="http://127.0.0.1:8000/">
         <img src="../assets/StoryTime.png" width="200" class="navbar-brand" alt="Go to Home" />
       </a>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -9,25 +9,13 @@
       <b-collapse id="nav-collapse" is-nav>
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-          <b-nav-item-dropdown id="showSelect" text="Type" right>
-            <div id="showList" class="hoverable">
-              <li>
-                <b-dropdown-item href="#">Title</b-dropdown-item>
-              </li>
-              <li>
-                <b-dropdown-item href="#">Author</b-dropdown-item>
-              </li>
-              <li>
-                <b-dropdown-item href="#">Publisher</b-dropdown-item>
-              </li>
-              <li>
-                <b-dropdown-item href="#">Year</b-dropdown-item>
-              </li>
-            </div>
-          </b-nav-item-dropdown>
-          <b-nav-form>
-            <b-form-input size="md" class="mr-sm-2" placeholder="Search"></b-form-input>
-            <b-button size="md" class="my-2 my-sm-0" type="submit">Search</b-button>
+          <div>
+            <b-form-select size= "lg" v-model="selected" :options="options"></b-form-select>
+            <!--<div class="mt-3">{{ selected }}</div>-->
+          </div>
+          <b-nav-form class="textField">
+            <b-form-input size="lg" class="mr-lg-2" placeholder="Search"></b-form-input>
+            <b-button size="lg" class="my-2 my-lg-0" type="submit">Search</b-button>
           </b-nav-form>
 
           <b-dropdown variant="primary">
@@ -49,13 +37,36 @@
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      selected: "a",
+      options: [
+        // { value: null, text: "Please select some item" },
+        { value: "a", text: "All" },
+        { value: "b", text: "Title" },
+        { value: "c", text: "Author" },
+        { value: "d", text: "Year" },
+        { value: "e", text: "Publisher" }
+      ]
+    };
+  }
+};
+</script>
+
+
 <style>
+.textField {
+  margin-left: 5px;
+}
+
 .bg-info {
   background-color: #252525 !important;
 }
 .hoverable a:hover {
   background-color: #252525;
-  color:#fff;
+  color: #fff;
 }
 
 .btn-group,
@@ -69,7 +80,7 @@
 
 .dropdown-menu a:hover {
   background-color: #252525;
-  color:#fff;
+  color: #fff;
 }
 
 .dropdown-menu {

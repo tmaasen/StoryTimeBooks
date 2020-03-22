@@ -2081,6 +2081,81 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/navtop.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/navtop.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      selected: "a",
+      options: [// { value: null, text: "Please select some item" },
+      {
+        value: "a",
+        text: "All"
+      }, {
+        value: "b",
+        text: "Title"
+      }, {
+        value: "c",
+        text: "Author"
+      }, {
+        value: "d",
+        text: "Year"
+      }, {
+        value: "e",
+        text: "Publisher"
+      }]
+    };
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Home.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Home.vue?vue&type=script&lang=js& ***!
@@ -44094,7 +44169,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.bg-info {\r\n  background-color: #252525 !important;\n}\n.hoverable a:hover {\r\n  background-color: #252525;\r\n  color:#fff;\n}\n.btn-group,\r\n.btn-group-vertical {\r\n  position: relative;\r\n  display: inline-flex;\r\n  vertical-align: middle;\r\n  margin-left: 5px;\n}\n.dropdown-menu a:hover {\r\n  background-color: #252525;\r\n  color:#fff;\n}\n.dropdown-menu {\r\n  position: absolute;\r\n  top: 100%;\r\n  left: 0;\r\n  z-index: 1000;\r\n  display: none;\r\n  float: left;\r\n  min-width: 9.5rem;\r\n  padding: 0.5rem 0;\r\n  margin: 0.125rem 0 0;\r\n  font-size: 1rem;\r\n  color: #252525;\r\n  text-align: left;\r\n  list-style: none;\r\n  background-color: #fff;\r\n  background-clip: padding-box;\r\n  border: 1px solid rgba(0, 0, 0, 0.15);\r\n  border-radius: 0.25rem;\n}\r\n", ""]);
+exports.push([module.i, "\n.textField {\r\n  margin-left: 5px;\n}\n.bg-info {\r\n  background-color: #252525 !important;\n}\n.hoverable a:hover {\r\n  background-color: #252525;\r\n  color: #fff;\n}\n.btn-group,\r\n.btn-group-vertical {\r\n  position: relative;\r\n  display: inline-flex;\r\n  vertical-align: middle;\r\n  margin-left: 5px;\n}\n.dropdown-menu a:hover {\r\n  background-color: #252525;\r\n  color: #fff;\n}\n.dropdown-menu {\r\n  position: absolute;\r\n  top: 100%;\r\n  left: 0;\r\n  z-index: 1000;\r\n  display: none;\r\n  float: left;\r\n  min-width: 9.5rem;\r\n  padding: 0.5rem 0;\r\n  margin: 0.125rem 0 0;\r\n  font-size: 1rem;\r\n  color: #252525;\r\n  text-align: left;\r\n  list-style: none;\r\n  background-color: #fff;\r\n  background-clip: padding-box;\r\n  border: 1px solid rgba(0, 0, 0, 0.15);\r\n  border-radius: 0.25rem;\n}\r\n", ""]);
 
 // exports
 
@@ -76695,7 +76770,7 @@ var render = function() {
           attrs: { toggleable: "lg", type: "dark" }
         },
         [
-          _c("a", { attrs: { href: "#" } }, [
+          _c("a", { attrs: { href: "http://127.0.0.1:8000/" } }, [
             _c("img", {
               staticClass: "navbar-brand",
               attrs: {
@@ -76717,70 +76792,36 @@ var render = function() {
                 { staticClass: "ml-auto" },
                 [
                   _c(
-                    "b-nav-item-dropdown",
-                    { attrs: { id: "showSelect", text: "Type", right: "" } },
+                    "div",
                     [
-                      _c(
-                        "div",
-                        { staticClass: "hoverable", attrs: { id: "showList" } },
-                        [
-                          _c(
-                            "li",
-                            [
-                              _c("b-dropdown-item", { attrs: { href: "#" } }, [
-                                _vm._v("Title")
-                              ])
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            [
-                              _c("b-dropdown-item", { attrs: { href: "#" } }, [
-                                _vm._v("Author")
-                              ])
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            [
-                              _c("b-dropdown-item", { attrs: { href: "#" } }, [
-                                _vm._v("Publisher")
-                              ])
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            [
-                              _c("b-dropdown-item", { attrs: { href: "#" } }, [
-                                _vm._v("Year")
-                              ])
-                            ],
-                            1
-                          )
-                        ]
-                      )
-                    ]
+                      _c("b-form-select", {
+                        attrs: { size: "lg", options: _vm.options },
+                        model: {
+                          value: _vm.selected,
+                          callback: function($$v) {
+                            _vm.selected = $$v
+                          },
+                          expression: "selected"
+                        }
+                      })
+                    ],
+                    1
                   ),
                   _vm._v(" "),
                   _c(
                     "b-nav-form",
+                    { staticClass: "textField" },
                     [
                       _c("b-form-input", {
-                        staticClass: "mr-sm-2",
-                        attrs: { size: "md", placeholder: "Search" }
+                        staticClass: "mr-lg-2",
+                        attrs: { size: "lg", placeholder: "Search" }
                       }),
                       _vm._v(" "),
                       _c(
                         "b-button",
                         {
-                          staticClass: "my-2 my-sm-0",
-                          attrs: { size: "md", type: "submit" }
+                          staticClass: "my-2 my-lg-0",
+                          attrs: { size: "lg", type: "submit" }
                         },
                         [_vm._v("Search")]
                       )
@@ -92909,17 +92950,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _navtop_vue_vue_type_template_id_71f78b46___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./navtop.vue?vue&type=template&id=71f78b46& */ "./resources/js/components/navtop.vue?vue&type=template&id=71f78b46&");
-/* harmony import */ var _navtop_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./navtop.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/navtop.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _navtop_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./navtop.vue?vue&type=script&lang=js& */ "./resources/js/components/navtop.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _navtop_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./navtop.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/navtop.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
 
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  script,
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _navtop_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _navtop_vue_vue_type_template_id_71f78b46___WEBPACK_IMPORTED_MODULE_0__["render"],
   _navtop_vue_vue_type_template_id_71f78b46___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -92933,6 +92976,20 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 if (false) { var api; }
 component.options.__file = "resources/js/components/navtop.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/navtop.vue?vue&type=script&lang=js&":
+/*!*********************************************************************!*\
+  !*** ./resources/js/components/navtop.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_navtop_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./navtop.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/navtop.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_navtop_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -93264,8 +93321,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\tmaas\git\Database-Systems\laravel-shell\laravel\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\tmaas\git\Database-Systems\laravel-shell\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\User\git\Database-Systems\DATABASE-PROJECT\laravel-shell\laravel\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\User\git\Database-Systems\DATABASE-PROJECT\laravel-shell\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
