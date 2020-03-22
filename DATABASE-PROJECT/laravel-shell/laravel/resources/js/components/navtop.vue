@@ -12,16 +12,16 @@
           <b-nav-item-dropdown id="showSelect" text="Type" right>
             <div id="showList" class="hoverable">
               <li>
-                <b-dropdown-item href="#">Title</b-dropdown-item>
+                <b-dropdown-item>Title</b-dropdown-item>
               </li>
               <li>
-                <b-dropdown-item href="#">Author</b-dropdown-item>
+                <b-dropdown-item>Author</b-dropdown-item>
               </li>
               <li>
-                <b-dropdown-item href="#">Publisher</b-dropdown-item>
+                <b-dropdown-item>Publisher</b-dropdown-item>
               </li>
               <li>
-                <b-dropdown-item href="#">Year</b-dropdown-item>
+                <b-dropdown-item>Year</b-dropdown-item>
               </li>
             </div>
           </b-nav-item-dropdown>
@@ -29,11 +29,27 @@
             <b-form-input size="md" class="mr-sm-2" placeholder="Search"></b-form-input>
             <b-button size="md" class="my-2 my-sm-0" type="submit">Search</b-button>
           </b-nav-form>
-
+          <div>
+            <a class="navbar-brand" id="shoppingCart" href="#">
+              <span class="input-group-addon">
+                <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 0 24 24" width="30">
+                  <path
+                    d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"
+                  />
+                  <path d="M0 0h24v24H0z" fill="none" />
+                </svg>
+              </span>
+              Cart
+            </a>
+          </div>
           <b-dropdown variant="primary">
+
+            
             <template v-slot:button-content>
               <b-icon icon="person-fill" aria-hidden="true"></b-icon>My Account
             </template>
+
+            
             <b-dropdown-item-button href="#">
               <b-icon icon="blank" aria-hidden="true"></b-icon>Profile
               <span class="sr-only">(Not selected)</span>
@@ -49,13 +65,31 @@
   </div>
 </template>
 
+
+<script>
+export default {
+  mounted() {
+  console.log("nav top mounted");
+    }
+}
+</script>
+
+
 <style>
+#shoppingCart {
+  color: #ff8d1e;
+  padding-left: 10px;
+}
+svg {
+  fill: #ff8d1e;
+}
+
 .bg-info {
   background-color: #252525 !important;
 }
 .hoverable a:hover {
   background-color: #252525;
-  color:#fff;
+  color: #fff;
 }
 
 .btn-group,
@@ -69,7 +103,7 @@
 
 .dropdown-menu a:hover {
   background-color: #252525;
-  color:#fff;
+  color: #fff;
 }
 
 .dropdown-menu {

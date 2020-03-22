@@ -1,0 +1,9 @@
+This file will contain common stack traces we have came across and how we fixed those errors.
+
+1. 
+StackTrace -- file_put_contents(C:\xampp\htdocs\xxx\storage\framework/sessions/KXcxw0bXfbUEyvf2fCN12hiHt9VFeWTFFEzS42rk): 
+failed to open stream: No such file or directory
+Solution -- 'php artisan config:clear' OR 'php artisan cache:clear
+
+2.
+
