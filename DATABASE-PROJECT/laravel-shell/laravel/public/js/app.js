@@ -2072,18 +2072,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     console.log('navbottom mounted');
   },
-  methods: {
-    gotoregister: function gotoregister() {
-      var _this = this;
-
-      axios.get('/register').then(function (response) {
-        console.log(response);
-      })["catch"](function (error) {
-        console.log(error);
-        _this.errored = true;
-      });
-    }
-  }
+  methods: {}
 });
 
 /***/ }),
@@ -2097,6 +2086,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -44235,7 +44227,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/*==================== \r\n\tFooter \r\n====================== */\r\n\r\n/* Main Footer */\nfooter .main-footer {\r\n  padding-top: 20px;\r\n  background: #252525;\n}\n.footer-1 {\r\n  position: absolute;\r\n  bottom: 0;\r\n  min-width: 100%;\r\n  max-width: 100%;\r\n  max-height: 100%;\n}\nfooter ul {\r\n  padding-left: 0;\r\n  list-style: none;\n}\r\n\r\n/* Copy Right Footer */\n.footer-copyright {\r\n  background: #252525;\n}\n.footer-copyright .logo {\r\n  display: inherit;\n}\n.footer-copyright nav {\r\n  float: right;\r\n  margin-top: 5px;\n}\n.footer-copyright nav ul {\r\n  list-style: none;\r\n  margin: 0;\r\n  padding: 0;\n}\n.footer-copyright nav ul li {\r\n  border-left: 1px solid #505050;\r\n  display: inline-block;\r\n  line-height: 12px;\r\n  margin: 0;\r\n  padding: 0 8px;\n}\n.footer-copyright nav ul li a {\r\n  color: #969696;\n}\n.footer-copyright nav ul li:first-child {\r\n  border: medium none;\r\n  padding-left: 0;\n}\n.footer-copyright p {\r\n  color: white;\r\n  font-size: 20px;\r\n  margin: 1px 0 0;\n}\r\n\r\n/* Footer Top */\n.footer-top {\r\n  background: #252525;\r\n  padding-bottom: 30px;\r\n  margin-bottom: 30px;\r\n  border-bottom: 3px solid #222;\n}\r\n\r\n/* Footer transparent */\nfooter.transparent .footer-top,\r\nfooter.transparent .main-footer {\r\n  background: transparent;\n}\nfooter.transparent .footer-copyright {\r\n  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.3);\n}\r\n\r\n/* Footer light */\nfooter.light .footer-top {\r\n  background: #f9f9f9;\n}\nfooter.light .main-footer {\r\n  background: #f9f9f9;\n}\nfooter.light .footer-copyright {\r\n  background: none repeat scroll 0 0 rgba(255, 255, 255, 0.3);\n}\r\n\r\n/* Footer 4 */\n.footer- .logo {\r\n  display: inline-block;\n}\r\n\r\n/*==================== \r\n\tWidgets \r\n====================== */\n.widget {\r\n  padding: 20px;\r\n  margin-bottom: 40px;\n}\n.widget.widget-last {\r\n  margin-bottom: 0px;\n}\n.widget.no-box {\r\n  padding: 0;\r\n  background-color: transparent;\r\n  margin-bottom: 40px;\r\n  box-shadow: none;\r\n  -webkit-box-shadow: none;\r\n  -moz-box-shadow: none;\r\n  -ms-box-shadow: none;\r\n  -o-box-shadow: none;\n}\n.widget.subscribe p {\r\n  margin-bottom: 18px;\n}\n.widget li a {\r\n  color: #ff8d1e;\n}\n.widget li a:hover {\r\n  color: #4b92dc;\n}\n.widget-title {\r\n  margin-bottom: 20px;\n}\n.widget-title span {\r\n  background: #839fad none repeat scroll 0 0;\r\n  display: block;\r\n  height: 1px;\r\n  margin-top: 25px;\r\n  position: relative;\r\n  width: 20%;\n}\n.widget-title span::after {\r\n  background: inherit;\r\n  content: \"\";\r\n  height: inherit;\r\n  position: absolute;\r\n  top: -4px;\r\n  width: 50%;\n}\n.widget-title.text-center span,\r\n.widget-title.text-center span::after {\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n  left: 0;\r\n  right: 0;\n}\n.widget .badge {\r\n  float: right;\r\n  background: #7f7f7f;\n}\n.typo-light h1,\r\n.typo-light h2,\r\n.typo-light h3,\r\n.typo-light h4,\r\n.typo-light h5,\r\n.typo-light h6,\r\n.typo-light p,\r\n.typo-light div,\r\n.typo-light span,\r\n.typo-light small {\r\n  color: #fff;\n}\nul.social-footer2 {\r\n  margin: 0;\r\n  padding: 0;\r\n  width: auto;\n}\nul.social-footer2 li {\r\n  display: inline-block;\r\n  padding: 0;\n}\nul.social-footer2 li a:hover {\r\n  background-color: #ff8d1e;\n}\nul.social-footer2 li a {\r\n  display: block;\r\n  height: 30px;\r\n  width: 30px;\r\n  text-align: center;\n}\n.btn {\r\n  background-color: #ff8d1e;\r\n  color: #fff;\n}\n.btn:hover,\r\n.btn:focus,\r\n.btn.active {\r\n  background: #4b92dc;\r\n  color: #fff;\r\n  -ms-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);\r\n  -o-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);\r\n  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);\r\n  transition: all 250ms ease-in-out 0s;\n}\r\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/*==================== \r\n\tFooter \r\n====================== */\r\n\r\n/* Main Footer */\nfooter .main-footer {\r\n  padding-top: 20px;\r\n  background: #252525;\n}\n.footer-1 {\r\n  position: absolute; /* Could be problematic when adding more content */\r\n  bottom: 0;\r\n  min-width: 100%;\r\n  max-width: 100%;\r\n  max-height: 100%;\n}\nfooter ul {\r\n  padding-left: 0;\r\n  list-style: none;\n}\r\n\r\n/* Copy Right Footer */\n.footer-copyright {\r\n  background: #252525;\n}\n.footer-copyright .logo {\r\n  display: inherit;\r\n  margin-bottom: 0%;\r\n  position: absolute;\n}\n.footer-copyright nav {\r\n  float: right;\r\n  margin-top: 5px;\n}\n.footer-copyright nav ul {\r\n  list-style: none;\r\n  margin: 0;\r\n  padding: 0;\n}\n.footer-copyright nav ul li {\r\n  border-left: 1px solid #505050;\r\n  display: inline-block;\r\n  line-height: 12px;\r\n  margin: 0;\r\n  padding: 0 8px;\n}\n.footer-copyright nav ul li a {\r\n  color: #969696;\n}\n.footer-copyright nav ul li:first-child {\r\n  border: medium none;\r\n  padding-left: 0;\n}\n.footer-copyright p {\r\n  color: white;\r\n  font-size: 20px;\r\n  margin: 1px 0 0;\n}\r\n\r\n/* Footer Top */\n.footer-top {\r\n  background: #252525;\r\n  padding-bottom: 30px;\r\n  margin-bottom: 30px;\r\n  border-bottom: 3px solid #222;\n}\r\n\r\n/* Footer transparent */\nfooter.transparent .footer-top,\r\nfooter.transparent .main-footer {\r\n  background: transparent;\n}\nfooter.transparent .footer-copyright {\r\n  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.3);\n}\r\n\r\n/* Footer light */\nfooter.light .footer-top {\r\n  background: #f9f9f9;\n}\nfooter.light .main-footer {\r\n  background: #f9f9f9;\n}\nfooter.light .footer-copyright {\r\n  background: none repeat scroll 0 0 rgba(255, 255, 255, 0.3);\n}\r\n\r\n/* Footer 4 */\n.footer- .logo {\r\n  display: inline-block;\n}\r\n\r\n/*==================== \r\n\tWidgets \r\n====================== */\n.widget {\r\n  padding: 20px;\r\n  margin-bottom: 40px;\n}\n.widget.widget-last {\r\n  margin-bottom: 0px;\n}\n.widget.no-box {\r\n  padding: 0;\r\n  background-color: transparent;\r\n  margin-bottom: 40px;\r\n  box-shadow: none;\r\n  -webkit-box-shadow: none;\r\n  -moz-box-shadow: none;\r\n  -ms-box-shadow: none;\r\n  -o-box-shadow: none;\n}\n.widget.subscribe p {\r\n  margin-bottom: 18px;\n}\n.widget li a {\r\n  color: #ff8d1e;\n}\n.widget li a:hover {\r\n  color: #4b92dc;\n}\n.widget-title {\r\n  margin-bottom: 20px;\n}\n.widget-title span {\r\n  background: #839fad none repeat scroll 0 0;\r\n  display: block;\r\n  height: 1px;\r\n  margin-top: 25px;\r\n  position: relative;\r\n  width: 20%;\n}\n.widget-title span::after {\r\n  background: inherit;\r\n  content: \"\";\r\n  height: inherit;\r\n  position: absolute;\r\n  top: -4px;\r\n  width: 50%;\n}\n.widget-title.text-center span,\r\n.widget-title.text-center span::after {\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n  left: 0;\r\n  right: 0;\n}\n.widget .badge {\r\n  float: right;\r\n  background: #7f7f7f;\n}\n.typo-light h1,\r\n.typo-light h2,\r\n.typo-light h3,\r\n.typo-light h4,\r\n.typo-light h5,\r\n.typo-light h6,\r\n.typo-light p,\r\n.typo-light div,\r\n.typo-light span,\r\n.typo-light small {\r\n  color: #fff;\n}\nul.social-footer2 {\r\n  margin: 0;\r\n  padding: 0;\r\n  width: auto;\n}\nul.social-footer2 li {\r\n  display: inline-block;\r\n  padding: 0;\n}\nul.social-footer2 li a:hover {\r\n  background-color: #ff8d1e;\n}\nul.social-footer2 li a {\r\n  display: block;\r\n  height: 30px;\r\n  width: 30px;\r\n  text-align: center;\n}\n.btn {\r\n  background-color: #ff8d1e;\r\n  color: #fff;\n}\n.btn:hover,\r\n.btn:focus,\r\n.btn.active {\r\n  background: #4b92dc;\r\n  color: #fff;\r\n  -ms-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);\r\n  -o-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);\r\n  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);\r\n  transition: all 250ms ease-in-out 0s;\n}\r\n", ""]);
 
 // exports
 
@@ -76536,13 +76528,17 @@ var render = function() {
                 _vm._v(" "),
                 _c("p", [_vm._v("Register now and become our customer.")]),
                 _vm._v(" "),
-                _c("router-link", { attrs: { to: "/register" } }, [
-                  _c(
-                    "a",
-                    { staticClass: "btn", staticStyle: { color: "white" } },
-                    [_vm._v("Register Now")]
-                  )
-                ])
+                _c(
+                  "router-link",
+                  { attrs: { to: "/register", target: "_blank" } },
+                  [
+                    _c(
+                      "a",
+                      { staticClass: "btn", staticStyle: { color: "white" } },
+                      [_vm._v("Register Now")]
+                    )
+                  ]
+                )
               ],
               1
             )
@@ -76854,7 +76850,7 @@ var render = function() {
         "b-navbar",
         {
           staticStyle: { "background-color": "#252525" },
-          attrs: { toggleable: "lg", type: "dark" }
+          attrs: { "sticky-header": "", toggleable: "lg", type: "dark" }
         },
         [
           _c("a", { attrs: { href: "#" } }, [
@@ -77009,12 +77005,17 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "b-dropdown-item-button",
-                        { attrs: { href: "#" } },
                         [
                           _c("b-icon", {
                             attrs: { icon: "blank", "aria-hidden": "true" }
                           }),
-                          _vm._v("Logout\n            "),
+                          _vm._v(" "),
+                          _c(
+                            "router-link",
+                            { attrs: { to: "/logout", target: "_blank" } },
+                            [_c("a", [_vm._v("Logout")])]
+                          ),
+                          _vm._v(" "),
                           _c("span", { staticClass: "sr-only" }, [
                             _vm._v("(Selected)")
                           ])

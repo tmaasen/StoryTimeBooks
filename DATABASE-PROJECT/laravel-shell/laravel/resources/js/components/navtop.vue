@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-navbar toggleable="lg" type="dark" style="background-color: #252525">
+    <b-navbar sticky-header toggleable="lg" type="dark" style="background-color: #252525">
       <a href="#">
         <img src="../assets/StoryTime.png" width="200" class="navbar-brand" alt="Go to Home" />
       </a>
@@ -54,8 +54,11 @@
               <b-icon icon="blank" aria-hidden="true"></b-icon>Profile
               <span class="sr-only">(Not selected)</span>
             </b-dropdown-item-button>
-            <b-dropdown-item-button href="#">
-              <b-icon icon="blank" aria-hidden="true"></b-icon>Logout
+            <b-dropdown-item-button>
+              <b-icon icon="blank" aria-hidden="true"></b-icon>
+              <router-link to="/logout" target="_blank">
+              <a>Logout</a>
+              </router-link>
               <span class="sr-only">(Selected)</span>
             </b-dropdown-item-button>
           </b-dropdown>

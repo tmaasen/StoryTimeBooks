@@ -72,9 +72,9 @@
                 <span></span>
               </h5>
               <p>Register now and become our customer.</p>
-              <router-link to="/register">
+              <router-link to="/register" target="_blank">
                 <a class="btn" style="color:white">Register Now</a>
-                </router-link>
+              </router-link>
             </div>
           </div>
 
@@ -163,17 +163,9 @@ export default {
     mounted() {
       console.log('navbottom mounted');
     },
+    
     methods: {
-      gotoregister: function() {
-                axios.get('/register')
-                    .then(response => {
-                        console.log(response)
-                    })
-                    .catch(error => {
-                        console.log(error)
-                        this.errored = true
-                    });
-            }
+     
     }
 };
 </script>
@@ -191,7 +183,7 @@ footer .main-footer {
 }
 
 .footer-1 {
-  position: absolute;
+  position: absolute; /* Could be problematic when adding more content */
   bottom: 0;
   min-width: 100%;
   max-width: 100%;
@@ -209,6 +201,8 @@ footer ul {
 }
 .footer-copyright .logo {
   display: inherit;
+  margin-bottom: 0%;
+  position: absolute;
 }
 .footer-copyright nav {
   float: right;
