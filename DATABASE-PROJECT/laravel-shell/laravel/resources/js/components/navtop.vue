@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-navbar sticky-header toggleable="lg" type="dark" style="background-color: #252525">
-      <a href="#">
+      <a href="/">
         <img src="../assets/StoryTime.png" width="200" class="navbar-brand" alt="Go to Home" />
       </a>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -79,7 +79,13 @@ export default {
 .textField {
   margin-left: 5px;
 }
-
+#shoppingCart {
+  color: #ff8d1e;
+  padding-left: 10px;
+}
+svg {
+  fill: #ff8d1e;
+}
 .bg-info {
   background-color: #252525 !important;
 }
