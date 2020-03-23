@@ -72,7 +72,7 @@
                 <span></span>
               </h5>
               <p>Register now and become our customer.</p>
-              <router-link to="/register" target="_blank">
+              <router-link to="/register">
                 <a class="btn" style="color:white">Register Now</a>
               </router-link>
             </div>

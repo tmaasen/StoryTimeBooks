@@ -22,10 +22,14 @@
           <ul class="navbar-nav ml-auto">
             <!-- Authentication Links -->
             <li class="nav-item">
-              <a class="nav-link" href="/login">Login</a>
+              <router-link to="login">
+              <a class="nav-link" href="#">Login</a>
+              </router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/register">Register</a>
+              <router-link to="register">
+              <a class="nav-link" href="#">Register</a>
+              </router-link>
             </li>
           </ul>
         </div>
@@ -33,6 +37,14 @@
     </nav>
   </div>
 </template>
+
+<script>
+export default {
+  mounted() {
+    console.log("authnav mounted");
+  }
+}
+</script>
 
 <style>
 .padding {

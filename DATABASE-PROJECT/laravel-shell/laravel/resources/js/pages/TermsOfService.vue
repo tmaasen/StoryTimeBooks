@@ -160,7 +160,9 @@
         <p>As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.</p>
         <p style="font-size: 30px">
           Back to
-          <a href="/register" style="text-decoration: underline">Register</a>
+          <router-link to="register">
+          <a href="#" style="text-decoration: underline">Register</a>
+          </router-link>
         </p>
       </div>
     </div>

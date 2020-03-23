@@ -9,97 +9,80 @@
       <div class="col-md-8">
         <div class="card">
           <div class="card-header">Register</div>
-
+            <!-- error checking -->
+             <div class="alert alert-danger" v-if="has_error && !success">
+                <p v-if="error == 'registration_validation_error'">Validation Errors.</p>
+                <p v-else>Error, can not register at the moment. If the problem persists, please contact an administrator.</p>
+            </div>
+            <!-- end error checking -->
           <div class="card-body">
-            <form method="POST">
-              <!-- @csrf -->
-              <div class="form-group row">
-                <label class="col-md-4 col-form-label text-md-right">First Name</label>
-
+            <form method="POST" @submit.prevent="register" v-if="!success">
+              <!-- Name field -->
+              <div class="form-group row" v-bind:class="{ 'has-error': has_error && errors.name }">
+                <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
                 <div class="col-md-6">
-                  <input id="firstname" type="text" class="form-control" name="firstname" required />
-                  <!-- @error('firstname') -->
-                  <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                  </span>
-                  <!-- @enderror -->
+                  <input v-model="name" id="name" type="text" class="form-control" placeholder="Full Name" required />
                 </div>
+                <span class="help-block" v-if="has_error && errors.name">{{ errors.name }}</span>
               </div>
-              <div class="form-group row">
-                <label class="col-md-4 col-form-label text-md-right">Last Name</label>
+              <!-- Email field -->
+              <div class="form-group row" v-bind:class="{ 'has-error': has_error && errors.email }">
+                <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
 
                 <div class="col-md-6">
                   <input
-                    id="lastname"
-                    type="text"
-                    class="form-control"
-                    name="lastname"
-                    required
-                  />
-
-                  <!-- @error('lastname') -->
-                  <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                  </span>
-                  <!-- @enderror -->
-                </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
-
-                <div class="col-md-6">
-                  <input
+                    v-model="email"
                     type="email"
+                    id="email"
                     class="form-control"
-                    name="email"
+                    placeholder="user@example.com"
                     required
-                    autocomplete="email"
                   />
-
-                  <!-- @error('email') -->
-                  <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                  </span>
-                  <!-- @enderror -->
+                  <span class="help-block" v-if="has_error && errors.email">{{ errors.email }}</span>
                 </div>
               </div>
-              <div class="form-group row">
-                <label class="col-md-4 col-form-label text-md-right">Password</label>
+              <!-- Password field -->
+              <div class="form-group row" v-bind:class="{ 'has-error': has_error && errors.password }">
+                <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
 
                 <div class="col-md-6">
                   <input
+                    v-model="password"
                     type="password"
+                    id="password"
                     class="form-control"
-                    name="password"
+                    placeholder="Password"
                     required
                   />
-
-                  <!-- @error('password') -->
-                  <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                  </span>
-                  <!-- @enderror -->
+                  <span class="help-block" v-if="has_error && errors.password">{{ errors.password }}</span>
                 </div>
+
               </div>
-              <div class="form-group row">
-                <label class="col-md-4 col-form-label text-md-right">Confirm Password</label>
+              <div class="form-group row" v-bind:class="{ 'has-error': has_error && errors.password }">
+                <label for="password_confirmation" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
 
                 <div class="col-md-6">
                   <input
+                    v-model="password_confirmation"
                     type="password"
                     class="form-control"
-                    name="password_confirm"
+                    id="password_confirmation"
+                    placeholder="Confirm Password"
                     required
                   />
                 </div>
               </div>
+
               <div class="linksToTermsOfService">
-                <router-link to="/terms">Terms Of Service</router-link>
+                <input type="checkbox" id="checkbox" v-model="termsChecked">
+                <router-link to="/termsofservice">
+                Terms Of Service
+                </router-link>
               </div>
 
               <div class="form-group row mb-0">
                 <div class="col-md-6 offset-md-4">
-                  <button type="submit" class="btn btn-primary">Register</button>
+                  <button v-if="termsChecked" type="submit" class="btn btn-primary">Register</button>
                 </div>
               </div>
             </form>
@@ -116,9 +99,42 @@ import authnav from '../components/authnav'
 export default {
   components: {
     authnav,
-  }
+  },
+   data() {
+      return {
+        name: '',
+        email: '',
+        password: '',
+        password_confirmation: '',
+        termsChecked: false,
+        has_error: false,
+        error: '',
+        errors: {},
+        success: false
+      }
+    },
+    methods: {
+      register() {
+        var app = this
+        this.$auth.register({
+          data: {
+            name: app.name,
+            email: app.email,
+            password: app.password,
+            password_confirmation: app.password_confirmation
+          },
+          success: function () {
+            app.success = true
+            this.$router.push({name: 'login', params: {successRegistrationRedirect: true}})
+          },
+          error: function (res) {
+            // console.log(res.response.data.errors)
+            app.has_error = true
+            app.error = res.response.data.error
+            app.errors = res.response.data.errors || {}
+          }
+        })
+      }
+    }
 };
 </script>
-
-<style>
-</style>

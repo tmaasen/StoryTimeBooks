@@ -1,17 +1,18 @@
 <template>
   <div>
     <b-navbar sticky-header toggleable="lg" type="dark" style="background-color: #252525">
-      <a href="/">
+      <router-link :to="{name: 'Home'}">
         <img src="../assets/StoryTime.png" width="200" class="navbar-brand" alt="Go to Home" />
-      </a>
+      </router-link>
+
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
+      <!-- Collapseable nav -->
       <b-collapse id="nav-collapse" is-nav>
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
           <div>
-            <b-form-select size= "lg" v-model="selected" :options="options"></b-form-select>
-            <!--<div class="mt-3">{{ selected }}</div>-->
+            <b-form-select size="lg" v-model="selected" :options="options"></b-form-select>
           </div>
           <b-nav-form class="textField">
             <b-form-input size="lg" class="mr-lg-2" placeholder="Search"></b-form-input>
@@ -31,24 +32,25 @@
             </a>
           </div>
           <b-dropdown variant="primary">
-
-            
             <template v-slot:button-content>
               <b-icon icon="person-fill" aria-hidden="true"></b-icon>My Account
             </template>
 
-            
             <b-dropdown-item-button href="#">
               <b-icon icon="blank" aria-hidden="true"></b-icon>Profile
               <span class="sr-only">(Not selected)</span>
             </b-dropdown-item-button>
-            <b-dropdown-item-button>
+
+            <!-- Logout -->
+            <b-dropdown-item-button v-if="$auth.check()">
               <b-icon icon="blank" aria-hidden="true"></b-icon>
-              <router-link to="/logout" target="_blank">
-              <a>Logout</a>
-              </router-link>
+              <!-- <router-link to="/logout" target="_blank"> -->
+                <a href="#" @click.prevent="$auth.logout()">Logout</a>
+              <!-- </router-link> -->
               <span class="sr-only">(Selected)</span>
             </b-dropdown-item-button>
+
+
           </b-dropdown>
         </b-navbar-nav>
       </b-collapse>
@@ -60,6 +62,17 @@
 export default {
   data() {
     return {
+      routes: {
+        // UNLOGGED
+        unlogged: [
+          { name: "Register", path: "register" },
+          { name: "Login", path: "login" }
+        ],
+        // LOGGED USER
+        user: [{ name: "Dashboard", path: "dashboard" }],
+        // LOGGED ADMIN
+        admin: [{ name: "Dashboard", path: "admin.dashboard" }]
+      },
       selected: "a",
       options: [
         // { value: null, text: "Please select some item" },
@@ -70,6 +83,9 @@ export default {
         { value: "e", text: "Publisher" }
       ]
     };
+  },
+  mounted() {
+    //
   }
 };
 </script>

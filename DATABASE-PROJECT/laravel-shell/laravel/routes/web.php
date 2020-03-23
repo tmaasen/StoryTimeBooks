@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+// use Illuminate\Support\Facades\Route;
 
-Auth::routes();
+// Auth::routes();
 
 Route::get('/{any?}', function () {
     return view('welcome');
-});
+})->where('any', '^(?!api\/)[\/\w\.-]*');
