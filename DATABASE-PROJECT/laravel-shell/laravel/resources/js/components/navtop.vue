@@ -9,25 +9,13 @@
       <b-collapse id="nav-collapse" is-nav>
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-          <b-nav-item-dropdown id="showSelect" text="Type" right>
-            <div id="showList" class="hoverable">
-              <li>
-                <b-dropdown-item>Title</b-dropdown-item>
-              </li>
-              <li>
-                <b-dropdown-item>Author</b-dropdown-item>
-              </li>
-              <li>
-                <b-dropdown-item>Publisher</b-dropdown-item>
-              </li>
-              <li>
-                <b-dropdown-item>Year</b-dropdown-item>
-              </li>
-            </div>
-          </b-nav-item-dropdown>
-          <b-nav-form>
-            <b-form-input size="md" class="mr-sm-2" placeholder="Search"></b-form-input>
-            <b-button size="md" class="my-2 my-sm-0" type="submit">Search</b-button>
+          <div>
+            <b-form-select size= "lg" v-model="selected" :options="options"></b-form-select>
+            <!--<div class="mt-3">{{ selected }}</div>-->
+          </div>
+          <b-nav-form class="textField">
+            <b-form-input size="lg" class="mr-lg-2" placeholder="Search"></b-form-input>
+            <b-button size="lg" class="my-2 my-lg-0" type="submit">Search</b-button>
           </b-nav-form>
           <div>
             <a class="navbar-brand" id="shoppingCart" href="#">
@@ -68,23 +56,28 @@
   </div>
 </template>
 
-
 <script>
 export default {
-  mounted() {
-  console.log("nav top mounted");
-    }
-}
+  data() {
+    return {
+      selected: "a",
+      options: [
+        // { value: null, text: "Please select some item" },
+        { value: "a", text: "All" },
+        { value: "b", text: "Title" },
+        { value: "c", text: "Author" },
+        { value: "d", text: "Year" },
+        { value: "e", text: "Publisher" }
+      ]
+    };
+  }
+};
 </script>
 
 
 <style>
-#shoppingCart {
-  color: #ff8d1e;
-  padding-left: 10px;
-}
-svg {
-  fill: #ff8d1e;
+.textField {
+  margin-left: 5px;
 }
 
 .bg-info {

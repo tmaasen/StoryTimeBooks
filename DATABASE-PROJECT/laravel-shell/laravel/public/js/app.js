@@ -2144,22 +2144,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
-    console.log("nav top mounted");
+  data: function data() {
+    return {
+      selected: "a",
+      options: [// { value: null, text: "Please select some item" },
+      {
+        value: "a",
+        text: "All"
+      }, {
+        value: "b",
+        text: "Title"
+      }, {
+        value: "c",
+        text: "Author"
+      }, {
+        value: "d",
+        text: "Year"
+      }, {
+        value: "e",
+        text: "Publisher"
+      }]
+    };
   }
 });
 
@@ -44246,7 +44252,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#shoppingCart {\r\n  color: #ff8d1e;\r\n  padding-left: 10px;\n}\nsvg {\r\n  fill: #ff8d1e;\n}\n.bg-info {\r\n  background-color: #252525 !important;\n}\n.hoverable a:hover {\r\n  background-color: #252525;\r\n  color: #fff;\n}\n.btn-group,\r\n.btn-group-vertical {\r\n  position: relative;\r\n  display: inline-flex;\r\n  vertical-align: middle;\r\n  margin-left: 5px;\n}\n.dropdown-menu a:hover {\r\n  background-color: #252525;\r\n  color: #fff;\n}\n.dropdown-menu {\r\n  position: absolute;\r\n  top: 100%;\r\n  left: 0;\r\n  z-index: 1000;\r\n  display: none;\r\n  float: left;\r\n  min-width: 9.5rem;\r\n  padding: 0.5rem 0;\r\n  margin: 0.125rem 0 0;\r\n  font-size: 1rem;\r\n  color: #252525;\r\n  text-align: left;\r\n  list-style: none;\r\n  background-color: #fff;\r\n  background-clip: padding-box;\r\n  border: 1px solid rgba(0, 0, 0, 0.15);\r\n  border-radius: 0.25rem;\n}\r\n", ""]);
+exports.push([module.i, "\n.textField {\r\n  margin-left: 5px;\n}\n.bg-info {\r\n  background-color: #252525 !important;\n}\n.hoverable a:hover {\r\n  background-color: #252525;\r\n  color: #fff;\n}\n.btn-group,\r\n.btn-group-vertical {\r\n  position: relative;\r\n  display: inline-flex;\r\n  vertical-align: middle;\r\n  margin-left: 5px;\n}\n.dropdown-menu a:hover {\r\n  background-color: #252525;\r\n  color: #fff;\n}\n.dropdown-menu {\r\n  position: absolute;\r\n  top: 100%;\r\n  left: 0;\r\n  z-index: 1000;\r\n  display: none;\r\n  float: left;\r\n  min-width: 9.5rem;\r\n  padding: 0.5rem 0;\r\n  margin: 0.125rem 0 0;\r\n  font-size: 1rem;\r\n  color: #252525;\r\n  text-align: left;\r\n  list-style: none;\r\n  background-color: #fff;\r\n  background-clip: padding-box;\r\n  border: 1px solid rgba(0, 0, 0, 0.15);\r\n  border-radius: 0.25rem;\n}\r\n", ""]);
 
 // exports
 
@@ -76875,50 +76881,36 @@ var render = function() {
                 { staticClass: "ml-auto" },
                 [
                   _c(
-                    "b-nav-item-dropdown",
-                    { attrs: { id: "showSelect", text: "Type", right: "" } },
+                    "div",
                     [
-                      _c(
-                        "div",
-                        { staticClass: "hoverable", attrs: { id: "showList" } },
-                        [
-                          _c(
-                            "li",
-                            [_c("b-dropdown-item", [_vm._v("Title")])],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            [_c("b-dropdown-item", [_vm._v("Author")])],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            [_c("b-dropdown-item", [_vm._v("Publisher")])],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c("li", [_c("b-dropdown-item", [_vm._v("Year")])], 1)
-                        ]
-                      )
-                    ]
+                      _c("b-form-select", {
+                        attrs: { size: "lg", options: _vm.options },
+                        model: {
+                          value: _vm.selected,
+                          callback: function($$v) {
+                            _vm.selected = $$v
+                          },
+                          expression: "selected"
+                        }
+                      })
+                    ],
+                    1
                   ),
                   _vm._v(" "),
                   _c(
                     "b-nav-form",
+                    { staticClass: "textField" },
                     [
                       _c("b-form-input", {
-                        staticClass: "mr-sm-2",
-                        attrs: { size: "md", placeholder: "Search" }
+                        staticClass: "mr-lg-2",
+                        attrs: { size: "lg", placeholder: "Search" }
                       }),
                       _vm._v(" "),
                       _c(
                         "b-button",
                         {
-                          staticClass: "my-2 my-sm-0",
-                          attrs: { size: "md", type: "submit" }
+                          staticClass: "my-2 my-lg-0",
+                          attrs: { size: "lg", type: "submit" }
                         },
                         [_vm._v("Search")]
                       )
