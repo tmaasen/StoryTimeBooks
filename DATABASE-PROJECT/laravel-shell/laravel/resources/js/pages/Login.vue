@@ -1,5 +1,6 @@
 <template>
   <div>
+    <head><title>StoryTime | Login</title></head>
     <authnav />
     <div class="container">
       <div class="row justify-content-center">
@@ -93,37 +94,36 @@ export default {
     },
     methods: {
       login() {
-        axios.post('http://127.0.0.1:8000/api/v1/auth/login', {
-            email: this.email,
-            password: this.password
-        }).then(function (response) {
-          console.log(response);
-          this.$router.push({name: 'Home'})
-        }).catch(function (error) {
-          console.log(error);
-          has_error = true
-        });
+        // axios.post('http://127.0.0.1:8000/api/v1/auth/login', {
+        //     email: this.email,
+        //     password: this.password
+        // }).then(function (response) {
+        //   console.log(response);
+        //   this.$router.push({name: 'Home'})
+        // }).catch(function (error) {
+        //   console.log(error);
+        // });
         // get the redirect object
-      //   var redirect = this.$auth.redirect()
-      //   var app = this
-      //   this.$auth.login({
-      //     data: {
-      //       email: app.email,
-      //       password: app.password
-      //     },
-      //     success: function() {
-      //       // handle redirection
-      //       app.success = true
-      //       const redirectTo = 'Home'
-      //       this.$router.push({name: redirectTo})
-      //     },
-      //     error: function(res) {
-      //       app.has_error = true
-      //       app.error = res.response.data.error
-      //     },
-      //     rememberMe: true,
-      //     fetchUser: true
-      //   })
+        var redirect = this.$auth.redirect()
+        var app = this
+        this.$auth.login({
+          data: {
+            email: app.email,
+            password: app.password
+          },
+           success: function() {
+          // handle redirection
+            app.success = true
+            const redirectTo = 'Home'
+            this.$router.push({name: redirectTo})
+          },
+          error: function(res) {
+            app.has_error = true
+            app.error = res.json()
+          },
+          rememberMe: true,
+          fetchUser: true
+        })
        }
     }
 };

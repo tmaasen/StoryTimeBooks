@@ -3469,6 +3469,13 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_navtop__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/navtop */ "./resources/js/components/navtop.vue");
 /* harmony import */ var _components_navbottom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/navbottom */ "./resources/js/components/navbottom.vue");
+var _data$mounted$compone;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
 //
 //
 //
@@ -3481,7 +3488,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 
-/* harmony default export */ __webpack_exports__["default"] = ({
+/* harmony default export */ __webpack_exports__["default"] = (_data$mounted$compone = {
+  data: function data() {
+    return {// username: null
+    };
+  },
   mounted: function mounted() {
     console.log("Home mounted.");
   },
@@ -3489,7 +3500,22 @@ __webpack_require__.r(__webpack_exports__);
     navtop: _components_navtop__WEBPACK_IMPORTED_MODULE_0__["default"],
     navbottom: _components_navbottom__WEBPACK_IMPORTED_MODULE_1__["default"]
   }
-});
+}, _defineProperty(_data$mounted$compone, "mounted", function mounted() {// this.getUsers();
+}), _defineProperty(_data$mounted$compone, "methods", {// getUsers() {
+  //   this.$http({
+  //     url: "auth/user",
+  //     method: "GET"
+  //   }).then(
+  //     res => {
+  //       this.users = res.data.data.items;
+  //       console.log("success " + this.context);
+  //     },
+  //     res => {
+  //       console.log("error " + this.context);
+  //     }
+  //   );
+  // }
+}), _data$mounted$compone);
 
 /***/ }),
 
@@ -3503,6 +3529,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_authnav__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/authnav */ "./resources/js/components/authnav.vue");
+//
 //
 //
 //
@@ -3596,38 +3623,38 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     login: function login() {
-      axios.post('http://127.0.0.1:8000/api/v1/auth/login', {
-        email: this.email,
-        password: this.password
-      }).then(function (response) {
-        console.log(response);
-        this.$router.push({
-          name: 'Home'
-        });
-      })["catch"](function (error) {
-        console.log(error);
-        has_error = true;
-      }); // get the redirect object
-      //   var redirect = this.$auth.redirect()
-      //   var app = this
-      //   this.$auth.login({
-      //     data: {
-      //       email: app.email,
-      //       password: app.password
-      //     },
-      //     success: function() {
-      //       // handle redirection
-      //       app.success = true
-      //       const redirectTo = 'Home'
-      //       this.$router.push({name: redirectTo})
-      //     },
-      //     error: function(res) {
-      //       app.has_error = true
-      //       app.error = res.response.data.error
-      //     },
-      //     rememberMe: true,
-      //     fetchUser: true
-      //   })
+      // axios.post('http://127.0.0.1:8000/api/v1/auth/login', {
+      //     email: this.email,
+      //     password: this.password
+      // }).then(function (response) {
+      //   console.log(response);
+      //   this.$router.push({name: 'Home'})
+      // }).catch(function (error) {
+      //   console.log(error);
+      // });
+      // get the redirect object
+      var redirect = this.$auth.redirect();
+      var app = this;
+      this.$auth.login({
+        data: {
+          email: app.email,
+          password: app.password
+        },
+        success: function success() {
+          // handle redirection
+          app.success = true;
+          var redirectTo = 'Home';
+          this.$router.push({
+            name: redirectTo
+          });
+        },
+        error: function error(res) {
+          app.has_error = true;
+          app.error = res.json();
+        },
+        rememberMe: true,
+        fetchUser: true
+      });
     }
   }
 });
@@ -79596,19 +79623,21 @@ var render = function() {
                                 attrs: { icon: "blank", "aria-hidden": "true" }
                               }),
                               _vm._v(" "),
-                              _c(
-                                "a",
-                                {
-                                  attrs: { href: "#" },
-                                  on: {
-                                    click: function($event) {
-                                      $event.preventDefault()
-                                      return _vm.$auth.logout()
+                              _c("router-link", { attrs: { to: "login" } }, [
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: { href: "#" },
+                                    on: {
+                                      click: function($event) {
+                                        $event.preventDefault()
+                                        return _vm.$auth.logout()
+                                      }
                                     }
-                                  }
-                                },
-                                [_vm._v("Logout")]
-                              ),
+                                  },
+                                  [_vm._v("Logout")]
+                                )
+                              ]),
                               _vm._v(" "),
                               _c("span", { staticClass: "sr-only" }, [
                                 _vm._v("(Selected)")
@@ -79657,7 +79686,15 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    [_vm._m(0), _vm._v(" "), _c("navtop"), _vm._v(" "), _c("navbottom")],
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("navtop"),
+      _vm._v(" "),
+      _c("p", [_vm._v("Logged In: \r\n    ")]),
+      _vm._v(" "),
+      _c("navbottom")
+    ],
     1
   )
 }
@@ -79693,6 +79730,8 @@ var render = function() {
   return _c(
     "div",
     [
+      _vm._m(0),
+      _vm._v(" "),
       _c("authnav"),
       _vm._v(" "),
       _c("div", { staticClass: "container" }, [
@@ -79807,7 +79846,7 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(0)
+                    _vm._m(1)
                   ]
                 )
               ])
@@ -79820,6 +79859,12 @@ var render = function() {
   )
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("head", [_c("title", [_vm._v("StoryTime | Login")])])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -95829,7 +95874,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(bootstrap_vue__WEBPACK_IMPORTED_M
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.router = _router__WEBPACK_IMPORTED_MODULE_8__["default"];
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_6__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_axios__WEBPACK_IMPORTED_MODULE_5___default.a, axios__WEBPACK_IMPORTED_MODULE_3___default.a);
-axios.defaults.baseURL = "128.0.0.1:8000/api/v1";
+axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1";
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(_websanova_vue_auth__WEBPACK_IMPORTED_MODULE_4__["default"], _auth__WEBPACK_IMPORTED_MODULE_7__["default"]);
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   router: _router__WEBPACK_IMPORTED_MODULE_8__["default"]
@@ -96289,15 +96334,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************************!*\
   !*** ./resources/js/pages/Login.vue ***!
   \**************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Login_vue_vue_type_template_id_3b6adb30___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Login.vue?vue&type=template&id=3b6adb30& */ "./resources/js/pages/Login.vue?vue&type=template&id=3b6adb30&");
 /* harmony import */ var _Login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Login.vue?vue&type=script&lang=js& */ "./resources/js/pages/Login.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -96327,7 +96371,7 @@ component.options.__file = "resources/js/pages/Login.vue"
 /*!***************************************************************!*\
   !*** ./resources/js/pages/Login.vue?vue&type=script&lang=js& ***!
   \***************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

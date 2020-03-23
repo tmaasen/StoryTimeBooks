@@ -44,9 +44,9 @@
             <!-- Logout -->
             <b-dropdown-item-button v-if="$auth.check()">
               <b-icon icon="blank" aria-hidden="true"></b-icon>
-              <!-- <router-link to="/logout" target="_blank"> -->
+              <router-link to="login">
                 <a href="#" @click.prevent="$auth.logout()">Logout</a>
-              <!-- </router-link> -->
+              </router-link>
               <span class="sr-only">(Selected)</span>
             </b-dropdown-item-button>
 
