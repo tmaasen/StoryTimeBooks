@@ -49,21 +49,12 @@
                     />
                   </div>
                 </div>
-
-                <!-- <div class="form-group row">
-                  <div class="col-md-6 offset-md-4">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="remember" id="remember" />
-
-                      <label class="form-check-label" for="remember">Remember Me</label>
-                    </div>
-                  </div>
-                </div> -->
-
+                <!-- Login button -->
                 <div class="form-group row mb-0">
                   <div class="col-md-8 offset-md-4">
                     <button type="submit" class="btn btn-primary">Login</button>
                   </div>
+                
                 </div>
               </form>
             </div>
@@ -94,15 +85,6 @@ export default {
     },
     methods: {
       login() {
-        // axios.post('http://127.0.0.1:8000/api/v1/auth/login', {
-        //     email: this.email,
-        //     password: this.password
-        // }).then(function (response) {
-        //   console.log(response);
-        //   this.$router.push({name: 'Home'})
-        // }).catch(function (error) {
-        //   console.log(error);
-        // });
         // get the redirect object
         var redirect = this.$auth.redirect()
         var app = this
@@ -114,7 +96,12 @@ export default {
            success: function() {
           // handle redirection
             app.success = true
-            const redirectTo = 'Home'
+          // new user instance and set data
+          // $user = new User();
+          // $userid = id;
+          // $username = name;
+          // $useremail = email;
+            const redirectTo = redirect ? redirect.from.name : this.$auth.user().isAdmin === 2 ? 'admin' : 'Home'            
             this.$router.push({name: redirectTo})
           },
           error: function(res) {

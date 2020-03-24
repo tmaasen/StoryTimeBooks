@@ -50,4 +50,13 @@ export default {
 .padding {
     padding-bottom: 35px;
 }
+a.navbar-brand:hover {
+  color: #252525;
+  background-color: #fff
+}
+a.nav-link:hover {
+  color:#252525;
+  background-color: #fff;
+  text-decoration: none;
+}
 </style>

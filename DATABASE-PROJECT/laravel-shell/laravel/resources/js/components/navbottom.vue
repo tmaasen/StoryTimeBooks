@@ -85,16 +85,12 @@
                 <span></span>
               </h5>
 
-              <p>
-                <a href="mailto:haseokwoo@gmail.com" title="Email Seokwoo" target="_blank">Email</a>
-              </p>
+              <a href="mailto:haseokwoo@gmail.com" style="color:white" title="Email Seokwoo" target="_blank">Email Us</a>
+              
               <p>100 Opportunity Ave. Point Lookout, MO 65726, US</p>
+              <p>If you <strong> forgot your password </strong> or would like to <strong>become an admin</strong>, please call us at one of the numbers below.</p>
               <p>
-                Tanner Massen
-                <br />+1 573 694 7085
-              </p>
-              <p>
-                Seokwoo Ha
+                +1 573 694 7085
                 <br />+1 417 920 9524
               </p>
 
@@ -176,12 +172,17 @@ export default {
 	Footer 
 ====================== */
 
+a:hover {
+  background-color: #252525;
+  color: #fff;
+  text-decoration: underline;
+}
+
 /* Main Footer */
 footer .main-footer {
   padding-top: 20px;
   background: #252525;
 }
-
 .footer-1 {
   position: absolute; /* Could be problematic when adding more content */
   bottom: 0;
@@ -189,7 +190,6 @@ footer .main-footer {
   max-width: 100%;
   max-height: 100%;
 }
-
 footer ul {
   padding-left: 0;
   list-style: none;
@@ -218,7 +218,6 @@ footer ul {
   display: inline-block;
   line-height: 12px;
   margin: 0;
-  padding: 0 8px;
 }
 .footer-copyright nav ul li a {
   color: #969696;
@@ -236,8 +235,6 @@ footer ul {
 /* Footer Top */
 .footer-top {
   background: #252525;
-  padding-bottom: 30px;
-  margin-bottom: 30px;
   border-bottom: 3px solid #222;
 }
 
@@ -269,34 +266,23 @@ footer.light .footer-copyright {
 /*==================== 
 	Widgets 
 ====================== */
-.widget {
-  padding: 20px;
-  margin-bottom: 40px;
-}
 .widget.widget-last {
   margin-bottom: 0px;
 }
 .widget.no-box {
   padding: 0;
   background-color: transparent;
-  margin-bottom: 40px;
   box-shadow: none;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   -ms-box-shadow: none;
   -o-box-shadow: none;
 }
-.widget.subscribe p {
-  margin-bottom: 18px;
-}
 .widget li a {
   color: #ff8d1e;
 }
 .widget li a:hover {
   color: #4b92dc;
-}
-.widget-title {
-  margin-bottom: 20px;
 }
 .widget-title span {
   background: #839fad none repeat scroll 0 0;

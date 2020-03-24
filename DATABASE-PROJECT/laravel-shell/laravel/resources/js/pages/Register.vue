@@ -73,8 +73,9 @@
                 </div>
               </div>
 
-              <div class="linksToTermsOfService">
+              <div style="text-align:center">
                 <input type="checkbox" id="checkbox" v-model="termsChecked">
+                <label>I agree to the</label>
                 <router-link to="/termsofservice">
                 Terms Of Service
                 </router-link>

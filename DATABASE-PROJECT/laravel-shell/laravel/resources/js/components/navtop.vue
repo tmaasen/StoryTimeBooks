@@ -11,10 +11,8 @@
       <b-collapse id="nav-collapse" is-nav>
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-          <div>
-            <b-form-select size="lg" v-model="selected" :options="options"></b-form-select>
-          </div>
           <b-nav-form class="textField">
+            <b-form-select size="lg" class="mr-lg-10" v-model="searchFilter " :options="options"></b-form-select>
             <b-form-input size="lg" class="mr-lg-2" placeholder="Search"></b-form-input>
             <b-button size="lg" class="my-2 my-lg-0" type="submit">Search</b-button>
           </b-nav-form>
@@ -31,25 +29,36 @@
               Cart
             </a>
           </div>
-          <b-dropdown variant="primary">
+          <b-dropdown variant="primary" id="dropdown-right" text="Left align">
             <template v-slot:button-content>
-              <b-icon icon="person-fill" aria-hidden="true"></b-icon>My Account
+              <b-icon icon="person-fill" aria-hidden="true"></b-icon>
+              <span v-if="name === ''">My Account</span>
+              <span v-else> {{ name }} </span>
             </template>
 
-            <b-dropdown-item-button href="#">
+            <b-dropdown-item-button v-if="$auth.check()">
               <b-icon icon="blank" aria-hidden="true"></b-icon>Profile
               <span class="sr-only">(Not selected)</span>
             </b-dropdown-item-button>
 
-            <!-- Logout -->
-            <b-dropdown-item-button v-if="$auth.check()">
-              <b-icon icon="blank" aria-hidden="true"></b-icon>
-              <router-link to="login">
-                <a href="#" @click.prevent="$auth.logout()">Logout</a>
-              </router-link>
-              <span class="sr-only">(Selected)</span>
+            <b-dropdown-item-button v-if="name === ''">
+               <a href="/login">Login</a>
+              <span class="sr-only">(Not selected)</span>
             </b-dropdown-item-button>
 
+            <b-dropdown-item-button v-if="name === ''">
+               <a href="/register">Register</a>
+              <span class="sr-only">(Not selected)</span>
+            </b-dropdown-item-button>
+
+            <!-- Logout -->
+            <!-- $auth.check() = unlogged user -->
+            <!-- $auth.check(1) = user -->
+            <!-- $auth.check(2) = admin user -->
+            <b-dropdown-item-button v-if="$auth.check()" @click.prevent="$auth.logout()">
+                <b-icon icon="blank" aria-hidden="true"></b-icon>Logout
+              <span class="sr-only">(Not selected)</span>
+            </b-dropdown-item-button>
 
           </b-dropdown>
         </b-navbar-nav>
@@ -62,6 +71,7 @@
 export default {
   data() {
     return {
+      name: "", // parameter for the logged in user's name
       routes: {
         // UNLOGGED
         unlogged: [
@@ -73,7 +83,7 @@ export default {
         // LOGGED ADMIN
         admin: [{ name: "Dashboard", path: "admin.dashboard" }]
       },
-      selected: "a",
+      searchFilter: "a",
       options: [
         // { value: null, text: "Please select some item" },
         { value: "a", text: "All" },
@@ -85,29 +95,66 @@ export default {
     };
   },
   mounted() {
-    //
+    this.fetch();
+  },
+  methods: {
+    fetch() {
+      axios
+        .get("http://127.0.0.1:8000/api/v1/auth/user")
+        .then(response => {
+          console.log(response), (this.name = response.data.data["0"].name);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    logout() {
+      this.$auth.logout({
+        makeRequest: true,
+        params: {
+          name: ''
+        }, // data: {} in axios
+        success: function() {},
+        error: function() {},
+        redirect: "/login"
+      });
+    },
   }
 };
 </script>
 
 
 <style>
+select {
+  margin-right:10px;
+}
+a {
+  text-decoration: none;
+  color: #252525;
+}
+a:hover {
+  text-decoration: none;
+  background-color: #fff;
+  color: #252525;
+}
 .textField {
-  margin-left: 5px;
+  margin-left: 10px;
 }
 #shoppingCart {
   color: #ff8d1e;
-  padding-left: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-left:20px;
+}
+#shoppingCart:hover {
+  border: 3px solid #fff;
+  border-radius: 5px;
 }
 svg {
   fill: #ff8d1e;
 }
 .bg-info {
-  background-color: #252525 !important;
-}
-.hoverable a:hover {
   background-color: #252525;
-  color: #fff;
 }
 
 .btn-group,
@@ -116,12 +163,13 @@ svg {
   display: -ms-inline-flexbox;
   display: inline-flex;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 30px;
 }
 
 .dropdown-menu a:hover {
-  background-color: #252525;
-  color: #fff;
+  background-color: #fff;
+  color: #252525;
+  text-decoration: none;
 }
 
 .dropdown-menu {
@@ -129,8 +177,7 @@ svg {
   top: 100%;
   left: 0;
   z-index: 1000;
-  display: none;
-  float: left;
+  float: right;
   min-width: 9.5rem;
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
