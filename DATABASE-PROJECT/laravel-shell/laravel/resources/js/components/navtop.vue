@@ -8,6 +8,7 @@
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
+<<<<<<< HEAD
         <!-- Collapseable nav -->
         <b-collapse id="nav-collapse" is-nav>
           <!-- Right aligned nav items -->
@@ -61,12 +62,73 @@
       </b-navbar>
     </div>
   </header>
+=======
+      <!-- Collapseable nav -->
+      <b-collapse id="nav-collapse" is-nav>
+        <!-- Right aligned nav items -->
+        <b-navbar-nav class="ml-auto">
+          <b-nav-form class="textField">
+            <b-form-select size="lg" class="mr-lg-10" v-model="searchFilter " :options="options"></b-form-select>
+            <b-form-input size="lg" class="mr-lg-2" placeholder="Search"></b-form-input>
+            <b-button size="lg" class="my-2 my-lg-0" type="submit">Search</b-button>
+          </b-nav-form>
+          <div>
+            <a class="navbar-brand" id="shoppingCart" href="#">
+              <span class="input-group-addon">
+                <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 0 24 24" width="30">
+                  <path
+                    d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"
+                  />
+                  <path d="M0 0h24v24H0z" fill="none" />
+                </svg>
+              </span>
+              Cart
+            </a>
+          </div>
+          <b-dropdown variant="primary" id="dropdown-right" text="Left align">
+            <template v-slot:button-content>
+              <b-icon icon="person-fill" aria-hidden="true"></b-icon>
+              <span v-if="name === ''">My Account</span>
+              <span v-else> {{ name }} </span>
+            </template>
+
+            <b-dropdown-item-button v-if="$auth.check()">
+              <b-icon icon="blank" aria-hidden="true"></b-icon>Profile
+              <span class="sr-only">(Not selected)</span>
+            </b-dropdown-item-button>
+
+            <b-dropdown-item-button v-if="name === ''">
+               <a href="/login">Login</a>
+              <span class="sr-only">(Not selected)</span>
+            </b-dropdown-item-button>
+
+            <b-dropdown-item-button v-if="name === ''">
+               <a href="/register">Register</a>
+              <span class="sr-only">(Not selected)</span>
+            </b-dropdown-item-button>
+
+            <!-- Logout -->
+            <!-- $auth.check() = unlogged user -->
+            <!-- $auth.check(1) = user -->
+            <!-- $auth.check(2) = admin user -->
+            <b-dropdown-item-button v-if="$auth.check()" @click.prevent="$auth.logout()">
+                <b-icon icon="blank" aria-hidden="true"></b-icon>Logout
+              <span class="sr-only">(Not selected)</span>
+            </b-dropdown-item-button>
+
+          </b-dropdown>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
+  </div>
+>>>>>>> 1a98511abd27c3482087e9a8875c8095d40243cb
 </template>
 
 <script>
 export default {
   data() {
     return {
+      name: "", // parameter for the logged in user's name
       routes: {
         // UNLOGGED
         unlogged: [
@@ -78,7 +140,7 @@ export default {
         // LOGGED ADMIN
         admin: [{ name: "Dashboard", path: "admin.dashboard" }]
       },
-      selected: "a",
+      searchFilter: "a",
       options: [
         // { value: null, text: "Please select some item" },
         { value: "a", text: "All" },
@@ -90,29 +152,66 @@ export default {
     };
   },
   mounted() {
-    //
+    this.fetch();
+  },
+  methods: {
+    fetch() {
+      axios
+        .get("http://127.0.0.1:8000/api/v1/auth/user")
+        .then(response => {
+          console.log(response), (this.name = response.data.data["0"].name);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    logout() {
+      this.$auth.logout({
+        makeRequest: true,
+        params: {
+          name: ''
+        }, // data: {} in axios
+        success: function() {},
+        error: function() {},
+        redirect: "/login"
+      });
+    },
   }
 };
 </script>
 
 
 <style>
+select {
+  margin-right:10px;
+}
+a {
+  text-decoration: none;
+  color: #252525;
+}
+a:hover {
+  text-decoration: none;
+  background-color: #fff;
+  color: #252525;
+}
 .textField {
-  margin-left: 5px;
+  margin-left: 10px;
 }
 #shoppingCart {
   color: #ff8d1e;
-  padding-left: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-left:20px;
+}
+#shoppingCart:hover {
+  border: 3px solid #fff;
+  border-radius: 5px;
 }
 svg {
   fill: #ff8d1e;
 }
 .bg-info {
-  background-color: #252525 !important;
-}
-.hoverable a:hover {
   background-color: #252525;
-  color: #fff;
 }
 
 .btn-group,
@@ -121,12 +220,13 @@ svg {
   display: -ms-inline-flexbox;
   display: inline-flex;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 30px;
 }
 
 .dropdown-menu a:hover {
-  background-color: #252525;
-  color: #fff;
+  background-color: #fff;
+  color: #252525;
+  text-decoration: none;
 }
 
 .dropdown-menu {
@@ -134,8 +234,7 @@ svg {
   top: 100%;
   left: 0;
   z-index: 1000;
-  display: none;
-  float: left;
+  float: right;
   min-width: 9.5rem;
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
