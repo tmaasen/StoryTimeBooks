@@ -180,6 +180,12 @@ export default {
 footer .main-footer {
   padding-top: 20px;
   background: #252525;
+  position:absolute;
+  bottom:0px;
+  height:400px;
+  left:0px;
+  right:0px;
+  overflow:hidden;
 }
 
 .footer-1 {
