@@ -1,5 +1,5 @@
 <template>
-  <header style="position:absolute; top:0px; left:0px; height:100px; right:0px;overflow:hidden;">
+  <!-- <header style="position:absolute; top:0px; left:0px; height:100px; right:0px;overflow:hidden;"> -->
     <div>
       <b-navbar sticky-header toggleable="lg" type="dark" style="background-color: #252525">
         <router-link :to="{name: 'Home'}">

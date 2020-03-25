@@ -8,6 +8,7 @@
     <h1 class="welcomeMessage">Hello, {{ $auth.user().firstname }}</h1>
     <hr />
   </div>
+  <HomePageEdit />
   <navbottom />
 </div>
 </template>

@@ -18,7 +18,7 @@ export default new VueRouter({
         { path: '/', component: Home, name: 'Home', meta: {auth:undefined}},
         {path: '/termsofservice', component: TermsOfService, name: 'Terms', meta: {auth:undefined}},
         { path: '/login', component: Login, name: 'Login', meta: {auth:false}},
-        { path: '/register', component: Register, name: 'Register', meta: {auth:false}},
+        { path: '/register', component: Register, name: 'Register', meta: {auth:undefined}},
 
 
     ]

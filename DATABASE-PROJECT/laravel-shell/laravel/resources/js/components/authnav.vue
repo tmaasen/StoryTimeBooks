@@ -21,7 +21,7 @@
           <!-- Right Side Of Navbar -->
           <ul class="navbar-nav ml-auto">
             <!-- Authentication Links -->
-            <li class="nav-item">
+            <li class="nav-item" v-if="!$auth.check()">
               <router-link to="login">
               <a class="nav-link" href="#">Login</a>
               </router-link>

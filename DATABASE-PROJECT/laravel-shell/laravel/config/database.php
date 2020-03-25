@@ -48,7 +48,7 @@ return [
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', 'ec2-54-165-195-74.compute-1.amazonaws.com'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'testdb'),
+            'database' => env('DB_DATABASE', 'storytimebooks'),
             'username' => env('DB_USERNAME', 'tmaasen'),
             'password' => env('DB_PASSWORD', 'BooksAreGreat648!'),
             'unix_socket' => env('DB_SOCKET', ''),

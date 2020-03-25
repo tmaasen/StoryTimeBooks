@@ -96,17 +96,12 @@ export default {
            success: function() {
           // handle redirection
             app.success = true
-          // new user instance and set data
-          // $user = new User();
-          // $userid = id;
-          // $username = name;
-          // $useremail = email;
             const redirectTo = redirect ? redirect.from.name : this.$auth.user().role === 2 ? 'admin' : 'Home'            
             this.$router.push({name: 'Home'})
           },
           error: function(res) {
             app.has_error = true
-            app.error = res.json()
+            app.error = res.data
           },
           rememberMe: true,
           fetchUser: true
