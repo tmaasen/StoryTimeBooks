@@ -159,10 +159,6 @@ export default {
     mounted() {
       console.log('navbottom mounted');
     },
-    
-    methods: {
-     
-    }
 };
 </script>
 
@@ -182,6 +178,12 @@ a:hover {
 footer .main-footer {
   padding-top: 20px;
   background: #252525;
+  position:absolute;
+  bottom:0px;
+  height:400px;
+  left:0px;
+  right:0px;
+  overflow:hidden;
 }
 .footer-1 {
   position: absolute; /* Could be problematic when adding more content */

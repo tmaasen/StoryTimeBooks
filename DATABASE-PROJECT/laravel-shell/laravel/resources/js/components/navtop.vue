@@ -1,11 +1,12 @@
 <template>
-  <div>
-    <b-navbar sticky-header toggleable="lg" type="dark" style="background-color: #252525">
-      <router-link :to="{name: 'Home'}">
-        <img src="../assets/StoryTime.png" width="200" class="navbar-brand" alt="Go to Home" />
-      </router-link>
+  <header style="position:absolute; top:0px; left:0px; height:100px; right:0px;overflow:hidden;">
+    <div>
+      <b-navbar sticky-header toggleable="lg" type="dark" style="background-color: #252525">
+        <router-link :to="{name: 'Home'}">
+          <img src="../assets/StoryTime.png" width="200" class="navbar-brand" alt="Go to Home" />
+        </router-link>
 
-      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <!-- Collapseable nav -->
       <b-collapse id="nav-collapse" is-nav>

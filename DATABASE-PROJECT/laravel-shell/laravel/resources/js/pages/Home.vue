@@ -14,12 +14,13 @@
    
 <script>
 import navtop from "../components/navtop";
+import HomePageEdit from "../components/HomePageEdit";
 import navbottom from "../components/navbottom";
 
 export default {
   data() {
     return {
-      firstname: 'foo'
+      firstname: ''
     };
   },
   mounted() {
@@ -27,13 +28,9 @@ export default {
   },
   components: {
     navtop,
+    HomePageEdit,
     navbottom
   },
-  mounted() {
-  },
-  methods: {
-
-  }
 };
 </script>
 <style>
