@@ -101,8 +101,8 @@ export default {
           // $userid = id;
           // $username = name;
           // $useremail = email;
-            const redirectTo = redirect ? redirect.from.name : this.$auth.user().isAdmin === 2 ? 'admin' : 'Home'            
-            this.$router.push({name: redirectTo})
+            const redirectTo = redirect ? redirect.from.name : this.$auth.user().role === 2 ? 'admin' : 'Home'            
+            this.$router.push({name: 'Home'})
           },
           error: function(res) {
             app.has_error = true

@@ -9,6 +9,7 @@ composer update // refreshes and updates all project dependencies
 composer dump-autoload // autolaods all the model tables from the db once you have configured them
 
 ---MySQL Helpful Hints---
+Modifying column order: 'ALTER TABLE tableName MODIFY columnName columnDataType AFTER columnName;'
 mysql root password: CaptainMarvel1!
 test account email: tmaasen@gmail.com
 test account password: test12345

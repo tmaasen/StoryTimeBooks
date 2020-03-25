@@ -1,9 +1,12 @@
 <?php
 namespace App\Http\Controllers;
+use App\User;
+
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Auth;
 use Validator;
-use App\Models\User;
+
 
 class AuthController extends Controller
 {
@@ -13,7 +16,8 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $v = Validator::make($request->all(), [
-            'name' => 'required|min:3',
+            'firstname' => 'required',
+            'lastname' => 'required',
             'email' => 'required|email|unique:users',
             'password'  => 'required|min:3|confirmed',
         ]);
@@ -25,7 +29,8 @@ class AuthController extends Controller
             ], 422);
         }
         $user = new User();
-        $user->name = $request->name;
+        $user->firstname = $request->firstname;
+        $user->lastname = $request->lastname;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->email_verified_at = now();
@@ -39,7 +44,11 @@ class AuthController extends Controller
     {
         $credentials = $request->only('email', 'password');
         if ($token = $this->guard()->attempt($credentials)) {
-            return response()->json(['status' => 'success'], 200)->header('Authorization', $token);
+            return response()->json(['status' => 'success', 'creds' => $credentials, 'token' => $token], 200)->header('Authorization', $token);
+            // $user = new User();
+            // $user->firstname = $request->firstname;
+            // $user->lastname = $request->lastname;
+            // $user->email = $request->email;
         }
         return response()->json(['error' => 'login_error'], 401);
     }
@@ -55,15 +64,27 @@ class AuthController extends Controller
         ], 200);
     }
     /**
+     * Returns ALL users. THIS WILL BE AN ADMIN FUNCTION
+     */
+    public function index()
+    {
+        $users = User::all();
+        return response()->json(
+            [
+                'status' => 'success',
+                'users' => $users->toArray()
+            ], 200);
+    }
+    /**
      * Get authenticated user
      */
-    public function user(Request $request)
+    public function user(Request $id)
     {
-        $userid = User::find(Auth::id());
-        $username = User::find(Auth::user());
-        return response()->json([
+        // how to get data...Auth::user()->whatever parameter in the user record
+        $user = Auth::user();
+         return response()->json([
             'status' => 'success',
-            'data' => [$userid, $username]
+            'data' => $user
         ]);
     }
     /**

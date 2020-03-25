@@ -161,7 +161,7 @@
         <p style="font-size: 30px">
           Back to
           <router-link to="register">
-          <a href="#" style="text-decoration: underline">Register</a>
+          <a href="#">Register</a>
           </router-link>
         </p>
       </div>
@@ -169,6 +169,21 @@
   </div>
 </div>
 </template>
+
+<style>
+a {
+  color: #3490dc;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+a:hover {
+  color: #1d68a7;
+  text-decoration: underline;
+  background-color: transparent;
+
+}
+</style>
 
 <script>
 import authnav from '../components/authnav'

@@ -32,8 +32,8 @@
           <b-dropdown variant="primary" id="dropdown-right" text="Left align">
             <template v-slot:button-content>
               <b-icon icon="person-fill" aria-hidden="true"></b-icon>
-              <span v-if="name === ''">My Account</span>
-              <span v-else> {{ name }} </span>
+              <span v-if="$auth.check()"> {{ $auth.user().firstname }} {{$auth.user().lastname}}</span>
+              <span v-if="!$auth.check()">My Account</span>
             </template>
 
             <b-dropdown-item-button v-if="$auth.check()">
@@ -41,12 +41,12 @@
               <span class="sr-only">(Not selected)</span>
             </b-dropdown-item-button>
 
-            <b-dropdown-item-button v-if="name === ''">
+            <b-dropdown-item-button v-if="!$auth.check()">
                <a href="/login">Login</a>
               <span class="sr-only">(Not selected)</span>
             </b-dropdown-item-button>
 
-            <b-dropdown-item-button v-if="name === ''">
+            <b-dropdown-item-button v-if="!$auth.check()">
                <a href="/register">Register</a>
               <span class="sr-only">(Not selected)</span>
             </b-dropdown-item-button>
@@ -94,20 +94,7 @@ export default {
       ]
     };
   },
-  mounted() {
-    this.fetch();
-  },
   methods: {
-    fetch() {
-      axios
-        .get("http://127.0.0.1:8000/api/v1/auth/user")
-        .then(response => {
-          console.log(response), (this.name = response.data.data["0"].name);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    },
     logout() {
       this.$auth.logout({
         makeRequest: true,
@@ -125,6 +112,9 @@ export default {
 
 
 <style>
+span {
+  font-size: 1.125rem;;
+}
 select {
   margin-right:10px;
 }

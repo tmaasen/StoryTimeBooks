@@ -17,11 +17,19 @@
             <!-- end error checking -->
           <div class="card-body">
             <form method="POST" @submit.prevent="register" v-if="!success">
-              <!-- Name field -->
+              <!-- First name field -->
               <div class="form-group row" v-bind:class="{ 'has-error': has_error && errors.name }">
-                <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
+                <label for="name" class="col-md-4 col-form-label text-md-right">First Name</label>
                 <div class="col-md-6">
-                  <input v-model="name" id="name" type="text" class="form-control" placeholder="Full Name" required />
+                  <input v-model="firstname" id="firstname" type="text" class="form-control" placeholder="First Name" required />
+                </div>
+                <span class="help-block" v-if="has_error && errors.name">{{ errors.name }}</span>
+              </div>
+              <!-- Last name field -->
+              <div class="form-group row" v-bind:class="{ 'has-error': has_error && errors.name }">
+                <label for="name" class="col-md-4 col-form-label text-md-right">Last Name</label>
+                <div class="col-md-6">
+                  <input v-model="lastname" id="lastname" type="text" class="form-control" placeholder="Last Name" required />
                 </div>
                 <span class="help-block" v-if="has_error && errors.name">{{ errors.name }}</span>
               </div>
@@ -38,7 +46,7 @@
                     placeholder="user@example.com"
                     required
                   />
-                  <span class="help-block" v-if="has_error && errors.email">{{ errors.email }}</span>
+                  <span class="has-error" v-if="has_error && errors.email">{{ errors.email }}</span>
                 </div>
               </div>
               <!-- Password field -->
@@ -54,7 +62,6 @@
                     placeholder="Password"
                     required
                   />
-                  <span class="help-block" v-if="has_error && errors.password">{{ errors.password }}</span>
                 </div>
 
               </div>
@@ -70,6 +77,7 @@
                     placeholder="Confirm Password"
                     required
                   />
+                 <span class="has-error" v-if="has_error && errors.password">{{ errors.password }}</span>
                 </div>
               </div>
 
@@ -77,7 +85,7 @@
                 <input type="checkbox" id="checkbox" v-model="termsChecked">
                 <label>I agree to the</label>
                 <router-link to="/termsofservice">
-                Terms Of Service
+                <a href="#">Terms Of Service</a>
                 </router-link>
               </div>
 
@@ -95,6 +103,20 @@
 </div>
 </template>
 
+<style>
+a {
+  color: #3490dc;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+a:hover {
+  color: #1d68a7;
+  text-decoration: underline; 
+  background-color: transparent;
+}
+</style>
+
 <script>
 import authnav from '../components/authnav'
 export default {
@@ -103,7 +125,8 @@ export default {
   },
    data() {
       return {
-        name: '',
+        firstname: '',
+        lastname: '',
         email: '',
         password: '',
         password_confirmation: '',
@@ -119,7 +142,8 @@ export default {
         var app = this
         this.$auth.register({
           data: {
-            name: app.name,
+            firstname: app.firstname,
+            lastname: app.lastname,
             email: app.email,
             password: app.password,
             password_confirmation: app.password_confirmation
