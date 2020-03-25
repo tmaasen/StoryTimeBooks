@@ -981,14 +981,12 @@ module.exports = function () {
 /*!*******************************************************!*\
   !*** ./node_modules/@websanova/vue-auth/src/index.js ***!
   \*******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
 var Auth = __webpack_require__(/*! ./auth.js */ "./node_modules/@websanova/vue-auth/src/auth.js")();
 
-/* harmony default export */ __webpack_exports__["default"] = ((function () {
+module.exports = (function () {
 
     return function install(Vue, options) {
         
@@ -1024,7 +1022,7 @@ var Auth = __webpack_require__(/*! ./auth.js */ "./node_modules/@websanova/vue-a
             }
         });
     }
-})());
+})();
 
 /***/ }),
 
@@ -3497,6 +3495,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3547,7 +3550,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$auth.logout({
         makeRequest: true,
         params: {
-          name: ''
+          name: ""
         },
         // data: {} in axios
         success: function success() {},
@@ -3586,13 +3589,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      firstname: ''
+      firstname: ""
     };
   },
   mounted: function mounted() {
@@ -45782,7 +45788,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nspan {\r\n  font-size: 1.125rem;\n}\nselect {\r\n  margin-right:10px;\n}\na {\r\n  text-decoration: none;\r\n  color: #252525;\n}\na:hover {\r\n  text-decoration: none;\r\n  background-color: #fff;\r\n  color: #252525;\n}\n.textField {\r\n  margin-left: 10px;\n}\n#shoppingCart {\r\n  color: #ff8d1e;\r\n  padding-left: 5px;\r\n  padding-right: 5px;\r\n  margin-left:20px;\n}\n#shoppingCart:hover {\r\n  border: 3px solid #fff;\r\n  border-radius: 5px;\n}\nsvg {\r\n  fill: #ff8d1e;\n}\n.bg-info {\r\n  background-color: #252525;\n}\n.btn-group,\r\n.btn-group-vertical {\r\n  position: relative;\r\n  display: inline-flex;\r\n  vertical-align: middle;\r\n  margin-left: 30px;\n}\n.dropdown-menu a:hover {\r\n  background-color: #fff;\r\n  color: #252525;\r\n  text-decoration: none;\n}\n.dropdown-menu {\r\n  position: absolute;\r\n  top: 100%;\r\n  left: 0;\r\n  z-index: 1000;\r\n  float: right;\r\n  min-width: 9.5rem;\r\n  padding: 0.5rem 0;\r\n  margin: 0.125rem 0 0;\r\n  font-size: 1rem;\r\n  color: #252525;\r\n  text-align: left;\r\n  list-style: none;\r\n  background-color: #fff;\r\n  background-clip: padding-box;\r\n  border: 1px solid rgba(0, 0, 0, 0.15);\r\n  border-radius: 0.25rem;\n}\r\n", ""]);
+exports.push([module.i, "\nspan {\r\n  font-size: 1.125rem;\n}\nselect {\r\n  margin-right: 10px;\n}\na {\r\n  text-decoration: none;\r\n  color: #252525;\n}\na:hover {\r\n  text-decoration: none;\r\n  background-color: #fff;\r\n  color: #252525;\n}\n.textField {\r\n  margin-left: 10px;\n}\n#shoppingCart {\r\n  color: #ff8d1e;\r\n  padding-left: 5px;\r\n  padding-right: 5px;\r\n  margin-left: 20px;\n}\n#shoppingCart:hover {\r\n  border: 3px solid #fff;\r\n  border-radius: 5px;\n}\nsvg {\r\n  fill: #ff8d1e;\n}\n.bg-info {\r\n  background-color: #252525;\n}\n.btn-group,\r\n.btn-group-vertical {\r\n  position: relative;\r\n  display: inline-flex;\r\n  vertical-align: middle;\r\n  margin-left: 30px;\n}\n.dropdown-menu a:hover {\r\n  background-color: #fff;\r\n  color: #252525;\r\n  text-decoration: none;\n}\n.dropdown-menu {\r\n  position: absolute;\r\n  top: 100%;\r\n  left: 0;\r\n  z-index: 1000;\r\n  float: right;\r\n  min-width: 9.5rem;\r\n  padding: 0.5rem 0;\r\n  margin: 0.125rem 0 0;\r\n  font-size: 1rem;\r\n  color: #252525;\r\n  text-align: left;\r\n  list-style: none;\r\n  background-color: #fff;\r\n  background-clip: padding-box;\r\n  border: 1px solid rgba(0, 0, 0, 0.15);\r\n  border-radius: 0.25rem;\n}\r\n", ""]);
 
 // exports
 
@@ -79911,8 +79917,255 @@ render._withStripped = true
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function () {}
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "header",
+    {
+      staticStyle: {
+        position: "absolute",
+        top: "0px",
+        left: "0px",
+        height: "100px",
+        right: "0px",
+        overflow: "hidden"
+      }
+    },
+    [
+      _c(
+        "div",
+        [
+          _c(
+            "b-navbar",
+            {
+              staticStyle: { "background-color": "#252525" },
+              attrs: { "sticky-header": "", toggleable: "lg", type: "dark" }
+            },
+            [
+              _c("router-link", { attrs: { to: { name: "Home" } } }, [
+                _c("img", {
+                  staticClass: "navbar-brand",
+                  attrs: {
+                    src: __webpack_require__(/*! ../assets/StoryTime.png */ "./resources/js/assets/StoryTime.png"),
+                    width: "200",
+                    alt: "Go to Home"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("b-navbar-toggle", { attrs: { target: "nav-collapse" } }),
+              _vm._v(" "),
+              _c(
+                "b-collapse",
+                { attrs: { id: "nav-collapse", "is-nav": "" } },
+                [
+                  _c(
+                    "b-navbar-nav",
+                    { staticClass: "ml-auto" },
+                    [
+                      _c(
+                        "b-nav-form",
+                        { staticClass: "textField" },
+                        [
+                          _c("b-form-select", {
+                            staticClass: "mr-lg-10",
+                            attrs: { size: "lg", options: _vm.options },
+                            model: {
+                              value: _vm.searchFilter,
+                              callback: function($$v) {
+                                _vm.searchFilter = $$v
+                              },
+                              expression: "searchFilter "
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("b-form-input", {
+                            staticClass: "mr-lg-2",
+                            attrs: { size: "lg", placeholder: "Search" }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "b-button",
+                            {
+                              staticClass: "my-2 my-lg-0",
+                              attrs: { size: "lg", type: "submit" }
+                            },
+                            [_vm._v("Search")]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "navbar-brand",
+                            attrs: { id: "shoppingCart", href: "#" }
+                          },
+                          [
+                            _c("span", { staticClass: "input-group-addon" }, [
+                              _c(
+                                "svg",
+                                {
+                                  attrs: {
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    height: "30",
+                                    viewBox: "0 0 24 24",
+                                    width: "30"
+                                  }
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      d:
+                                        "M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    attrs: { d: "M0 0h24v24H0z", fill: "none" }
+                                  })
+                                ]
+                              )
+                            ]),
+                            _vm._v("\n              Cart\n            ")
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "b-dropdown",
+                        {
+                          attrs: {
+                            variant: "primary",
+                            id: "dropdown-right",
+                            text: "Left align"
+                          },
+                          scopedSlots: _vm._u([
+                            {
+                              key: "button-content",
+                              fn: function() {
+                                return [
+                                  _c("b-icon", {
+                                    attrs: {
+                                      icon: "person-fill",
+                                      "aria-hidden": "true"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _vm.$auth.check()
+                                    ? _c("span", [
+                                        _vm._v(
+                                          _vm._s(_vm.$auth.user().firstname) +
+                                            " " +
+                                            _vm._s(_vm.$auth.user().lastname)
+                                        )
+                                      ])
+                                    : _vm._e(),
+                                  _vm._v(" "),
+                                  !_vm.$auth.check()
+                                    ? _c("span", [_vm._v("My Account")])
+                                    : _vm._e()
+                                ]
+                              },
+                              proxy: true
+                            }
+                          ])
+                        },
+                        [
+                          _vm._v(" "),
+                          _vm.$auth.check()
+                            ? _c(
+                                "b-dropdown-item-button",
+                                [
+                                  _c("b-icon", {
+                                    attrs: {
+                                      icon: "blank",
+                                      "aria-hidden": "true"
+                                    }
+                                  }),
+                                  _vm._v("Profile\n              "),
+                                  _c("span", { staticClass: "sr-only" }, [
+                                    _vm._v("(Not selected)")
+                                  ])
+                                ],
+                                1
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          !_vm.$auth.check()
+                            ? _c("b-dropdown-item-button", [
+                                _c("a", { attrs: { href: "/login" } }, [
+                                  _vm._v("Login")
+                                ]),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "sr-only" }, [
+                                  _vm._v("(Not selected)")
+                                ])
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          !_vm.$auth.check()
+                            ? _c("b-dropdown-item-button", [
+                                _c("a", { attrs: { href: "/register" } }, [
+                                  _vm._v("Register")
+                                ]),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "sr-only" }, [
+                                  _vm._v("(Not selected)")
+                                ])
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.$auth.check()
+                            ? _c(
+                                "b-dropdown-item-button",
+                                {
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.$auth.logout()
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("b-icon", {
+                                    attrs: {
+                                      icon: "blank",
+                                      "aria-hidden": "true"
+                                    }
+                                  }),
+                                  _vm._v("Logout\n              "),
+                                  _c("span", { staticClass: "sr-only" }, [
+                                    _vm._v("(Not selected)")
+                                  ])
+                                ],
+                                1
+                              )
+                            : _vm._e()
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ]
+  )
+}
 var staticRenderFns = []
+render._withStripped = true
 
 
 
@@ -79934,27 +80187,32 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.$auth.ready()
-    ? _c(
-        "div",
-        [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("navtop"),
-          _vm._v(" "),
-          _vm.$auth.check()
-            ? _c("div", [
-                _c("h1", { staticClass: "welcomeMessage" }, [
-                  _vm._v("Hello, " + _vm._s(_vm.$auth.user().firstname))
-                ]),
-                _vm._v(" "),
-                _c("hr")
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _c("navbottom")
-        ],
-        1
-      )
+    ? _c("div", [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "body",
+          { staticStyle: { height: "100%", width: "100%" } },
+          [
+            _c("navtop"),
+            _vm._v(" "),
+            _vm.$auth.check()
+              ? _c("div", [
+                  _c("h1", { staticClass: "welcomeMessage" }, [
+                    _vm._v("Hello, " + _vm._s(_vm.$auth.user().firstname))
+                  ]),
+                  _vm._v(" "),
+                  _c("hr")
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _c("HomePageEdit"),
+            _vm._v(" "),
+            _c("navbottom")
+          ],
+          1
+        )
+      ])
     : _vm._e()
 }
 var staticRenderFns = [
@@ -96163,6 +96421,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _websanova_vue_auth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @websanova/vue-auth */ "./node_modules/@websanova/vue-auth/src/index.js");
+/* harmony import */ var _websanova_vue_auth__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_websanova_vue_auth__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var vue_axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-axios */ "./node_modules/vue-axios/dist/vue-axios.min.js");
 /* harmony import */ var vue_axios__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vue_axios__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
@@ -96185,10 +96444,21 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.router = _router__WEBPACK_IMPORTED_MO
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_6__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_axios__WEBPACK_IMPORTED_MODULE_5___default.a, axios__WEBPACK_IMPORTED_MODULE_3___default.a);
 axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1";
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(_websanova_vue_auth__WEBPACK_IMPORTED_MODULE_4__["default"], _auth__WEBPACK_IMPORTED_MODULE_7__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(_websanova_vue_auth__WEBPACK_IMPORTED_MODULE_4___default.a, _auth__WEBPACK_IMPORTED_MODULE_7__["default"]);
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   router: _router__WEBPACK_IMPORTED_MODULE_8__["default"]
 }).$mount('#app');
+
+/***/ }),
+
+/***/ "./resources/js/assets/StoryTime.png":
+/*!*******************************************!*\
+  !*** ./resources/js/assets/StoryTime.png ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/StoryTime.png?847ce50f5d154cdafda793a1fc4ee882";
 
 /***/ }),
 
@@ -97057,8 +97327,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\tmaas\git\Database-Systems\DATABASE-PROJECT\laravel-shell\laravel\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\tmaas\git\Database-Systems\DATABASE-PROJECT\laravel-shell\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\User\git\Database-Systems\DATABASE-PROJECT\laravel-shell\laravel\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\User\git\Database-Systems\DATABASE-PROJECT\laravel-shell\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

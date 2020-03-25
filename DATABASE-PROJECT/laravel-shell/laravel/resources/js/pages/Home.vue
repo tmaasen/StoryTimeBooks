@@ -3,12 +3,15 @@
   <head>
     <title>StoryTime | Home</title>
   </head>
-  <navtop />
-  <div v-if="$auth.check()">
-    <h1 class="welcomeMessage">Hello, {{ $auth.user().firstname }}</h1>
-    <hr />
-  </div>
-  <navbottom />
+  <body style="height:100%; width:100%">
+    <navtop />
+    <div v-if="$auth.check()">
+      <h1 class="welcomeMessage">Hello, {{ $auth.user().firstname }}</h1>
+      <hr />
+    </div>
+    <HomePageEdit />
+    <navbottom />
+  </body>
 </div>
 </template>
    
@@ -20,7 +23,7 @@ import navbottom from "../components/navbottom";
 export default {
   data() {
     return {
-      firstname: ''
+      firstname: ""
     };
   },
   mounted() {
@@ -30,7 +33,7 @@ export default {
     navtop,
     HomePageEdit,
     navbottom
-  },
+  }
 };
 </script>
 <style>
