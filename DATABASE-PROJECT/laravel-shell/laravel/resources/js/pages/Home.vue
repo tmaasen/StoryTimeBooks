@@ -21,7 +21,7 @@ import navbottom from "../components/navbottom";
 export default {
   data() {
     return {
-      firstname: ''
+      firstname: ""
     };
   },
   mounted() {
@@ -31,7 +31,7 @@ export default {
     navtop,
     HomePageEdit,
     navbottom
-  },
+  }
 };
 </script>
 <style>
