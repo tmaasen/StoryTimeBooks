@@ -11,7 +11,7 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
-    public function testDBConnection()
+    public function testBasicTest()
     {
         $this->assertTrue(true);
     }

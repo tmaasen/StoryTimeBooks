@@ -4,13 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Hash;
-
-
 
 class LoginController extends Controller
 {
@@ -24,7 +18,15 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
+
     use AuthenticatesUsers;
+
+    /**
+     * Where to redirect users after login.
+     *
+     * @var string
+     */
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -35,29 +37,4 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-
-    /**
-     * Handle an authentication attempt.
-     *
-     * @param  \Illuminate\Http\Request $request
-     *
-     * @return Response
-     */
-    public function authenticate(Request $request)
-    {
-        $email = $request->input('email');
-        $password = bcrypt($request->input('password'));
-        // $credentials = $request->only('email', 'password');
-        $credentials = [$email, $password];
-        Log::info($credentials);
-        
-        if (Auth::attempt(['Email' => $email, 'PasswordHash' => $password])) {
-            // Authentication passed...
-            return view('welcome');
-        } else {
-            return redirect()->back()->withInput()->withErrors([ 'password' => "These credentials do not match our records." ]);
-
-        }
-    }
-   
 }

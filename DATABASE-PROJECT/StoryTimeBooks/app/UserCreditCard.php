@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserCreditCard extends Model
 {
-        /**
+    /**
      * The table associated with the model.
      *
      * @var string
@@ -18,14 +18,8 @@ class UserCreditCard extends Model
      * @var array
      */
     protected $fillable = [
-        'CardType', 'CardNumberHash', 'ExpMonth' , 'ExpYear',
+        'card_type', 'card_number', 'exp_month' , 'exp_year',
     ];
-     /**
-     * The primary key associated with the table.
-     *
-     * @var string
-     */
-    protected $primaryKey = 'CardID';
 
     /**
      * Indicates if the model should be timestamped.
@@ -33,6 +27,4 @@ class UserCreditCard extends Model
      * @var bool
      */
     public $timestamps = true;
-    const CreatedAt = 'creation_date';
-    const UpdatedAt = 'last_update';
 }

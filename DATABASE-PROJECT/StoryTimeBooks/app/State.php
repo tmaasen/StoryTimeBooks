@@ -11,12 +11,5 @@ class State extends Model
      *
      * @var string
      */
-    public $table = 'state';
-     
-     /**
-     * The primary key associated with the table.
-     *
-     * @var string
-     */
-    protected $primaryKey = 'StateID';
+    public $table = 'states';
 }

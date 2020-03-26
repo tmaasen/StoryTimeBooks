@@ -1,7 +1,5 @@
 @extends('layouts.app')
-<head>
-    <title>StoryTime | Reset Password</title>
-</head>
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

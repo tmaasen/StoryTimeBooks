@@ -160,13 +160,30 @@
         <p>As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.</p>
         <p style="font-size: 30px">
           Back to
-          <a href="/signup" style="text-decoration: underline">Register</a>
+          <router-link to="register">
+          <a href="#">Register</a>
+          </router-link>
         </p>
       </div>
     </div>
   </div>
 </div>
 </template>
+
+<style>
+a {
+  color: #3490dc;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+a:hover {
+  color: #1d68a7;
+  text-decoration: underline;
+  background-color: transparent;
+
+}
+</style>
 
 <script>
 import authnav from '../components/authnav'

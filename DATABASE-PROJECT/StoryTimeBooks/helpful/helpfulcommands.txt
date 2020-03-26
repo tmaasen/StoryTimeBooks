@@ -8,7 +8,14 @@ php artisan serve
 composer update // refreshes and updates all project dependencies
 composer dump-autoload // autolaods all the model tables from the db once you have configured them
 
+php artisan migrate // will run migrations of tables to the database
+php artisan migrate:rollback // will rollback 1 migration iteration, in case a small change needed to be made after the migration was executed
+
+http://127.0.0.1:8000/telescope/requests will take you to our Telescope...our monitoring / debugging tool
+
 ---MySQL Helpful Hints---
+Modifying column order: 'ALTER TABLE tableName MODIFY columnName columnDataType AFTER columnName;'
+Make an admin user: 'UPDATE tableName SET columnName = value WHERE columnName = value;'
 mysql root password: CaptainMarvel1!
 test account email: tmaasen@gmail.com
 test account password: test12345

@@ -18,14 +18,14 @@ class UserAddress extends Model
      * @var array
      */
     protected $fillable = [
-        'AddressLine1', 'SuiteNo', 'City',
-        'RowGuid', 'HomePhone', 'WorkPhone',
+        'address_line_1', 'suite_no', 'city', 'zipcode',
+        'rowguid', 'home_phone', 'work_phone',
     ];
 
     /**
-     * The primary key associated with the table.
+     * Indicates if the model should be timestamped.
      *
-     * @var string
+     * @var bool
      */
-    protected $primaryKey = 'AddressID';
+    public $timestamps = false;
 }
