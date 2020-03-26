@@ -85,10 +85,19 @@
                 <span></span>
               </h5>
 
-              <a href="mailto:haseokwoo@gmail.com" style="color:white" title="Email Seokwoo" target="_blank">Email Us</a>
-              
+              <a
+                href="mailto:haseokwoo@gmail.com"
+                style="color:white"
+                title="Email Seokwoo"
+                target="_blank"
+              >Email Us</a>
+
               <p>100 Opportunity Ave. Point Lookout, MO 65726, US</p>
-              <p>If you <strong> forgot your password </strong> or would like to <strong>become an admin</strong>, please call us at one of the numbers below.</p>
+              <p>
+                If you
+                <strong>forgot your password</strong> or would like to
+                <strong>become an admin</strong>, please call us at one of the numbers below.
+              </p>
               <p>
                 +1 573 694 7085
                 <br />+1 417 920 9524
@@ -156,9 +165,9 @@
 
 <script>
 export default {
-    mounted() {
-      console.log('navbottom mounted');
-    },
+  mounted() {
+    console.log("navbottom mounted");
+  }
 };
 </script>
 
@@ -175,22 +184,24 @@ a:hover {
 }
 
 /* Main Footer */
-footer .main-footer {
+/*footer .main-footer {
   padding-top: 20px;
   background: #252525;
-  position:absolute;
-  bottom:0px;
-  height:400px;
-  left:0px;
-  right:0px;
-  overflow:hidden;
-}
+  position: absolute;
+  bottom: 0px;
+  height: 400px;
+  left: 0px;
+  right: 0px;
+  overflow: hidden;
+}*/
 .footer-1 {
-  position: absolute; /* Could be problematic when adding more content */
+  position: relative;
   bottom: 0;
   min-width: 100%;
   max-width: 100%;
   max-height: 100%;
+  padding-top: 20px;
+  background: #252525;
 }
 footer ul {
   padding-left: 0;

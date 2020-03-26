@@ -11,7 +11,7 @@
     },
     "devDependencies": {
         "axios": "^0.19.2",
-        "bootstrap": "^4.0.0",
+        "bootstrap": "^4.4.1",
         "cross-env": "^7.0",
         "jquery": "^3.2",
         "laravel-mix": "^5.0.1",
@@ -20,16 +20,18 @@
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.20.1",
         "sass-loader": "^8.0.0",
-        "vue": "^2.5.17",
+        "vue": "^2.6.11",
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
         "@websanova/vue-auth": "^2.22.0-beta",
-        "bootstrap-vue": "^2.7.0",
+        "bootstrap-vue": "^2.9.0",
         "es6-promise": "^4.2.8",
         "vee-validate": "^3.2.5",
         "vue-axios": "^2.1.5",
+        "vue-carousel": "^0.18.0",
         "vue-loading-spinner": "^1.0.11",
-        "vue-router": "^3.1.6"
+        "vue-router": "^3.1.6",
+        "vueperslides": "^2.8.3"
     }
 }

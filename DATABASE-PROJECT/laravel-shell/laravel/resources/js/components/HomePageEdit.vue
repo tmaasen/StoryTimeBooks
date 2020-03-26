@@ -1,80 +1,1178 @@
 <template>
-  <div style="position:absolute; top: 95px; bottom:200px; left:0px; right:0px; overflow:scroll; height: 285px; width: 500px; margin: 0 auto;">
-    <b-carousel
-      id="carousel-1"
-      v-model="slide"
-      :interval="4000"
-      controls
-      indicators
-      background="#ababab"
-      img-width="auto"
-      img-height="auto"
-      style="text-shadow: 1px 1px 2px #333;"
-      @sliding-start="onSlideStart"
-      @sliding-end="onSlideEnd"
-    >
-      <!-- Text slides with image -->
-      <b-carousel-slide
-        caption="First slide"
-        text="Nulla vitae elit libero, a pharetra augue mollis interdum."
-        img-src="https://picsum.photos/1024/480/?image=52"
-      ></b-carousel-slide>
+  <div style="overflow:visible;flex-grow: 1;text-align: center;">
+    <img
+      src="https://dispatch.barnesandnoble.com/content/dam/ccr/homepage/daily/2020/03/17B/Homepage_Billboard_HeroA_03-17.jpg"
+      alt="Trulli"
+      width="80%"
+      height="600px"
+    />
 
-      <!-- Slides with custom text -->
-      <b-carousel-slide class="slideContent" img-src="https://picsum.photos/1024/480/?image=54">
-        <h1>Hello world!</h1>
-      </b-carousel-slide>
+    <div style="width:70%; margin:0 15%; padding:10px;">
+      <p class="title">Computer Sciences</p>
+      <!--Carousel Wrapper-->
+      <div id="computerSience" class="carousel slide carousel-multi-item" data-ride="carousel">
+        <!--Controls-->
+        <div style="margin:auto">
+          <a
+            class="carousel-control left carousel-control-prev"
+            href="#computerSience"
+            data-slide="prev"
+            style="color:red;outline: black;"
+          ></a>
+          <i class="fa fa-angle-left"></i>
+        </div>
+        <div style="margin:auto">
+          <a
+            class="carousel-control right carousel-control-next"
+            href="#computerSience"
+            data-slide="next"
+            style="color:red;outline: black;"
+          ></a>
+          <i class="fa fa-angle-right"></i>
+        </div>
+        <!--/.Controls-->
 
-      <!-- Slides with image only -->
-      <b-carousel-slide class="slideContent" img-src="https://picsum.photos/1024/480/?image=58"></b-carousel-slide>
+        <!--Slides-->
+        <div class="carousel-inner" role="listbox">
+          <!--First slide-->
+          <div class="carousel-item active">
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
 
-      <!-- Slides with img slot -->
-      <!-- Note the classes .d-block and .img-fluid to prevent browser default image alignment -->
-      <b-carousel-slide>
-        <template v-slot:img>
-          <img
-            class="d-block img-fluid w-100 slideContent"
-            width="auto"
-            height="auto"
-            src="https://picsum.photos/1024/480/?image=55"
-            alt="image slot"
-          />
-        </template>
-      </b-carousel-slide>
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
 
-      <!-- Slide with blank fluid image to maintain slide aspect ratio -->
-      <b-carousel-slide class="slideContent" caption="Blank Image" img-blank img-alt="Blank image">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eros felis, tincidunt
-          a tincidunt eget, convallis vel est. Ut pellentesque ut lacus vel interdum.
-        </p>
-      </b-carousel-slide>
-    </b-carousel>
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--/.First slide-->
+
+          <!--Second slide-->
+          <div class="carousel-item">
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--/.Second slide-->
+
+          <!--Third slide-->
+          <div class="carousel-item">
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--/.Third slide-->
+        </div>
+        <!--/.Slides-->
+      </div>
+      <!--/.Carousel Wrapper-->
+    </div>
+
+    <div style="width:70%; margin:1% 15%; padding:10px;">
+      <p class="title">Business</p>
+      <!--Carousel Wrapper-->
+      <div id="business" class="carousel slide carousel-multi-item" data-ride="carousel">
+        <!--Controls-->
+        <div style="margin:auto">
+          <a
+            class="carousel-control left carousel-control-prev"
+            href="#business"
+            data-slide="prev"
+            style="color:red;outline: black;"
+          ></a>
+          <i class="fa fa-angle-left"></i>
+        </div>
+        <div style="margin:auto">
+          <a
+            class="carousel-control right carousel-control-next"
+            href="#business"
+            data-slide="next"
+            style="color:red;outline: black;"
+          ></a>
+          <i class="fa fa-angle-right"></i>
+        </div>
+        <!--/.Controls-->
+
+        <!--Slides-->
+        <div class="carousel-inner" role="listbox">
+          <!--First slide-->
+          <div class="carousel-item active">
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--/.First slide-->
+
+          <!--Second slide-->
+          <div class="carousel-item">
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--/.Second slide-->
+
+          <!--Third slide-->
+          <div class="carousel-item">
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--/.Third slide-->
+        </div>
+        <!--/.Slides-->
+      </div>
+      <!--/.Carousel Wrapper-->
+    </div>
+
+    <div style="width:70%; margin:0 15%; padding:10px;">
+      <p class="title">Psychology</p>
+      <!--Carousel Wrapper-->
+      <div id="psychology" class="carousel slide carousel-multi-item" data-ride="carousel">
+        <!--Controls-->
+        <div style="margin:auto">
+          <a
+            class="carousel-control left carousel-control-prev"
+            href="#psychology"
+            data-slide="prev"
+            style="color:red;outline: black;"
+          ></a>
+          <i class="fa fa-angle-left"></i>
+        </div>
+        <div style="margin:auto">
+          <a
+            class="carousel-control right carousel-control-next"
+            href="#psychology"
+            data-slide="next"
+            style="color:red;outline: black;"
+          ></a>
+          <i class="fa fa-angle-right"></i>
+        </div>
+        <!--/.Controls-->
+
+        <!--Slides-->
+        <div class="carousel-inner" role="listbox">
+          <!--First slide-->
+          <div class="carousel-item active">
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--/.First slide-->
+
+          <!--Second slide-->
+          <div class="carousel-item">
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--/.Second slide-->
+
+          <!--Third slide-->
+          <div class="carousel-item">
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--/.Third slide-->
+        </div>
+        <!--/.Slides-->
+      </div>
+      <!--/.Carousel Wrapper-->
+    </div>
+
+    <div style="width:70%; margin:0 15%; padding:10px;">
+      <p class="title">Engineering</p>
+      <!--Carousel Wrapper-->
+      <div id="engineering" class="carousel slide carousel-multi-item" data-ride="carousel">
+        <!--Controls-->
+        <div style="margin:auto">
+          <a
+            class="carousel-control left carousel-control-prev"
+            href="#engineering"
+            data-slide="prev"
+            style="color:red;outline: black;"
+          ></a>
+          <i class="fa fa-angle-left"></i>
+        </div>
+        <div style="margin:auto">
+          <a
+            class="carousel-control right carousel-control-next"
+            href="#engineering"
+            data-slide="next"
+            style="color:red;outline: black;"
+          ></a>
+          <i class="fa fa-angle-right"></i>
+        </div>
+        <!--/.Controls-->
+
+        <!--Slides-->
+        <div class="carousel-inner" role="listbox">
+          <!--First slide-->
+          <div class="carousel-item active">
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--/.First slide-->
+
+          <!--Second slide-->
+          <div class="carousel-item">
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--/.Second slide-->
+
+          <!--Third slide-->
+          <div class="carousel-item">
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--/.Third slide-->
+        </div>
+        <!--/.Slides-->
+      </div>
+      <!--/.Carousel Wrapper-->
+    </div>
+
+    <div style="width:70%; margin:0 15%; padding:10px;">
+      <p class="title">Music / Theatre</p>
+      <!--Carousel Wrapper-->
+      <div id="musicTheatre" class="carousel slide carousel-multi-item" data-ride="carousel">
+        <!--Controls-->
+        <div style="margin:auto">
+          <a
+            class="carousel-control left carousel-control-prev"
+            href="#musicTheatre"
+            data-slide="prev"
+            style="color:red;outline: black;"
+          ></a>
+          <i class="fa fa-angle-left"></i>
+        </div>
+        <div style="margin:auto">
+          <a
+            class="carousel-control right carousel-control-next"
+            href="#musicTheatre"
+            data-slide="next"
+            style="color:red;outline: black;"
+          ></a>
+          <i class="fa fa-angle-right"></i>
+        </div>
+        <!--/.Controls-->
+
+        <!--Slides-->
+        <div class="carousel-inner" role="listbox">
+          <!--First slide-->
+          <div class="carousel-item active">
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--/.First slide-->
+
+          <!--Second slide-->
+          <div class="carousel-item">
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--/.Second slide-->
+
+          <!--Third slide-->
+          <div class="carousel-item">
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img
+                  class="card-img-top"
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--/.Third slide-->
+        </div>
+        <!--/.Slides-->
+      </div>
+      <!--/.Carousel Wrapper-->
+    </div>
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      slide: 0,
-      sliding: null
-    };
-  },
-  methods: {
-    onSlideStart(slide) {
-      this.sliding = true;
-    },
-    onSlideEnd(slide) {
-      this.sliding = false;
-    }
-  }
-};
-</script>
-
 <style>
 .img-fluid {
-    max-width: 100%;
-    height: 285px;
+  max-width: 100%;
+  height: 285px;
+}
+
+.col-md-4 {
+  float: left;
+}
+
+.carousel-control-prev {
+  position: absolute;
+  height: 30%;
+  overflow: visible !important;
+  left: -170px !important;
+  top: 30% !important;
+}
+
+.carousel-control-next {
+  position: absolute;
+  height: 30%;
+  overflow: visible !important;
+  right: -170px !important;
+  top: 30% !important;
+}
+
+.carousel-control-next:after {
+  content: ">";
+  font-size: 55px;
+  color: white;
+  background-color: grey;
+}
+
+.carousel-control-prev:after {
+  content: "<";
+  font-size: 55px;
+  color: white;
+  background-color: grey;
+}
+
+.title {
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 4%;
+  font-size: 50px;
 }
 </style>
