@@ -83694,7 +83694,7 @@ var render = function() {
                     },
                     [
                       _vm._v(" "),
-                      _vm.$auth.check(2)
+                      _vm.$auth.user().role === 2
                         ? _c(
                             "b-dropdown-item-button",
                             [
@@ -101111,8 +101111,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\tmaas\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\tmaas\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\User\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\User\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
