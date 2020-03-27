@@ -3426,6 +3426,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3519,65 +3521,69 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      components: {
-        navtop: _components_navtop__WEBPACK_IMPORTED_MODULE_0__["default"],
-        navbottom: _components_navbottom__WEBPACK_IMPORTED_MODULE_1__["default"]
-      },
-      items: [{
-        heading1: "table cell",
-        heading2: "table cell",
-        heading3: "table cell"
-      }, {
-        heading1: "table cell",
-        heading2: "table cell",
-        heading3: "table cell"
-      }, {
-        heading1: "table cell",
-        heading2: "table cell",
-        heading3: "table cell"
-      }, {
-        heading1: "table cell",
-        heading2: "table cell",
-        heading3: "table cell"
-      }, {
-        heading1: "table cell",
-        heading2: "table cell",
-        heading3: "table cell"
-      }, {
-        heading1: "table cell",
-        heading2: "table cell",
-        heading3: "table cell"
-      }, {
-        heading1: "table cell",
-        heading2: "table cell",
-        heading3: "table cell"
-      }, {
-        heading1: "table cell",
-        heading2: "table cell",
-        heading3: "table cell"
-      }, {
-        heading1: "table cell",
-        heading2: "table cell",
-        heading3: "table cell"
-      }, {
-        heading1: "table cell",
-        heading2: "table cell",
-        heading3: "table cell"
-      }, {
-        heading1: "table cell",
-        heading2: "table cell",
-        heading3: "table cell"
-      }, {
-        heading1: "table cell",
-        heading2: "table cell",
-        heading3: "table cell"
-      }]
+      perPage: 8,
+      currentPage: 1,
+      users: []
     };
+  },
+  components: {
+    navtop: _components_navtop__WEBPACK_IMPORTED_MODULE_0__["default"],
+    navbottom: _components_navbottom__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  computed: {
+    rows: function rows() {
+      return this.users.length;
+    }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    // async function getAdminData() {
+    //   const response = await Promise.all([
+    //     axios.get("http://127.0.0.1:8000/api/v1/auth/users")
+    //     .then(response => {
+    //     this.users = response.data.users;
+    //     console.log(response)
+    //     })
+    //     .then(error => {
+    //       console.log(error);
+    //     }),
+    //     //axios.get("/some_url_endpoint") // next axios await request goes here
+    //   ]);
+    // }
+    axios.get("http://127.0.0.1:8000/api/v1/auth/users").then(function (response) {
+      _this.users = response.data.users; // this.First_Name = response.data.users.firstname;
+      // this.Last_Name = response.data.users.lastname;
+
+      console.log(response);
+    }).then(function (error) {
+      console.log(error);
+    });
   }
 });
 
@@ -83694,14 +83700,18 @@ var render = function() {
                     },
                     [
                       _vm._v(" "),
-                      _vm.$auth.user().role === 2
+                      _vm.$auth.user().role === "2"
                         ? _c(
                             "b-dropdown-item-button",
                             [
                               _c("b-icon", {
                                 attrs: { icon: "blank", "aria-hidden": "true" }
                               }),
-                              _vm._v("Admin\n            "),
+                              _vm._v(" "),
+                              _c("a", { attrs: { href: "/admin" } }, [
+                                _vm._v("Admin")
+                              ]),
+                              _vm._v(" "),
                               _c("span", { staticClass: "sr-only" }, [
                                 _vm._v("(Not selected)")
                               ])
@@ -83717,7 +83727,11 @@ var render = function() {
                               _c("b-icon", {
                                 attrs: { icon: "blank", "aria-hidden": "true" }
                               }),
-                              _vm._v("Profile\n            "),
+                              _vm._v(" "),
+                              _c("a", { attrs: { href: "/profile" } }, [
+                                _vm._v("Profile")
+                              ]),
+                              _vm._v(" "),
                               _c("span", { staticClass: "sr-only" }, [
                                 _vm._v("(Not selected)")
                               ])
@@ -83821,10 +83835,43 @@ var render = function() {
       _c(
         "div",
         [
+          _c("br"),
+          _vm._v(" "),
+          _c("h1", { staticStyle: { "text-align": "center" } }, [
+            _vm._v("Welcome, Administrator")
+          ]),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _c("b-pagination", {
+            attrs: {
+              "total-rows": _vm.rows,
+              "per-page": _vm.perPage,
+              "aria-controls": "users-table"
+            },
+            model: {
+              value: _vm.currentPage,
+              callback: function($$v) {
+                _vm.currentPage = $$v
+              },
+              expression: "currentPage"
+            }
+          }),
+          _vm._v(" "),
+          _c("p", { staticClass: "mt-3" }, [
+            _vm._v("Current Page: " + _vm._s(_vm.currentPage))
+          ]),
+          _vm._v(" "),
           _c("b-table", {
             attrs: {
+              id: "users-table",
+              "per-page": _vm.perPage,
+              "current-page": _vm.currentPage,
+              medium: "",
               "sticky-header": "",
-              items: _vm.items,
+              striped: "",
+              hover: "",
+              items: _vm.users,
               "head-variant": "light"
             }
           })
@@ -100232,8 +100279,8 @@ var config = {
   },
   fetchData: {
     url: 'auth/user',
-    method: 'GET' //enabled: true
-
+    method: 'GET',
+    enabled: true
   },
   refreshData: {
     url: 'auth/refresh',
@@ -101111,8 +101158,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\User\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\User\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\tmaas\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\tmaas\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

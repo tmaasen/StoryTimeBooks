@@ -31,6 +31,8 @@ Route::middleware('auth:api')->group(function () {
 Route::get('user', 'AuthController@user');
 // Logout user from application
 Route::post('logout', 'AuthController@logout');
+// Get all users info
+Route::get('users', 'Users\UserController@allUsers');
         });
     });
 });

@@ -37,13 +37,15 @@
               <span v-if="!$auth.check()">My Account</span>
             </template>
 
-            <b-dropdown-item-button v-if="$auth.user().role === 2">
-              <b-icon icon="blank" aria-hidden="true"></b-icon>Admin
+            <b-dropdown-item-button v-if="$auth.user().role === '2'">
+              <b-icon icon="blank" aria-hidden="true"></b-icon>
+              <a href="/admin">Admin</a>
               <span class="sr-only">(Not selected)</span>
             </b-dropdown-item-button>
             
             <b-dropdown-item-button v-if="$auth.check()">
-              <b-icon icon="blank" aria-hidden="true"></b-icon>Profile
+              <b-icon icon="blank" aria-hidden="true"></b-icon>
+              <a href="/profile">Profile</a>
               <span class="sr-only">(Not selected)</span>
             </b-dropdown-item-button>
 

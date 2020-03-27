@@ -60,18 +60,6 @@ class AuthController extends Controller
         ], 200);
     }
     /**
-     * Returns ALL users. THIS WILL BE AN ADMIN FUNCTION
-     */
-    public function index()
-    {
-        $users = User::all();
-        return response()->json(
-            [
-                'status' => 'success',
-                'users' => $users->toArray()
-            ], 200);
-    }
-    /**
      * Get authenticated user
      */
     public function user(Request $id)

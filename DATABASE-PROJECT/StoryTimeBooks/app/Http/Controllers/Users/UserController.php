@@ -17,4 +17,16 @@ class UserController extends Controller
     {
         return view('welcome', ['user' => User::findOrFail($id)]);
     }
+    /**
+     * Returns ALL users. THIS WILL BE AN ADMIN FUNCTION
+     */
+    public function allUsers()
+    {
+        $users = User::all();
+        return response()->json(
+            [
+                'status' => 'success',
+                'users' => $users
+            ], 200);
+    }
 }

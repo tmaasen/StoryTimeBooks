@@ -19,6 +19,7 @@ http://127.0.0.1:8000/telescope/requests will take you to our Telescope...our mo
 
 ---MySQL Helpful Hints---
 Modifying column order: 'ALTER TABLE tableName MODIFY columnName columnDataType AFTER columnName;'
+Changing column name: 'ALTER TABLE users CHANGE oldColumnName newColumnName newColumnDataType;'
 Make an admin user: 'UPDATE tableName SET columnName = value WHERE columnName = value;'
 mysql root password: CaptainMarvel1!
 test account email: tmaasen@gmail.com
