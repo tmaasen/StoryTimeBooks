@@ -85,6 +85,7 @@ export default {
     },
     methods: {
       login() {
+        this.$Progress.start();
         // get the redirect object
         var redirect = this.$auth.redirect()
         var app = this
@@ -98,10 +99,12 @@ export default {
             app.success = true
             const redirectTo = redirect ? redirect.from.name : this.$auth.user().role === 2 ? 'admin' : 'Home'            
             this.$router.push({name: 'Home'})
+            this.$Progress.finish();
           },
           error: function(res) {
             app.has_error = true
             app.error = res.data
+            this.$Progress.fail();
           },
           rememberMe: true,
           fetchUser: true

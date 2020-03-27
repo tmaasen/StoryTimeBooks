@@ -11,6 +11,10 @@ composer dump-autoload // autolaods all the model tables from the db once you ha
 php artisan migrate // will run migrations of tables to the database
 php artisan migrate:rollback // will rollback 1 migration iteration, in case a small change needed to be made after the migration was executed
 
+php artisan db:seed // seeds all tables with data where seed classed are defined
+php artisan db:seed --className // seed a specific table
+NOTE: If you are trying to seed a table with a foreign key, and that FK's table has no data in it...it will stack trace
+
 http://127.0.0.1:8000/telescope/requests will take you to our Telescope...our monitoring / debugging tool
 
 ---MySQL Helpful Hints---
@@ -23,3 +27,95 @@ test account password: test12345
 ---VS Code Shortcuts---
 Ctrl+Alt+Shift+J :: selects all occurances of something in a file
 Alt+Shift+F :: autoformats code
+
+---npm commands---
+In case node_modules are crashing out and u need a full reset:
+    rm node_modules
+    rm package-lock.json yarn.lock
+    npm cache clear --force
+    npm install
+Starting work on the project and need to recompile app.js often
+    npm run watch
+
+
+
+Insert states into states table SQL command:
+
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('1', 'AL');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('2', 'AK');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('3', 'AZ');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('4', 'AR');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('5', 'CA');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('6', 'CO');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('7', 'CT');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('8', 'DE');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('9', 'FL');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('10', 'GA');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('11', 'HI');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('12', 'ID');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('13', 'IL');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('14', 'IN');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('15', 'IA');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('16', 'KS');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('17', 'KY');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('18', 'LA');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('19', 'ME');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('20', 'MD');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('21', 'MA');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('22', 'MI');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('23', 'MN');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('24', 'MS');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('25', 'MO');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('26', 'MT');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('27', 'NE');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('28', 'NV');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('29', 'NH');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('30', 'NJ');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('31', 'NM');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('32', 'NY');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('33', 'NC');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('34', 'ND');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('35', 'OH');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('36', 'OK');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('37', 'OR');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('38', 'PA');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('39', 'RI');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('40', 'SC');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('41', 'SD');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('42', 'TN');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('43', 'TX');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('44', 'UT');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('45', 'VT');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('46', 'VA');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('47', 'WA');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('48', 'WV');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('49', 'WI');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('50', 'WY');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('51', 'PR');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('52', 'GU');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('53', 'VI');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('54', 'MP');
+INSERT INTO `storytimebooks`.`states` (`id`, `state`) VALUES ('55', 'AS');
+
+Insert categories into the product_categories table:
+
+INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('1', 'Non-Fiction');
+INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('2', 'Fiction');
+INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('3', 'Children');
+INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('4', 'Biography');
+INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('5', 'Business');
+INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('6', 'Technology');
+INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('7', 'Cooking');
+INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('8', 'Medical');
+INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('9', 'Religion');
+INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('10', 'Philosophy');
+INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('11', 'Romance');
+INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('12', 'Politics');
+INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('13', 'Sports');
+INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('14', 'Science');
+INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('15', 'Science-Fiction');
+INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('16', 'Self-Help');
+INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('17', 'Magazine');
+INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('18', 'Family');
+INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('19', 'Crime');
+INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('20', 'Comics');

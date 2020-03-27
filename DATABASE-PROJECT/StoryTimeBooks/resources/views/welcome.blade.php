@@ -9,6 +9,7 @@
     <body>
         <div id="app">
             <router-view></router-view>
+            {{-- <vue-progress-bar></vue-progress-bar> --}}
         </div>
             <script type="text/javascript" src="js/app.js"></script>
             <script type="text/css" src="js/bootstrap.js"></script>

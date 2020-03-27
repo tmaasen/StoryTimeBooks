@@ -37,6 +37,11 @@
               <span v-if="!$auth.check()">My Account</span>
             </template>
 
+            <b-dropdown-item-button v-if="$auth.user().role === 2">
+              <b-icon icon="blank" aria-hidden="true"></b-icon>Admin
+              <span class="sr-only">(Not selected)</span>
+            </b-dropdown-item-button>
+            
             <b-dropdown-item-button v-if="$auth.check()">
               <b-icon icon="blank" aria-hidden="true"></b-icon>Profile
               <span class="sr-only">(Not selected)</span>
@@ -80,7 +85,7 @@ export default {
           { name: "Login", path: "login" }
         ],
         // LOGGED USER
-        user: [{ name: "Dashboard", path: "dashboard" }],
+        user: [{ name: "Home", path: "home" }],
         // LOGGED ADMIN
         admin: [{ name: "Dashboard", path: "admin.dashboard" }]
       },
@@ -97,15 +102,21 @@ export default {
   },
   methods: {
     logout() {
+      this.$Progress.start();
       this.$auth.logout({
         makeRequest: true,
         params: {
           name: ""
         }, // data: {} in axios
-        success: function() {},
-        error: function() {},
+        success: function() {
+          this.$Progress.finish();
+        },
+        error: function() {
+          this.$Progress.fail();
+        },
         redirect: "/login"
       });
+      this.$Progress.finish();
     }
   }
 };
