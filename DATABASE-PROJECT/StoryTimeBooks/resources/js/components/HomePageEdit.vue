@@ -1143,12 +1143,16 @@
   float: left;
 }
 
-/* .card {
-  height: 540px;
-} */
+.card {
+  height: 550px;
+}
 
 .card-title {
   margin-top: 10%;
+  margin-right: auto;
+  margin-left: auto;
+  width: 200px;
+  text-align: center;
 }
 .carousel-control-prev {
   position: absolute;
