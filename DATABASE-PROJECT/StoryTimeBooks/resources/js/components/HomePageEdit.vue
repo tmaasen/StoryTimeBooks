@@ -1144,7 +1144,7 @@
 }
 
 .card {
-  height: 540px;
+  height: 550px;
 }
 
 .card-title {
