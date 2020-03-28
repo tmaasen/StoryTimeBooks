@@ -42,22 +42,27 @@
               <a href="/admin" class="link">Admin</a>
               <span class="sr-only">(Not selected)</span>
             </b-dropdown-item-button>
-            
-            <b-dropdown-item-button v-if="!$auth.check()">
-             <b-icon icon="blank" aria-hidden="false"></b-icon>
-              <a href="/profile" class="link">Profile</a>
-              <span class="sr-only">(Not selected)</span>
-            </b-dropdown-item-button>
 
-            <b-dropdown-item-button v-if="!$auth.check()">
-              <a href="/login" class="link">Login</a>
-              <span class="sr-only">(Not selected)</span>
-            </b-dropdown-item-button>
+            <router-link :to="{name: 'Profile'}">
+              <b-dropdown-item-button v-if="!$auth.check()">
+                Profile
+                <span class="sr-only">(Not selected)</span>
+              </b-dropdown-item-button>
+            </router-link>
 
-            <b-dropdown-item-button v-if="!$auth.check()">
-              <a href="/register" class="link">Register</a>
-              <span class="sr-only">(Not selected)</span>
-            </b-dropdown-item-button>
+            <router-link :to="{name: 'Login'}">
+              <b-dropdown-item-button v-if="!$auth.check()">
+                Login
+                <span class="sr-only">(Not selected)</span>
+              </b-dropdown-item-button>
+            </router-link>
+
+            <router-link :to="{name: 'Register'}">
+              <b-dropdown-item-button v-if="!$auth.check()">
+                Register
+                <span class="sr-only">(Not selected)</span>
+              </b-dropdown-item-button>
+            </router-link>
 
             <!-- Logout -->
             <!-- $auth.check() = unlogged user -->

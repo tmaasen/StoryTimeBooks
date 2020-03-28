@@ -3432,6 +3432,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -84253,64 +84258,57 @@ var render = function() {
                           )
                         : _vm._e(),
                       _vm._v(" "),
-                      !_vm.$auth.check()
-                        ? _c(
-                            "b-dropdown-item-button",
-                            [
-                              _c("b-icon", {
-                                attrs: { icon: "blank", "aria-hidden": "false" }
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "a",
-                                {
-                                  staticClass: "link",
-                                  attrs: { href: "/profile" }
-                                },
-                                [_vm._v("Profile")]
-                              ),
-                              _vm._v(" "),
-                              _c("span", { staticClass: "sr-only" }, [
-                                _vm._v("(Not selected)")
+                      _c(
+                        "router-link",
+                        { attrs: { to: { name: "Profile" } } },
+                        [
+                          !_vm.$auth.check()
+                            ? _c("b-dropdown-item-button", [
+                                _vm._v(
+                                  "\n              Profile\n              "
+                                ),
+                                _c("span", { staticClass: "sr-only" }, [
+                                  _vm._v("(Not selected)")
+                                ])
                               ])
-                            ],
-                            1
-                          )
-                        : _vm._e(),
+                            : _vm._e()
+                        ],
+                        1
+                      ),
                       _vm._v(" "),
-                      !_vm.$auth.check()
-                        ? _c("b-dropdown-item-button", [
-                            _c(
-                              "a",
-                              {
-                                staticClass: "link",
-                                attrs: { href: "/login" }
-                              },
-                              [_vm._v("Login")]
-                            ),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "sr-only" }, [
-                              _vm._v("(Not selected)")
-                            ])
-                          ])
-                        : _vm._e(),
+                      _c(
+                        "router-link",
+                        { attrs: { to: { name: "Login" } } },
+                        [
+                          !_vm.$auth.check()
+                            ? _c("b-dropdown-item-button", [
+                                _vm._v("\n              Login\n              "),
+                                _c("span", { staticClass: "sr-only" }, [
+                                  _vm._v("(Not selected)")
+                                ])
+                              ])
+                            : _vm._e()
+                        ],
+                        1
+                      ),
                       _vm._v(" "),
-                      !_vm.$auth.check()
-                        ? _c("b-dropdown-item-button", [
-                            _c(
-                              "a",
-                              {
-                                staticClass: "link",
-                                attrs: { href: "/register" }
-                              },
-                              [_vm._v("Register")]
-                            ),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "sr-only" }, [
-                              _vm._v("(Not selected)")
-                            ])
-                          ])
-                        : _vm._e(),
+                      _c(
+                        "router-link",
+                        { attrs: { to: { name: "Register" } } },
+                        [
+                          !_vm.$auth.check()
+                            ? _c("b-dropdown-item-button", [
+                                _vm._v(
+                                  "\n              Register\n              "
+                                ),
+                                _c("span", { staticClass: "sr-only" }, [
+                                  _vm._v("(Not selected)")
+                                ])
+                              ])
+                            : _vm._e()
+                        ],
+                        1
+                      ),
                       _vm._v(" "),
                       _vm.$auth.check()
                         ? _c(
@@ -85281,7 +85279,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("head", [
-      _c("title", [_vm._v("StoryTime | User Profile")]),
+      _c("title", [_vm._v("StoryTime | Profile")]),
       _vm._v(" "),
       _c("link", {
         attrs: {
