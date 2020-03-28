@@ -1143,7 +1143,7 @@
   float: left;
 }
 
-.card {
+#card-height {
   height: 550px;
 }
 

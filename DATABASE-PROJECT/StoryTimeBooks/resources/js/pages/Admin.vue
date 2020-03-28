@@ -4,27 +4,30 @@
     <title>StoryTime | Admin</title>
   </head>
   <navtop />
-  <div>
-    <br />
-    <h1 style="text-align:center">Welcome, Administrator</h1>
-    <hr />
+  <br />
+  <h1 style="text-align:center">Welcome, Administrator</h1>
+  <hr />
+  <div id="wrapper">
     <b-pagination
       v-model="currentPage"
       :total-rows="rows"
       :per-page="perPage"
       aria-controls="users-table"
     ></b-pagination>
-    <p class="mt-3">Current Page: {{ currentPage }}</p>
+    <p class="mt-3">Current Page: {{ currentPage }}
+      <b-button class="btn" style="color:white">Add User</b-button>
+    </p>
     <b-table
       id="users-table"
       :per-page="perPage"
       :current-page="currentPage"
-      medium
+      small
       sticky-header
       striped
       hover
       :items="users"
       head-variant="light"
+      class="w-50"
     ></b-table>
   </div>
   <navbottom />
@@ -52,33 +55,23 @@ export default {
     }
   },
   mounted() {
-    // async function getAdminData() {
-    //   const response = await Promise.all([
-    //     axios.get("http://127.0.0.1:8000/api/v1/auth/users")
-    //     .then(response => {
-    //     this.users = response.data.users;
-    //     console.log(response)
-    //     })
-    //     .then(error => {
-    //       console.log(error);
-    //     }),
-    //     //axios.get("/some_url_endpoint") // next axios await request goes here
-    //   ]);
-    // }
+    this.$Progress.start();
     axios
       .get("http://127.0.0.1:8000/api/v1/auth/users")
       .then(response => {
         this.users = response.data.users;
-        // this.First_Name = response.data.users.firstname;
-        // this.Last_Name = response.data.users.lastname;
         console.log(response);
       })
       .then(error => {
         console.log(error);
+        this.$Progress.fail();
       });
+    this.$Progress.finish();
   }
 };
 </script>
 <style>
-
+#wrapper {
+  padding-left: 10px;
+}
 </style>

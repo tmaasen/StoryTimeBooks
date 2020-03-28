@@ -106,7 +106,6 @@ export default {
             app.error = res.data
             this.$Progress.fail();
           },
-          rememberMe: true,
           fetchUser: true
         })
        }
