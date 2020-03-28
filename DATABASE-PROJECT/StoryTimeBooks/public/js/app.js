@@ -3956,22 +3956,204 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       firstname: "",
-      types: ["date"],
       searchFilter: "a",
-      options: [// { value: null, text: "Please select some item" },
-      {
-        value: "a",
-        text: "Male"
-      }, {
-        value: "b",
-        text: "Female"
-      }],
       text: ""
     };
   },
@@ -48120,11 +48302,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-<<<<<<< HEAD
 exports.push([module.i, "\n.card-img-top {\r\n  height: 300px;\r\n  width: 250px;\r\n  margin: auto;\n}\n.img-fluid {\r\n  max-width: 100%;\r\n  height: 285px;\n}\n.col-md-4 {\r\n  float: left;\n}\n.card-title {\r\n  margin-top: 10%;\r\n  margin-right: auto;\r\n  margin-left: auto;\r\n  width: 200px;\r\n  text-align: center;\n}\n.carousel-control-prev {\r\n  position: absolute;\r\n  height: 30%;\r\n  overflow: visible !important;\r\n  left: -170px !important;\r\n  top: 30% !important;\n}\n.carousel-control-next {\r\n  position: absolute;\r\n  height: 30%;\r\n  overflow: visible !important;\r\n  right: -170px !important;\r\n  top: 30% !important;\n}\n.carousel-control-next:after {\r\n  content: \">\";\r\n  font-size: 55px;\r\n  color: white;\r\n  background-color: grey;\n}\n.carousel-control-prev:after {\r\n  content: \"<\";\r\n  font-size: 55px;\r\n  color: white;\r\n  background-color: grey;\n}\n.title {\r\n  text-align: center;\r\n  margin-top: 100px;\r\n  margin-bottom: 4%;\r\n  font-size: 50px;\n}\r\n", ""]);
-=======
-exports.push([module.i, "\n.card-img-top {\r\n  height: 300px;\r\n  width: 250px;\r\n  margin: auto;\n}\n.img-fluid {\r\n  max-width: 100%;\r\n  height: 285px;\n}\n.col-md-4 {\r\n  float: left;\n}\n#card-height {\r\n  height: 550px;\n}\n.card-title {\r\n  margin-top: 10%;\r\n  margin-right: auto;\r\n  margin-left: auto;\r\n  width: 200px;\r\n  text-align: center;\n}\n.carousel-control-prev {\r\n  position: absolute;\r\n  height: 30%;\r\n  overflow: visible !important;\r\n  left: -170px !important;\r\n  top: 30% !important;\n}\n.carousel-control-next {\r\n  position: absolute;\r\n  height: 30%;\r\n  overflow: visible !important;\r\n  right: -170px !important;\r\n  top: 30% !important;\n}\n.carousel-control-next:after {\r\n  content: \">\";\r\n  font-size: 55px;\r\n  color: white;\r\n  background-color: grey;\n}\n.carousel-control-prev:after {\r\n  content: \"<\";\r\n  font-size: 55px;\r\n  color: white;\r\n  background-color: grey;\n}\n.title {\r\n  text-align: center;\r\n  margin-top: 100px;\r\n  margin-bottom: 4%;\r\n  font-size: 50px;\n}\r\n", ""]);
->>>>>>> af039f556bec469e74876681af1ead50b7391ce2
 
 // exports
 
@@ -48238,7 +48416,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.profileBody {\r\n  border: 1px solid black;\r\n  width: 80%;\r\n  margin: auto;\r\n  padding-left: 15%;\n}\n.profileContent {\r\n  margin: 5% 5%;\n}\n#input-large {\r\n  width: 500px;\n}\n#textarea {\r\n  width: 500px;\n}\n.birthday {\r\n  width: 500px;\n}\n.label {\r\n  text-align: left;\r\n  margin-top: auto;\r\n  font-weight: bold;\n}\n.submitButton {\r\n  margin-top: 2%;\n}\n#submit {\r\n  width: 700px;\n}\n.bio {\r\n  height: 200px;\n}\n.bioLabel {\r\n  margin: auto;\n}\n.profileTitle {\r\n  font-size: 40px;\r\n  margin-bottom: 5%;\r\n  border-bottom: 3px solid black;\r\n  padding: 10 10 4px;\r\n  width: 700px;\n}\r\n", ""]);
+exports.push([module.i, "\n.creditInput {\r\n  margin-bottom: 5%;\n}\n.row1 { /* IE10 */\r\n  display: flex; /* IE10 */\r\n  flex-wrap: wrap;\r\n  margin: 0 -16px;\n}\n.col-25 { /* IE10 */\r\n  flex: 25%;\n}\n.col-50 { /* IE10 */\r\n  flex: 50%;\n}\n.col-75 { /* IE10 */\r\n  flex: 75%;\n}\n.col-25,\r\n.col-50,\r\n.col-75 {\r\n  padding: 0 16px;\n}\n.container1 {\r\n  background-color: #f2f2f2;\r\n  padding: 5px 20px 15px 20px;\r\n  border: 1px solid lightgrey;\r\n  border-radius: 3px;\n}\nlabel {\r\n  margin-bottom: 10px;\r\n  display: block;\n}\n.icon-container {\r\n  margin-bottom: 20px;\r\n  padding: 7px 0;\r\n  font-size: 24px;\n}\n.btn1 {\r\n  background-color: #ff8d1e;\r\n  color: white;\r\n  padding: 12px;\r\n  margin: 70px 0 10px 0;\r\n  border: none;\r\n  width: 100%;\r\n  border-radius: 3px;\r\n  cursor: pointer;\r\n  font-size: 17px;\n}\n.btn1:hover {\r\n  background-color: #45a049;\n}\na {\r\n  color: #2196f3;\n}\nhr {\r\n  border: 1px solid lightgrey;\n}\nspan.price {\r\n  float: right;\r\n  color: grey;\n}\r\n\r\n/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the \"cart\" column go on top) */\n@media (max-width: 800px) {\n.row1 {\r\n    flex-direction: column-reverse;\n}\n.col-25 {\r\n    margin-bottom: 20px;\n}\n}\n.profileBody {\r\n  border: 1px solid black;\r\n  width: 80%;\r\n  margin: auto;\r\n  padding-left: 15%;\r\n  font-family: Arial;\r\n  font-size: 16px;\n}\n.profileContent {\r\n  margin: 5% 25% 5% 0%;\n}\n#input-large {\r\n  width: 500px;\n}\n#textarea {\r\n  width: 500px;\n}\n.birthday {\r\n  width: 500px;\n}\n.label {\r\n  text-align: left;\r\n  margin-top: auto;\r\n  font-weight: bold;\n}\n.bio {\r\n  height: 200px;\n}\n.bioLabel {\r\n  margin: auto;\n}\n.profileTitle {\r\n  font-size: 40px;\r\n  margin-bottom: 5%;\r\n  border-bottom: 3px solid black;\r\n  padding: 10 10 4px;\r\n  width: 760px;\n}\r\n", ""]);
 
 // exports
 
@@ -84075,7 +84253,7 @@ var render = function() {
                           )
                         : _vm._e(),
                       _vm._v(" "),
-                      _vm.$auth.check()
+                      !_vm.$auth.check()
                         ? _c(
                             "b-dropdown-item-button",
                             [
@@ -84632,6 +84810,80 @@ var render = function() {
                   [
                     _c("b-col", { staticClass: "label", attrs: { sm: "2" } }, [
                       _c("label", { attrs: { for: "input-large" } }, [
+                        _vm._v("Home Phone")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "b-col",
+                      { attrs: { sm: "10" } },
+                      [
+                        _c("b-form-input", {
+                          attrs: {
+                            id: "input-large",
+                            size: "lg",
+                            placeholder: "Enter your Home Phone"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-row",
+                  { staticClass: "my-1" },
+                  [
+                    _c("b-col", { staticClass: "label", attrs: { sm: "2" } }, [
+                      _c("label", { attrs: { for: "input-large" } }, [
+                        _vm._v("Work Phone")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "b-col",
+                      { attrs: { sm: "10" } },
+                      [
+                        _c("b-form-input", {
+                          attrs: {
+                            id: "input-large",
+                            size: "lg",
+                            placeholder: "Enter your Work Phone"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "profileContent" },
+          [
+            _c("p", { staticClass: "profileTitle" }, [
+              _vm._v("Address Information")
+            ]),
+            _vm._v(" "),
+            _c(
+              "b-container",
+              { attrs: { fluid: "" } },
+              [
+                _c(
+                  "b-row",
+                  { staticClass: "my-1" },
+                  [
+                    _c("b-col", { staticClass: "label", attrs: { sm: "2" } }, [
+                      _c("label", { attrs: { for: "input-large" } }, [
                         _vm._v("Address")
                       ])
                     ]),
@@ -84764,198 +85016,255 @@ var render = function() {
                     )
                   ],
                   1
-                ),
-                _vm._v(" "),
-                _c(
-                  "b-row",
-                  { staticClass: "my-1" },
-                  [
-                    _c("b-col", { staticClass: "label", attrs: { sm: "2" } }, [
-                      _c("label", { attrs: { for: "input-large" } }, [
-                        _vm._v("Home Phone")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "b-col",
-                      { attrs: { sm: "10" } },
-                      [
-                        _c("b-form-input", {
-                          attrs: {
-                            id: "input-large",
-                            size: "lg",
-                            placeholder: "Enter your Home Phone"
-                          }
-                        })
-                      ],
-                      1
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "b-row",
-                  { staticClass: "my-1" },
-                  [
-                    _c("b-col", { staticClass: "label", attrs: { sm: "2" } }, [
-                      _c("label", { attrs: { for: "input-large" } }, [
-                        _vm._v("Work Phone")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "b-col",
-                      { attrs: { sm: "10" } },
-                      [
-                        _c("b-form-input", {
-                          attrs: {
-                            id: "input-large",
-                            size: "lg",
-                            placeholder: "Enter your Work Phone"
-                          }
-                        })
-                      ],
-                      1
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "b-row",
-                  { staticClass: "my-1" },
-                  [
-                    _c("b-col", { staticClass: "label", attrs: { sm: "2" } }, [
-                      _c("label", { attrs: { for: "input-large" } }, [
-                        _vm._v("Sex")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "b-col",
-                      { attrs: { sm: "10" } },
-                      [
-                        _c("b-form-select", {
-                          staticClass: "mr-lg-10",
-                          attrs: {
-                            id: "input-large",
-                            size: "lg",
-                            options: _vm.options
-                          },
-                          model: {
-                            value: _vm.searchFilter,
-                            callback: function($$v) {
-                              _vm.searchFilter = $$v
-                            },
-                            expression: "searchFilter "
-                          }
-                        })
-                      ],
-                      1
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _vm._l(_vm.types, function(type) {
-                  return _c(
-                    "b-row",
-                    { key: type, staticClass: "my-1" },
-                    [
-                      _c(
-                        "b-col",
-                        { staticClass: "label", attrs: { sm: "2" } },
-                        [
-                          _c("label", { attrs: { for: "input-large" } }, [
-                            _vm._v("Birthday")
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "b-col",
-                        { attrs: { sm: "10" } },
-                        [
-                          _c("b-form-input", {
-                            staticClass: "mr-lg-10 birthday",
-                            attrs: {
-                              size: "lg",
-                              id: "type-" + type,
-                              type: type
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                }),
-                _vm._v(" "),
-                _c(
-                  "b-row",
-                  { staticClass: "my-1" },
-                  [
-                    _c(
-                      "b-col",
-                      { staticClass: "label bioLabel", attrs: { sm: "2" } },
-                      [
-                        _c("label", { attrs: { for: "input-large" } }, [
-                          _vm._v("Biography")
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "b-col",
-                      { attrs: { sm: "10" } },
-                      [
-                        _c("b-form-textarea", {
-                          attrs: {
-                            size: "lg",
-                            id: "textarea",
-                            placeholder: "Enter your biography",
-                            rows: "3",
-                            "max-rows": "6"
-                          },
-                          model: {
-                            value: _vm.text,
-                            callback: function($$v) {
-                              _vm.text = $$v
-                            },
-                            expression: "text"
-                          }
-                        })
-                      ],
-                      1
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "b-row",
-                  { staticClass: "my-1" },
-                  [
-                    _c(
-                      "b-col",
-                      { staticClass: "label submitButton", attrs: { sm: "2" } },
-                      [
-                        _c(
-                          "b-button",
-                          { attrs: { id: "submit", variant: "success" } },
-                          [_vm._v("Submit")]
-                        )
-                      ],
-                      1
-                    )
-                  ],
-                  1
                 )
               ],
-              2
+              1
             )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "profileContent" },
+          [
+            _c("p", { staticClass: "profileTitle" }, [
+              _vm._v("Credit Card Information")
+            ]),
+            _vm._v(" "),
+            _c("b-container", { attrs: { fluid: "" } }, [
+              _c("div", { staticClass: "row1" }, [
+                _c("div", { staticClass: "col-75" }, [
+                  _c("div", { staticClass: "container1" }, [
+                    _c("form", { attrs: { action: "/action_page.php" } }, [
+                      _c("div", { staticClass: "row1" }, [
+                        _c("div", { staticClass: "col-50" }, [
+                          _c("h3", [_vm._v("Billing Address")]),
+                          _vm._v(" "),
+                          _c("label", { attrs: { for: "fname" } }, [
+                            _c("i", { staticClass: "fa fa-user" }),
+                            _vm._v(" Full Name\r\n                    ")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "creditInput",
+                            attrs: {
+                              type: "text",
+                              id: "fname",
+                              name: "firstname",
+                              placeholder: "John M. Doe"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("label", { attrs: { for: "email" } }, [
+                            _c("i", { staticClass: "fa fa-envelope" }),
+                            _vm._v(" Email\r\n                    ")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "creditInput",
+                            attrs: {
+                              type: "text",
+                              id: "email",
+                              name: "email",
+                              placeholder: "john@example.com"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("label", { attrs: { for: "adr" } }, [
+                            _c("i", { staticClass: "fa fa-address-card-o" }),
+                            _vm._v(" Address\r\n                    ")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "creditInput",
+                            attrs: {
+                              type: "text",
+                              id: "adr",
+                              name: "address",
+                              placeholder: "542 W. 15th Street"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("label", { attrs: { for: "city" } }, [
+                            _c("i", { staticClass: "fa fa-institution" }),
+                            _vm._v(" City\r\n                    ")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "creditInput",
+                            attrs: {
+                              type: "text",
+                              id: "city",
+                              name: "city",
+                              placeholder: "New York"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "row1" }, [
+                            _c("div", { staticClass: "col-50" }, [
+                              _c("label", { attrs: { for: "state" } }, [
+                                _vm._v("State")
+                              ]),
+                              _vm._v(" "),
+                              _c("input", {
+                                staticClass: "creditInput",
+                                attrs: {
+                                  type: "text",
+                                  id: "state",
+                                  name: "state",
+                                  placeholder: "NY"
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col-50" }, [
+                              _c("label", { attrs: { for: "zip" } }, [
+                                _vm._v("Zip Code")
+                              ]),
+                              _vm._v(" "),
+                              _c("input", {
+                                staticClass: "creditInput",
+                                attrs: {
+                                  type: "text",
+                                  id: "zip",
+                                  name: "zip",
+                                  placeholder: "10001"
+                                }
+                              })
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-50" }, [
+                          _c("h3", [_vm._v("Payment")]),
+                          _vm._v(" "),
+                          _c("label", { attrs: { for: "fname" } }, [
+                            _vm._v("Accepted Cards")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "icon-container" }, [
+                            _c("i", {
+                              staticClass: "fa fa-cc-visa",
+                              staticStyle: { color: "navy" }
+                            }),
+                            _vm._v(" "),
+                            _c("i", {
+                              staticClass: "fa fa-cc-amex",
+                              staticStyle: { color: "blue" }
+                            }),
+                            _vm._v(" "),
+                            _c("i", {
+                              staticClass: "fa fa-cc-mastercard",
+                              staticStyle: { color: "red" }
+                            }),
+                            _vm._v(" "),
+                            _c("i", {
+                              staticClass: "fa fa-cc-discover",
+                              staticStyle: { color: "orange" }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("label", { attrs: { for: "cname" } }, [
+                            _vm._v("Name on Card")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "creditInput",
+                            attrs: {
+                              type: "text",
+                              id: "cname",
+                              name: "cardname",
+                              placeholder: "John More Doe"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("label", { attrs: { for: "ccnum" } }, [
+                            _vm._v("Credit card number")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "creditInput",
+                            attrs: {
+                              type: "text",
+                              id: "ccnum",
+                              name: "cardnumber",
+                              placeholder: "1111-2222-3333-4444"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("label", { attrs: { for: "expmonth" } }, [
+                            _vm._v("Exp Month")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "creditInput",
+                            attrs: {
+                              type: "text",
+                              id: "expmonth",
+                              name: "expmonth",
+                              placeholder: "September"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "row1" }, [
+                            _c("div", { staticClass: "col-50" }, [
+                              _c("label", { attrs: { for: "expyear" } }, [
+                                _vm._v("Exp Year")
+                              ]),
+                              _vm._v(" "),
+                              _c("input", {
+                                staticClass: "creditInput",
+                                attrs: {
+                                  type: "text",
+                                  id: "expyear",
+                                  name: "expyear",
+                                  placeholder: "2018"
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col-50" }, [
+                              _c("label", { attrs: { for: "cvv" } }, [
+                                _vm._v("CVV")
+                              ]),
+                              _vm._v(" "),
+                              _c("input", {
+                                staticClass: "creditInput",
+                                attrs: {
+                                  type: "text",
+                                  id: "cvv",
+                                  name: "cvv",
+                                  placeholder: "352"
+                                }
+                              })
+                            ])
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("label", [
+                        _c("input", {
+                          attrs: {
+                            type: "checkbox",
+                            checked: "checked",
+                            name: "sameadr"
+                          }
+                        }),
+                        _vm._v(
+                          " Shipping address same as billing\r\n                "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        staticClass: "btn1",
+                        attrs: { type: "submit", value: "Apply Changes" }
+                      })
+                    ])
+                  ])
+                ])
+              ])
+            ])
           ],
           1
         )
@@ -84971,7 +85280,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("head", [_c("title", [_vm._v("StoryTime | User Profile")])])
+    return _c("head", [
+      _c("title", [_vm._v("StoryTime | User Profile")]),
+      _vm._v(" "),
+      _c("link", {
+        attrs: {
+          rel: "stylesheet",
+          href:
+            "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        }
+      })
+    ])
   }
 ]
 render._withStripped = true
@@ -102149,8 +102468,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\tmaas\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\tmaas\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\User\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\User\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
