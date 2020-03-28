@@ -84061,9 +84061,14 @@ var render = function() {
                       _vm._v(" "),
                       !_vm.$auth.check()
                         ? _c("b-dropdown-item-button", [
-                            _c("a", { attrs: { href: "/register" } }, [
-                              _vm._v("Register")
-                            ]),
+                            _c(
+                              "a",
+                              {
+                                staticClass: "link",
+                                attrs: { href: "/register" }
+                              },
+                              [_vm._v("Register")]
+                            ),
                             _vm._v(" "),
                             _c("span", { staticClass: "sr-only" }, [
                               _vm._v("(Not selected)")
@@ -100820,12 +100825,12 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     var _this = this;
 
     this.$Progress.start();
-    this.router.beforeEach(function (to, from, next) {
+    this.$router.beforeEach(function (to, from, next) {
       _this.$Progress.start();
 
       next(); // continue to next page
     });
-    this.router.afterEach(function (to, from) {
+    this.$router.afterEach(function (to, from) {
       _this.$Progress.finish();
     });
   }

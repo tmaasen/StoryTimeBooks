@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Users;
 use App\User;
 
 use Illuminate\Support\Facades\Auth;
@@ -29,8 +29,8 @@ class AuthController extends Controller
             ], 422);
         }
         $user = new User();
-        $user->firstname = $request->firstname;
-        $user->lastname = $request->lastname;
+        $user->first_name = $request->firstname;
+        $user->last_name = $request->lastname;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->email_verified_at = now();

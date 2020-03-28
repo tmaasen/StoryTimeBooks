@@ -34,11 +34,11 @@ const app = new Vue({
   },
   created () {
     this.$Progress.start()
-    this.router.beforeEach((to, from, next) => {
+    this.$router.beforeEach((to, from, next) => {
       this.$Progress.start()
       next() // continue to next page
     })
-    this.router.afterEach((to, from) => {
+    this.$router.afterEach((to, from) => {
       this.$Progress.finish()
     })
   }

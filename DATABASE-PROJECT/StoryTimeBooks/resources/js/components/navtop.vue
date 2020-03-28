@@ -55,7 +55,7 @@
             </b-dropdown-item-button>
 
             <b-dropdown-item-button v-if="!$auth.check()">
-              <a href="/register">Register</a>
+              <a href="/register" class="link">Register</a>
               <span class="sr-only">(Not selected)</span>
             </b-dropdown-item-button>
 
