@@ -5,7 +5,7 @@
   </head>
   <navtop />
   <div v-if="$auth.check()">
-    <h1 class="welcomeMessage">Hello, {{ $auth.user().firstname }}</h1>
+    <h1 class="welcomeMessage">Hello, {{ $auth.user().first_name }}</h1>
     <hr />
   </div>
   <HomePageEdit />

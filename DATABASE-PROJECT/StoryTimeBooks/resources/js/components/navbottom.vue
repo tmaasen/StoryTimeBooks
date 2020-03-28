@@ -75,6 +75,10 @@
               <router-link to="/register">
                 <a class="btn" style="color:white">Register Now</a>
               </router-link>
+              <br> <br>
+              <router-link to="/termsofservice">
+                <a class="btn" style="color:white">Terms Of Service</a>
+              </router-link>
             </div>
           </div>
 

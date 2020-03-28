@@ -32,30 +32,30 @@
           </div>
           <b-dropdown variant="primary" id="dropdown-right" text="Left align">
             <template v-slot:button-content>
-              <b-icon icon="person-fill" aria-hidden="true"></b-icon>
-              <span v-if="$auth.check()">{{ $auth.user().firstname }} {{$auth.user().lastname}}</span>
+              <b-icon icon="person-fill" aria-hidden="true" font-scale="2"></b-icon>
+              <span v-if="$auth.check()">{{ $auth.user().first_name }} {{$auth.user().last_name}}</span>
               <span v-if="!$auth.check()">My Account</span>
             </template>
 
             <b-dropdown-item-button v-if="$auth.user().role === '2'">
               <b-icon icon="blank" aria-hidden="true"></b-icon>
-              <a href="/admin">Admin</a>
+              <a href="/admin" class="link">Admin</a>
               <span class="sr-only">(Not selected)</span>
             </b-dropdown-item-button>
             
-            <b-dropdown-item-button v-if="!$auth.check()">
-             <!-- <b-icon icon="blank" aria-hidden="false"></b-icon> -->
-              <a href="/Profile">Profile</a>
+            <b-dropdown-item-button v-if="$auth.check()">
+             <b-icon icon="blank" aria-hidden="false"></b-icon>
+              <a href="/profile" class="link">Profile</a>
               <span class="sr-only">(Not selected)</span>
             </b-dropdown-item-button>
 
             <b-dropdown-item-button v-if="!$auth.check()">
-              <a href="/login">Login</a>
+              <a href="/login" class="link">Login</a>
               <span class="sr-only">(Not selected)</span>
             </b-dropdown-item-button>
 
             <b-dropdown-item-button v-if="!$auth.check()">
-              <a href="/register">Register</a>
+              <a href="/register" class="link">Register</a>
               <span class="sr-only">(Not selected)</span>
             </b-dropdown-item-button>
 
@@ -79,18 +79,6 @@
 export default {
   data() {
     return {
-      name: "", // parameter for the logged in user's name
-      routes: {
-        // UNLOGGED
-        unlogged: [
-          { name: "Register", path: "register" },
-          { name: "Login", path: "login" }
-        ],
-        // LOGGED USER
-        user: [{ name: "Home", path: "home" }],
-        // LOGGED ADMIN
-        admin: [{ name: "Dashboard", path: "admin.dashboard" }]
-      },
       searchFilter: "a",
       options: [
         // { value: null, text: "Please select some item" },
@@ -132,11 +120,11 @@ span {
 select {
   margin-right: 10px;
 }
-a {
+.link {
   text-decoration: none;
   color: #252525;
 }
-a:hover {
+.link:hover {
   text-decoration: none;
   background-color: #fff;
   color: #252525;

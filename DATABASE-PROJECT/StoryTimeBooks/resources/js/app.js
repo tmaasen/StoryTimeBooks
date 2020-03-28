@@ -15,6 +15,7 @@ Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.router = router
 Vue.use(VueRouter)
+
 Vue.use(VueProgressBar, {
   color: 'rgb(255, 141, 30)',
   failedColor: 'red',
@@ -28,30 +29,18 @@ Vue.use(VueAuth, auth)
 
 const app = new Vue({
   router,
-  // mounted () {
-  //   this.$Progress.finish()
-  // },
-  // created () {
-  //   //  When vue is first loaded start the progress bar
-  //   this.$Progress.start()
-  //   //  hook the progress bar to start before we move router-view
-  //   this.$router.beforeEach((to, from, next) => {
-  //     //  does the page we want to go to have a meta.progress object
-  //     if (to.meta.progress !== undefined) {
-  //       let meta = to.meta.progress
-  //       // parse meta tags
-  //       this.$Progress.parseMeta(meta)
-  //     }
-  //     //  start the progress bar
-  //     this.$Progress.start()
-  //     //  continue to next page
-  //     next()
-  //   })
-  //   //  hook the progress bar to finish after we've finished moving router-view
-  //   this.$router.afterEach((to, from) => {
-  //     //  finish the progress bar
-  //     this.$Progress.finish()
-  //   })
-  // }
+  mounted () {
+    this.$Progress.finish()
+  },
+  created () {
+    this.$Progress.start()
+    this.$router.beforeEach((to, from, next) => {
+      this.$Progress.start()
+      next() // continue to next page
+    })
+    this.$router.afterEach((to, from) => {
+      this.$Progress.finish()
+    })
+  }
 }).$mount('#app')
 
