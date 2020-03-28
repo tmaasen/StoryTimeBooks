@@ -1142,11 +1142,6 @@
 .col-md-4 {
   float: left;
 }
-
-.card {
-  height: 550px;
-}
-
 .card-title {
   margin-top: 10%;
   margin-right: auto;

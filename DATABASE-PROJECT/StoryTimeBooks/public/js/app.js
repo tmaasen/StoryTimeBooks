@@ -3929,6 +3929,60 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -48093,7 +48147,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.card-img-top {\r\n  height: 300px;\r\n  width: 250px;\r\n  margin: auto;\n}\n.img-fluid {\r\n  max-width: 100%;\r\n  height: 285px;\n}\n.col-md-4 {\r\n  float: left;\n}\n.card {\r\n  height: 540px;\n}\n.card-title {\r\n  margin-top: 10%;\r\n  margin-right: auto;\r\n  margin-left: auto;\r\n  width: 200px;\r\n  text-align: center;\n}\n.carousel-control-prev {\r\n  position: absolute;\r\n  height: 30%;\r\n  overflow: visible !important;\r\n  left: -170px !important;\r\n  top: 30% !important;\n}\n.carousel-control-next {\r\n  position: absolute;\r\n  height: 30%;\r\n  overflow: visible !important;\r\n  right: -170px !important;\r\n  top: 30% !important;\n}\n.carousel-control-next:after {\r\n  content: \">\";\r\n  font-size: 55px;\r\n  color: white;\r\n  background-color: grey;\n}\n.carousel-control-prev:after {\r\n  content: \"<\";\r\n  font-size: 55px;\r\n  color: white;\r\n  background-color: grey;\n}\n.title {\r\n  text-align: center;\r\n  margin-top: 100px;\r\n  margin-bottom: 4%;\r\n  font-size: 50px;\n}\r\n", ""]);
+exports.push([module.i, "\n.card-img-top {\r\n  height: 300px;\r\n  width: 250px;\r\n  margin: auto;\n}\n.img-fluid {\r\n  max-width: 100%;\r\n  height: 285px;\n}\n.col-md-4 {\r\n  float: left;\n}\n.card-title {\r\n  margin-top: 10%;\r\n  margin-right: auto;\r\n  margin-left: auto;\r\n  width: 200px;\r\n  text-align: center;\n}\n.carousel-control-prev {\r\n  position: absolute;\r\n  height: 30%;\r\n  overflow: visible !important;\r\n  left: -170px !important;\r\n  top: 30% !important;\n}\n.carousel-control-next {\r\n  position: absolute;\r\n  height: 30%;\r\n  overflow: visible !important;\r\n  right: -170px !important;\r\n  top: 30% !important;\n}\n.carousel-control-next:after {\r\n  content: \">\";\r\n  font-size: 55px;\r\n  color: white;\r\n  background-color: grey;\n}\n.carousel-control-prev:after {\r\n  content: \"<\";\r\n  font-size: 55px;\r\n  color: white;\r\n  background-color: grey;\n}\n.title {\r\n  text-align: center;\r\n  margin-top: 100px;\r\n  margin-bottom: 4%;\r\n  font-size: 50px;\n}\r\n", ""]);
 
 // exports
 
@@ -84415,7 +84469,7 @@ var render = function() {
                   [
                     _c("b-col", { staticClass: "label", attrs: { sm: "2" } }, [
                       _c("label", { attrs: { for: "input-large" } }, [
-                        _vm._v("Name")
+                        _vm._v("First Name")
                       ])
                     ]),
                     _vm._v(" "),
@@ -84427,7 +84481,35 @@ var render = function() {
                           attrs: {
                             id: "input-large",
                             size: "lg",
-                            placeholder: "Enter your name"
+                            placeholder: "Enter your First name"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-row",
+                  { staticClass: "my-1" },
+                  [
+                    _c("b-col", { staticClass: "label", attrs: { sm: "2" } }, [
+                      _c("label", { attrs: { for: "input-large" } }, [
+                        _vm._v("Last Name")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "b-col",
+                      { attrs: { sm: "10" } },
+                      [
+                        _c("b-form-input", {
+                          attrs: {
+                            id: "input-large",
+                            size: "lg",
+                            placeholder: "Enter your Last name"
                           }
                         })
                       ],
@@ -84455,7 +84537,7 @@ var render = function() {
                           attrs: {
                             id: "input-large",
                             size: "lg",
-                            placeholder: "Enter your email"
+                            placeholder: "Enter your Email"
                           }
                         })
                       ],
@@ -84471,7 +84553,7 @@ var render = function() {
                   [
                     _c("b-col", { staticClass: "label", attrs: { sm: "2" } }, [
                       _c("label", { attrs: { for: "input-large" } }, [
-                        _vm._v("Username")
+                        _vm._v("Address")
                       ])
                     ]),
                     _vm._v(" "),
@@ -84483,7 +84565,7 @@ var render = function() {
                           attrs: {
                             id: "input-large",
                             size: "lg",
-                            placeholder: "Enter your username"
+                            placeholder: "Enter your Address"
                           }
                         })
                       ],
@@ -84499,7 +84581,7 @@ var render = function() {
                   [
                     _c("b-col", { staticClass: "label", attrs: { sm: "2" } }, [
                       _c("label", { attrs: { for: "input-large" } }, [
-                        _vm._v("Phone Number")
+                        _vm._v("Suite No.")
                       ])
                     ]),
                     _vm._v(" "),
@@ -84511,7 +84593,147 @@ var render = function() {
                           attrs: {
                             id: "input-large",
                             size: "lg",
-                            placeholder: "Enter your phone number"
+                            placeholder: "Enter your Suite No."
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-row",
+                  { staticClass: "my-1" },
+                  [
+                    _c("b-col", { staticClass: "label", attrs: { sm: "2" } }, [
+                      _c("label", { attrs: { for: "input-large" } }, [
+                        _vm._v("City")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "b-col",
+                      { attrs: { sm: "10" } },
+                      [
+                        _c("b-form-input", {
+                          attrs: {
+                            id: "input-large",
+                            size: "lg",
+                            placeholder: "Enter your City"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-row",
+                  { staticClass: "my-1" },
+                  [
+                    _c("b-col", { staticClass: "label", attrs: { sm: "2" } }, [
+                      _c("label", { attrs: { for: "input-large" } }, [
+                        _vm._v("State")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "b-col",
+                      { attrs: { sm: "10" } },
+                      [
+                        _c("b-form-input", {
+                          attrs: {
+                            id: "input-large",
+                            size: "lg",
+                            placeholder: "Enter your State"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-row",
+                  { staticClass: "my-1" },
+                  [
+                    _c("b-col", { staticClass: "label", attrs: { sm: "2" } }, [
+                      _c("label", { attrs: { for: "input-large" } }, [
+                        _vm._v("Zip Code")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "b-col",
+                      { attrs: { sm: "10" } },
+                      [
+                        _c("b-form-input", {
+                          attrs: {
+                            id: "input-large",
+                            size: "lg",
+                            placeholder: "Enter your Zip Code"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-row",
+                  { staticClass: "my-1" },
+                  [
+                    _c("b-col", { staticClass: "label", attrs: { sm: "2" } }, [
+                      _c("label", { attrs: { for: "input-large" } }, [
+                        _vm._v("Home Phone")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "b-col",
+                      { attrs: { sm: "10" } },
+                      [
+                        _c("b-form-input", {
+                          attrs: {
+                            id: "input-large",
+                            size: "lg",
+                            placeholder: "Enter your Home Phone"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-row",
+                  { staticClass: "my-1" },
+                  [
+                    _c("b-col", { staticClass: "label", attrs: { sm: "2" } }, [
+                      _c("label", { attrs: { for: "input-large" } }, [
+                        _vm._v("Work Phone")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "b-col",
+                      { attrs: { sm: "10" } },
+                      [
+                        _c("b-form-input", {
+                          attrs: {
+                            id: "input-large",
+                            size: "lg",
+                            placeholder: "Enter your Work Phone"
                           }
                         })
                       ],

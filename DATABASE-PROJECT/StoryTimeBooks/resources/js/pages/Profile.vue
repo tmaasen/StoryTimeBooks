@@ -11,10 +11,19 @@
       <b-container fluid>
         <b-row class="my-1">
           <b-col class="label" sm="2">
-            <label for="input-large">Name</label>
+            <label for="input-large">First Name</label>
           </b-col>
           <b-col sm="10">
-            <b-form-input id="input-large" size="lg" placeholder="Enter your name"></b-form-input>
+            <b-form-input id="input-large" size="lg" placeholder="Enter your First name"></b-form-input>
+          </b-col>
+        </b-row>
+
+        <b-row class="my-1">
+          <b-col class="label" sm="2">
+            <label for="input-large">Last Name</label>
+          </b-col>
+          <b-col sm="10">
+            <b-form-input id="input-large" size="lg" placeholder="Enter your Last name"></b-form-input>
           </b-col>
         </b-row>
 
@@ -23,25 +32,70 @@
             <label for="input-large">Email</label>
           </b-col>
           <b-col sm="10">
-            <b-form-input id="input-large" size="lg" placeholder="Enter your email"></b-form-input>
+            <b-form-input id="input-large" size="lg" placeholder="Enter your Email"></b-form-input>
           </b-col>
         </b-row>
 
         <b-row class="my-1">
           <b-col class="label" sm="2">
-            <label for="input-large">Username</label>
+            <label for="input-large">Address</label>
           </b-col>
           <b-col sm="10">
-            <b-form-input id="input-large" size="lg" placeholder="Enter your username"></b-form-input>
+            <b-form-input id="input-large" size="lg" placeholder="Enter your Address"></b-form-input>
           </b-col>
         </b-row>
 
         <b-row class="my-1">
           <b-col class="label" sm="2">
-            <label for="input-large">Phone Number</label>
+            <label for="input-large">Suite No.</label>
           </b-col>
           <b-col sm="10">
-            <b-form-input id="input-large" size="lg" placeholder="Enter your phone number"></b-form-input>
+            <b-form-input id="input-large" size="lg" placeholder="Enter your Suite No."></b-form-input>
+          </b-col>
+        </b-row>
+
+        <b-row class="my-1">
+          <b-col class="label" sm="2">
+            <label for="input-large">City</label>
+          </b-col>
+          <b-col sm="10">
+            <b-form-input id="input-large" size="lg" placeholder="Enter your City"></b-form-input>
+          </b-col>
+        </b-row>
+
+        <b-row class="my-1">
+          <b-col class="label" sm="2">
+            <label for="input-large">State</label>
+          </b-col>
+          <b-col sm="10">
+            <b-form-input id="input-large" size="lg" placeholder="Enter your State"></b-form-input>
+          </b-col>
+        </b-row>
+
+        <b-row class="my-1">
+          <b-col class="label" sm="2">
+            <label for="input-large">Zip Code</label>
+          </b-col>
+          <b-col sm="10">
+            <b-form-input id="input-large" size="lg" placeholder="Enter your Zip Code"></b-form-input>
+          </b-col>
+        </b-row>
+
+        <b-row class="my-1">
+          <b-col class="label" sm="2">
+            <label for="input-large">Home Phone</label>
+          </b-col>
+          <b-col sm="10">
+            <b-form-input id="input-large" size="lg" placeholder="Enter your Home Phone"></b-form-input>
+          </b-col>
+        </b-row>
+
+        <b-row class="my-1">
+          <b-col class="label" sm="2">
+            <label for="input-large">Work Phone</label>
+          </b-col>
+          <b-col sm="10">
+            <b-form-input id="input-large" size="lg" placeholder="Enter your Work Phone"></b-form-input>
           </b-col>
         </b-row>
 
