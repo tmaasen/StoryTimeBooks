@@ -176,7 +176,7 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
 /*==================== 
 	Footer 
 ====================== */
@@ -184,20 +184,7 @@ export default {
 a:hover {
   background-color: #252525;
   color: #fff;
-  text-decoration: underline;
 }
-
-/* Main Footer */
-/*footer .main-footer {
-  padding-top: 20px;
-  background: #252525;
-  position: absolute;
-  bottom: 0px;
-  height: 400px;
-  left: 0px;
-  right: 0px;
-  overflow: hidden;
-}*/
 .footer-1 {
   position: relative;
   bottom: 0;

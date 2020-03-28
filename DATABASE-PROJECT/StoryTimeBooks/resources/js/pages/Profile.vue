@@ -12,6 +12,7 @@
     <div class="profileContent">
       <p class="profileTitle">Edit Profile</p>
 
+      <form method="POST" @submit.prevent="updateUser">
       <b-container fluid>
         <b-row class="my-1">
           <b-col class="label" sm="2">
@@ -41,7 +42,7 @@
         </b-row>
 
         <b-row class="my-1">
-          <b-col class="label" sm="2">
+          <b-col class="label" sm="2" style="padding-right:0px">
             <label for="input-large">Home Phone</label>
           </b-col>
           <b-col sm="10">
@@ -58,11 +59,12 @@
           </b-col>
         </b-row>
       </b-container>
+      </form>
     </div>
 
     <div class="profileContent">
       <p class="profileTitle">Address Information</p>
-
+      <form method="POST" @submit.prevent="updateUserAddress">
       <b-container fluid>
         <b-row class="my-1">
           <b-col class="label" sm="2">
@@ -109,6 +111,7 @@
           </b-col>
         </b-row>
       </b-container>
+      </form>
     </div>
 
     <div class="profileContent">
@@ -118,76 +121,9 @@
         <div class="row1">
           <div class="col-75">
             <div class="container1">
-              <form action="/action_page.php">
+              <form method="POST" @submit.prevent="updateUserCreditCard">
                 <div class="row1">
-                  <div class="col-50">
-                    <h3>Billing Address</h3>
-                    <label for="fname">
-                      <i class="fa fa-user"></i> Full Name
-                    </label>
-                    <input
-                      type="text"
-                      class="creditInput"
-                      id="fname"
-                      name="firstname"
-                      placeholder="John M. Doe"
-                    />
-                    <label for="email">
-                      <i class="fa fa-envelope"></i> Email
-                    </label>
-                    <input
-                      type="text"
-                      class="creditInput"
-                      id="email"
-                      name="email"
-                      placeholder="john@example.com"
-                    />
-                    <label for="adr">
-                      <i class="fa fa-address-card-o"></i> Address
-                    </label>
-                    <input
-                      type="text"
-                      class="creditInput"
-                      id="adr"
-                      name="address"
-                      placeholder="542 W. 15th Street"
-                    />
-                    <label for="city">
-                      <i class="fa fa-institution"></i> City
-                    </label>
-                    <input
-                      type="text"
-                      class="creditInput"
-                      id="city"
-                      name="city"
-                      placeholder="New York"
-                    />
-
-                    <div class="row1">
-                      <div class="col-50">
-                        <label for="state">State</label>
-                        <input
-                          type="text"
-                          class="creditInput"
-                          id="state"
-                          name="state"
-                          placeholder="NY"
-                        />
-                      </div>
-                      <div class="col-50">
-                        <label for="zip">Zip Code</label>
-                        <input
-                          type="text"
-                          class="creditInput"
-                          id="zip"
-                          name="zip"
-                          placeholder="10001"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-50">
+                  <div>
                     <h3>Payment</h3>
                     <label for="fname">Accepted Cards</label>
                     <div class="icon-container">
@@ -202,7 +138,7 @@
                       class="creditInput"
                       id="cname"
                       name="cardname"
-                      placeholder="John More Doe"
+                      placeholder="John Doe"
                     />
                     <label for="ccnum">Credit card number</label>
                     <input
@@ -213,13 +149,16 @@
                       placeholder="1111-2222-3333-4444"
                     />
                     <label for="expmonth">Exp Month</label>
-                    <input
-                      type="text"
-                      class="creditInput"
-                      id="expmonth"
-                      name="expmonth"
-                      placeholder="September"
-                    />
+                      <b-form-spinbutton 
+                      id="expmonth" 
+                      placeholder="--"
+                      min="1" 
+                      max="12" 
+                      v-model="expmonth" 
+                      inline 
+                      class="w-25 form-control btn creditInput"
+                      >
+                      </b-form-spinbutton>
                     <div class="row1">
                       <div class="col-50">
                         <label for="expyear">Exp Year</label>
@@ -228,7 +167,7 @@
                           class="creditInput"
                           id="expyear"
                           name="expyear"
-                          placeholder="2018"
+                          placeholder="2020"
                         />
                       </div>
                       <div class="col-50">
@@ -247,19 +186,64 @@
                 <label>
                   <input type="checkbox" checked="checked" name="sameadr" /> Shipping address same as billing
                 </label>
-                <input type="submit" value="Apply Changes" class="btn1" />
               </form>
             </div>
           </div>
         </div>
       </b-container>
+    <input type="submit" value="Apply Changes" class="btn1" />
     </div>
   </div>
   <navbottom />
 </div>
 </template>
 
-<style>
+<script>
+import navtop from "../components/navtop";
+import navbottom from "../components/navbottom";
+
+export default {
+  data() {
+    return {
+      firstname: "",
+      searchFilter: "a",
+      text: "",
+      value: 1,
+      expmonth: null,
+    };
+  },
+  mounted() {
+    console.log("Home mounted.");
+  },
+  components: {
+    navtop,
+    navbottom
+  },
+  methods: {
+    updateUser(){
+
+    },
+    updateUserAddress() {
+
+    },
+    updateUserCreditCard() {
+
+    },
+  }
+};
+</script>
+
+<style scoped>
+.form-control {
+  width:25%;
+}
+svg {
+  fill:black;
+}
+.btn, .btn:hover {
+  background: white !important;
+  color:black !important;
+}
 .creditInput {
   margin-bottom: 5%;
 }
@@ -323,7 +307,7 @@ label {
 }
 
 .btn1:hover {
-  background-color: #45a049;
+  background-color: #2196f3;
 }
 
 a {
@@ -396,25 +380,3 @@ span.price {
   width: 760px;
 }
 </style>
-
-<script>
-import navtop from "../components/navtop";
-import navbottom from "../components/navbottom";
-
-export default {
-  data() {
-    return {
-      firstname: "",
-      searchFilter: "a",
-      text: ""
-    };
-  },
-  mounted() {
-    console.log("Home mounted.");
-  },
-  components: {
-    navtop,
-    navbottom
-  }
-};
-</script>

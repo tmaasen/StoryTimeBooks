@@ -32,8 +32,14 @@ Route::prefix('v1')->group(function () {
                 Route::get('user', 'Users\AuthController@user');
                 // Logout user from application
                 Route::post('logout', 'Users\AuthController@logout');
-                // Get all users info
-                Route::get('users', 'Users\UserController@allUsers');
                         });
         });
+    Route::prefix('admin')->group(function () {
+        // Get all users info
+        Route::get('users', 'Users\UserController@allUsers');
+        // Get all books
+        Route::get('products', 'Books\BookController@allBooks');
+        // Get all books
+        Route::get('publishers', 'Books\BookController@allPublishers');
+    });
 });

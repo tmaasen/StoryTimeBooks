@@ -34,7 +34,7 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
 .welcomeMessage {
   text-align: center;
   padding-top: 10px;
