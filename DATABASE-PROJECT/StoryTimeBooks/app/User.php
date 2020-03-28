@@ -28,7 +28,8 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        // get request will not display these columns in a table
+        'id','password', 'remember_token', 'email_verified_at', 'created_at', 'updated_at'
     ];
 
     /**
