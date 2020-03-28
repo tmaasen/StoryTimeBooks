@@ -1143,9 +1143,9 @@
   float: left;
 }
 
-.card {
+/* .card {
   height: 540px;
-}
+} */
 
 .card-title {
   margin-top: 10%;

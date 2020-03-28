@@ -3427,10 +3427,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-<<<<<<< HEAD
-=======
 //
->>>>>>> 2bc38bcb981d0ee50c0b50fd3f504099718a1438
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -83980,18 +83977,6 @@ var render = function() {
                           )
                         : _vm._e(),
                       _vm._v(" "),
-<<<<<<< HEAD
-                      !_vm.$auth.check()
-                        ? _c("b-dropdown-item-button", [
-                            _c("a", { attrs: { href: "/Profile" } }, [
-                              _vm._v("Profile")
-                            ]),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "sr-only" }, [
-                              _vm._v("(Not selected)")
-                            ])
-                          ])
-=======
                       _vm.$auth.check()
                         ? _c(
                             "b-dropdown-item-button",
@@ -84010,7 +83995,6 @@ var render = function() {
                             ],
                             1
                           )
->>>>>>> 2bc38bcb981d0ee50c0b50fd3f504099718a1438
                         : _vm._e(),
                       _vm._v(" "),
                       !_vm.$auth.check()
