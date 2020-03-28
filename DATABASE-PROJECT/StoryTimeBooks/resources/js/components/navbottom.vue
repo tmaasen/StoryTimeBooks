@@ -197,6 +197,8 @@ a:hover {
 .footer-1 {
   position: relative;
   bottom: 0;
+  left: 0;
+  right: 0;
   min-width: 100%;
   max-width: 100%;
   max-height: 100%;

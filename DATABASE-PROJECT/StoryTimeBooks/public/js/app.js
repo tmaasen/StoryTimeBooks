@@ -3426,6 +3426,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3753,6 +3754,201 @@ __webpack_require__.r(__webpack_exports__);
         fetchUser: true
       });
     }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Profile.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Profile.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_navtop__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/navtop */ "./resources/js/components/navtop.vue");
+/* harmony import */ var _components_navbottom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/navbottom */ "./resources/js/components/navbottom.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      firstname: "",
+      types: ["date"],
+      searchFilter: "a",
+      options: [// { value: null, text: "Please select some item" },
+      {
+        value: "a",
+        text: "Male"
+      }, {
+        value: "b",
+        text: "Female"
+      }],
+      text: ""
+    };
+  },
+  mounted: function mounted() {
+    console.log("Home mounted.");
+  },
+  components: {
+    navtop: _components_navtop__WEBPACK_IMPORTED_MODULE_0__["default"],
+    navbottom: _components_navbottom__WEBPACK_IMPORTED_MODULE_1__["default"]
   }
 });
 
@@ -47892,7 +48088,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.img-fluid {\r\n  max-width: 100%;\r\n  height: 285px;\n}\n.col-md-4 {\r\n  float: left;\n}\n.carousel-control-prev {\r\n  position: absolute;\r\n  height: 30%;\r\n  overflow: visible !important;\r\n  left: -170px !important;\r\n  top: 30% !important;\n}\n.carousel-control-next {\r\n  position: absolute;\r\n  height: 30%;\r\n  overflow: visible !important;\r\n  right: -170px !important;\r\n  top: 30% !important;\n}\n.carousel-control-next:after {\r\n  content: \">\";\r\n  font-size: 55px;\r\n  color: white;\r\n  background-color: grey;\n}\n.carousel-control-prev:after {\r\n  content: \"<\";\r\n  font-size: 55px;\r\n  color: white;\r\n  background-color: grey;\n}\n.title {\r\n  text-align: center;\r\n  margin-top: 100px;\r\n  margin-bottom: 4%;\r\n  font-size: 50px;\n}\r\n", ""]);
+exports.push([module.i, "\n.card-img-top {\r\n  height: 300px;\r\n  width: 250px;\r\n  margin: auto;\n}\n.img-fluid {\r\n  max-width: 100%;\r\n  height: 285px;\n}\n.col-md-4 {\r\n  float: left;\n}\n.card {\r\n  height: 540px;\n}\n.card-title {\r\n  margin-top: 10%;\n}\n.carousel-control-prev {\r\n  position: absolute;\r\n  height: 30%;\r\n  overflow: visible !important;\r\n  left: -170px !important;\r\n  top: 30% !important;\n}\n.carousel-control-next {\r\n  position: absolute;\r\n  height: 30%;\r\n  overflow: visible !important;\r\n  right: -170px !important;\r\n  top: 30% !important;\n}\n.carousel-control-next:after {\r\n  content: \">\";\r\n  font-size: 55px;\r\n  color: white;\r\n  background-color: grey;\n}\n.carousel-control-prev:after {\r\n  content: \"<\";\r\n  font-size: 55px;\r\n  color: white;\r\n  background-color: grey;\n}\n.title {\r\n  text-align: center;\r\n  margin-top: 100px;\r\n  margin-bottom: 4%;\r\n  font-size: 50px;\n}\r\n", ""]);
 
 // exports
 
@@ -47930,7 +48126,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/*==================== \r\n\tFooter \r\n====================== */\na:hover {\r\n  background-color: #252525;\r\n  color: #fff;\r\n  text-decoration: underline;\n}\r\n\r\n/* Main Footer */\r\n/*footer .main-footer {\r\n  padding-top: 20px;\r\n  background: #252525;\r\n  position: absolute;\r\n  bottom: 0px;\r\n  height: 400px;\r\n  left: 0px;\r\n  right: 0px;\r\n  overflow: hidden;\r\n}*/\n.footer-1 {\r\n  position: relative;\r\n  bottom: 0;\r\n  min-width: 100%;\r\n  max-width: 100%;\r\n  max-height: 100%;\r\n  padding-top: 20px;\r\n  background: #252525;\n}\nfooter ul {\r\n  padding-left: 0;\r\n  list-style: none;\n}\r\n\r\n/* Copy Right Footer */\n.footer-copyright {\r\n  background: #252525;\n}\n.footer-copyright .logo {\r\n  display: inherit;\r\n  margin-bottom: 0%;\r\n  position: absolute;\n}\n.footer-copyright nav {\r\n  float: right;\r\n  margin-top: 5px;\n}\n.footer-copyright nav ul {\r\n  list-style: none;\r\n  margin: 0;\r\n  padding: 0;\n}\n.footer-copyright nav ul li {\r\n  border-left: 1px solid #505050;\r\n  display: inline-block;\r\n  line-height: 12px;\r\n  margin: 0;\n}\n.footer-copyright nav ul li a {\r\n  color: #969696;\n}\n.footer-copyright nav ul li:first-child {\r\n  border: medium none;\r\n  padding-left: 0;\n}\n.footer-copyright p {\r\n  color: white;\r\n  font-size: 20px;\r\n  margin: 1px 0 0;\n}\r\n\r\n/* Footer Top */\n.footer-top {\r\n  background: #252525;\r\n  border-bottom: 3px solid #222;\n}\r\n\r\n/* Footer transparent */\nfooter.transparent .footer-top,\r\nfooter.transparent .main-footer {\r\n  background: transparent;\n}\nfooter.transparent .footer-copyright {\r\n  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.3);\n}\r\n\r\n/* Footer light */\nfooter.light .footer-top {\r\n  background: #f9f9f9;\n}\nfooter.light .main-footer {\r\n  background: #f9f9f9;\n}\nfooter.light .footer-copyright {\r\n  background: none repeat scroll 0 0 rgba(255, 255, 255, 0.3);\n}\r\n\r\n/* Footer 4 */\n.footer- .logo {\r\n  display: inline-block;\n}\r\n\r\n/*==================== \r\n\tWidgets \r\n====================== */\n.widget.widget-last {\r\n  margin-bottom: 0px;\n}\n.widget.no-box {\r\n  padding: 0;\r\n  background-color: transparent;\r\n  box-shadow: none;\r\n  -webkit-box-shadow: none;\r\n  -moz-box-shadow: none;\r\n  -ms-box-shadow: none;\r\n  -o-box-shadow: none;\n}\n.widget li a {\r\n  color: #ff8d1e;\n}\n.widget li a:hover {\r\n  color: #4b92dc;\n}\n.widget-title span {\r\n  background: #839fad none repeat scroll 0 0;\r\n  display: block;\r\n  height: 1px;\r\n  margin-top: 25px;\r\n  position: relative;\r\n  width: 20%;\n}\n.widget-title span::after {\r\n  background: inherit;\r\n  content: \"\";\r\n  height: inherit;\r\n  position: absolute;\r\n  top: -4px;\r\n  width: 50%;\n}\n.widget-title.text-center span,\r\n.widget-title.text-center span::after {\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n  left: 0;\r\n  right: 0;\n}\n.widget .badge {\r\n  float: right;\r\n  background: #7f7f7f;\n}\n.typo-light h1,\r\n.typo-light h2,\r\n.typo-light h3,\r\n.typo-light h4,\r\n.typo-light h5,\r\n.typo-light h6,\r\n.typo-light p,\r\n.typo-light div,\r\n.typo-light span,\r\n.typo-light small {\r\n  color: #fff;\n}\nul.social-footer2 {\r\n  margin: 0;\r\n  padding: 0;\r\n  width: auto;\n}\nul.social-footer2 li {\r\n  display: inline-block;\r\n  padding: 0;\n}\nul.social-footer2 li a:hover {\r\n  background-color: #ff8d1e;\n}\nul.social-footer2 li a {\r\n  display: block;\r\n  height: 30px;\r\n  width: 30px;\r\n  text-align: center;\n}\n.btn {\r\n  background-color: #ff8d1e;\r\n  color: #fff;\n}\n.btn:hover,\r\n.btn:focus,\r\n.btn.active {\r\n  background: #4b92dc;\r\n  color: #fff;\r\n  -ms-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);\r\n  -o-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);\r\n  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);\r\n  transition: all 250ms ease-in-out 0s;\n}\r\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/*==================== \r\n\tFooter \r\n====================== */\na:hover {\r\n  background-color: #252525;\r\n  color: #fff;\r\n  text-decoration: underline;\n}\r\n\r\n/* Main Footer */\r\n/*footer .main-footer {\r\n  padding-top: 20px;\r\n  background: #252525;\r\n  position: absolute;\r\n  bottom: 0px;\r\n  height: 400px;\r\n  left: 0px;\r\n  right: 0px;\r\n  overflow: hidden;\r\n}*/\n.footer-1 {\r\n  position: relative;\r\n  bottom: 0;\r\n  left: 0;\r\n  right: 0;\r\n  min-width: 100%;\r\n  max-width: 100%;\r\n  max-height: 100%;\r\n  padding-top: 20px;\r\n  background: #252525;\n}\nfooter ul {\r\n  padding-left: 0;\r\n  list-style: none;\n}\r\n\r\n/* Copy Right Footer */\n.footer-copyright {\r\n  background: #252525;\n}\n.footer-copyright .logo {\r\n  display: inherit;\r\n  margin-bottom: 0%;\r\n  position: absolute;\n}\n.footer-copyright nav {\r\n  float: right;\r\n  margin-top: 5px;\n}\n.footer-copyright nav ul {\r\n  list-style: none;\r\n  margin: 0;\r\n  padding: 0;\n}\n.footer-copyright nav ul li {\r\n  border-left: 1px solid #505050;\r\n  display: inline-block;\r\n  line-height: 12px;\r\n  margin: 0;\n}\n.footer-copyright nav ul li a {\r\n  color: #969696;\n}\n.footer-copyright nav ul li:first-child {\r\n  border: medium none;\r\n  padding-left: 0;\n}\n.footer-copyright p {\r\n  color: white;\r\n  font-size: 20px;\r\n  margin: 1px 0 0;\n}\r\n\r\n/* Footer Top */\n.footer-top {\r\n  background: #252525;\r\n  border-bottom: 3px solid #222;\n}\r\n\r\n/* Footer transparent */\nfooter.transparent .footer-top,\r\nfooter.transparent .main-footer {\r\n  background: transparent;\n}\nfooter.transparent .footer-copyright {\r\n  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.3);\n}\r\n\r\n/* Footer light */\nfooter.light .footer-top {\r\n  background: #f9f9f9;\n}\nfooter.light .main-footer {\r\n  background: #f9f9f9;\n}\nfooter.light .footer-copyright {\r\n  background: none repeat scroll 0 0 rgba(255, 255, 255, 0.3);\n}\r\n\r\n/* Footer 4 */\n.footer- .logo {\r\n  display: inline-block;\n}\r\n\r\n/*==================== \r\n\tWidgets \r\n====================== */\n.widget.widget-last {\r\n  margin-bottom: 0px;\n}\n.widget.no-box {\r\n  padding: 0;\r\n  background-color: transparent;\r\n  box-shadow: none;\r\n  -webkit-box-shadow: none;\r\n  -moz-box-shadow: none;\r\n  -ms-box-shadow: none;\r\n  -o-box-shadow: none;\n}\n.widget li a {\r\n  color: #ff8d1e;\n}\n.widget li a:hover {\r\n  color: #4b92dc;\n}\n.widget-title span {\r\n  background: #839fad none repeat scroll 0 0;\r\n  display: block;\r\n  height: 1px;\r\n  margin-top: 25px;\r\n  position: relative;\r\n  width: 20%;\n}\n.widget-title span::after {\r\n  background: inherit;\r\n  content: \"\";\r\n  height: inherit;\r\n  position: absolute;\r\n  top: -4px;\r\n  width: 50%;\n}\n.widget-title.text-center span,\r\n.widget-title.text-center span::after {\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n  left: 0;\r\n  right: 0;\n}\n.widget .badge {\r\n  float: right;\r\n  background: #7f7f7f;\n}\n.typo-light h1,\r\n.typo-light h2,\r\n.typo-light h3,\r\n.typo-light h4,\r\n.typo-light h5,\r\n.typo-light h6,\r\n.typo-light p,\r\n.typo-light div,\r\n.typo-light span,\r\n.typo-light small {\r\n  color: #fff;\n}\nul.social-footer2 {\r\n  margin: 0;\r\n  padding: 0;\r\n  width: auto;\n}\nul.social-footer2 li {\r\n  display: inline-block;\r\n  padding: 0;\n}\nul.social-footer2 li a:hover {\r\n  background-color: #ff8d1e;\n}\nul.social-footer2 li a {\r\n  display: block;\r\n  height: 30px;\r\n  width: 30px;\r\n  text-align: center;\n}\n.btn {\r\n  background-color: #ff8d1e;\r\n  color: #fff;\n}\n.btn:hover,\r\n.btn:focus,\r\n.btn.active {\r\n  background: #4b92dc;\r\n  color: #fff;\r\n  -ms-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);\r\n  -o-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);\r\n  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);\r\n  transition: all 250ms ease-in-out 0s;\n}\r\n", ""]);
 
 // exports
 
@@ -47969,6 +48165,25 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, "\n.welcomeMessage {\r\n  text-align: center;\r\n  padding-top: 10px;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Profile.vue?vue&type=style&index=0&lang=css&":
+/*!********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Profile.vue?vue&type=style&index=0&lang=css& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.profileBody {\r\n  border: 1px solid black;\r\n  width: 80%;\r\n  margin: auto;\r\n  padding-left: 15%;\n}\n.profileContent {\r\n  margin: 5% 5%;\n}\n#input-large {\r\n  width: 500px;\n}\n#textarea {\r\n  width: 500px;\n}\n.birthday {\r\n  width: 500px;\n}\n.label {\r\n  text-align: left;\r\n  margin-top: auto;\r\n  font-weight: bold;\n}\n.submitButton {\r\n  margin-top: 2%;\n}\n#submit {\r\n  width: 700px;\n}\n.bio {\r\n  height: 200px;\n}\n.bioLabel {\r\n  margin: auto;\n}\n.profileTitle {\r\n  font-size: 40px;\r\n  margin-bottom: 5%;\r\n  border-bottom: 3px solid black;\r\n  padding: 10 10 4px;\r\n  width: 700px;\n}\r\n", ""]);
 
 // exports
 
@@ -80828,6 +81043,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Profile.vue?vue&type=style&index=0&lang=css&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Profile.vue?vue&type=style&index=0&lang=css& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./Profile.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Profile.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Register.vue?vue&type=style&index=0&lang=css&":
 /*!*************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Register.vue?vue&type=style&index=0&lang=css& ***!
@@ -81583,24 +81828,63 @@ var staticRenderFns = [
                     _c("div", { staticClass: "carousel-item active" }, [
                       _c("div", { staticClass: "col-md-4" }, [
                         _c("div", { staticClass: "card mb-2" }, [
+                          _c("div", { staticClass: "cardContainer" }, [
+                            _c("img", {
+                              staticClass: "card-img-top",
+                              attrs: {
+                                src: __webpack_require__(/*! ../assets/Books/1_250x300.jpg */ "./resources/js/assets/Books/1_250x300.jpg"),
+                                alt: "Card image cap"
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("THE RIDE OF A LIFE TIME")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "card-body" }, [
+                            _c("div", { staticClass: "card-contentNoTitle" }, [
+                              _c("p", { staticClass: "card-text" }, [
+                                _vm._v(
+                                  "\n                    ROBERT IGER\n                    "
+                                ),
+                                _c("br"),
+                                _vm._v("PAPERBACK\n                    "),
+                                _c("br"),
+                                _vm._v("ISBN: 123-456-7890\n                  ")
+                              ]),
+                              _vm._v(" "),
+                              _c("a", { staticClass: "btn btn-primary" }, [
+                                _c("b", [_vm._v("Add To Cart")])
+                              ])
+                            ])
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-4" }, [
+                        _c("div", { staticClass: "card mb-2" }, [
                           _c("img", {
                             staticClass: "card-img-top",
                             attrs: {
-                              src:
-                                "https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg",
+                              src: __webpack_require__(/*! ../assets/Books/2_250x300.jpg */ "./resources/js/assets/Books/2_250x300.jpg"),
                               alt: "Card image cap"
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("WHERE THE CRAWDADS SING")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
-                                "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
-                              )
+                                "\n                  DELIA OWENS\n                  "
+                              ),
+                              _c("br"),
+                              _vm._v("PAPERBACK\n                  "),
+                              _c("br"),
+                              _vm._v("ISBN: 123-456-7890\n                ")
                             ]),
                             _vm._v(" "),
                             _c("a", { staticClass: "btn btn-primary" }, [
@@ -81615,50 +81899,24 @@ var staticRenderFns = [
                           _c("img", {
                             staticClass: "card-img-top",
                             attrs: {
-                              src:
-                                "https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg",
+                              src: __webpack_require__(/*! ../assets/Books/3_250x300.jpg */ "./resources/js/assets/Books/3_250x300.jpg"),
                               alt: "Card image cap"
                             }
                           }),
                           _vm._v(" "),
-                          _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
-                            _c("p", { staticClass: "card-text" }, [
-                              _vm._v(
-                                "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("a", { staticClass: "btn btn-primary" }, [
-                              _c("b", [_vm._v("Add To Cart")])
-                            ])
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-4" }, [
-                        _c("div", { staticClass: "card mb-2" }, [
-                          _c("img", {
-                            staticClass: "card-img-top",
-                            attrs: {
-                              src:
-                                "https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg",
-                              alt: "Card image cap"
-                            }
-                          }),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("A MAN CALLED OVE")
+                          ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
-                                "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
-                              )
+                                "\n                  FREDRICK BACKMAN\n                  "
+                              ),
+                              _c("br"),
+                              _vm._v("PAPERBACK\n                  "),
+                              _c("br"),
+                              _vm._v("ISBN: 123-456-7890\n                ")
                             ]),
                             _vm._v(" "),
                             _c("a", { staticClass: "btn btn-primary" }, [
@@ -81681,11 +81939,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -81710,11 +81968,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -81739,11 +81997,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -81770,11 +82028,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -81799,11 +82057,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -81828,11 +82086,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -81902,11 +82160,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -81931,11 +82189,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -81960,11 +82218,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -81991,11 +82249,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -82020,11 +82278,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -82049,11 +82307,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -82080,11 +82338,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -82109,11 +82367,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -82138,11 +82396,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -82212,11 +82470,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -82241,11 +82499,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -82270,11 +82528,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -82301,11 +82559,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -82330,11 +82588,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -82359,11 +82617,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -82390,11 +82648,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -82419,11 +82677,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -82448,11 +82706,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -82522,11 +82780,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -82551,11 +82809,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -82580,11 +82838,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -82611,11 +82869,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -82640,11 +82898,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -82669,11 +82927,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -82700,11 +82958,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -82729,11 +82987,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -82758,11 +83016,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -82832,11 +83090,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -82861,11 +83119,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -82890,11 +83148,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -82921,11 +83179,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -82950,11 +83208,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -82979,11 +83237,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -83010,11 +83268,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -83039,11 +83297,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -83068,11 +83326,11 @@ var staticRenderFns = [
                             }
                           }),
                           _vm._v(" "),
+                          _c("h4", { staticClass: "card-title" }, [
+                            _vm._v("Card title")
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
-                            _c("h4", { staticClass: "card-title" }, [
-                              _vm._v("Card title")
-                            ]),
-                            _vm._v(" "),
                             _c("p", { staticClass: "card-text" }, [
                               _vm._v(
                                 "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
@@ -83710,20 +83968,16 @@ var render = function() {
                           )
                         : _vm._e(),
                       _vm._v(" "),
-                      _vm.$auth.check()
-                        ? _c(
-                            "b-dropdown-item-button",
-                            [
-                              _c("b-icon", {
-                                attrs: { icon: "blank", "aria-hidden": "true" }
-                              }),
-                              _vm._v("Profile\n            "),
-                              _c("span", { staticClass: "sr-only" }, [
-                                _vm._v("(Not selected)")
-                              ])
-                            ],
-                            1
-                          )
+                      !_vm.$auth.check()
+                        ? _c("b-dropdown-item-button", [
+                            _c("a", { attrs: { href: "/Profile" } }, [
+                              _vm._v("Profile")
+                            ]),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "sr-only" }, [
+                              _vm._v("(Not selected)")
+                            ])
+                          ])
                         : _vm._e(),
                       _vm._v(" "),
                       !_vm.$auth.check()
@@ -84072,6 +84326,309 @@ var staticRenderFns = [
         )
       ])
     ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Profile.vue?vue&type=template&id=074da5b0&":
+/*!*****************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Profile.vue?vue&type=template&id=074da5b0& ***!
+  \*****************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("navtop"),
+      _vm._v(" "),
+      _c("div", { staticClass: "profileBody" }, [
+        _c(
+          "div",
+          { staticClass: "profileContent" },
+          [
+            _c("p", { staticClass: "profileTitle" }, [_vm._v("Edit Profile")]),
+            _vm._v(" "),
+            _c(
+              "b-container",
+              { attrs: { fluid: "" } },
+              [
+                _c(
+                  "b-row",
+                  { staticClass: "my-1" },
+                  [
+                    _c("b-col", { staticClass: "label", attrs: { sm: "2" } }, [
+                      _c("label", { attrs: { for: "input-large" } }, [
+                        _vm._v("Name")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "b-col",
+                      { attrs: { sm: "10" } },
+                      [
+                        _c("b-form-input", {
+                          attrs: {
+                            id: "input-large",
+                            size: "lg",
+                            placeholder: "Enter your name"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-row",
+                  { staticClass: "my-1" },
+                  [
+                    _c("b-col", { staticClass: "label", attrs: { sm: "2" } }, [
+                      _c("label", { attrs: { for: "input-large" } }, [
+                        _vm._v("Email")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "b-col",
+                      { attrs: { sm: "10" } },
+                      [
+                        _c("b-form-input", {
+                          attrs: {
+                            id: "input-large",
+                            size: "lg",
+                            placeholder: "Enter your email"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-row",
+                  { staticClass: "my-1" },
+                  [
+                    _c("b-col", { staticClass: "label", attrs: { sm: "2" } }, [
+                      _c("label", { attrs: { for: "input-large" } }, [
+                        _vm._v("Username")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "b-col",
+                      { attrs: { sm: "10" } },
+                      [
+                        _c("b-form-input", {
+                          attrs: {
+                            id: "input-large",
+                            size: "lg",
+                            placeholder: "Enter your username"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-row",
+                  { staticClass: "my-1" },
+                  [
+                    _c("b-col", { staticClass: "label", attrs: { sm: "2" } }, [
+                      _c("label", { attrs: { for: "input-large" } }, [
+                        _vm._v("Phone Number")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "b-col",
+                      { attrs: { sm: "10" } },
+                      [
+                        _c("b-form-input", {
+                          attrs: {
+                            id: "input-large",
+                            size: "lg",
+                            placeholder: "Enter your phone number"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-row",
+                  { staticClass: "my-1" },
+                  [
+                    _c("b-col", { staticClass: "label", attrs: { sm: "2" } }, [
+                      _c("label", { attrs: { for: "input-large" } }, [
+                        _vm._v("Sex")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "b-col",
+                      { attrs: { sm: "10" } },
+                      [
+                        _c("b-form-select", {
+                          staticClass: "mr-lg-10",
+                          attrs: {
+                            id: "input-large",
+                            size: "lg",
+                            options: _vm.options
+                          },
+                          model: {
+                            value: _vm.searchFilter,
+                            callback: function($$v) {
+                              _vm.searchFilter = $$v
+                            },
+                            expression: "searchFilter "
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _vm._l(_vm.types, function(type) {
+                  return _c(
+                    "b-row",
+                    { key: type, staticClass: "my-1" },
+                    [
+                      _c(
+                        "b-col",
+                        { staticClass: "label", attrs: { sm: "2" } },
+                        [
+                          _c("label", { attrs: { for: "input-large" } }, [
+                            _vm._v("Birthday")
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-col",
+                        { attrs: { sm: "10" } },
+                        [
+                          _c("b-form-input", {
+                            staticClass: "mr-lg-10 birthday",
+                            attrs: {
+                              size: "lg",
+                              id: "type-" + type,
+                              type: type
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                }),
+                _vm._v(" "),
+                _c(
+                  "b-row",
+                  { staticClass: "my-1" },
+                  [
+                    _c(
+                      "b-col",
+                      { staticClass: "label bioLabel", attrs: { sm: "2" } },
+                      [
+                        _c("label", { attrs: { for: "input-large" } }, [
+                          _vm._v("Biography")
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "b-col",
+                      { attrs: { sm: "10" } },
+                      [
+                        _c("b-form-textarea", {
+                          attrs: {
+                            size: "lg",
+                            id: "textarea",
+                            placeholder: "Enter your biography",
+                            rows: "3",
+                            "max-rows": "6"
+                          },
+                          model: {
+                            value: _vm.text,
+                            callback: function($$v) {
+                              _vm.text = $$v
+                            },
+                            expression: "text"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-row",
+                  { staticClass: "my-1" },
+                  [
+                    _c(
+                      "b-col",
+                      { staticClass: "label submitButton", attrs: { sm: "2" } },
+                      [
+                        _c(
+                          "b-button",
+                          { attrs: { id: "submit", variant: "success" } },
+                          [_vm._v("Submit")]
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ],
+              2
+            )
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("navbottom")
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("head", [_c("title", [_vm._v("StoryTime | User Profile")])])
   }
 ]
 render._withStripped = true
@@ -100173,6 +100730,39 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 
 /***/ }),
 
+/***/ "./resources/js/assets/Books/1_250x300.jpg":
+/*!*************************************************!*\
+  !*** ./resources/js/assets/Books/1_250x300.jpg ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1_250x300.jpg?d34c3d94777b8bfa0fd18440c8be6f67";
+
+/***/ }),
+
+/***/ "./resources/js/assets/Books/2_250x300.jpg":
+/*!*************************************************!*\
+  !*** ./resources/js/assets/Books/2_250x300.jpg ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/2_250x300.jpg?304c0e891505adde592960ec1a173972";
+
+/***/ }),
+
+/***/ "./resources/js/assets/Books/3_250x300.jpg":
+/*!*************************************************!*\
+  !*** ./resources/js/assets/Books/3_250x300.jpg ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/3_250x300.jpg?531e48b00fd17d84ada7af7f47df9e6b";
+
+/***/ }),
+
 /***/ "./resources/js/assets/StoryTime.png":
 /*!*******************************************!*\
   !*** ./resources/js/assets/StoryTime.png ***!
@@ -100848,6 +101438,93 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/pages/Profile.vue":
+/*!****************************************!*\
+  !*** ./resources/js/pages/Profile.vue ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Profile_vue_vue_type_template_id_074da5b0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Profile.vue?vue&type=template&id=074da5b0& */ "./resources/js/pages/Profile.vue?vue&type=template&id=074da5b0&");
+/* harmony import */ var _Profile_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Profile.vue?vue&type=script&lang=js& */ "./resources/js/pages/Profile.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Profile_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Profile.vue?vue&type=style&index=0&lang=css& */ "./resources/js/pages/Profile.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _Profile_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Profile_vue_vue_type_template_id_074da5b0___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Profile_vue_vue_type_template_id_074da5b0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/pages/Profile.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/pages/Profile.vue?vue&type=script&lang=js&":
+/*!*****************************************************************!*\
+  !*** ./resources/js/pages/Profile.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Profile_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Profile.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Profile.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Profile_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/pages/Profile.vue?vue&type=style&index=0&lang=css&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/pages/Profile.vue?vue&type=style&index=0&lang=css& ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Profile_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./Profile.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Profile.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Profile_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Profile_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Profile_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Profile_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Profile_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/pages/Profile.vue?vue&type=template&id=074da5b0&":
+/*!***********************************************************************!*\
+  !*** ./resources/js/pages/Profile.vue?vue&type=template&id=074da5b0& ***!
+  \***********************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Profile_vue_vue_type_template_id_074da5b0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Profile.vue?vue&type=template&id=074da5b0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Profile.vue?vue&type=template&id=074da5b0&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Profile_vue_vue_type_template_id_074da5b0___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Profile_vue_vue_type_template_id_074da5b0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/pages/Register.vue":
 /*!*****************************************!*\
   !*** ./resources/js/pages/Register.vue ***!
@@ -101039,6 +101716,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_Login__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/Login */ "./resources/js/pages/Login.vue");
 /* harmony import */ var _pages_Register__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/Register */ "./resources/js/pages/Register.vue");
 /* harmony import */ var _pages_Admin__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/Admin */ "./resources/js/pages/Admin.vue");
+/* harmony import */ var _pages_Profile__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages/Profile */ "./resources/js/pages/Profile.vue");
+
 
 
 
@@ -101086,6 +101765,13 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
     name: 'Admin',
     meta: {
       auth: true
+    }
+  }, {
+    path: '/profile',
+    component: _pages_Profile__WEBPACK_IMPORTED_MODULE_7__["default"],
+    name: 'Profile',
+    meta: {
+      auth: undefined
     }
   }]
 }));

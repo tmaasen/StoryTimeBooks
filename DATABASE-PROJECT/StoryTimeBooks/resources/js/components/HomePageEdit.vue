@@ -38,16 +38,38 @@
           <div class="carousel-item active">
             <div class="col-md-4">
               <div class="card mb-2">
-                <img
-                  class="card-img-top"
-                  src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg"
-                  alt="Card image cap"
-                />
+                <div class="cardContainer">
+                  <img
+                    class="card-img-top"
+                    src="../assets/Books/1_250x300.jpg"
+                    alt="Card image cap"
+                  />
+                </div>
+                <h4 class="card-title">THE RIDE OF A LIFE TIME</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
+                  <div class="card-contentNoTitle">
+                    <p class="card-text">
+                      ROBERT IGER
+                      <br />PAPERBACK
+                      <br />ISBN: 123-456-7890
+                    </p>
+                    <a class="btn btn-primary">
+                      <b>Add To Cart</b>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-2">
+                <img class="card-img-top" src="../assets/Books/2_250x300.jpg" alt="Card image cap" />
+                <h4 class="card-title">WHERE THE CRAWDADS SING</h4>
+                <div class="card-body">
                   <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the
-                    card's content.
+                    DELIA OWENS
+                    <br />PAPERBACK
+                    <br />ISBN: 123-456-7890
                   </p>
                   <a class="btn btn-primary">
                     <b>Add To Cart</b>
@@ -58,36 +80,13 @@
 
             <div class="col-md-4">
               <div class="card mb-2">
-                <img
-                  class="card-img-top"
-                  src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
-                  alt="Card image cap"
-                />
+                <img class="card-img-top" src="../assets/Books/3_250x300.jpg" alt="Card image cap" />
+                <h4 class="card-title">A MAN CALLED OVE</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the
-                    card's content.
-                  </p>
-                  <a class="btn btn-primary">
-                    <b>Add To Cart</b>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card mb-2">
-                <img
-                  class="card-img-top"
-                  src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg"
-                  alt="Card image cap"
-                />
-                <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the
-                    card's content.
+                    FREDRICK BACKMAN
+                    <br />PAPERBACK
+                    <br />ISBN: 123-456-7890
                   </p>
                   <a class="btn btn-primary">
                     <b>Add To Cart</b>
@@ -107,8 +106,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -127,8 +126,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -147,8 +146,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -171,8 +170,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -191,8 +190,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -211,8 +210,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -267,8 +266,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -287,8 +286,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -307,8 +306,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -331,8 +330,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -351,8 +350,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -371,8 +370,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -395,8 +394,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -415,8 +414,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -435,8 +434,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -491,8 +490,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -511,8 +510,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -531,8 +530,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -555,8 +554,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -575,8 +574,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -595,8 +594,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -619,8 +618,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -639,8 +638,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -659,8 +658,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -715,8 +714,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -735,8 +734,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -755,8 +754,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -779,8 +778,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -799,8 +798,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -819,8 +818,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -843,8 +842,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -863,8 +862,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -883,8 +882,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -939,8 +938,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -959,8 +958,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -979,8 +978,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -1003,8 +1002,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -1023,8 +1022,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -1043,8 +1042,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -1067,8 +1066,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -1087,8 +1086,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -1107,8 +1106,8 @@
                   src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg"
                   alt="Card image cap"
                 />
+                <h4 class="card-title">Card title</h4>
                 <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -1130,6 +1129,11 @@
 </template>
 
 <style>
+.card-img-top {
+  height: 300px;
+  width: 250px;
+  margin: auto;
+}
 .img-fluid {
   max-width: 100%;
   height: 285px;
@@ -1139,6 +1143,13 @@
   float: left;
 }
 
+.card {
+  height: 540px;
+}
+
+.card-title {
+  margin-top: 10%;
+}
 .carousel-control-prev {
   position: absolute;
   height: 30%;
