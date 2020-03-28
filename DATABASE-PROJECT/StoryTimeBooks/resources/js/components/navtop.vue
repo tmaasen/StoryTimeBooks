@@ -43,15 +43,9 @@
               <span class="sr-only">(Not selected)</span>
             </b-dropdown-item-button>
             
-<<<<<<< HEAD
             <b-dropdown-item-button v-if="!$auth.check()">
              <!-- <b-icon icon="blank" aria-hidden="false"></b-icon> -->
               <a href="/Profile">Profile</a>
-=======
-            <b-dropdown-item-button v-if="$auth.check()">
-              <b-icon icon="blank" aria-hidden="true"></b-icon>
-              <a href="/profile">Profile</a>
->>>>>>> 2bc38bcb981d0ee50c0b50fd3f504099718a1438
               <span class="sr-only">(Not selected)</span>
             </b-dropdown-item-button>
 

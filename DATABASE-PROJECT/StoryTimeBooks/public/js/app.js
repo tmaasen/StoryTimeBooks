@@ -3427,10 +3427,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-<<<<<<< HEAD
-=======
 //
->>>>>>> 2bc38bcb981d0ee50c0b50fd3f504099718a1438
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -83980,7 +83977,6 @@ var render = function() {
                           )
                         : _vm._e(),
                       _vm._v(" "),
-<<<<<<< HEAD
                       !_vm.$auth.check()
                         ? _c("b-dropdown-item-button", [
                             _c("a", { attrs: { href: "/Profile" } }, [
@@ -83991,26 +83987,6 @@ var render = function() {
                               _vm._v("(Not selected)")
                             ])
                           ])
-=======
-                      _vm.$auth.check()
-                        ? _c(
-                            "b-dropdown-item-button",
-                            [
-                              _c("b-icon", {
-                                attrs: { icon: "blank", "aria-hidden": "true" }
-                              }),
-                              _vm._v(" "),
-                              _c("a", { attrs: { href: "/profile" } }, [
-                                _vm._v("Profile")
-                              ]),
-                              _vm._v(" "),
-                              _c("span", { staticClass: "sr-only" }, [
-                                _vm._v("(Not selected)")
-                              ])
-                            ],
-                            1
-                          )
->>>>>>> 2bc38bcb981d0ee50c0b50fd3f504099718a1438
                         : _vm._e(),
                       _vm._v(" "),
                       !_vm.$auth.check()
@@ -101863,8 +101839,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\tmaas\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\tmaas\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\User\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\User\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
