@@ -170,7 +170,7 @@
 </div>
 </template>
 
-<style>
+<style scoped>
 a {
   color: #3490dc;
   text-decoration: none;

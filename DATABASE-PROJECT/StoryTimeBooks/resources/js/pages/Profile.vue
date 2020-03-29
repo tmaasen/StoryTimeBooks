@@ -12,6 +12,7 @@
     <div class="profileContent">
       <p class="profileTitle">Edit Profile</p>
 
+      <form method="POST" @submit.prevent="updateUser">
       <b-container fluid>
         <b-row class="my-1">
           <b-col class="label" sm="2">
@@ -41,7 +42,7 @@
         </b-row>
 
         <b-row class="my-1">
-          <b-col class="label" sm="2">
+          <b-col class="label" sm="2" style="padding-right:0px">
             <label for="input-large">Home Phone</label>
           </b-col>
           <b-col sm="10">
@@ -58,11 +59,12 @@
           </b-col>
         </b-row>
       </b-container>
+      </form>
     </div>
 
     <div class="profileContent">
       <p class="profileTitle">Address Information</p>
-
+      <form method="POST" @submit.prevent="updateUserAddress">
       <b-container fluid>
         <b-row class="my-1">
           <b-col class="label" sm="2">
@@ -118,7 +120,102 @@
 </div>
 </template>
 
-<style>
+<script>
+import navtop from "../components/navtop";
+import navbottom from "../components/navbottom";
+
+export default {
+  data() {
+    return {
+      firstname: "",
+      searchFilter: "a",
+      text: "",
+      value: 1,
+      expmonth: null,
+    };
+  },
+  mounted() {
+    console.log("Home mounted.");
+  },
+  components: {
+    navtop,
+    navbottom
+  },
+  methods: {
+    updateUser(){
+
+    },
+    updateUserAddress() {
+
+    },
+    updateUserCreditCard() {
+
+    },
+  }
+};
+</script>
+
+<style scoped>
+.form-control {
+  width:25%;
+}
+svg {
+  fill:black;
+}
+.btn, .btn:hover {
+  background: white !important;
+  color:black !important;
+}
+.creditInput {
+  margin-bottom: 5%;
+}
+.row1 {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-25 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%; /* IE10 */
+  flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+.container1 {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
 .btn1 {
   background-color: #ff8d1e;
   color: white;
@@ -132,7 +229,7 @@
 }
 
 .btn1:hover {
-  background-color: #45a049;
+  background-color: #2196f3;
 }
 .profileBody {
   border: 1px solid black;
@@ -181,25 +278,3 @@
   width: 760px;
 }
 </style>
-
-<script>
-import navtop from "../components/navtop";
-import navbottom from "../components/navbottom";
-
-export default {
-  data() {
-    return {
-      firstname: "",
-      searchFilter: "a",
-      text: ""
-    };
-  },
-  mounted() {
-    console.log("Home mounted.");
-  },
-  components: {
-    navtop,
-    navbottom
-  }
-};
-</script>

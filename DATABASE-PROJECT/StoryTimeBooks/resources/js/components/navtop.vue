@@ -37,14 +37,15 @@
               <span v-if="!$auth.check()">My Account</span>
             </template>
 
+            <router-link :to="{name: 'Admin'}" class="link">
             <b-dropdown-item-button v-if="$auth.user().role === '2'">
-              <b-icon icon="blank" aria-hidden="true"></b-icon>
-              <a href="/admin" class="link">Admin</a>
+              Admin
               <span class="sr-only">(Not selected)</span>
             </b-dropdown-item-button>
+            </router-link>
 
-            <router-link :to="{name: 'Profile'}">
-              <b-dropdown-item-button v-if="!$auth.check()">
+            <router-link :to="{name: 'Profile'}" class="link">
+              <b-dropdown-item-button v-if="$auth.check()">
                 Profile
                 <span class="sr-only">(Not selected)</span>
               </b-dropdown-item-button>
@@ -69,7 +70,7 @@
             <!-- $auth.check(1) = user -->
             <!-- $auth.check(2) = admin user -->
             <b-dropdown-item-button v-if="$auth.check()" @click.prevent="$auth.logout()">
-              <b-icon icon="blank" aria-hidden="true"></b-icon>Logout
+              Logout
               <span class="sr-only">(Not selected)</span>
             </b-dropdown-item-button>
           </b-dropdown>
@@ -118,7 +119,7 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
 span {
   font-size: 1.125rem;
 }
@@ -146,6 +147,7 @@ select {
 #shoppingCart:hover {
   border: 3px solid #fff;
   border-radius: 5px;
+  background-color: #fff;
 }
 svg {
   fill: #ff8d1e;
@@ -153,7 +155,12 @@ svg {
 .bg-info {
   background-color: #252525;
 }
-
+.btn {
+  background-color:#ff8d1e;
+}
+.btn:hover {
+  background-color: #2196f3;
+}
 .btn-group,
 .btn-group-vertical {
   position: relative;
@@ -167,6 +174,9 @@ svg {
   background-color: #fff;
   color: #252525;
   text-decoration: none;
+}
+.dropdown-menu a {
+  font-size: 1rem;
 }
 
 .dropdown-menu {

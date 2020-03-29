@@ -1128,7 +1128,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
 .card-img-top {
   height: 300px;
   width: 250px;
@@ -1184,5 +1184,14 @@
   margin-top: 100px;
   margin-bottom: 4%;
   font-size: 50px;
+}
+
+.btn {
+  background-color:#ff8d1e;
+  color: #fff;
+}
+.btn:hover {
+  background-color: #2196f3;
+  color: #fff;
 }
 </style>

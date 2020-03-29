@@ -23,6 +23,16 @@ class UserAddress extends Model
     ];
 
     /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        // get request will not display these columns in a table
+        'id'
+    ];
+
+    /**
      * Indicates if the model should be timestamped.
      *
      * @var bool
