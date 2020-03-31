@@ -150,7 +150,7 @@ export default {
           },
           success: function () {
             app.success = true
-            this.$router.push({name: 'login', params: {successRegistrationRedirect: true}})
+            //this.$router.push('/login', {params: {successRegistrationRedirect: true}})
           },
           error: function (res) {
             // console.log(res.response.data.errors)

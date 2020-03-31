@@ -12,6 +12,11 @@ class User extends Authenticatable implements JWTSubject
     use Notifiable;
 
     /**
+     * 
+     */
+    protected $table = 'users';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -27,7 +32,7 @@ class User extends Authenticatable implements JWTSubject
      */
     protected $hidden = [
         // get request will not display these columns in a table
-        'id','password', 'remember_token', 'email_verified_at', 'created_at', 'updated_at'
+        'password', 'remember_token', 'email_verified_at', 'created_at', 'updated_at'
     ];
 
     /**

@@ -111,7 +111,7 @@
           </b-col>
         </b-row>
       </b-container>
-      <form action="/action_page.php">
+      <!-- <form action="/action_page.php"> -->
       <input type="submit" value="Apply Changes" class="btn1" />
       </form>
     </div>
@@ -130,7 +130,6 @@ export default {
       firstname: "",
       searchFilter: "a",
       text: "",
-      value: 1,
       expmonth: null,
     };
   },

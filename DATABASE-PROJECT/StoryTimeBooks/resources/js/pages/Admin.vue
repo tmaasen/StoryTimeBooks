@@ -18,10 +18,15 @@
     ></b-pagination>
     <p class="mt-3">
       Current Page: {{ currentUserPage }}
-      <b-button class="btn" style="color:white">Add User</b-button>
+      <b-button class="addbtn" style="color:white" v-b-modal.userModal>Add User</b-button>
+        <userModal title="Add User" />
+      <b-input v-model="editUserInput" placeholder="Enter User Id" class="input"></b-input>
+        <b-button class="editbtn" style="color:white">Edit User</b-button>
     </p>
     <b-table
       id="users-table"
+      selectable
+      select-mode="single"
       :per-page="perPage"
       :current-page="currentUserPage"
       small
@@ -32,6 +37,7 @@
       head-variant="light"
       class="w-85"
     ></b-table>
+    <hr />
     <!-- Books -->
     <h1 style="text-align:center">Books</h1>
     <b-pagination
@@ -43,10 +49,16 @@
     ></b-pagination>
     <p class="mt-3">
       Current Page: {{ currentBookPage }}
-      <b-button class="btn" style="color:white">Add Book</b-button>
+      <b-button class="addbtn" style="color:white" v-b-modal.bookModal>Add Book</b-button>
+        <bookModal title="Add Product" />
+      <b-input v-model="editBookInput" placeholder="Enter Book Id" class="input"></b-input>
+        <b-button class="editbtn" style="color:white">Edit Book</b-button>
     </p>
     <b-table
       id="books-table"
+      
+      selectable
+      select-mode="single"
       :per-page="perPage"
       :current-page="currentBookPage"
       small
@@ -57,6 +69,7 @@
       head-variant="light"
       class="w-85"
     ></b-table>
+    <hr />
     <!-- Publishers -->
     <h1 style="text-align:center">Publishers</h1>
     <b-pagination
@@ -68,10 +81,15 @@
     ></b-pagination>
     <p class="mt-3">
       Current Page: {{ currentPublisherPage }}
-      <b-button class="btn" style="color:white">Add Publisher</b-button>
+      <b-button class="addbtn" style="color:white" v-b-modal.publisherModal>Add Publisher</b-button>
+        <publisherModal title="Add Publisher" />
+      <b-input v-model="editPublisherInput" placeholder="Enter Publisher Id" class="input"></b-input>
+        <b-button class="editbtn" style="color:white">Edit Publisher</b-button>
     </p>
     <b-table
       id="publishers-table"
+      selectable
+      select-mode="single"
       :per-page="perPage"
       :current-page="currentPublisherPage"
       small
@@ -88,8 +106,11 @@
 </template>
 
 <script>
-import navtop from "../components/navtop";
-import navbottom from "../components/navbottom";
+import navtop from "../components/navtop"
+import navbottom from "../components/navbottom"
+import userModal from "../components/usermodal"
+import bookModal from "../components/bookmodal"
+import publisherModal from "../components/publishermodal"
 export default {
   data() {
     return {
@@ -99,12 +120,21 @@ export default {
       currentBookPage: 1,
       books: [],
       currentPublisherPage: 1,
-      publishers: []
+      publishers: [],
+      editUserInput: "",
+      editBookInput: "",
+      editPublisherInput: "",
     };
   },
   components: {
     navtop,
-    navbottom
+    navbottom,
+    userModal,
+    bookModal,
+    publisherModal,
+  },
+  methods: {
+    
   },
   computed: {
     userrows() {
@@ -117,8 +147,7 @@ export default {
       return this.publishers.length;
     }
   },
-  mounted() {
-    this.$Progress.start();
+  created() {
     // get users
     axios
       .get("http://127.0.0.1:8000/api/v1/admin/users")
@@ -128,7 +157,6 @@ export default {
       })
       .then(error => {
         console.log(error);
-        this.$Progress.fail();
       });
     // get books
     axios
@@ -139,7 +167,6 @@ export default {
       })
       .then(error => {
         console.log(error);
-        this.$Progress.fail();
       });
     // get publishers
     axios
@@ -150,10 +177,7 @@ export default {
       })
       .then(error => {
         console.log(error);
-        this.$Progress.fail();
       });
-
-    this.$Progress.finish();
   }
 };
 </script>
@@ -162,11 +186,21 @@ export default {
   padding-left: 15px;
   padding-right: 15px;
 }
-.btn {
+.addbtn {
+  background-color: #ff8d1e;
+  color: #fff;
+  margin-left: 5%;
+}
+.editbtn {
   background-color: #ff8d1e;
   color: #fff;
 }
-.btn:hover {
+.editbtn:hover, .addbtn:hover {
   background-color: #2196f3;
+}
+.input {
+  margin-left:5%;
+  width:15%;
+  display:inline !important
 }
 </style>

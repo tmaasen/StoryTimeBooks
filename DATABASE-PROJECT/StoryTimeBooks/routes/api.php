@@ -39,7 +39,13 @@ Route::prefix('v1')->group(function () {
         Route::get('users', 'Users\UserController@allUsers');
         // Get all books
         Route::get('products', 'Books\BookController@allBooks');
-        // Get all books
+        // Get all publishers
         Route::get('publishers', 'Books\BookController@allPublishers');
+        // Get all states
+        Route::get('states', 'Books\BookController@allStates');
+        // Create a new book
+        Route::post('newproduct', 'Books\BookController@createBook');
+        // Create a new publisher
+        Route::post('newpublisher', 'Books\BookController@createPublisher');
     });
 });

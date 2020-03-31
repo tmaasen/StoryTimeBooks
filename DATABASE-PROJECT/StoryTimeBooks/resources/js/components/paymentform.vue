@@ -152,8 +152,16 @@
 </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {};
+  }
+};
+</script>
 
-<style>
+
+<style scoped>
 .profileContent {
   margin: 5% 25% 5% 0%;
 }
