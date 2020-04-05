@@ -142,7 +142,7 @@ export default {
   data() {
     return {
       product_name: "",
-      perPage: 8,
+      perPage: 4,
       currentUserPage: 1,
       users: [],
       currentBookPage: 1,
@@ -187,7 +187,7 @@ export default {
       return this.users.length;
     },
     bookrows() {
-      return this.books.length;
+      return this.books.length-1;
     },
     publisherrows() {
       return this.publishers.length;

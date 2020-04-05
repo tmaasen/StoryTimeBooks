@@ -3664,433 +3664,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      books: []
+      books: [],
+      books_Business: [],
+      books_ComputerScience: [],
+      books_Psychology: [],
+      books_MusicTheatre: [],
+      books_Engineering: []
     };
   },
   created: function created() {
     var _this = this;
 
     axios.get("http://127.0.0.1:8000/api/v1/admin/products").then(function (response) {
+      // loop through the array, setting each book into a category group
       _this.books = response.data.books;
+
+      for (var i = 0; i < _this.books.length; i++) {
+        if (_this.books[i].category_id === 1) {
+          _this.books_Business.push(_this.books[i]);
+        } else if (_this.books[i].category_id === 2) {
+          _this.books_ComputerScience.push(_this.books[i]);
+        } else if (_this.books[i].category_id === 3) {
+          _this.books_Psychology.push(_this.books[i]);
+        } else if (_this.books[i].category_id === 4) {
+          _this.books_MusicTheatre.push(_this.books[i]);
+        } else {
+          _this.books_Engineering.push(_this.books[i]);
+        }
+      }
+
       console.log(response);
     }).then(function (error) {
       console.log(error);
@@ -5208,7 +4813,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       product_name: "",
-      perPage: 8,
+      perPage: 4,
       currentUserPage: 1,
       users: [],
       currentBookPage: 1,
@@ -5246,7 +4851,7 @@ __webpack_require__.r(__webpack_exports__);
       return this.users.length;
     },
     bookrows: function bookrows() {
-      return this.books.length;
+      return this.books.length - 1;
     },
     publisherrows: function publisherrows() {
       return this.publishers.length;
@@ -49745,7 +49350,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.card-img-top[data-v-47608723] {\r\n  height: 300px;\r\n  width: 250px;\r\n  margin: auto;\n}\n.img-fluid[data-v-47608723] {\r\n  max-width: 100%;\r\n  height: 285px;\n}\n.col-md-4[data-v-47608723] {\r\n  float: left;\n}\n.card-title[data-v-47608723] {\r\n  margin-top: 10%;\r\n  margin-right: auto;\r\n  margin-left: auto;\r\n  width: 200px;\r\n  text-align: center;\n}\n.carousel-control-prev[data-v-47608723] {\r\n  position: absolute;\r\n  height: 30%;\r\n  overflow: visible !important;\r\n  left: -170px !important;\r\n  top: 30% !important;\n}\n.carousel-control-next[data-v-47608723] {\r\n  position: absolute;\r\n  height: 30%;\r\n  overflow: visible !important;\r\n  right: -170px !important;\r\n  top: 30% !important;\n}\n.carousel-control-next[data-v-47608723]:after {\r\n  content: \">\";\r\n  font-size: 55px;\r\n  color: white;\r\n  background-color: grey;\n}\n.carousel-control-prev[data-v-47608723]:after {\r\n  content: \"<\";\r\n  font-size: 55px;\r\n  color: white;\r\n  background-color: grey;\n}\n.title[data-v-47608723] {\r\n  text-align: center;\r\n  margin-top: 100px;\r\n  margin-bottom: 4%;\r\n  font-size: 50px;\n}\n.btn[data-v-47608723] {\r\n  background-color:#ff8d1e;\r\n  color: #fff;\n}\n.btn[data-v-47608723]:hover {\r\n  background-color: #2196f3;\r\n  color: #fff;\n}\r\n", ""]);
+exports.push([module.i, "\n.card-img-top[data-v-47608723] {\r\n  height: 300px;\r\n  width: 250px;\r\n  margin: auto;\n}\n.img-fluid[data-v-47608723] {\r\n  max-width: 100%;\r\n  height: 285px;\n}\n.col-md-4[data-v-47608723] {\r\n  float: left;\n}\n.card-title[data-v-47608723] {\r\n  margin-top: 10%;\r\n  margin-right: auto;\r\n  margin-left: auto;\r\n  width: 200px;\r\n  text-align: center;\n}\n.carousel-control-prev[data-v-47608723] {\r\n  position: absolute;\r\n  height: 30%;\r\n  overflow: visible !important;\r\n  left: -170px !important;\r\n  top: 30% !important;\n}\n.carousel-control-next[data-v-47608723] {\r\n  position: absolute;\r\n  height: 30%;\r\n  overflow: visible !important;\r\n  right: -170px !important;\r\n  top: 30% !important;\n}\n.carousel-control-next[data-v-47608723]:after {\r\n  content: \">\";\r\n  font-size: 55px;\r\n  color: white;\r\n  background-color: grey;\n}\n.carousel-control-prev[data-v-47608723]:after {\r\n  content: \"<\";\r\n  font-size: 55px;\r\n  color: white;\r\n  background-color: grey;\n}\n.title[data-v-47608723] {\r\n  text-align: center;\r\n  margin-top: 100px;\r\n  margin-bottom: 4%;\r\n  font-size: 50px;\n}\n.btn[data-v-47608723] {\r\n  background-color: #ff8d1e;\r\n  color: #fff;\n}\n.btn[data-v-47608723]:hover {\r\n  background-color: #2196f3;\r\n  color: #fff;\n}\r\n", ""]);
 
 // exports
 
@@ -84089,7 +83694,7 @@ var render = function() {
                   _c(
                     "div",
                     { staticClass: "carousel-item active" },
-                    _vm._l(_vm.books, function(book) {
+                    _vm._l(_vm.books_ComputerScience, function(book) {
                       return _c(
                         "div",
                         { key: book.id, staticClass: "col-md-4" },
@@ -84131,13 +83736,13 @@ var render = function() {
                                     _vm._v("PAPERBACK\n                    "),
                                     _c("br"),
                                     _vm._v(
-                                      "ISBN: " +
+                                      "\n                    ISBN: " +
                                         _vm._s(book.isbn_13) +
                                         "\n                    "
                                     ),
                                     _c("br"),
                                     _vm._v(
-                                      "RETAIL: $" +
+                                      "\n                    RETAIL: $" +
                                         _vm._s(book.retail_price) +
                                         "\n                  "
                                     )
@@ -84160,13 +83765,376 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _vm._m(3),
+      _c(
+        "div",
+        { staticStyle: { width: "70%", margin: "1% 15%", padding: "10px" } },
+        [
+          _c("p", { staticClass: "title" }, [_vm._v("Business")]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "carousel slide carousel-multi-item",
+              attrs: { id: "business", "data-ride": "carousel" }
+            },
+            [
+              _vm._m(3),
+              _vm._v(" "),
+              _vm._m(4),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "carousel-inner", attrs: { role: "listbox" } },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "carousel-item active" },
+                    _vm._l(_vm.books_Business, function(book) {
+                      return _c(
+                        "div",
+                        { key: book.id, staticClass: "col-md-4" },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "card mb-2" },
+                            [
+                              _c("b-img-lazy", {
+                                staticClass: "card-img-top",
+                                attrs: {
+                                  src: _vm.getImgUrl(book.product_image),
+                                  width: "250",
+                                  height: "300",
+                                  alt: "Card image cap"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("h4", { staticClass: "card-title" }, [
+                                _vm._v(_vm._s(book.product_name))
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "card-body" }, [
+                                _c("p", { staticClass: "card-text" }, [
+                                  _vm._v(
+                                    "\n                    " +
+                                      _vm._s(book.author) +
+                                      "\n                    "
+                                  ),
+                                  _c("br"),
+                                  _vm._v("PAPERBACK\n                    "),
+                                  _c("br"),
+                                  _vm._v(
+                                    "\n                    ISBN: " +
+                                      _vm._s(book.isbn_13) +
+                                      "\n                    "
+                                  ),
+                                  _c("br"),
+                                  _vm._v(
+                                    "\n                    RETAIL: $" +
+                                      _vm._s(book.retail_price) +
+                                      "\n                  "
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _vm._m(5, true)
+                              ])
+                            ],
+                            1
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                ]
+              )
+            ]
+          )
+        ]
+      ),
       _vm._v(" "),
-      _vm._m(4),
+      _c(
+        "div",
+        { staticStyle: { width: "70%", margin: "0 15%", padding: "10px" } },
+        [
+          _c("p", { staticClass: "title" }, [_vm._v("Psychology")]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "carousel slide carousel-multi-item",
+              attrs: { id: "psychology", "data-ride": "carousel" }
+            },
+            [
+              _vm._m(6),
+              _vm._v(" "),
+              _vm._m(7),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "carousel-inner", attrs: { role: "listbox" } },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "carousel-item active" },
+                    _vm._l(_vm.books_Psychology, function(book) {
+                      return _c(
+                        "div",
+                        { key: book.id, staticClass: "col-md-4" },
+                        [
+                          _c("div", { staticClass: "card mb-2" }, [
+                            _c(
+                              "div",
+                              { staticClass: "cardContainer" },
+                              [
+                                _c("b-img-lazy", {
+                                  staticClass: "card-img-top",
+                                  attrs: {
+                                    src: _vm.getImgUrl(book.product_image),
+                                    width: "250",
+                                    height: "300"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c("h4", { staticClass: "card-title" }, [
+                              _vm._v(_vm._s(book.product_name))
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "card-body" }, [
+                              _c(
+                                "div",
+                                { staticClass: "card-contentNoTitle" },
+                                [
+                                  _c("p", { staticClass: "card-text" }, [
+                                    _vm._v(
+                                      "\n                    " +
+                                        _vm._s(book.author) +
+                                        "\n                    "
+                                    ),
+                                    _c("br"),
+                                    _vm._v("PAPERBACK\n                    "),
+                                    _c("br"),
+                                    _vm._v(
+                                      "\n                    ISBN: " +
+                                        _vm._s(book.isbn_13) +
+                                        "\n                    "
+                                    ),
+                                    _c("br"),
+                                    _vm._v(
+                                      "\n                    RETAIL: $" +
+                                        _vm._s(book.retail_price) +
+                                        "\n                  "
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(8, true)
+                                ]
+                              )
+                            ])
+                          ])
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                ]
+              )
+            ]
+          )
+        ]
+      ),
       _vm._v(" "),
-      _vm._m(5),
+      _c(
+        "div",
+        { staticStyle: { width: "70%", margin: "0 15%", padding: "10px" } },
+        [
+          _c("p", { staticClass: "title" }, [_vm._v("Engineering")]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "carousel slide carousel-multi-item",
+              attrs: { id: "engineering", "data-ride": "carousel" }
+            },
+            [
+              _vm._m(9),
+              _vm._v(" "),
+              _vm._m(10),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "carousel-inner", attrs: { role: "listbox" } },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "carousel-item active" },
+                    _vm._l(_vm.books_Engineering, function(book) {
+                      return _c(
+                        "div",
+                        { key: book.id, staticClass: "col-md-4" },
+                        [
+                          _c("div", { staticClass: "card mb-2" }, [
+                            _c(
+                              "div",
+                              { staticClass: "cardContainer" },
+                              [
+                                _c("b-img-lazy", {
+                                  staticClass: "card-img-top",
+                                  attrs: {
+                                    src: _vm.getImgUrl(book.product_image),
+                                    width: "250",
+                                    height: "300"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c("h4", { staticClass: "card-title" }, [
+                              _vm._v(_vm._s(book.product_name))
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "card-body" }, [
+                              _c(
+                                "div",
+                                { staticClass: "card-contentNoTitle" },
+                                [
+                                  _c("p", { staticClass: "card-text" }, [
+                                    _vm._v(
+                                      "\n                    " +
+                                        _vm._s(book.author) +
+                                        "\n                    "
+                                    ),
+                                    _c("br"),
+                                    _vm._v("PAPERBACK\n                    "),
+                                    _c("br"),
+                                    _vm._v(
+                                      "\n                    ISBN: " +
+                                        _vm._s(book.isbn_13) +
+                                        "\n                    "
+                                    ),
+                                    _c("br"),
+                                    _vm._v(
+                                      "\n                    RETAIL: $" +
+                                        _vm._s(book.retail_price) +
+                                        "\n                  "
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(11, true)
+                                ]
+                              )
+                            ])
+                          ])
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                ]
+              )
+            ]
+          )
+        ]
+      ),
       _vm._v(" "),
-      _vm._m(6)
+      _c(
+        "div",
+        { staticStyle: { width: "70%", margin: "0 15%", padding: "10px" } },
+        [
+          _c("p", { staticClass: "title" }, [_vm._v("Music / Theatre")]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "carousel slide carousel-multi-item",
+              attrs: { id: "musicTheatre", "data-ride": "carousel" }
+            },
+            [
+              _vm._m(12),
+              _vm._v(" "),
+              _vm._m(13),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "carousel-inner", attrs: { role: "listbox" } },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "carousel-item active" },
+                    _vm._l(_vm.books_MusicTheatre, function(book) {
+                      return _c(
+                        "div",
+                        { key: book.id, staticClass: "col-md-4" },
+                        [
+                          _c("div", { staticClass: "card mb-2" }, [
+                            _c(
+                              "div",
+                              { staticClass: "cardContainer" },
+                              [
+                                _c("b-img-lazy", {
+                                  staticClass: "card-img-top",
+                                  attrs: {
+                                    src: _vm.getImgUrl(book.product_image),
+                                    width: "250",
+                                    height: "300"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c("h4", { staticClass: "card-title" }, [
+                              _vm._v(_vm._s(book.product_name))
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "card-body" }, [
+                              _c(
+                                "div",
+                                { staticClass: "card-contentNoTitle" },
+                                [
+                                  _c("p", { staticClass: "card-text" }, [
+                                    _vm._v(
+                                      "\n                    " +
+                                        _vm._s(book.author) +
+                                        "\n                    "
+                                    ),
+                                    _c("br"),
+                                    _vm._v("PAPERBACK\n                    "),
+                                    _c("br"),
+                                    _vm._v(
+                                      "\n                    ISBN: " +
+                                        _vm._s(book.isbn_13) +
+                                        "\n                    "
+                                    ),
+                                    _c("br"),
+                                    _vm._v(
+                                      "\n                    RETAIL: $" +
+                                        _vm._s(book.retail_price) +
+                                        "\n                  "
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(14, true)
+                                ]
+                              )
+                            ])
+                          ])
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                ]
+              )
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _vm._m(15)
     ]
   )
 }
@@ -84211,943 +84179,145 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticStyle: { width: "70%", margin: "1% 15%", padding: "10px" } },
-      [
-        _c("p", { staticClass: "title" }, [_vm._v("Business")]),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "carousel slide carousel-multi-item",
-            attrs: { id: "business", "data-ride": "carousel" }
-          },
-          [
-            _c("div", { staticStyle: { margin: "auto" } }, [
-              _c("a", {
-                staticClass: "carousel-control left carousel-control-prev",
-                staticStyle: { color: "red", outline: "black" },
-                attrs: { href: "#business", "data-slide": "prev" }
-              }),
-              _vm._v(" "),
-              _c("i", { staticClass: "fa fa-angle-left" })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticStyle: { margin: "auto" } }, [
-              _c("a", {
-                staticClass: "carousel-control right carousel-control-next",
-                staticStyle: { color: "red", outline: "black" },
-                attrs: { href: "#business", "data-slide": "next" }
-              }),
-              _vm._v(" "),
-              _c("i", { staticClass: "fa fa-angle-right" })
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "carousel-inner", attrs: { role: "listbox" } },
-              [
-                _c("div", { staticClass: "carousel-item active" }, [
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("div", { staticClass: "card mb-2" }, [
-                      _c("img", {
-                        staticClass: "card-img-top",
-                        attrs: {
-                          src:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg",
-                          alt: "Card image cap"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("h4", { staticClass: "card-title" }, [
-                        _vm._v("Card title")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(
-                            "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { staticClass: "btn btn-primary" }, [
-                          _c("b", [_vm._v("Add To Cart")])
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("div", { staticClass: "card mb-2" }, [
-                      _c("img", {
-                        staticClass: "card-img-top",
-                        attrs: {
-                          src:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg",
-                          alt: "Card image cap"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("h4", { staticClass: "card-title" }, [
-                        _vm._v("Card title")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(
-                            "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { staticClass: "btn btn-primary" }, [
-                          _c("b", [_vm._v("Add To Cart")])
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("div", { staticClass: "card mb-2" }, [
-                      _c("img", {
-                        staticClass: "card-img-top",
-                        attrs: {
-                          src:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg",
-                          alt: "Card image cap"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("h4", { staticClass: "card-title" }, [
-                        _vm._v("Card title")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(
-                            "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { staticClass: "btn btn-primary" }, [
-                          _c("b", [_vm._v("Add To Cart")])
-                        ])
-                      ])
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "carousel-item" }, [
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("div", { staticClass: "card mb-2" }, [
-                      _c("img", {
-                        staticClass: "card-img-top",
-                        attrs: {
-                          src:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg",
-                          alt: "Card image cap"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("h4", { staticClass: "card-title" }, [
-                        _vm._v("Card title")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(
-                            "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { staticClass: "btn btn-primary" }, [
-                          _c("b", [_vm._v("Add To Cart")])
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("div", { staticClass: "card mb-2" }, [
-                      _c("img", {
-                        staticClass: "card-img-top",
-                        attrs: {
-                          src:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg",
-                          alt: "Card image cap"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("h4", { staticClass: "card-title" }, [
-                        _vm._v("Card title")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(
-                            "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { staticClass: "btn btn-primary" }, [
-                          _c("b", [_vm._v("Add To Cart")])
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("div", { staticClass: "card mb-2" }, [
-                      _c("img", {
-                        staticClass: "card-img-top",
-                        attrs: {
-                          src:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg",
-                          alt: "Card image cap"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("h4", { staticClass: "card-title" }, [
-                        _vm._v("Card title")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(
-                            "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { staticClass: "btn btn-primary" }, [
-                          _c("b", [_vm._v("Add To Cart")])
-                        ])
-                      ])
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "carousel-item" }, [
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("div", { staticClass: "card mb-2" }, [
-                      _c("img", {
-                        staticClass: "card-img-top",
-                        attrs: {
-                          src:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg",
-                          alt: "Card image cap"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("h4", { staticClass: "card-title" }, [
-                        _vm._v("Card title")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(
-                            "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { staticClass: "btn btn-primary" }, [
-                          _c("b", [_vm._v("Add To Cart")])
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("div", { staticClass: "card mb-2" }, [
-                      _c("img", {
-                        staticClass: "card-img-top",
-                        attrs: {
-                          src:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg",
-                          alt: "Card image cap"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("h4", { staticClass: "card-title" }, [
-                        _vm._v("Card title")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(
-                            "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { staticClass: "btn btn-primary" }, [
-                          _c("b", [_vm._v("Add To Cart")])
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("div", { staticClass: "card mb-2" }, [
-                      _c("img", {
-                        staticClass: "card-img-top",
-                        attrs: {
-                          src:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg",
-                          alt: "Card image cap"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("h4", { staticClass: "card-title" }, [
-                        _vm._v("Card title")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(
-                            "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { staticClass: "btn btn-primary" }, [
-                          _c("b", [_vm._v("Add To Cart")])
-                        ])
-                      ])
-                    ])
-                  ])
-                ])
-              ]
-            )
-          ]
-        )
-      ]
-    )
+    return _c("div", { staticStyle: { margin: "auto" } }, [
+      _c("a", {
+        staticClass: "carousel-control left carousel-control-prev",
+        staticStyle: { color: "red", outline: "black" },
+        attrs: { href: "#business", "data-slide": "prev" }
+      }),
+      _vm._v(" "),
+      _c("i", { staticClass: "fa fa-angle-left" })
+    ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticStyle: { width: "70%", margin: "0 15%", padding: "10px" } },
-      [
-        _c("p", { staticClass: "title" }, [_vm._v("Psychology")]),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "carousel slide carousel-multi-item",
-            attrs: { id: "psychology", "data-ride": "carousel" }
-          },
-          [
-            _c("div", { staticStyle: { margin: "auto" } }, [
-              _c("a", {
-                staticClass: "carousel-control left carousel-control-prev",
-                staticStyle: { color: "red", outline: "black" },
-                attrs: { href: "#psychology", "data-slide": "prev" }
-              }),
-              _vm._v(" "),
-              _c("i", { staticClass: "fa fa-angle-left" })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticStyle: { margin: "auto" } }, [
-              _c("a", {
-                staticClass: "carousel-control right carousel-control-next",
-                staticStyle: { color: "red", outline: "black" },
-                attrs: { href: "#psychology", "data-slide": "next" }
-              }),
-              _vm._v(" "),
-              _c("i", { staticClass: "fa fa-angle-right" })
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "carousel-inner", attrs: { role: "listbox" } },
-              [
-                _c("div", { staticClass: "carousel-item active" }, [
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("div", { staticClass: "card mb-2" }, [
-                      _c("img", {
-                        staticClass: "card-img-top",
-                        attrs: {
-                          src:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg",
-                          alt: "Card image cap"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("h4", { staticClass: "card-title" }, [
-                        _vm._v("Card title")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(
-                            "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { staticClass: "btn btn-primary" }, [
-                          _c("b", [_vm._v("Add To Cart")])
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("div", { staticClass: "card mb-2" }, [
-                      _c("img", {
-                        staticClass: "card-img-top",
-                        attrs: {
-                          src:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg",
-                          alt: "Card image cap"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("h4", { staticClass: "card-title" }, [
-                        _vm._v("Card title")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(
-                            "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { staticClass: "btn btn-primary" }, [
-                          _c("b", [_vm._v("Add To Cart")])
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("div", { staticClass: "card mb-2" }, [
-                      _c("img", {
-                        staticClass: "card-img-top",
-                        attrs: {
-                          src:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg",
-                          alt: "Card image cap"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("h4", { staticClass: "card-title" }, [
-                        _vm._v("Card title")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(
-                            "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { staticClass: "btn btn-primary" }, [
-                          _c("b", [_vm._v("Add To Cart")])
-                        ])
-                      ])
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "carousel-item" }, [
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("div", { staticClass: "card mb-2" }, [
-                      _c("img", {
-                        staticClass: "card-img-top",
-                        attrs: {
-                          src:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg",
-                          alt: "Card image cap"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("h4", { staticClass: "card-title" }, [
-                        _vm._v("Card title")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(
-                            "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { staticClass: "btn btn-primary" }, [
-                          _c("b", [_vm._v("Add To Cart")])
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("div", { staticClass: "card mb-2" }, [
-                      _c("img", {
-                        staticClass: "card-img-top",
-                        attrs: {
-                          src:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg",
-                          alt: "Card image cap"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("h4", { staticClass: "card-title" }, [
-                        _vm._v("Card title")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(
-                            "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { staticClass: "btn btn-primary" }, [
-                          _c("b", [_vm._v("Add To Cart")])
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("div", { staticClass: "card mb-2" }, [
-                      _c("img", {
-                        staticClass: "card-img-top",
-                        attrs: {
-                          src:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg",
-                          alt: "Card image cap"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("h4", { staticClass: "card-title" }, [
-                        _vm._v("Card title")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(
-                            "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { staticClass: "btn btn-primary" }, [
-                          _c("b", [_vm._v("Add To Cart")])
-                        ])
-                      ])
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "carousel-item" }, [
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("div", { staticClass: "card mb-2" }, [
-                      _c("img", {
-                        staticClass: "card-img-top",
-                        attrs: {
-                          src:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg",
-                          alt: "Card image cap"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("h4", { staticClass: "card-title" }, [
-                        _vm._v("Card title")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(
-                            "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { staticClass: "btn btn-primary" }, [
-                          _c("b", [_vm._v("Add To Cart")])
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("div", { staticClass: "card mb-2" }, [
-                      _c("img", {
-                        staticClass: "card-img-top",
-                        attrs: {
-                          src:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg",
-                          alt: "Card image cap"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("h4", { staticClass: "card-title" }, [
-                        _vm._v("Card title")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(
-                            "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { staticClass: "btn btn-primary" }, [
-                          _c("b", [_vm._v("Add To Cart")])
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("div", { staticClass: "card mb-2" }, [
-                      _c("img", {
-                        staticClass: "card-img-top",
-                        attrs: {
-                          src:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg",
-                          alt: "Card image cap"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("h4", { staticClass: "card-title" }, [
-                        _vm._v("Card title")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(
-                            "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { staticClass: "btn btn-primary" }, [
-                          _c("b", [_vm._v("Add To Cart")])
-                        ])
-                      ])
-                    ])
-                  ])
-                ])
-              ]
-            )
-          ]
-        )
-      ]
-    )
+    return _c("div", { staticStyle: { margin: "auto" } }, [
+      _c("a", {
+        staticClass: "carousel-control right carousel-control-next",
+        staticStyle: { color: "red", outline: "black" },
+        attrs: { href: "#business", "data-slide": "next" }
+      }),
+      _vm._v(" "),
+      _c("i", { staticClass: "fa fa-angle-right" })
+    ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticStyle: { width: "70%", margin: "0 15%", padding: "10px" } },
-      [
-        _c("p", { staticClass: "title" }, [_vm._v("Engineering")]),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "carousel slide carousel-multi-item",
-            attrs: { id: "engineering", "data-ride": "carousel" }
-          },
-          [
-            _c("div", { staticStyle: { margin: "auto" } }, [
-              _c("a", {
-                staticClass: "carousel-control left carousel-control-prev",
-                staticStyle: { color: "red", outline: "black" },
-                attrs: { href: "#engineering", "data-slide": "prev" }
-              }),
-              _vm._v(" "),
-              _c("i", { staticClass: "fa fa-angle-left" })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticStyle: { margin: "auto" } }, [
-              _c("a", {
-                staticClass: "carousel-control right carousel-control-next",
-                staticStyle: { color: "red", outline: "black" },
-                attrs: { href: "#engineering", "data-slide": "next" }
-              }),
-              _vm._v(" "),
-              _c("i", { staticClass: "fa fa-angle-right" })
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "carousel-inner", attrs: { role: "listbox" } },
-              [
-                _c("div", { staticClass: "carousel-item active" }, [
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("div", { staticClass: "card mb-2" }, [
-                      _c("img", {
-                        staticClass: "card-img-top",
-                        attrs: {
-                          src:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg",
-                          alt: "Card image cap"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("h4", { staticClass: "card-title" }, [
-                        _vm._v("Card title")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(
-                            "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { staticClass: "btn btn-primary" }, [
-                          _c("b", [_vm._v("Add To Cart")])
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("div", { staticClass: "card mb-2" }, [
-                      _c("img", {
-                        staticClass: "card-img-top",
-                        attrs: {
-                          src:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg",
-                          alt: "Card image cap"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("h4", { staticClass: "card-title" }, [
-                        _vm._v("Card title")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(
-                            "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { staticClass: "btn btn-primary" }, [
-                          _c("b", [_vm._v("Add To Cart")])
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("div", { staticClass: "card mb-2" }, [
-                      _c("img", {
-                        staticClass: "card-img-top",
-                        attrs: {
-                          src:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg",
-                          alt: "Card image cap"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("h4", { staticClass: "card-title" }, [
-                        _vm._v("Card title")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(
-                            "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { staticClass: "btn btn-primary" }, [
-                          _c("b", [_vm._v("Add To Cart")])
-                        ])
-                      ])
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "carousel-item" }, [
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("div", { staticClass: "card mb-2" }, [
-                      _c("img", {
-                        staticClass: "card-img-top",
-                        attrs: {
-                          src:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg",
-                          alt: "Card image cap"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("h4", { staticClass: "card-title" }, [
-                        _vm._v("Card title")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(
-                            "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { staticClass: "btn btn-primary" }, [
-                          _c("b", [_vm._v("Add To Cart")])
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("div", { staticClass: "card mb-2" }, [
-                      _c("img", {
-                        staticClass: "card-img-top",
-                        attrs: {
-                          src:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg",
-                          alt: "Card image cap"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("h4", { staticClass: "card-title" }, [
-                        _vm._v("Card title")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(
-                            "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { staticClass: "btn btn-primary" }, [
-                          _c("b", [_vm._v("Add To Cart")])
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("div", { staticClass: "card mb-2" }, [
-                      _c("img", {
-                        staticClass: "card-img-top",
-                        attrs: {
-                          src:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg",
-                          alt: "Card image cap"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("h4", { staticClass: "card-title" }, [
-                        _vm._v("Card title")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(
-                            "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { staticClass: "btn btn-primary" }, [
-                          _c("b", [_vm._v("Add To Cart")])
-                        ])
-                      ])
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "carousel-item" }, [
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("div", { staticClass: "card mb-2" }, [
-                      _c("img", {
-                        staticClass: "card-img-top",
-                        attrs: {
-                          src:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg",
-                          alt: "Card image cap"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("h4", { staticClass: "card-title" }, [
-                        _vm._v("Card title")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(
-                            "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { staticClass: "btn btn-primary" }, [
-                          _c("b", [_vm._v("Add To Cart")])
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("div", { staticClass: "card mb-2" }, [
-                      _c("img", {
-                        staticClass: "card-img-top",
-                        attrs: {
-                          src:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg",
-                          alt: "Card image cap"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("h4", { staticClass: "card-title" }, [
-                        _vm._v("Card title")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(
-                            "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { staticClass: "btn btn-primary" }, [
-                          _c("b", [_vm._v("Add To Cart")])
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("div", { staticClass: "card mb-2" }, [
-                      _c("img", {
-                        staticClass: "card-img-top",
-                        attrs: {
-                          src:
-                            "https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg",
-                          alt: "Card image cap"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("h4", { staticClass: "card-title" }, [
-                        _vm._v("Card title")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v(
-                            "\n                  Some quick example text to build on the card title and make up the bulk of the\n                  card's content.\n                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("a", { staticClass: "btn btn-primary" }, [
-                          _c("b", [_vm._v("Add To Cart")])
-                        ])
-                      ])
-                    ])
-                  ])
-                ])
-              ]
-            )
-          ]
-        )
-      ]
-    )
+    return _c("a", { staticClass: "btn btn-primary" }, [
+      _c("b", [_vm._v("Add To Cart")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticStyle: { margin: "auto" } }, [
+      _c("a", {
+        staticClass: "carousel-control left carousel-control-prev",
+        staticStyle: { color: "red", outline: "black" },
+        attrs: { href: "#psychology", "data-slide": "prev" }
+      }),
+      _vm._v(" "),
+      _c("i", { staticClass: "fa fa-angle-left" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticStyle: { margin: "auto" } }, [
+      _c("a", {
+        staticClass: "carousel-control right carousel-control-next",
+        staticStyle: { color: "red", outline: "black" },
+        attrs: { href: "#psychology", "data-slide": "next" }
+      }),
+      _vm._v(" "),
+      _c("i", { staticClass: "fa fa-angle-right" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { staticClass: "btn btn-primary" }, [
+      _c("b", [_vm._v("Add To Cart")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticStyle: { margin: "auto" } }, [
+      _c("a", {
+        staticClass: "carousel-control left carousel-control-prev",
+        staticStyle: { color: "red", outline: "black" },
+        attrs: { href: "#engineering", "data-slide": "prev" }
+      }),
+      _vm._v(" "),
+      _c("i", { staticClass: "fa fa-angle-left" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticStyle: { margin: "auto" } }, [
+      _c("a", {
+        staticClass: "carousel-control right carousel-control-next",
+        staticStyle: { color: "red", outline: "black" },
+        attrs: { href: "#engineering", "data-slide": "next" }
+      }),
+      _vm._v(" "),
+      _c("i", { staticClass: "fa fa-angle-right" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { staticClass: "btn btn-primary" }, [
+      _c("b", [_vm._v("Add To Cart")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticStyle: { margin: "auto" } }, [
+      _c("a", {
+        staticClass: "carousel-control left carousel-control-prev",
+        staticStyle: { color: "red", outline: "black" },
+        attrs: { href: "#musicTheatre", "data-slide": "prev" }
+      }),
+      _vm._v(" "),
+      _c("i", { staticClass: "fa fa-angle-left" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticStyle: { margin: "auto" } }, [
+      _c("a", {
+        staticClass: "carousel-control right carousel-control-next",
+        staticStyle: { color: "red", outline: "black" },
+        attrs: { href: "#musicTheatre", "data-slide": "next" }
+      }),
+      _vm._v(" "),
+      _c("i", { staticClass: "fa fa-angle-right" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { staticClass: "btn btn-primary" }, [
+      _c("b", [_vm._v("Add To Cart")])
+    ])
   },
   function() {
     var _vm = this
@@ -104501,7 +103671,27 @@ var map = {
 	"./1585971044.jpg": "./public/uploads/products/1585971044.jpg",
 	"./1585971427.jpg": "./public/uploads/products/1585971427.jpg",
 	"./1585971429.jpg": "./public/uploads/products/1585971429.jpg",
-	"./1585971453.jpg": "./public/uploads/products/1585971453.jpg"
+	"./1585971453.jpg": "./public/uploads/products/1585971453.jpg",
+	"./1586107893.jpg": "./public/uploads/products/1586107893.jpg",
+	"./1586108663.jpg": "./public/uploads/products/1586108663.jpg",
+	"./1586108833.jpg": "./public/uploads/products/1586108833.jpg",
+	"./1586108998.jpg": "./public/uploads/products/1586108998.jpg",
+	"./1586109214.jpg": "./public/uploads/products/1586109214.jpg",
+	"./1586109576.jpg": "./public/uploads/products/1586109576.jpg",
+	"./1586111484.jpg": "./public/uploads/products/1586111484.jpg",
+	"./1586111648.jpg": "./public/uploads/products/1586111648.jpg",
+	"./1586111747.jpg": "./public/uploads/products/1586111747.jpg",
+	"./1586111926.jpg": "./public/uploads/products/1586111926.jpg",
+	"./1586112033.jpg": "./public/uploads/products/1586112033.jpg",
+	"./1586112202.jpg": "./public/uploads/products/1586112202.jpg",
+	"./1586112348.jpg": "./public/uploads/products/1586112348.jpg",
+	"./1586112452.jpg": "./public/uploads/products/1586112452.jpg",
+	"./1586112790.jpg": "./public/uploads/products/1586112790.jpg",
+	"./1586112901.jpg": "./public/uploads/products/1586112901.jpg",
+	"./1586113140.jpg": "./public/uploads/products/1586113140.jpg",
+	"./1586113217.jpg": "./public/uploads/products/1586113217.jpg",
+	"./1586113338.jpg": "./public/uploads/products/1586113338.jpg",
+	"./1586113450.jpg": "./public/uploads/products/1586113450.jpg"
 };
 
 
@@ -104567,6 +103757,226 @@ module.exports = "/images/1585971429.jpg?7e5efe6a65e551224f36c0e229700e8a";
 /***/ (function(module, exports) {
 
 module.exports = "/images/1585971453.jpg?519577ebf01d29d3c011d91c38bc97ff";
+
+/***/ }),
+
+/***/ "./public/uploads/products/1586107893.jpg":
+/*!************************************************!*\
+  !*** ./public/uploads/products/1586107893.jpg ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1586107893.jpg?e3b6278b03d134fe01f8b4f1a974dc7d";
+
+/***/ }),
+
+/***/ "./public/uploads/products/1586108663.jpg":
+/*!************************************************!*\
+  !*** ./public/uploads/products/1586108663.jpg ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1586108663.jpg?cf4fcfe4e304fa71368b44c24fd87fac";
+
+/***/ }),
+
+/***/ "./public/uploads/products/1586108833.jpg":
+/*!************************************************!*\
+  !*** ./public/uploads/products/1586108833.jpg ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1586108833.jpg?4bf6eddebfb445db715b9e76da765fe8";
+
+/***/ }),
+
+/***/ "./public/uploads/products/1586108998.jpg":
+/*!************************************************!*\
+  !*** ./public/uploads/products/1586108998.jpg ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1586108998.jpg?1c766bfb12c51bce868f8aaeac4b8f0e";
+
+/***/ }),
+
+/***/ "./public/uploads/products/1586109214.jpg":
+/*!************************************************!*\
+  !*** ./public/uploads/products/1586109214.jpg ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1586109214.jpg?14f7c6e35c295dcb9fbfcaf6ae26bc3a";
+
+/***/ }),
+
+/***/ "./public/uploads/products/1586109576.jpg":
+/*!************************************************!*\
+  !*** ./public/uploads/products/1586109576.jpg ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1586109576.jpg?19e28cff65819419ce1e82d332bb8c50";
+
+/***/ }),
+
+/***/ "./public/uploads/products/1586111484.jpg":
+/*!************************************************!*\
+  !*** ./public/uploads/products/1586111484.jpg ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1586111484.jpg?7ac53719b80be6041e44954b512d2ad1";
+
+/***/ }),
+
+/***/ "./public/uploads/products/1586111648.jpg":
+/*!************************************************!*\
+  !*** ./public/uploads/products/1586111648.jpg ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1586111648.jpg?74869d05cda5740bf32aad257744a5d3";
+
+/***/ }),
+
+/***/ "./public/uploads/products/1586111747.jpg":
+/*!************************************************!*\
+  !*** ./public/uploads/products/1586111747.jpg ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1586111747.jpg?5b3ad947fcdc93c858e1a49fb0d6e55f";
+
+/***/ }),
+
+/***/ "./public/uploads/products/1586111926.jpg":
+/*!************************************************!*\
+  !*** ./public/uploads/products/1586111926.jpg ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1586111926.jpg?a1b05f6b88bd745980e4eb4dd7b46b1a";
+
+/***/ }),
+
+/***/ "./public/uploads/products/1586112033.jpg":
+/*!************************************************!*\
+  !*** ./public/uploads/products/1586112033.jpg ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1586112033.jpg?9eaddc416a6bbcd961e9b87359a85574";
+
+/***/ }),
+
+/***/ "./public/uploads/products/1586112202.jpg":
+/*!************************************************!*\
+  !*** ./public/uploads/products/1586112202.jpg ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1586112202.jpg?f62a3fdbef4662a1630daddc604ae0f6";
+
+/***/ }),
+
+/***/ "./public/uploads/products/1586112348.jpg":
+/*!************************************************!*\
+  !*** ./public/uploads/products/1586112348.jpg ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1586112348.jpg?2faf212b84f9c8782da3376567a0e71d";
+
+/***/ }),
+
+/***/ "./public/uploads/products/1586112452.jpg":
+/*!************************************************!*\
+  !*** ./public/uploads/products/1586112452.jpg ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1586112452.jpg?db87a7967f6147d782f69237af3e83e0";
+
+/***/ }),
+
+/***/ "./public/uploads/products/1586112790.jpg":
+/*!************************************************!*\
+  !*** ./public/uploads/products/1586112790.jpg ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1586112790.jpg?2a057dc133a1be22eb590a7470259118";
+
+/***/ }),
+
+/***/ "./public/uploads/products/1586112901.jpg":
+/*!************************************************!*\
+  !*** ./public/uploads/products/1586112901.jpg ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1586112901.jpg?d778c96ec626e63227fd298b096ada17";
+
+/***/ }),
+
+/***/ "./public/uploads/products/1586113140.jpg":
+/*!************************************************!*\
+  !*** ./public/uploads/products/1586113140.jpg ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1586113140.jpg?2d5e0e58c29c6014c59e8d85811d3fc8";
+
+/***/ }),
+
+/***/ "./public/uploads/products/1586113217.jpg":
+/*!************************************************!*\
+  !*** ./public/uploads/products/1586113217.jpg ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1586113217.jpg?7414bb9b2174bb25b3b1ed4c04eeff92";
+
+/***/ }),
+
+/***/ "./public/uploads/products/1586113338.jpg":
+/*!************************************************!*\
+  !*** ./public/uploads/products/1586113338.jpg ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1586113338.jpg?4523ccbd4f41ca77049f22d973c0e182";
+
+/***/ }),
+
+/***/ "./public/uploads/products/1586113450.jpg":
+/*!************************************************!*\
+  !*** ./public/uploads/products/1586113450.jpg ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1586113450.jpg?0f53f0edbd059d969cf8ee519919d065";
 
 /***/ }),
 
