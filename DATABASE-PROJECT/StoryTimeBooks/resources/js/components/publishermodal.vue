@@ -1,5 +1,5 @@
 <template>
-  <b-modal centered id="publisherModal" :title="title" @ok="handleOk" ok-title="Create Publisher">
+  <b-modal centered id="publisherModal" :title="title" @ok="handleOk" ok-title="Add Publisher">
     <form method="POST" @submit.prevent="addPublisher" ref="form">
       <!-- Publisher Name -->
       <b-form-group
@@ -31,16 +31,17 @@
       <!-- State -->
       <b-form-group
         label="State"
-        label-for="state"
+        label-for="states"
         invalid-feedback="Publisher's state is required"
         :state="publisherState"
       >
       <b-form-select
-        id="state"
+        id="states"
+        name="states"
         required
         :state="publisherState"
-        v-model="state"
-        :options="states"
+        v-model="selected"
+        :options="stateOptions"
       ></b-form-select>
       </b-form-group>
       <!-- Zip Code -->
@@ -86,6 +87,8 @@ export default {
       zip_code: "",
       phone: "",
       states: [],
+      stateOptions: [],
+      selected: null,
       publisherState: null
     };
   },
@@ -93,14 +96,30 @@ export default {
     title: String
   },
   created() {
-    axios
-    .get("http://127.0.0.1:8000/api/v1/admin/states", {})
-    .then(response => {
-      // this.publishers = response.data.publishers.map(x => x.publisher_name);
-      this.states = response.data.states.map(x => x.id);
-    });
+    this.setStateOptions();
   },
   methods: {
+    setStateOptions() {
+      axios
+        .get("http://127.0.0.1:8000/api/v1/admin/states")
+        .then(response => {
+          this.states = response.data.states;
+          for (var i = 0; i < this.states.length; i++) {
+            var option = [];
+            for (var key in this.states[i]) {
+              if (key == "id") {
+                option["value"] = this.states[i][key];
+              } else if (key == "state") {
+                option["text"] = this.states[i][key];
+              }
+            }
+            this.stateOptions.push(Object.assign({}, option));
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
     checkFormValidity() {
       const valid = this.$refs.form.checkValidity();
       this.publisherState = valid;
@@ -118,7 +137,7 @@ export default {
         publisher_name: this.publisher_name,
         address: this.address,
         city: this.city,
-        state_id: this.state,
+        state_id: this.selected,
         zipcode: this.zip_code,
         phone: this.phone,
       })

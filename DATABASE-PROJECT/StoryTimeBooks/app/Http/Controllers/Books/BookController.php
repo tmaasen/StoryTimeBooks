@@ -5,7 +5,9 @@ use App\Product;
 use App\Publisher;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response;
 use Validator;
+use Image;
 use Illuminate\Http\Request;
 
 
@@ -14,6 +16,9 @@ class BookController extends Controller
 {
     /**
      * Returns ALL books. THIS IS AN ADMIN FUNCTION.
+     * Must encode images, or will receive 500 error.
+     * 
+     * Method still needs work to encode
      */
     public function allBooks()
     {
@@ -21,7 +26,7 @@ class BookController extends Controller
         return response()->json(
             [
                 'status' => 'success',
-                'books' => $books
+                'books' => $books,
             ], 200);
     }
 
@@ -35,6 +40,19 @@ class BookController extends Controller
             [
                 'status' => 'success',
                 'publishers' => $publishers
+            ], 200);
+    }
+
+    /**
+     * Returns ALL book categories. THIS WILL BE AN ADMIN FUNCTION
+     */
+    public function allCategories()
+    {
+        $categories = DB::table('product_categories')->get();
+        return response()->json(
+            [
+                'status' => 'success',
+                'categories' => $categories
             ], 200);
     }
 
@@ -55,11 +73,14 @@ class BookController extends Controller
      * Creates a new book entry. THIS IS AN ADMIN FUNCTION.
      */
     public function createBook(Request $request) {
+
         $v = Validator::make($request->all(), [
+            'product_image' => 'image|max:2048',
             'product_name' => 'required',
             'author' => 'required',
+            'category_id' => 'required',
             'publisher_id' => 'required',
-            'isbn_13'  => 'required|max:13',
+            'isbn_13'  => 'required', // make client-side validation for is
             'copyright_date' => 'required|date',
             'retail_price' => 'required|numeric',
             'company_cost' => 'required|numeric',
@@ -73,9 +94,31 @@ class BookController extends Controller
             ], 422);
         }
 
+        //$file = $request->file('product_image');
+        //$target = public_path('images/' . $file);
+
+        //Response::make($image->encode('jpg'));
+
+        //$originalPath = \storage_path();
+        //$image->save($originalPath.time().$file->getClientOriginalName());
+         //$image = Image::make($file)->save($originalPath.time().$file->getClientOriginalName());
+
+        //$photo = time().$file->getClientOriginalName();
+
         $book = new Product();
+   
+        if ($request->hasfile('product_image')) {
+            $file = $request->file('product_image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('uploads/products/', $filename);
+            $book->product_image = $filename;
+        } else {
+            $book->prouct_image = '';
+        }
         $book->product_name = $request->product_name;
         $book->author = $request->author;
+        $book->category_id = $request->category_id;
         $book->publisher_id = $request->publisher_id;
         $book->isbn_13 = $request->isbn_13;
         $book->copyright_date = $request->copyright_date;
@@ -99,6 +142,7 @@ class BookController extends Controller
             'zipcode' => 'required',
             'phone' => 'required',
         ]);
+        
         if ($v->fails())
         {
             return response()->json([

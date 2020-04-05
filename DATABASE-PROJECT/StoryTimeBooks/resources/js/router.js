@@ -22,7 +22,7 @@ export default new VueRouter({
         { path: '/login', component: Login, name: 'Login', meta: { auth: false } },
         { path: '/register', component: Register, name: 'Register', meta: { auth: undefined } },
         { path: '/admin', component: Admin, name: 'Admin', meta: { auth: true } },
-        { path: '/profile', component: Profile, name: 'Profile', meta: { auth: undefined } },
+        { path: '/profile', component: Profile, name: 'Profile', meta: { auth: true } },
 
     ]
 

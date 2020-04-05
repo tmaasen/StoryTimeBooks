@@ -18,6 +18,7 @@ NOTE: If you are trying to seed a table with a foreign key, and that FK's table 
 http://127.0.0.1:8000/telescope/requests will take you to our Telescope...our monitoring / debugging tool
 
 ---MySQL Helpful Hints---
+Adding a column: 'ALTER TABLE tableName ADD COLUMN newcolumnName columnDataType AFTER columnName;'
 Modifying column order: 'ALTER TABLE tableName MODIFY columnName columnDataType AFTER columnName;'
 Changing column name: 'ALTER TABLE users CHANGE oldColumnName newColumnName newColumnDataType;'
 Make an admin user: 'UPDATE tableName SET columnName = value WHERE columnName = value;'

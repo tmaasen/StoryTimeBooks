@@ -36,22 +36,23 @@
         <div class="carousel-inner" role="listbox">
           <!--First slide-->
           <div class="carousel-item active">
-            <div class="col-md-4">
+            <div class="col-md-4" v-for="book in books" :key="book.id">
               <div class="card mb-2">
                 <div class="cardContainer">
-                  <img
+                  <b-img-lazy
                     class="card-img-top"
-                    src="../assets/Books/1_250x300.jpg"
+                    :src="getImgUrl(book.product_image)" width="250" height="300" 
                     alt="Card image cap"
                   />
                 </div>
-                <h4 class="card-title">THE RIDE OF A LIFE TIME</h4>
+                <h4 class="card-title">{{ book.product_name }}</h4>
                 <div class="card-body">
                   <div class="card-contentNoTitle">
                     <p class="card-text">
-                      ROBERT IGER
+                      {{ book.author }}
                       <br />PAPERBACK
-                      <br />ISBN: 123-456-7890
+                      <br />ISBN: {{ book.isbn_13 }}
+                      <br />RETAIL: ${{ book.retail_price }}
                     </p>
                     <a class="btn btn-primary">
                       <b>Add To Cart</b>
@@ -60,170 +61,7 @@
                 </div>
               </div>
             </div>
-
-            <div class="col-md-4">
-              <div class="card mb-2">
-                <img class="card-img-top" src="../assets/Books/2_250x300.jpg" alt="Card image cap" />
-                <h4 class="card-title">WHERE THE CRAWDADS SING</h4>
-                <div class="card-body">
-                  <p class="card-text">
-                    DELIA OWENS
-                    <br />PAPERBACK
-                    <br />ISBN: 123-456-7890
-                  </p>
-                  <a class="btn btn-primary">
-                    <b>Add To Cart</b>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card mb-2">
-                <img class="card-img-top" src="../assets/Books/3_250x300.jpg" alt="Card image cap" />
-                <h4 class="card-title">A MAN CALLED OVE</h4>
-                <div class="card-body">
-                  <p class="card-text">
-                    FREDRICK BACKMAN
-                    <br />PAPERBACK
-                    <br />ISBN: 123-456-7890
-                  </p>
-                  <a class="btn btn-primary">
-                    <b>Add To Cart</b>
-                  </a>
-                </div>
-              </div>
-            </div>
           </div>
-          <!--/.First slide-->
-
-          <!--Second slide-->
-          <div class="carousel-item">
-            <div class="col-md-4">
-              <div class="card mb-2">
-                <img
-                  class="card-img-top"
-                  src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
-                  alt="Card image cap"
-                />
-                <h4 class="card-title">Card title</h4>
-                <div class="card-body">
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the
-                    card's content.
-                  </p>
-                  <a class="btn btn-primary">
-                    <b>Add To Cart</b>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card mb-2">
-                <img
-                  class="card-img-top"
-                  src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg"
-                  alt="Card image cap"
-                />
-                <h4 class="card-title">Card title</h4>
-                <div class="card-body">
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the
-                    card's content.
-                  </p>
-                  <a class="btn btn-primary">
-                    <b>Add To Cart</b>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card mb-2">
-                <img
-                  class="card-img-top"
-                  src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg"
-                  alt="Card image cap"
-                />
-                <h4 class="card-title">Card title</h4>
-                <div class="card-body">
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the
-                    card's content.
-                  </p>
-                  <a class="btn btn-primary">
-                    <b>Add To Cart</b>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--/.Second slide-->
-
-          <!--Third slide-->
-          <div class="carousel-item">
-            <div class="col-md-4">
-              <div class="card mb-2">
-                <img
-                  class="card-img-top"
-                  src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg"
-                  alt="Card image cap"
-                />
-                <h4 class="card-title">Card title</h4>
-                <div class="card-body">
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the
-                    card's content.
-                  </p>
-                  <a class="btn btn-primary">
-                    <b>Add To Cart</b>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card mb-2">
-                <img
-                  class="card-img-top"
-                  src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg"
-                  alt="Card image cap"
-                />
-                <h4 class="card-title">Card title</h4>
-                <div class="card-body">
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the
-                    card's content.
-                  </p>
-                  <a class="btn btn-primary">
-                    <b>Add To Cart</b>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card mb-2">
-                <img
-                  class="card-img-top"
-                  src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg"
-                  alt="Card image cap"
-                />
-                <h4 class="card-title">Card title</h4>
-                <div class="card-body">
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the
-                    card's content.
-                  </p>
-                  <a class="btn btn-primary">
-                    <b>Add To Cart</b>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--/.Third slide-->
         </div>
         <!--/.Slides-->
       </div>
@@ -1127,6 +965,39 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      books:[],
+    }
+  },
+  created() {
+    axios
+      .get("http://127.0.0.1:8000/api/v1/admin/products")
+      .then(response => {
+        this.books = response.data.books;
+        console.log(response);
+      })
+      .then(error => {
+        console.log(error);
+      });
+  },
+  methods: {
+    getImgUrl(pic) {
+      if (pic !== null) {
+        var images = require.context(
+          "../../../public/uploads/products/",
+          false,
+          /\.jpg$/
+        );
+        return images("./" + pic);
+      }
+    }
+  }
+}
+</script>
 
 <style scoped>
 .card-img-top {

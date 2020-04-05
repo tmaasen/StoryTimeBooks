@@ -39,6 +39,8 @@ Route::prefix('v1')->group(function () {
         Route::get('users', 'Users\UserController@allUsers');
         // Get all books
         Route::get('products', 'Books\BookController@allBooks');
+        // Get all book categories
+        Route::get('categories', 'Books\BookController@allCategories');
         // Get all publishers
         Route::get('publishers', 'Books\BookController@allPublishers');
         // Get all states

@@ -1,7 +1,7 @@
 <template>
-  <b-modal centered id="bookModal" :title="title" @ok="handleOk" ok-title="Create Product">
+  <b-modal centered scrollable id="bookModal" :title="title" @ok="handleOk" ok-title="Add Product">
     <b-overlay :show="busy" rounded="lg" opacity="0.6">
-      <form method="POST" @submit.prevent="addProduct" ref="form">
+      <form method="POST" @submit.prevent="addProduct" ref="form" enctype="multipart/form-data">
         <!-- Product Name -->
         <b-form-group
           label="Product Name"
@@ -20,19 +20,36 @@
         >
           <b-form-input id="author" v-model="author" required :state="productState"></b-form-input>
         </b-form-group>
+        <!-- Category -->
+        <b-form-group
+          label="Category"
+          label-for="categories"
+          invalid-feedback="Product Category is required"
+          :state="productState"
+        >
+          <b-form-select
+            required
+            :state="productState"
+            name="categories"
+            id="categories"
+            v-model="selected_category"
+            :options="categoryOptions"
+          ></b-form-select>
+        </b-form-group>
         <!-- Publisher -->
         <b-form-group
-          label="Publisher Id"
-          label-for="publisher"
+          label="Publisher"
+          label-for="publishers"
           invalid-feedback="Publisher is required"
           :state="productState"
         >
           <b-form-select
-            id="publisher"
             required
             :state="productState"
-            v-model="publisher"
-            :options="publishers"
+            name="publishers"
+            id="publishers"
+            v-model="selected_publisher"
+            :options="publisherOptions"
           ></b-form-select>
         </b-form-group>
         <!-- ISBN13 -->
@@ -56,7 +73,9 @@
             v-model="copyright"
             required
             :state="productState"
-            class="mb-2"
+            class="border rounded p-2"
+            locale="en"
+            :max="max"
           ></b-form-datepicker>
         </b-form-group>
         <!-- Retail Price -->
@@ -65,8 +84,11 @@
           label-for="retail"
           invalid-feedback="Retail Price is required"
           :state="productState"
+          prepend="$"
         >
-          <b-form-input id="retail" v-model="retail" required :state="productState"></b-form-input>
+          <b-input-group prepend="$">
+            <b-form-input id="retail" v-model="retail" required :state="productState"></b-form-input>
+          </b-input-group>
         </b-form-group>
         <!-- Company Cost -->
         <b-form-group
@@ -75,7 +97,9 @@
           invalid-feedback="Company Cost is required"
           :state="productState"
         >
-          <b-form-input id="cost" v-model="cost" required :state="productState"></b-form-input>
+          <b-input-group prepend="$">
+            <b-form-input id="cost" v-model="cost" required :state="productState"></b-form-input>
+          </b-input-group>
         </b-form-group>
         <!-- Quantity on Hand -->
         <b-form-group
@@ -94,6 +118,18 @@
             max="100"
           ></b-form-spinbutton>
         </b-form-group>
+        <!-- Product Image -->
+        <b-form-group label="Product Image" label-for="image" :state="productState">
+          <b-form-file
+            name="image"
+            id="image"
+            v-model="image"
+            v-on:change="onFileChange"
+            :state="productState"
+            placeholder="Choose a file or drop it here..."
+            drop-placeholder="Drop file here..."
+          ></b-form-file>
+        </b-form-group>
       </form>
     </b-overlay>
   </b-modal>
@@ -102,6 +138,8 @@
 <script>
 export default {
   data() {
+    var today = new Date();
+    var maxDate = new Date(today.getDate);
     return {
       busy: false,
       name: "",
@@ -112,23 +150,68 @@ export default {
       retail: "",
       cost: "",
       quantity: 1,
+      image: {},
       productState: null,
-      publishers: []
+      publishers: [],
+      publisherOptions: [],
+      selected_publisher: null,
+      categories: [],
+      categoryOptions: [],
+      selected_category: null,
+      max: maxDate
     };
   },
   props: {
-    title: String
+    title: String,
+    value: [{File}, {Array}]
   },
   created() {
-    // created is ran before mounted...mounted is run once the html loads
-    axios
-      .get("http://127.0.0.1:8000/api/v1/admin/publishers", {})
-      .then(response => {
-        // this.publishers = response.data.publishers.map(x => x.publisher_name);
-        this.publishers = response.data.publishers.map(x => x.id);
-      });
+    this.setPublisherOptions();
+    this.setCategoryOptions();
   },
   methods: {
+    setPublisherOptions() {
+      axios
+        .get("http://127.0.0.1:8000/api/v1/admin/publishers ")
+        .then(response => {
+          this.publishers = response.data.publishers;
+          for (var i = 0; i < this.publishers.length; i++) {
+            var option = [];
+            for (var key in this.publishers[i]) {
+              if (key == "id") {
+                option["value"] = this.publishers[i][key];
+              } else if (key == "publisher_name") {
+                option["text"] = this.publishers[i][key];
+              }
+            }
+            this.publisherOptions.push(Object.assign({}, option));
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    setCategoryOptions() {
+      axios
+        .get("http://127.0.0.1:8000/api/v1/admin/categories")
+        .then(response => {
+          this.categories = response.data.categories;
+          for (var i = 0; i < this.categories.length; i++) {
+            var option = [];
+            for (var key in this.categories[i]) {
+              if (key == "id") {
+                option["value"] = this.categories[i][key];
+              } else if (key == "category") {
+                option["text"] = this.categories[i][key];
+              }
+            }
+            this.categoryOptions.push(Object.assign({}, option));
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
     checkFormValidity() {
       const valid = this.$refs.form.checkValidity();
       this.productState = valid;
@@ -137,28 +220,35 @@ export default {
     handleOk(bvModalEvt) {
       this.busy = true; // loading indicator
       bvModalEvt.preventDefault(); // Prevent modal from closing
-      if (this.checkFormValidity()) this.addProduct();
-      this.busy = false;
+      if (this.checkFormValidity()) {
+        this.addProduct();
+        this.busy = false;
+        location.reload(true);
+      }
+    },
+    onFileChange(e) {
+      console.log(e.target.files[0]);
+      this.image = e.target.files[0];
     },
     addProduct() {
-      axios
-        .post("http://127.0.0.1:8000/api/v1/admin/newproduct", {
-          product_name: this.name,
-          author: this.author,
-          publisher_id: this.publisher, // need to get the id from the name
-          isbn_13: this.isbn13,
-          copyright_date: this.copyright,
-          retail_price: this.retail,
-          company_cost: this.cost,
-          quantity_on_hand: this.quantity
-        })
+      let formData = new FormData();
+      formData.append("product_image", this.image);
+      formData.append("product_name", this.name);
+      formData.append("author", this.author);
+      formData.append("category_id", this.selected_category);
+      formData.append("publisher_id", this.selected_publisher);
+      formData.append("isbn_13", this.isbn13);
+      formData.append("copyright_date", this.copyright);
+      formData.append("retail_price", this.retail);
+      formData.append("company_cost", this.cost);
+      formData.append("quantity_on_hand", this.quantity);
+      
+      axios.post("http://127.0.0.1:8000/api/v1/admin/newproduct", formData)
         .then(function(response) {
-          // success
           console.log(response);
-          location.reload(true);
         })
         .catch(function(response) {
-          // error
+          this.busy = false;
           console.log(response);
           alert("There has been an error. Please try again.");
         });
@@ -172,3 +262,4 @@ export default {
   width: 50%;
 }
 </style>
+
