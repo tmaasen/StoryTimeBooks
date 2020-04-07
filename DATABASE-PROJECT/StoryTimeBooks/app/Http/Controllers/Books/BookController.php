@@ -94,24 +94,13 @@ class BookController extends Controller
             ], 422);
         }
 
-        //$file = $request->file('product_image');
-        //$target = public_path('images/' . $file);
-
-        //Response::make($image->encode('jpg'));
-
-        //$originalPath = \storage_path();
-        //$image->save($originalPath.time().$file->getClientOriginalName());
-         //$image = Image::make($file)->save($originalPath.time().$file->getClientOriginalName());
-
-        //$photo = time().$file->getClientOriginalName();
-
         $book = new Product();
    
         if ($request->hasfile('product_image')) {
             $file = $request->file('product_image');
             $extension = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extension;
-            $file->move('uploads/products/', $filename);
+            $file->move('uploads/products/', $filename); // check this line. It's duplicating image creations in public/images...
             $book->product_image = $filename;
         } else {
             $book->prouct_image = '';

@@ -85575,7 +85575,14 @@ var render = function() {
                             ]
                           )
                         ]),
-                        _vm._v("\n            Cart\n          ")
+                        _vm._v("\n            Cart"),
+                        _c("span", [
+                          _vm._v(
+                            "(" +
+                              _vm._s((_vm.$counter = _vm.$counter + 1)) +
+                              ")"
+                          )
+                        ])
                       ]
                     )
                   ]),
@@ -104032,6 +104039,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_progressbar__WEBPACK_IMPORTED
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_axios__WEBPACK_IMPORTED_MODULE_5___default.a, axios__WEBPACK_IMPORTED_MODULE_3___default.a);
 axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1";
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(_websanova_vue_auth__WEBPACK_IMPORTED_MODULE_4___default.a, _auth__WEBPACK_IMPORTED_MODULE_7__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$counter = 0;
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   router: _router__WEBPACK_IMPORTED_MODULE_8__["default"],
   mounted: function mounted() {
