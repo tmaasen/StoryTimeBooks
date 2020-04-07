@@ -103,22 +103,50 @@
             <div class="col-md-4" v-for="book in books_Business" :key="book.id">
               <div class="card mb-2">
                 <b-img-lazy
-                    class="card-img-top"
-                    :src="getImgUrl(book.product_image)"
-                    width="250"
-                    height="300"
-                    alt="Card image cap"
-                  />
+                  class="card-img-top"
+                  :src="getImgUrl(book.product_image)"
+                  width="250"
+                  height="300"
+                  alt="Card image cap"
+                />
                 <h4 class="card-title">{{ book.product_name }}</h4>
                 <div class="card-body">
-                 <p class="card-text">
-                      {{ book.author }}
-                      <br />PAPERBACK
-                      <br />
-                      ISBN: {{ book.isbn_13 }}
-                      <br />
-                      RETAIL: ${{ book.retail_price }}
-                    </p>
+                  <p class="card-text">
+                    {{ book.author }}
+                    <br />PAPERBACK
+                    <br />
+                    ISBN: {{ book.isbn_13 }}
+                    <br />
+                    RETAIL: ${{ book.retail_price }}
+                  </p>
+                  <a class="btn btn-primary">
+                    <b>Add To Cart</b>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--Second slide-->
+          <div class="carousel-item">
+            <div class="col-md-4" v-for="book in books_Business2" :key="book.id">
+              <div class="card mb-2">
+                <b-img-lazy
+                  class="card-img-top"
+                  :src="getImgUrl(book.product_image)"
+                  width="250"
+                  height="300"
+                  alt="Card image cap"
+                />
+                <h4 class="card-title">{{ book.product_name }}</h4>
+                <div class="card-body">
+                  <p class="card-text">
+                    {{ book.author }}
+                    <br />PAPERBACK
+                    <br />
+                    ISBN: {{ book.isbn_13 }}
+                    <br />
+                    RETAIL: ${{ book.retail_price }}
+                  </p>
                   <a class="btn btn-primary">
                     <b>Add To Cart</b>
                   </a>
@@ -162,6 +190,37 @@
           <!--First slide-->
           <div class="carousel-item active">
             <div class="col-md-4" v-for="book in books_Psychology" :key="book.id">
+              <div class="card mb-2">
+                <div class="cardContainer">
+                  <b-img-lazy
+                    class="card-img-top"
+                    :src="getImgUrl(book.product_image)"
+                    width="250"
+                    height="300"
+                  />
+                </div>
+                <h4 class="card-title">{{ book.product_name }}</h4>
+                <div class="card-body">
+                  <div class="card-contentNoTitle">
+                    <p class="card-text">
+                      {{ book.author }}
+                      <br />PAPERBACK
+                      <br />
+                      ISBN: {{ book.isbn_13 }}
+                      <br />
+                      RETAIL: ${{ book.retail_price }}
+                    </p>
+                    <a class="btn btn-primary">
+                      <b>Add To Cart</b>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--Second slide-->
+          <div class="carousel-item">
+            <div class="col-md-4" v-for="book in books_Psychology2" :key="book.id">
               <div class="card mb-2">
                 <div class="cardContainer">
                   <b-img-lazy
@@ -254,6 +313,37 @@
               </div>
             </div>
           </div>
+          <!--Second slide-->
+          <div class="carousel-item">
+            <div class="col-md-4" v-for="book in books_Engineering2" :key="book.id">
+              <div class="card mb-2">
+                <div class="cardContainer">
+                  <b-img-lazy
+                    class="card-img-top"
+                    :src="getImgUrl(book.product_image)"
+                    width="250"
+                    height="300"
+                  />
+                </div>
+                <h4 class="card-title">{{ book.product_name }}</h4>
+                <div class="card-body">
+                  <div class="card-contentNoTitle">
+                    <p class="card-text">
+                      {{ book.author }}
+                      <br />PAPERBACK
+                      <br />
+                      ISBN: {{ book.isbn_13 }}
+                      <br />
+                      RETAIL: ${{ book.retail_price }}
+                    </p>
+                    <a class="btn btn-primary">
+                      <b>Add To Cart</b>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <!--/.Slides-->
       </div>
@@ -318,230 +408,37 @@
               </div>
             </div>
           </div>
-        </div>
-        <!--/.Slides-->
-      </div>
-      <!--/.Carousel Wrapper-->
-    </div>
-
-    <div style="width:70%; margin:0 15%; padding:10px;">
-      <p class="title">Music / Theatre</p>
-      <!--Carousel Wrapper-->
-      <div id="musicTheatre" class="carousel slide carousel-multi-item" data-ride="carousel">
-        <!--Controls-->
-        <div style="margin:auto">
-          <a
-            class="carousel-control left carousel-control-prev"
-            href="#musicTheatre"
-            data-slide="prev"
-            style="color:red;outline: black;"
-          ></a>
-          <i class="fa fa-angle-left"></i>
-        </div>
-        <div style="margin:auto">
-          <a
-            class="carousel-control right carousel-control-next"
-            href="#musicTheatre"
-            data-slide="next"
-            style="color:red;outline: black;"
-          ></a>
-          <i class="fa fa-angle-right"></i>
-        </div>
-        <!--/.Controls-->
-
-        <!--Slides-->
-        <div class="carousel-inner" role="listbox">
-          <!--First slide-->
-          <div class="carousel-item active">
-            <div class="col-md-4">
-              <div class="card mb-2">
-                <img
-                  class="card-img-top"
-                  src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg"
-                  alt="Card image cap"
-                />
-                <h4 class="card-title">Card title</h4>
-                <div class="card-body">
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the
-                    card's content.
-                  </p>
-                  <a class="btn btn-primary">
-                    <b>Add To Cart</b>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card mb-2">
-                <img
-                  class="card-img-top"
-                  src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
-                  alt="Card image cap"
-                />
-                <h4 class="card-title">Card title</h4>
-                <div class="card-body">
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the
-                    card's content.
-                  </p>
-                  <a class="btn btn-primary">
-                    <b>Add To Cart</b>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card mb-2">
-                <img
-                  class="card-img-top"
-                  src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg"
-                  alt="Card image cap"
-                />
-                <h4 class="card-title">Card title</h4>
-                <div class="card-body">
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the
-                    card's content.
-                  </p>
-                  <a class="btn btn-primary">
-                    <b>Add To Cart</b>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--/.First slide-->
-
           <!--Second slide-->
           <div class="carousel-item">
-            <div class="col-md-4">
+            <div class="col-md-4" v-for="book in books_MusicTheatre2" :key="book.id">
               <div class="card mb-2">
-                <img
-                  class="card-img-top"
-                  src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
-                  alt="Card image cap"
-                />
-                <h4 class="card-title">Card title</h4>
-                <div class="card-body">
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the
-                    card's content.
-                  </p>
-                  <a class="btn btn-primary">
-                    <b>Add To Cart</b>
-                  </a>
+                <div class="cardContainer">
+                  <b-img-lazy
+                    class="card-img-top"
+                    :src="getImgUrl(book.product_image)"
+                    width="250"
+                    height="300"
+                  />
                 </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card mb-2">
-                <img
-                  class="card-img-top"
-                  src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg"
-                  alt="Card image cap"
-                />
-                <h4 class="card-title">Card title</h4>
+                <h4 class="card-title">{{ book.product_name }}</h4>
                 <div class="card-body">
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the
-                    card's content.
-                  </p>
-                  <a class="btn btn-primary">
-                    <b>Add To Cart</b>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card mb-2">
-                <img
-                  class="card-img-top"
-                  src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg"
-                  alt="Card image cap"
-                />
-                <h4 class="card-title">Card title</h4>
-                <div class="card-body">
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the
-                    card's content.
-                  </p>
-                  <a class="btn btn-primary">
-                    <b>Add To Cart</b>
-                  </a>
+                  <div class="card-contentNoTitle">
+                    <p class="card-text">
+                      {{ book.author }}
+                      <br />PAPERBACK
+                      <br />
+                      ISBN: {{ book.isbn_13 }}
+                      <br />
+                      RETAIL: ${{ book.retail_price }}
+                    </p>
+                    <a class="btn btn-primary">
+                      <b>Add To Cart</b>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <!--/.Second slide-->
-
-          <!--Third slide-->
-          <div class="carousel-item">
-            <div class="col-md-4">
-              <div class="card mb-2">
-                <img
-                  class="card-img-top"
-                  src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg"
-                  alt="Card image cap"
-                />
-                <h4 class="card-title">Card title</h4>
-                <div class="card-body">
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the
-                    card's content.
-                  </p>
-                  <a class="btn btn-primary">
-                    <b>Add To Cart</b>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card mb-2">
-                <img
-                  class="card-img-top"
-                  src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg"
-                  alt="Card image cap"
-                />
-                <h4 class="card-title">Card title</h4>
-                <div class="card-body">
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the
-                    card's content.
-                  </p>
-                  <a class="btn btn-primary">
-                    <b>Add To Cart</b>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card mb-2">
-                <img
-                  class="card-img-top"
-                  src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg"
-                  alt="Card image cap"
-                />
-                <h4 class="card-title">Card title</h4>
-                <div class="card-body">
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the
-                    card's content.
-                  </p>
-                  <a class="btn btn-primary">
-                    <b>Add To Cart</b>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--/.Third slide-->
         </div>
         <!--/.Slides-->
       </div>
@@ -556,10 +453,15 @@ export default {
     return {
       books: [],
       books_Business: [],
+      books_Business2: [],
       books_ComputerScience: [],
+      books_ComputerScience2: [],
       books_Psychology: [],
+      books_Psychology2: [],
       books_MusicTheatre: [],
-      books_Engineering: []
+      books_MusicTheatre2: [],
+      books_Engineering: [],
+      books_Engineering2: []
     };
   },
   created() {
@@ -568,17 +470,47 @@ export default {
       .then(response => {
         // loop through the array, setting each book into a category group
         this.books = response.data.books;
+        var count1 = 0;
+        var count2 = 0;
+        var count3 = 0;
+        var count4 = 0;
+        var count5 = 0;
         for (var i = 0; i < this.books.length; i++) {
           if (this.books[i].category_id === 1) {
-            this.books_Business.push(this.books[i]);
+            if (count1 < 3) {
+              this.books_Business.push(this.books[i]);
+              count1++;
+            } else {
+              this.books_Business2.push(this.books[i]);
+            }
           } else if (this.books[i].category_id === 2) {
-            this.books_ComputerScience.push(this.books[i]);
+            if (count2 < 3) {
+              this.books_ComputerScience.push(this.books[i]);
+              count2++;
+            } else {
+              this.books_ComputerScience2.push(this.books[i]);
+            }
           } else if (this.books[i].category_id === 3) {
-            this.books_Psychology.push(this.books[i]);
+            if (count3 < 3) {
+              this.books_Psychology.push(this.books[i]);
+              count3++;
+            } else {
+              this.books_Psychology2.push(this.books[i]);
+            }
           } else if (this.books[i].category_id === 4) {
-            this.books_MusicTheatre.push(this.books[i]);
+            if (count4 < 3) {
+              this.books_MusicTheatre.push(this.books[i]);
+              count4++;
+            } else {
+              this.books_MusicTheatre2.push(this.books[i]);
+            }
           } else {
-            this.books_Engineering.push(this.books[i]);
+            if (count5 < 3) {
+              this.books_Engineering.push(this.books[i]);
+              count5++;
+            } else {
+              this.books_Engineering2.push(this.books[i]);
+            }
           }
         }
         console.log(response);
