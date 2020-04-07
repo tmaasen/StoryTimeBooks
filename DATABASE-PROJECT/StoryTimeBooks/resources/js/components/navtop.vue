@@ -26,7 +26,7 @@
                   <path d="M0 0h24v24H0z" fill="none" />
                 </svg>
               </span>
-              Cart<span>({{$counter = $counter + 1}})</span>
+              Cart<span>({{ $cartCounter }})</span>
             </a>
           </div>
           <b-dropdown variant="primary" id="dropdown-right" text="Left align">
