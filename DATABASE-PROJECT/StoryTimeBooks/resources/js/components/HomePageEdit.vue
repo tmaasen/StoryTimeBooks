@@ -65,6 +65,38 @@
               </div>
             </div>
           </div>
+          <!--Second slide-->
+          <div class="carousel-item">
+            <div class="col-md-4" v-for="book in books_ComputerScience2" :key="book.id">
+              <div class="card mb-2">
+                <div class="cardContainer">
+                  <b-img-lazy
+                    class="card-img-top"
+                    :src="getImgUrl(book.product_image)"
+                    width="250"
+                    height="300"
+                    alt="Card image cap"
+                  />
+                </div>
+                <h4 class="card-title">{{ book.product_name }}</h4>
+                <div class="card-body">
+                  <div class="card-contentNoTitle">
+                    <p class="card-text">
+                      {{ book.author }}
+                      <br />PAPERBACK
+                      <br />
+                      ISBN: {{ book.isbn_13 }}
+                      <br />
+                      RETAIL: ${{ book.retail_price }}
+                    </p>
+                    <a class="btn btn-primary">
+                      <b>Add To Cart</b>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <!--/.Slides-->
       </div>

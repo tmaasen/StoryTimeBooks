@@ -3561,6 +3561,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -83694,6 +83726,74 @@ var render = function() {
                       )
                     }),
                     0
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "carousel-item" },
+                    _vm._l(_vm.books_ComputerScience2, function(book) {
+                      return _c(
+                        "div",
+                        { key: book.id, staticClass: "col-md-4" },
+                        [
+                          _c("div", { staticClass: "card mb-2" }, [
+                            _c(
+                              "div",
+                              { staticClass: "cardContainer" },
+                              [
+                                _c("b-img-lazy", {
+                                  staticClass: "card-img-top",
+                                  attrs: {
+                                    src: _vm.getImgUrl(book.product_image),
+                                    width: "250",
+                                    height: "300",
+                                    alt: "Card image cap"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c("h4", { staticClass: "card-title" }, [
+                              _vm._v(_vm._s(book.product_name))
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "card-body" }, [
+                              _c(
+                                "div",
+                                { staticClass: "card-contentNoTitle" },
+                                [
+                                  _c("p", { staticClass: "card-text" }, [
+                                    _vm._v(
+                                      "\n                    " +
+                                        _vm._s(book.author) +
+                                        "\n                    "
+                                    ),
+                                    _c("br"),
+                                    _vm._v("PAPERBACK\n                    "),
+                                    _c("br"),
+                                    _vm._v(
+                                      "\n                    ISBN: " +
+                                        _vm._s(book.isbn_13) +
+                                        "\n                    "
+                                    ),
+                                    _c("br"),
+                                    _vm._v(
+                                      "\n                    RETAIL: $" +
+                                        _vm._s(book.retail_price) +
+                                        "\n                  "
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(3, true)
+                                ]
+                              )
+                            ])
+                          ])
+                        ]
+                      )
+                    }),
+                    0
                   )
                 ]
               )
@@ -83715,9 +83815,9 @@ var render = function() {
               attrs: { id: "business", "data-ride": "carousel" }
             },
             [
-              _vm._m(3),
-              _vm._v(" "),
               _vm._m(4),
+              _vm._v(" "),
+              _vm._m(5),
               _vm._v(" "),
               _c(
                 "div",
@@ -83772,7 +83872,7 @@ var render = function() {
                                   )
                                 ]),
                                 _vm._v(" "),
-                                _vm._m(5, true)
+                                _vm._m(6, true)
                               ])
                             ],
                             1
@@ -83832,7 +83932,7 @@ var render = function() {
                                   )
                                 ]),
                                 _vm._v(" "),
-                                _vm._m(6, true)
+                                _vm._m(7, true)
                               ])
                             ],
                             1
@@ -83862,9 +83962,9 @@ var render = function() {
               attrs: { id: "psychology", "data-ride": "carousel" }
             },
             [
-              _vm._m(7),
-              _vm._v(" "),
               _vm._m(8),
+              _vm._v(" "),
+              _vm._m(9),
               _vm._v(" "),
               _c(
                 "div",
@@ -83926,7 +84026,7 @@ var render = function() {
                                     )
                                   ]),
                                   _vm._v(" "),
-                                  _vm._m(9, true)
+                                  _vm._m(10, true)
                                 ]
                               )
                             ])
@@ -83993,7 +84093,7 @@ var render = function() {
                                     )
                                   ]),
                                   _vm._v(" "),
-                                  _vm._m(10, true)
+                                  _vm._m(11, true)
                                 ]
                               )
                             ])
@@ -84023,9 +84123,9 @@ var render = function() {
               attrs: { id: "engineering", "data-ride": "carousel" }
             },
             [
-              _vm._m(11),
-              _vm._v(" "),
               _vm._m(12),
+              _vm._v(" "),
+              _vm._m(13),
               _vm._v(" "),
               _c(
                 "div",
@@ -84087,7 +84187,7 @@ var render = function() {
                                     )
                                   ]),
                                   _vm._v(" "),
-                                  _vm._m(13, true)
+                                  _vm._m(14, true)
                                 ]
                               )
                             ])
@@ -84154,7 +84254,7 @@ var render = function() {
                                     )
                                   ]),
                                   _vm._v(" "),
-                                  _vm._m(14, true)
+                                  _vm._m(15, true)
                                 ]
                               )
                             ])
@@ -84184,9 +84284,9 @@ var render = function() {
               attrs: { id: "musicTheatre", "data-ride": "carousel" }
             },
             [
-              _vm._m(15),
-              _vm._v(" "),
               _vm._m(16),
+              _vm._v(" "),
+              _vm._m(17),
               _vm._v(" "),
               _c(
                 "div",
@@ -84248,7 +84348,7 @@ var render = function() {
                                     )
                                   ]),
                                   _vm._v(" "),
-                                  _vm._m(17, true)
+                                  _vm._m(18, true)
                                 ]
                               )
                             ])
@@ -84315,7 +84415,7 @@ var render = function() {
                                     )
                                   ]),
                                   _vm._v(" "),
-                                  _vm._m(18, true)
+                                  _vm._m(19, true)
                                 ]
                               )
                             ])
@@ -84361,6 +84461,14 @@ var staticRenderFns = [
       }),
       _vm._v(" "),
       _c("i", { staticClass: "fa fa-angle-right" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { staticClass: "btn btn-primary" }, [
+      _c("b", [_vm._v("Add To Cart")])
     ])
   },
   function() {
@@ -103608,7 +103716,8 @@ var map = {
 	"./1586113140.jpg": "./public/uploads/products/1586113140.jpg",
 	"./1586113217.jpg": "./public/uploads/products/1586113217.jpg",
 	"./1586113338.jpg": "./public/uploads/products/1586113338.jpg",
-	"./1586113450.jpg": "./public/uploads/products/1586113450.jpg"
+	"./1586113450.jpg": "./public/uploads/products/1586113450.jpg",
+	"./1586233966.jpg": "./public/uploads/products/1586233966.jpg"
 };
 
 
@@ -103894,6 +104003,17 @@ module.exports = "/images/1586113338.jpg?4523ccbd4f41ca77049f22d973c0e182";
 /***/ (function(module, exports) {
 
 module.exports = "/images/1586113450.jpg?0f53f0edbd059d969cf8ee519919d065";
+
+/***/ }),
+
+/***/ "./public/uploads/products/1586233966.jpg":
+/*!************************************************!*\
+  !*** ./public/uploads/products/1586233966.jpg ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1586233966.jpg?2d09d04b880934ae4996465d5b95815a";
 
 /***/ }),
 
