@@ -549,26 +549,33 @@ export default {
   float: left;
 }
 .card-title {
-  margin-top: 10%;
-  margin-right: auto;
-  margin-left: auto;
-  width: 200px;
+  margin-top: 20px;
+  margin-right: 0;
+  margin-left: 15px;
+  width: 300px;
+  height: 50px;
   text-align: center;
+}
+.card-text {
+  width: 290px;
+  height: 115px;
 }
 .carousel-control-prev {
   position: absolute;
-  height: 30%;
   overflow: visible !important;
   left: -170px !important;
   top: 30% !important;
+  width: 33px;
+  height: 88px;
 }
 
 .carousel-control-next {
   position: absolute;
-  height: 30%;
   overflow: visible !important;
   right: -170px !important;
   top: 30% !important;
+  width: 33px;
+  height: 88px;
 }
 
 .carousel-control-next:after {
@@ -576,6 +583,8 @@ export default {
   font-size: 55px;
   color: white;
   background-color: grey;
+  width: 33px;
+  height: 88px;
 }
 
 .carousel-control-prev:after {
@@ -583,12 +592,14 @@ export default {
   font-size: 55px;
   color: white;
   background-color: grey;
+  width: 33px;
+  height: 88px;
 }
 
 .title {
   text-align: center;
   margin-top: 100px;
-  margin-bottom: 4%;
+  margin-bottom: 10px;
   font-size: 50px;
 }
 

@@ -49287,7 +49287,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.card-img-top[data-v-47608723] {\r\n  height: 300px;\r\n  width: 250px;\r\n  margin: auto;\n}\n.img-fluid[data-v-47608723] {\r\n  max-width: 100%;\r\n  height: 285px;\n}\n.col-md-4[data-v-47608723] {\r\n  float: left;\n}\n.card-title[data-v-47608723] {\r\n  margin-top: 10%;\r\n  margin-right: auto;\r\n  margin-left: auto;\r\n  width: 200px;\r\n  text-align: center;\n}\n.carousel-control-prev[data-v-47608723] {\r\n  position: absolute;\r\n  height: 30%;\r\n  overflow: visible !important;\r\n  left: -170px !important;\r\n  top: 30% !important;\n}\n.carousel-control-next[data-v-47608723] {\r\n  position: absolute;\r\n  height: 30%;\r\n  overflow: visible !important;\r\n  right: -170px !important;\r\n  top: 30% !important;\n}\n.carousel-control-next[data-v-47608723]:after {\r\n  content: \">\";\r\n  font-size: 55px;\r\n  color: white;\r\n  background-color: grey;\n}\n.carousel-control-prev[data-v-47608723]:after {\r\n  content: \"<\";\r\n  font-size: 55px;\r\n  color: white;\r\n  background-color: grey;\n}\n.title[data-v-47608723] {\r\n  text-align: center;\r\n  margin-top: 100px;\r\n  margin-bottom: 4%;\r\n  font-size: 50px;\n}\n.btn[data-v-47608723] {\r\n  background-color: #ff8d1e;\r\n  color: #fff;\n}\n.btn[data-v-47608723]:hover {\r\n  background-color: #2196f3;\r\n  color: #fff;\n}\r\n", ""]);
+exports.push([module.i, "\n.card-img-top[data-v-47608723] {\r\n  height: 300px;\r\n  width: 250px;\r\n  margin: auto;\n}\n.img-fluid[data-v-47608723] {\r\n  max-width: 100%;\r\n  height: 285px;\n}\n.col-md-4[data-v-47608723] {\r\n  float: left;\n}\n.card-title[data-v-47608723] {\r\n  margin-top: 20px;\r\n  margin-right: 0;\r\n  margin-left: 15px;\r\n  width: 300px;\r\n  height: 50px;\r\n  text-align: center;\n}\n.card-text[data-v-47608723] {\r\n  width: 290px;\r\n  height: 115px;\n}\n.carousel-control-prev[data-v-47608723] {\r\n  position: absolute;\r\n  overflow: visible !important;\r\n  left: -170px !important;\r\n  top: 30% !important;\r\n  width: 33px;\r\n  height: 88px;\n}\n.carousel-control-next[data-v-47608723] {\r\n  position: absolute;\r\n  overflow: visible !important;\r\n  right: -170px !important;\r\n  top: 30% !important;\r\n  width: 33px;\r\n  height: 88px;\n}\n.carousel-control-next[data-v-47608723]:after {\r\n  content: \">\";\r\n  font-size: 55px;\r\n  color: white;\r\n  background-color: grey;\r\n  width: 33px;\r\n  height: 88px;\n}\n.carousel-control-prev[data-v-47608723]:after {\r\n  content: \"<\";\r\n  font-size: 55px;\r\n  color: white;\r\n  background-color: grey;\r\n  width: 33px;\r\n  height: 88px;\n}\n.title[data-v-47608723] {\r\n  text-align: center;\r\n  margin-top: 100px;\r\n  margin-bottom: 10px;\r\n  font-size: 50px;\n}\n.btn[data-v-47608723] {\r\n  background-color: #ff8d1e;\r\n  color: #fff;\n}\n.btn[data-v-47608723]:hover {\r\n  background-color: #2196f3;\r\n  color: #fff;\n}\r\n", ""]);
 
 // exports
 
@@ -85491,11 +85491,7 @@ var render = function() {
                         ]),
                         _vm._v("\n            Cart"),
                         _c("span", [
-                          _vm._v(
-                            "(" +
-                              _vm._s((_vm.$counter = _vm.$counter + 1)) +
-                              ")"
-                          )
+                          _vm._v("(" + _vm._s(_vm.$cartCounter) + ")")
                         ])
                       ]
                     )
@@ -103953,7 +103949,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_progressbar__WEBPACK_IMPORTED
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_axios__WEBPACK_IMPORTED_MODULE_5___default.a, axios__WEBPACK_IMPORTED_MODULE_3___default.a);
 axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1";
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(_websanova_vue_auth__WEBPACK_IMPORTED_MODULE_4___default.a, _auth__WEBPACK_IMPORTED_MODULE_7__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$counter = 0;
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$cartCounter = 0;
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   router: _router__WEBPACK_IMPORTED_MODULE_8__["default"],
   mounted: function mounted() {
