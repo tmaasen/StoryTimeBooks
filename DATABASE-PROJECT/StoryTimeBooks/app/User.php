@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use DB;
 
 
 class User extends Authenticatable implements JWTSubject
@@ -32,7 +33,7 @@ class User extends Authenticatable implements JWTSubject
      */
     protected $hidden = [
         // get request will not display these columns in a table
-        'password', 'remember_token', 'email_verified_at', 'created_at', 'updated_at'
+        'password', 'email_verified_at', 'created_at', 'updated_at'
     ];
 
     /**
@@ -52,6 +53,23 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function getActiveUsers() {
+        $users = DB::table('users')
+        ->where('is_deleted', '=', 0)
+        ->get();
+        return $users;
+    }
+
+    public function remove($id) {
+
+        $userID = User::findOrFail($id);
+
+        DB::table('users')
+        ->where('id', $id)
+        ->update(['is_deleted' => 1]);
+
     }
 
 }

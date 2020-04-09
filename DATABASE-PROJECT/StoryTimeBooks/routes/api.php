@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('v1')->group(function () {
 
     Route::prefix('auth')->group(function () {
-        // Below mention routes are public, user can access those without any restriction.
+// Below mention routes are public, user can access those without any restriction.
         // Create New User
         Route::post('register', 'Users\AuthController@register');
         // Login User
@@ -32,8 +32,11 @@ Route::prefix('v1')->group(function () {
                 Route::get('user', 'Users\AuthController@user');
                 // Logout user from application
                 Route::post('logout', 'Users\AuthController@logout');
+                // Removes a user
+                Route::post('removeuser', 'Users\UserController@removeUser'); // PROBLEM CHILD
                         });
         });
+// Below mention routes are admin. Non-admin users have no access.
     Route::prefix('admin')->group(function () {
         // Get all users info
         Route::get('users', 'Users\UserController@allUsers');
@@ -49,5 +52,7 @@ Route::prefix('v1')->group(function () {
         Route::post('newproduct', 'Books\BookController@createBook');
         // Create a new publisher
         Route::post('newpublisher', 'Books\BookController@createPublisher');
+        // Removes a user
+        //Route::post('removeuser', 'Users\UserController@removeUser'); // PROBLEM CHILD
     });
 });

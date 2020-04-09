@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Users;
 use App\Http\Controllers\Controller;
 use App\UserAddress;
 use App\User;
+use DB;
+use Request;
 
 class UserController extends Controller
 {
@@ -19,11 +21,12 @@ class UserController extends Controller
         return view('welcome', ['user' => User::findOrFail($id)]);
     }
     /**
-     * Returns ALL users. THIS WILL BE AN ADMIN FUNCTION
+     * Returns ALL users. THIS IS AN ADMIN FUNCTION
      */
     public function allUsers()
     {
         $users = User::all();
+
         return response()->json(
             [
                 'status' => 'success',
@@ -31,8 +34,8 @@ class UserController extends Controller
             ], 200);
     }
 
-        /**
-     * Returns ALL users. THIS WILL BE AN ADMIN FUNCTION
+    /**
+     * Returns ALL user addresses. THIS IS AN ADMIN FUNCTION
      */
     public function userAddress()
     {
@@ -75,16 +78,19 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function removeUser($id)
     {
 
         //$this->authorize('isAdmin');
 
-        $user = User::findOrFail($id);
+        $user = new User();
+        $user->remove($id);
 
-        $user->delete();
-
-        return ['message' => 'User Deleted'];
+        return response()->json(
+            [
+                'status' => 'success',
+                'message' => 'User Removed' // calling method from model to get all active users
+            ], 200);
     }
 
 }

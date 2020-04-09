@@ -4773,6 +4773,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -4806,9 +4808,25 @@ __webpack_require__.r(__webpack_exports__);
         return images("./" + pic);
       }
     },
-    removeUser: function removeUser() {// set is_deleted to 1
+    removeUser: function removeUser(idToRemove) {
+      axios.post("http://127.0.0.1:8000/api/v1/auth/removeuser", idToRemove).then(function (response) {
+        console.log(response);
+        window.location.reload();
+      })["catch"](function (response) {
+        console.log(response);
+        alert("There has been an error. Please try again.");
+      });
     },
-    removeProduct: function removeProduct() {// soft delete
+    removeProduct: function removeProduct(idToRemove) {
+      // soft delete
+      //console.log("ID: " + idToRemove); // id works!!
+      axios.post("http://127.0.0.1:8000/api/v1/admin/removeproduct", idToRemove).then(function (response) {
+        console.log(response);
+        window.location.reload();
+      })["catch"](function (response) {
+        console.log(response);
+        alert("There has been an error. Please try again.");
+      });
     },
     editUser: function editUser() {// put request
     },
@@ -86282,7 +86300,7 @@ var render = function() {
             scopedSlots: _vm._u([
               {
                 key: "cell(actions)",
-                fn: function() {
+                fn: function(users) {
                   return [
                     _c(
                       "b-button",
@@ -86290,8 +86308,9 @@ var render = function() {
                         directives: [
                           {
                             name: "b-modal",
-                            rawName: "v-b-modal.remove-user",
-                            modifiers: { "remove-user": true }
+                            rawName: "v-b-modal",
+                            value: "remove-user-" + users.item.id,
+                            expression: "`remove-user-${users.item.id}`"
                           }
                         ],
                         staticClass: "tablebuttons"
@@ -86312,14 +86331,32 @@ var render = function() {
                       "b-modal",
                       {
                         attrs: {
-                          id: "remove-user",
+                          id: "remove-user-" + users.item.id,
                           centered: "",
                           title: "Delete User"
                         },
-                        on: { ok: _vm.removeUser }
+                        on: {
+                          ok: function($event) {
+                            return _vm.removeUser(users.item.id)
+                          }
+                        }
                       },
                       [
                         _c("p", { staticClass: "my-4" }, [
+                          _vm._v("Are you sure you want to remove "),
+                          _c("i", [
+                            _c("b", [
+                              _vm._v(
+                                _vm._s(users.item.first_name) +
+                                  " " +
+                                  _vm._s(users.item.last_name)
+                              )
+                            ])
+                          ]),
+                          _vm._v(" ?")
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "my-2" }, [
                           _vm._v(
                             "Select Ok to proceed with removing this user."
                           )
@@ -86349,8 +86386,7 @@ var render = function() {
                       1
                     )
                   ]
-                },
-                proxy: true
+                }
               }
             ])
           }),
@@ -86425,7 +86461,7 @@ var render = function() {
             scopedSlots: _vm._u([
               {
                 key: "cell(actions)",
-                fn: function() {
+                fn: function(books) {
                   return [
                     _c(
                       "b-button",
@@ -86433,8 +86469,9 @@ var render = function() {
                         directives: [
                           {
                             name: "b-modal",
-                            rawName: "v-b-modal.remove-product",
-                            modifiers: { "remove-product": true }
+                            rawName: "v-b-modal",
+                            value: "remove-product-" + books.item.id,
+                            expression: "`remove-product-${books.item.id}`"
                           }
                         ],
                         staticClass: "tablebuttons"
@@ -86455,14 +86492,26 @@ var render = function() {
                       "b-modal",
                       {
                         attrs: {
-                          id: "remove-product",
+                          id: "remove-product-" + books.item.id,
                           centered: "",
                           title: "Delete Product"
                         },
-                        on: { ok: _vm.removeProduct }
+                        on: {
+                          ok: function($event) {
+                            return _vm.removeProduct(books.item.id)
+                          }
+                        }
                       },
                       [
                         _c("p", { staticClass: "my-4" }, [
+                          _vm._v(" Are you sure you want to delete "),
+                          _c("i", [
+                            _c("b", [_vm._v(_vm._s(books.item.product_name))])
+                          ]),
+                          _vm._v(" ?")
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "my-2" }, [
                           _vm._v(
                             "Select Ok to proceed with removing this product from StoryTime Book's inventory."
                           )
@@ -86492,8 +86541,7 @@ var render = function() {
                       1
                     )
                   ]
-                },
-                proxy: true
+                }
               },
               {
                 key: "cell(product_image)",
@@ -105385,8 +105433,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\User\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\User\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\tmaas\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\tmaas\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

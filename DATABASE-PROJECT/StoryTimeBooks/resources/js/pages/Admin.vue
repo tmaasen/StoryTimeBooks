@@ -36,12 +36,13 @@
       class="w-85"
     >
       <!-- Delete icon -->
-      <template v-slot:cell(actions)>
-        <b-button class="tablebuttons" v-b-modal.remove-user>
+      <template v-slot:cell(actions)="users">
+        <b-button class="tablebuttons" v-b-modal="`remove-user-${users.item.id}`">
           <b-icon id="icons" icon="trash-fill" variant="danger"></b-icon>
         </b-button>
-        <b-modal id="remove-user" centered title="Delete User" @ok="removeUser">
-          <p class="my-4">Select Ok to proceed with removing this user.</p>
+        <b-modal :id="`remove-user-${users.item.id}`" centered title="Delete User" @ok="removeUser(users.item.id)">
+          <p class="my-4">Are you sure you want to remove <i><b>{{users.item.first_name}} {{users.item.last_name}}</b></i> ?</p>
+          <p class="my-2">Select Ok to proceed with removing this user.</p>
           <p class="my-4">Select Cancel to cancel this process, or click out of the popup box.</p>
         </b-modal>
         <!-- Edit icon -->
@@ -80,12 +81,13 @@
       class="w-85"
     >
       <!-- Delete icon....1 icon click shows up all the modals for that icon for that table -->
-      <template v-slot:cell(actions)>
-        <b-button class="tablebuttons" v-b-modal.remove-product>
+      <template v-slot:cell(actions)="books">
+        <b-button class="tablebuttons" v-b-modal="`remove-product-${books.item.id}`">
           <b-icon id="icons" icon="trash-fill" variant="danger"></b-icon>
         </b-button>
-        <b-modal id="remove-product" centered title="Delete Product" @ok="removeProduct">
-          <p class="my-4">Select Ok to proceed with removing this product from StoryTime Book's inventory.</p>
+        <b-modal :id="`remove-product-${books.item.id}`" centered title="Delete Product" @ok="removeProduct(books.item.id)">
+          <p class="my-4"> Are you sure you want to delete <i><b>{{books.item.product_name}}</b></i> ?</p>
+          <p class="my-2">Select Ok to proceed with removing this product from StoryTime Book's inventory.</p>
           <p class="my-4">Select Cancel to cancel this process, or click out of the popup box.</p>
         </b-modal>
         <!-- Edit icon -->
@@ -148,7 +150,7 @@ export default {
       currentBookPage: 1,
       books: [],
       currentPublisherPage: 1,
-      publishers: []
+      publishers: [],
     };
   },
   components: {
@@ -169,11 +171,28 @@ export default {
         return images("./" + pic);
       }
     },
-    removeUser() {
-      // set is_deleted to 1
+    removeUser(idToRemove) {
+      axios.post("http://127.0.0.1:8000/api/v1/auth/removeuser", idToRemove)
+        .then(function(response) {
+          console.log(response);
+          window.location.reload();
+        })
+        .catch(function(response) {
+          console.log(response);
+          alert("There has been an error. Please try again.");
+        });
     },
-    removeProduct() {
-      // soft delete
+    removeProduct(idToRemove) { // soft delete
+      //console.log("ID: " + idToRemove); // id works!!
+      axios.post("http://127.0.0.1:8000/api/v1/admin/removeproduct", idToRemove)
+        .then(function(response) {
+          console.log(response);
+          window.location.reload();
+        })
+        .catch(function(response) {
+          console.log(response);
+          alert("There has been an error. Please try again.");
+        });
     },
     editUser() {
       // put request
