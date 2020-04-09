@@ -4809,7 +4809,11 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     removeUser: function removeUser(idToRemove) {
-      axios.post("http://127.0.0.1:8000/api/v1/auth/removeuser", idToRemove).then(function (response) {
+      axios.post("http://127.0.0.1:8000/api/v1/auth/removeuser/{id}", {
+        id: {
+          idToRemove: idToRemove
+        }
+      }).then(function (response) {
         console.log(response);
         window.location.reload();
       })["catch"](function (response) {
@@ -4820,7 +4824,11 @@ __webpack_require__.r(__webpack_exports__);
     removeProduct: function removeProduct(idToRemove) {
       // soft delete
       //console.log("ID: " + idToRemove); // id works!!
-      axios.post("http://127.0.0.1:8000/api/v1/admin/removeproduct", idToRemove).then(function (response) {
+      axios.post("http://127.0.0.1:8000/api/v1/admin/removeproduct/{id}", {
+        id: {
+          idToRemove: idToRemove
+        }
+      }).then(function (response) {
         console.log(response);
         window.location.reload();
       })["catch"](function (response) {

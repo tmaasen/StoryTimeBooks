@@ -62,9 +62,7 @@ class User extends Authenticatable implements JWTSubject
         return $users;
     }
 
-    public function remove($id) {
-
-        $userID = User::findOrFail($id);
+    public static function remove($id) {
 
         DB::table('users')
         ->where('id', $id)

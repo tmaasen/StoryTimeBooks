@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\UserAddress;
 use App\User;
 use DB;
-use Request;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -52,7 +52,6 @@ class UserController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
@@ -78,18 +77,16 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function removeUser($id)
+    public function removeUser(Request $request)
     {
 
         //$this->authorize('isAdmin');
-
-        $user = new User();
-        $user->remove($id);
+        User::remove($request->id);
 
         return response()->json(
             [
                 'status' => 'success',
-                'message' => 'User Removed' // calling method from model to get all active users
+                'message' => 'User Removed'
             ], 200);
     }
 

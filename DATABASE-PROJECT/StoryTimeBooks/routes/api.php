@@ -33,7 +33,7 @@ Route::prefix('v1')->group(function () {
                 // Logout user from application
                 Route::post('logout', 'Users\AuthController@logout');
                 // Removes a user
-                Route::post('removeuser', 'Users\UserController@removeUser'); // PROBLEM CHILD
+                Route::post('removeuser/{id}', 'Users\UserController@removeUser');
                         });
         });
 // Below mention routes are admin. Non-admin users have no access.
@@ -52,7 +52,7 @@ Route::prefix('v1')->group(function () {
         Route::post('newproduct', 'Books\BookController@createBook');
         // Create a new publisher
         Route::post('newpublisher', 'Books\BookController@createPublisher');
-        // Removes a user
-        //Route::post('removeuser', 'Users\UserController@removeUser'); // PROBLEM CHILD
+        // Removes a product
+        Route::post('removeproduct/{id}', 'Books\BookController@removeProduct'); // PROBLEM CHILD
     });
 });

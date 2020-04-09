@@ -172,7 +172,7 @@ export default {
       }
     },
     removeUser(idToRemove) {
-      axios.post("http://127.0.0.1:8000/api/v1/auth/removeuser", idToRemove)
+      axios.post("http://127.0.0.1:8000/api/v1/auth/removeuser/{id}", {id: {idToRemove}})
         .then(function(response) {
           console.log(response);
           window.location.reload();
@@ -184,7 +184,7 @@ export default {
     },
     removeProduct(idToRemove) { // soft delete
       //console.log("ID: " + idToRemove); // id works!!
-      axios.post("http://127.0.0.1:8000/api/v1/admin/removeproduct", idToRemove)
+      axios.post("http://127.0.0.1:8000/api/v1/admin/removeproduct/{id}", {id: {idToRemove}})
         .then(function(response) {
           console.log(response);
           window.location.reload();

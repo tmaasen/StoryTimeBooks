@@ -11,18 +11,16 @@ use Image;
 use Illuminate\Http\Request;
 
 
-
 class BookController extends Controller
 {
     /**
      * Returns ALL books. THIS IS AN ADMIN FUNCTION.
-     * Must encode images, or will receive 500 error.
      * 
      * Method still needs work to encode
      */
     public function allBooks()
     {
-        $books = DB::table('products')->get();
+        $books = DB::table('products')->get(); // will have to run a check somewhere for if a book is_deleted = 1
         return response()->json(
             [
                 'status' => 'success',
@@ -150,5 +148,24 @@ class BookController extends Controller
         $publisher->save();
 
         return response()->json(['status' => 'success'], 200);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  Request $id
+     * @return \Illuminate\Http\Response
+     */
+    public function removeProduct(Request $request)
+    {
+
+        //$this->authorize('isAdmin');
+        Product::remove($request->id);
+
+        return response()->json(
+            [
+                'status' => 'success',
+                'message' => 'Product Removed'
+            ], 200);
     }
 }
