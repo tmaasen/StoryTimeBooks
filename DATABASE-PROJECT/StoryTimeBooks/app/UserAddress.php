@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class UserAddress extends Model
 {
@@ -18,8 +19,7 @@ class UserAddress extends Model
      * @var array
      */
     protected $fillable = [
-        'address_line_1', 'suite_no', 'city', 'zipcode',
-        'rowguid', 'home_phone', 'work_phone',
+        'address_line_1', 'suite_no', 'city', 'zipcode', 'home_phone', 'work_phone',
     ];
 
     /**
@@ -29,7 +29,7 @@ class UserAddress extends Model
      */
     protected $hidden = [
         // get request will not display these columns in a table
-        'id'
+        'id', 'rowguid'
     ];
 
     /**
@@ -41,7 +41,7 @@ class UserAddress extends Model
 
     public static function getUserAddress($id) {
 
-        DB::table('useraddress')->find($id);
-
+        DB::table('user_address')->where('user_id', $id)->first();
     }
+
 }

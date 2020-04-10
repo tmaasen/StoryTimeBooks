@@ -7,116 +7,190 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
   </head>
-  <navtop />
-  <div class="profileBody">
-    <div class="profileContent">
-      <p class="profileTitle">Edit Profile</p>
+  <b-overlay :show="busy" rounded="lg" opacity="0.6">
+    <navtop />
+    <div class="profileBody">
+      <div class="profileContent">
+        <p class="profileTitle">Edit Profile</p>
 
-      <form method="POST" @submit.prevent="updateUser">
-      <b-container fluid>
-        <b-row class="my-1">
-          <b-col class="label" sm="2">
-            <label for="input-large">First Name</label>
-          </b-col>
-          <b-col sm="10">
-            <b-form-input id="input-large" size="lg" placeholder="Enter your First name" v-model="$auth.user().first_name"></b-form-input>
-          </b-col>
-        </b-row>
+        <form method="POST" @submit.prevent="updateUser">
+          <b-container fluid>
+            <!-- First Name -->
+            <b-row class="my-1">
+              <b-col class="label" sm="2">
+                <label for="input-large">First Name</label>
+              </b-col>
+              <b-col sm="10">
+                <b-form-input
+                  id="input-large"
+                  size="lg"
+                  placeholder="Enter your First name"
+                  v-model="first_name"
+                ></b-form-input>
+              </b-col>
+            </b-row>
+            <!-- Last Name -->
+            <b-row class="my-1">
+              <b-col class="label" sm="2">
+                <label for="input-large">Last Name</label>
+              </b-col>
+              <b-col sm="10">
+                <b-form-input
+                  id="input-large"
+                  size="lg"
+                  placeholder="Enter your Last name"
+                  v-model="last_name"
+                ></b-form-input>
+              </b-col>
+            </b-row>
+            <!-- Email -->
+            <b-row class="my-1">
+              <b-col class="label" sm="2">
+                <label for="input-large">Email</label>
+              </b-col>
+              <b-col sm="10">
+                <b-form-input
+                  id="input-large"
+                  size="lg"
+                  placeholder="Enter your Email"
+                  v-model="email"
+                ></b-form-input>
+              </b-col>
+            </b-row>
+            <!-- Home Phone -->
+            <b-row class="my-1">
+              <b-col class="label" sm="2" style="padding-right:0px">
+                <label for="input-large">Home Phone</label>
+              </b-col>
+              <b-col sm="10">
+                <b-form-input
+                  id="input-large"
+                  size="lg"
+                  placeholder="Enter your Home Phone"
+                  v-model="homePhone"
+                ></b-form-input>
+              </b-col>
+            </b-row>
+            <!-- Work Phone -->
+            <b-row class="my-1">
+              <b-col class="label" sm="2">
+                <label for="input-large">Work Phone</label>
+              </b-col>
+              <b-col sm="10">
+                <b-form-input
+                  id="input-large"
+                  size="lg"
+                  placeholder="Enter your Work Phone"
+                  v-model="workPhone"
+                ></b-form-input>
+              </b-col>
+            </b-row>
+          </b-container>
+        </form>
+      </div>
 
-        <b-row class="my-1">
-          <b-col class="label" sm="2">
-            <label for="input-large">Last Name</label>
-          </b-col>
-          <b-col sm="10">
-            <b-form-input id="input-large" size="lg" placeholder="Enter your Last name"  v-model="$auth.user().last_name"></b-form-input>
-          </b-col>
-        </b-row>
-
-        <b-row class="my-1">
-          <b-col class="label" sm="2">
-            <label for="input-large">Email</label>
-          </b-col>
-          <b-col sm="10">
-            <b-form-input id="input-large" size="lg" placeholder="Enter your Email" v-model="$auth.user().email"></b-form-input>
-          </b-col>
-        </b-row>
-
-        <b-row class="my-1">
-          <b-col class="label" sm="2" style="padding-right:0px">
-            <label for="input-large">Home Phone</label>
-          </b-col>
-          <b-col sm="10">
-            <b-form-input id="input-large" size="lg" placeholder="Enter your Home Phone" v-model="$userAddress.loadAddress().home_phone"></b-form-input>
-          </b-col>
-        </b-row>
-
-        <b-row class="my-1">
-          <b-col class="label" sm="2">
-            <label for="input-large">Work Phone</label>
-          </b-col>
-          <b-col sm="10">
-            <b-form-input id="input-large" size="lg" placeholder="Enter your Work Phone"></b-form-input>
-          </b-col>
-        </b-row>
-      </b-container>
-      </form>
+      <div class="profileContent">
+        <p class="profileTitle">Address Information</p>
+        <form>
+          <b-container fluid>
+            <b-row class="my-1">
+              <b-col class="label" sm="2">
+                <!-- Address Line 1 -->
+                <label for="input-large">Address</label>
+              </b-col>
+              <b-col sm="10">
+                <b-form-input
+                  id="input-large"
+                  size="lg"
+                  placeholder="Enter your Address"
+                  v-model="addressLine1"
+                ></b-form-input>
+              </b-col>
+            </b-row>
+            <!-- Suite No -->
+            <b-row class="my-1">
+              <b-col class="label" sm="2">
+                <label for="input-large">Suite No.</label>
+              </b-col>
+              <b-col sm="10">
+                <b-form-input
+                  id="input-large"
+                  size="lg"
+                  placeholder="Enter your Suite No."
+                  v-model="suiteNo"
+                ></b-form-input>
+              </b-col>
+            </b-row>
+            <!-- City -->
+            <b-row class="my-1">
+              <b-col class="label" sm="2">
+                <label for="input-large">City</label>
+              </b-col>
+              <b-col sm="10">
+                <b-form-input
+                  id="input-large"
+                  size="lg"
+                  placeholder="Enter your City"
+                  v-model="city"
+                ></b-form-input>
+              </b-col>
+            </b-row>
+            <!-- State -->
+            <b-row class="my-1">
+              <b-col class="label" sm="2">
+                <label for="input-large">State</label>
+              </b-col>
+              <b-col sm="10">
+                <b-form-select
+                  id="states"
+                  name="states"
+                  required
+                  v-model="selected"
+                  :options="stateOptions"
+                  placeholder="Select your State"
+                  size="lg"
+                  style="width:500px"
+                ></b-form-select>
+              </b-col>
+            </b-row>
+            <!-- Zip Code -->
+            <b-row class="my-1">
+              <b-col class="label" sm="2">
+                <label for="input-large">Zip Code</label>
+              </b-col>
+              <b-col sm="10">
+                <b-form-input
+                  id="input-large"
+                  size="lg"
+                  placeholder="Enter your Zip Code"
+                  v-model="zip"
+                ></b-form-input>
+              </b-col>
+            </b-row>
+          </b-container>
+          <!-- Submit Changes -->
+          <input type="submit" value="Apply Changes" class="btn1" v-on:click="updateUser(userid)" />
+          <!-- Remove Account -->
+          <span>
+            <b-button class="tablebuttons" v-b-modal="`remove-user`">
+              <b-icon id="icons" icon="trash-fill" variant="danger"></b-icon>Remove Account
+            </b-button>
+            <b-modal
+              :id="`remove-user`"
+              centered
+              title="Remove Account"
+              @ok="removeUser(userid)"
+            >
+              <p class="my-4">Are you sure you want to remove this account?</p>
+              <p class="my-2">Select Ok to proceed.</p>
+              <p class="my-4">Select Cancel or click out of the popup box to continue StoryTime.</p>
+            </b-modal>
+          </span>
+        </form>
+      </div>
     </div>
-
-    <div class="profileContent">
-      <p class="profileTitle">Address Information</p>
-      <form method="POST" @submit.prevent="updateUserAddress">
-      <b-container fluid>
-        <b-row class="my-1">
-          <b-col class="label" sm="2">
-            <label for="input-large">Address</label>
-          </b-col>
-          <b-col sm="10">
-            <b-form-input id="input-large" size="lg" placeholder="Enter your Address"></b-form-input>
-          </b-col>
-        </b-row>
-
-        <b-row class="my-1">
-          <b-col class="label" sm="2">
-            <label for="input-large">Suite No.</label>
-          </b-col>
-          <b-col sm="10">
-            <b-form-input id="input-large" size="lg" placeholder="Enter your Suite No."></b-form-input>
-          </b-col>
-        </b-row>
-
-        <b-row class="my-1">
-          <b-col class="label" sm="2">
-            <label for="input-large">City</label>
-          </b-col>
-          <b-col sm="10">
-            <b-form-input id="input-large" size="lg" placeholder="Enter your City"></b-form-input>
-          </b-col>
-        </b-row>
-
-        <b-row class="my-1">
-          <b-col class="label" sm="2">
-            <label for="input-large">State</label>
-          </b-col>
-          <b-col sm="10">
-            <b-form-input id="input-large" size="lg" placeholder="Enter your State"></b-form-input>
-          </b-col>
-        </b-row>
-
-        <b-row class="my-1">
-          <b-col class="label" sm="2">
-            <label for="input-large">Zip Code</label>
-          </b-col>
-          <b-col sm="10">
-            <b-form-input id="input-large" size="lg" placeholder="Enter your Zip Code"></b-form-input>
-          </b-col>
-        </b-row>
-      </b-container>
-      <!-- <form action="/action_page.php"> -->
-      <input type="submit" value="Apply Changes" class="btn1" />
-      </form>
-    </div>
-  </div>
-  <navbottom />
+    <navbottom />
+  </b-overlay>
 </div>
 </template>
 
@@ -127,43 +201,197 @@ import navbottom from "../components/navbottom";
 export default {
   data() {
     return {
-      firstname: "",
+      busy: false,
+      userid: "",
+      first_name: "",
+      last_name: "",
+      email: "",
+      homePhone: "",
+      workPhone: "",
+      addressLine1: "",
+      suiteNo: "",
+      city: "",
+      state: "",
+      zip: "",
       searchFilter: "a",
-      text: "",
       expmonth: null,
+      states: [],
+      stateOptions: [],
+      selected: null
     };
   },
+  created() {
+    var app = this;
+    app.busy = true;
+    this.getUser(userid);
+    this.getUserAddress(userid);
+    this.setStateOptions();
+    app.busy = false;
+  },
   mounted() {
-    console.log("Home mounted.");
+    console.log("Profile mounted.");
   },
   components: {
     navtop,
     navbottom
   },
   methods: {
-    updateUser(){
-
+    getUserAddress(userid) {
+      var user = this;
+      axios
+        .get("http://127.0.0.1:8000/api/v1/auth/useraddress/{id}", {
+          params: { id: userid }
+        })
+        .then(function(response) {
+          console.log(response);
+          user.homePhone = response.data.address.home_phone;
+          user.workPhone = response.data.address.work_phone;
+          user.addressLine1 = response.data.address.address_line_1;
+          user.suiteNo = response.data.address.suite_no;
+          user.city = response.data.address.city;
+          user.selected = response.data.address.state_id;
+          user.zip = response.data.address.zipcode;
+        })
+        .catch(error => {
+          console.log(error);
+          alert(
+            "There has been an error loading user address data. Please try again."
+          );
+        });
     },
-    updateUserAddress() {
-
+    getUser(userid) {
+      var user = this;
+      axios
+        .get("http://127.0.0.1:8000/api/v1/auth/user", {
+          params: { id: userid }
+        })
+        .then(function(response) {
+          console.log(response);
+          user.userid = response.data.data.id;
+          user.first_name = response.data.data.first_name;
+          user.last_name = response.data.data.last_name;
+          user.email = response.data.data.email;
+        })
+        .catch(error => {
+          console.log(error);
+          alert("There has been an error loading user data. Please try again.");
+        });
     },
-    updateUserCreditCard() {
-
+    updateUserAddress(userid) {
+      const user = this;
+      axios
+        .put("http://127.0.0.1:8000/api/v1/auth/updateuseraddress/{id}", {
+          address_line_1: user.addressLine1,
+          suite_no: user.suiteNo,
+          city: user.city,
+          state_id: user.selected,
+          zipcode: user.zip,
+          home_phone: user.homePhone,
+          work_phone: user.workPhone,
+          user_id: user.userid
+        })
+        .then(function(response) {
+          console.log(response);
+          window.location.reload();
+        })
+        .catch(error => {
+          console.log(error);
+          alert(
+            "There has been an error updating user address information. Please try again."
+          );
+        });
     },
+    updateUser(userid) {
+      const user = this;
+      axios
+        .put("http://127.0.0.1:8000/api/v1/auth/updateuser/{id}", {
+          first_name: user.first_name,
+          last_name: user.last_name,
+          email: user.email,
+          id: user.userid
+        })
+        .then(function(response) {
+          console.log(response);
+        })
+        .catch(error => {
+          console.log(error);
+          alert(
+            "There has been an error updating user information. Please try again."
+          );
+        });
+      this.updateUserAddress(userid);
+    },
+    logout() {
+      this.$auth.logout({
+        makeRequest: true,
+        params: {
+          name: ""
+        },
+        success: function() {
+        },
+        error: function() {
+        },
+        redirect: "/login"
+      });
+    },
+    removeUser(idToRemove) {
+      axios
+        .post("http://127.0.0.1:8000/api/v1/auth/removeuser/{id}", {
+          id: { idToRemove }
+        })
+        .then(function(response) {
+          console.log(response);
+        })
+        .catch(error => {
+          console.log(error);
+          alert("There has been an error removing the user. Please try again.");
+        });
+      this.logout();
+    },
+    setStateOptions() {
+      axios
+        .get("http://127.0.0.1:8000/api/v1/admin/states")
+        .then(response => {
+          this.states = response.data.states;
+          for (var i = 0; i < this.states.length; i++) {
+            var option = [];
+            for (var key in this.states[i]) {
+              if (key == "id") {
+                option["value"] = this.states[i][key];
+              } else if (key == "state") {
+                option["text"] = this.states[i][key];
+              }
+            }
+            this.stateOptions.push(Object.assign({}, option));
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
   }
 };
 </script>
 
 <style scoped>
+.tablebuttons {
+  background: transparent;
+  border: none;
+  padding: 0%;
+}
+.tablebuttons:hover {
+  border: 2px solid gray;
+}
 .form-control {
-  width:25%;
+  width: 25%;
 }
 svg {
-  fill:black;
+  fill: black;
 }
-.btn, .btn:hover {
+.btn,
+.btn:hover {
   background: white !important;
-  color:black !important;
+  color: black !important;
 }
 .creditInput {
   margin-bottom: 5%;

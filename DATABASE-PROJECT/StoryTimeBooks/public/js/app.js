@@ -5190,28 +5190,238 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      firstname: "",
+      busy: false,
+      userid: "",
+      first_name: "",
+      last_name: "",
+      email: "",
+      homePhone: "",
+      workPhone: "",
+      addressLine1: "",
+      suiteNo: "",
+      city: "",
+      state: "",
+      zip: "",
       searchFilter: "a",
-      text: "",
-      expmonth: null
+      expmonth: null,
+      states: [],
+      stateOptions: [],
+      selected: null
     };
   },
+  created: function created() {
+    var app = this;
+    app.busy = true;
+    this.getUser(userid);
+    this.getUserAddress(userid);
+    this.setStateOptions();
+    app.busy = false;
+  },
   mounted: function mounted() {
-    console.log("Home mounted.");
+    console.log("Profile mounted.");
   },
   components: {
     navtop: _components_navtop__WEBPACK_IMPORTED_MODULE_0__["default"],
     navbottom: _components_navbottom__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   methods: {
-    updateUser: function updateUser() {},
-    updateUserAddress: function updateUserAddress() {},
-    updateUserCreditCard: function updateUserCreditCard() {}
+    getUserAddress: function getUserAddress(userid) {
+      var user = this;
+      axios.get("http://127.0.0.1:8000/api/v1/auth/useraddress/{id}", {
+        params: {
+          id: userid
+        }
+      }).then(function (response) {
+        console.log(response);
+        user.homePhone = response.data.address.home_phone;
+        user.workPhone = response.data.address.work_phone;
+        user.addressLine1 = response.data.address.address_line_1;
+        user.suiteNo = response.data.address.suite_no;
+        user.city = response.data.address.city;
+        user.selected = response.data.address.state_id;
+        user.zip = response.data.address.zipcode;
+      })["catch"](function (error) {
+        console.log(error);
+        alert("There has been an error loading user address data. Please try again.");
+      });
+    },
+    getUser: function getUser(userid) {
+      var user = this;
+      axios.get("http://127.0.0.1:8000/api/v1/auth/user", {
+        params: {
+          id: userid
+        }
+      }).then(function (response) {
+        console.log(response);
+        user.userid = response.data.data.id;
+        user.first_name = response.data.data.first_name;
+        user.last_name = response.data.data.last_name;
+        user.email = response.data.data.email;
+      })["catch"](function (error) {
+        console.log(error);
+        alert("There has been an error loading user data. Please try again.");
+      });
+    },
+    updateUserAddress: function updateUserAddress(userid) {
+      var user = this;
+      axios.put("http://127.0.0.1:8000/api/v1/auth/updateuseraddress/{id}", {
+        address_line_1: user.addressLine1,
+        suite_no: user.suiteNo,
+        city: user.city,
+        state_id: user.selected,
+        zipcode: user.zip,
+        home_phone: user.homePhone,
+        work_phone: user.workPhone,
+        user_id: user.userid
+      }).then(function (response) {
+        console.log(response);
+        window.location.reload();
+      })["catch"](function (error) {
+        console.log(error);
+        alert("There has been an error updating user address information. Please try again.");
+      });
+    },
+    updateUser: function updateUser(userid) {
+      var user = this;
+      axios.put("http://127.0.0.1:8000/api/v1/auth/updateuser/{id}", {
+        first_name: user.first_name,
+        last_name: user.last_name,
+        email: user.email,
+        id: user.userid
+      }).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error);
+        alert("There has been an error updating user information. Please try again.");
+      });
+      this.updateUserAddress(userid);
+    },
+    logout: function logout() {
+      this.$auth.logout({
+        makeRequest: true,
+        params: {
+          name: ""
+        },
+        success: function success() {},
+        error: function error() {},
+        redirect: "/login"
+      });
+    },
+    removeUser: function removeUser(idToRemove) {
+      axios.post("http://127.0.0.1:8000/api/v1/auth/removeuser/{id}", {
+        id: {
+          idToRemove: idToRemove
+        }
+      }).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error);
+        alert("There has been an error removing the user. Please try again.");
+      });
+      this.logout();
+    },
+    setStateOptions: function setStateOptions() {
+      var _this = this;
+
+      axios.get("http://127.0.0.1:8000/api/v1/admin/states").then(function (response) {
+        _this.states = response.data.states;
+
+        for (var i = 0; i < _this.states.length; i++) {
+          var option = [];
+
+          for (var key in _this.states[i]) {
+            if (key == "id") {
+              option["value"] = _this.states[i][key];
+            } else if (key == "state") {
+              option["text"] = _this.states[i][key];
+            }
+          }
+
+          _this.stateOptions.push(Object.assign({}, option));
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
   }
 });
 
@@ -49478,7 +49688,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.form-control[data-v-074da5b0] {\r\n  width:25%;\n}\nsvg[data-v-074da5b0] {\r\n  fill:black;\n}\n.btn[data-v-074da5b0], .btn[data-v-074da5b0]:hover {\r\n  background: white !important;\r\n  color:black !important;\n}\n.creditInput[data-v-074da5b0] {\r\n  margin-bottom: 5%;\n}\n.row1[data-v-074da5b0] { /* IE10 */\r\n  display: flex; /* IE10 */\r\n  flex-wrap: wrap;\r\n  margin: 0 -16px;\n}\n.col-25[data-v-074da5b0] { /* IE10 */\r\n  flex: 25%;\n}\n.col-50[data-v-074da5b0] { /* IE10 */\r\n  flex: 50%;\n}\n.col-75[data-v-074da5b0] { /* IE10 */\r\n  flex: 75%;\n}\n.col-25[data-v-074da5b0],\r\n.col-50[data-v-074da5b0],\r\n.col-75[data-v-074da5b0] {\r\n  padding: 0 16px;\n}\n.container1[data-v-074da5b0] {\r\n  background-color: #f2f2f2;\r\n  padding: 5px 20px 15px 20px;\r\n  border: 1px solid lightgrey;\r\n  border-radius: 3px;\n}\nlabel[data-v-074da5b0] {\r\n  margin-bottom: 10px;\r\n  display: block;\n}\n.icon-container[data-v-074da5b0] {\r\n  margin-bottom: 20px;\r\n  padding: 7px 0;\r\n  font-size: 24px;\n}\n.btn1[data-v-074da5b0] {\r\n  background-color: #ff8d1e;\r\n  color: white;\r\n  padding: 12px;\r\n  margin: 70px 0 10px 0;\r\n  border: none;\r\n  width: 100%;\r\n  border-radius: 3px;\r\n  cursor: pointer;\r\n  font-size: 17px;\n}\n.btn1[data-v-074da5b0]:hover {\r\n  background-color: #2196f3;\n}\n.profileBody[data-v-074da5b0] {\r\n  border: 1px solid black;\r\n  width: 80%;\r\n  margin: auto;\r\n  padding-left: 15%;\r\n  font-family: Arial;\r\n  font-size: 16px;\n}\n.profileContent[data-v-074da5b0] {\r\n  margin: 5% 25% 5% 0%;\n}\n#input-large[data-v-074da5b0] {\r\n  width: 500px;\n}\n#textarea[data-v-074da5b0] {\r\n  width: 500px;\n}\n.birthday[data-v-074da5b0] {\r\n  width: 500px;\n}\n.label[data-v-074da5b0] {\r\n  text-align: left;\r\n  margin-top: auto;\r\n  font-weight: bold;\n}\n.bio[data-v-074da5b0] {\r\n  height: 200px;\n}\n.bioLabel[data-v-074da5b0] {\r\n  margin: auto;\n}\n.profileTitle[data-v-074da5b0] {\r\n  font-size: 40px;\r\n  margin-bottom: 5%;\r\n  border-bottom: 3px solid black;\r\n  padding: 10 10 4px;\r\n  width: 760px;\n}\r\n", ""]);
+exports.push([module.i, "\n.tablebuttons[data-v-074da5b0] {\r\n  background: transparent;\r\n  border: none;\r\n  padding: 0%;\n}\n.tablebuttons[data-v-074da5b0]:hover {\r\n  border: 2px solid gray;\n}\n.form-control[data-v-074da5b0] {\r\n  width: 25%;\n}\nsvg[data-v-074da5b0] {\r\n  fill: black;\n}\n.btn[data-v-074da5b0],\r\n.btn[data-v-074da5b0]:hover {\r\n  background: white !important;\r\n  color: black !important;\n}\n.creditInput[data-v-074da5b0] {\r\n  margin-bottom: 5%;\n}\n.row1[data-v-074da5b0] { /* IE10 */\r\n  display: flex; /* IE10 */\r\n  flex-wrap: wrap;\r\n  margin: 0 -16px;\n}\n.col-25[data-v-074da5b0] { /* IE10 */\r\n  flex: 25%;\n}\n.col-50[data-v-074da5b0] { /* IE10 */\r\n  flex: 50%;\n}\n.col-75[data-v-074da5b0] { /* IE10 */\r\n  flex: 75%;\n}\n.col-25[data-v-074da5b0],\r\n.col-50[data-v-074da5b0],\r\n.col-75[data-v-074da5b0] {\r\n  padding: 0 16px;\n}\n.container1[data-v-074da5b0] {\r\n  background-color: #f2f2f2;\r\n  padding: 5px 20px 15px 20px;\r\n  border: 1px solid lightgrey;\r\n  border-radius: 3px;\n}\nlabel[data-v-074da5b0] {\r\n  margin-bottom: 10px;\r\n  display: block;\n}\n.icon-container[data-v-074da5b0] {\r\n  margin-bottom: 20px;\r\n  padding: 7px 0;\r\n  font-size: 24px;\n}\n.btn1[data-v-074da5b0] {\r\n  background-color: #ff8d1e;\r\n  color: white;\r\n  padding: 12px;\r\n  margin: 70px 0 10px 0;\r\n  border: none;\r\n  width: 100%;\r\n  border-radius: 3px;\r\n  cursor: pointer;\r\n  font-size: 17px;\n}\n.btn1[data-v-074da5b0]:hover {\r\n  background-color: #2196f3;\n}\n.profileBody[data-v-074da5b0] {\r\n  border: 1px solid black;\r\n  width: 80%;\r\n  margin: auto;\r\n  padding-left: 15%;\r\n  font-family: Arial;\r\n  font-size: 16px;\n}\n.profileContent[data-v-074da5b0] {\r\n  margin: 5% 25% 5% 0%;\n}\n#input-large[data-v-074da5b0] {\r\n  width: 500px;\n}\n#textarea[data-v-074da5b0] {\r\n  width: 500px;\n}\n.birthday[data-v-074da5b0] {\r\n  width: 500px;\n}\n.label[data-v-074da5b0] {\r\n  text-align: left;\r\n  margin-top: auto;\r\n  font-weight: bold;\n}\n.bio[data-v-074da5b0] {\r\n  height: 200px;\n}\n.bioLabel[data-v-074da5b0] {\r\n  margin: auto;\n}\n.profileTitle[data-v-074da5b0] {\r\n  font-size: 40px;\r\n  margin-bottom: 5%;\r\n  border-bottom: 3px solid black;\r\n  padding: 10 10 4px;\r\n  width: 760px;\n}\r\n", ""]);
 
 // exports
 
@@ -86908,218 +87118,229 @@ var render = function() {
     [
       _vm._m(0),
       _vm._v(" "),
-      _c("navtop"),
-      _vm._v(" "),
-      _c("div", { staticClass: "profileBody" }, [
-        _c("div", { staticClass: "profileContent" }, [
-          _c("p", { staticClass: "profileTitle" }, [_vm._v("Edit Profile")]),
+      _c(
+        "b-overlay",
+        { attrs: { show: _vm.busy, rounded: "lg", opacity: "0.6" } },
+        [
+          _c("navtop"),
           _vm._v(" "),
-          _c(
-            "form",
-            {
-              attrs: { method: "POST" },
-              on: {
-                submit: function($event) {
-                  $event.preventDefault()
-                  return _vm.updateUser($event)
-                }
-              }
-            },
-            [
+          _c("div", { staticClass: "profileBody" }, [
+            _c("div", { staticClass: "profileContent" }, [
+              _c("p", { staticClass: "profileTitle" }, [
+                _vm._v("Edit Profile")
+              ]),
+              _vm._v(" "),
               _c(
-                "b-container",
-                { attrs: { fluid: "" } },
+                "form",
+                {
+                  attrs: { method: "POST" },
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.updateUser($event)
+                    }
+                  }
+                },
                 [
                   _c(
-                    "b-row",
-                    { staticClass: "my-1" },
+                    "b-container",
+                    { attrs: { fluid: "" } },
                     [
                       _c(
-                        "b-col",
-                        { staticClass: "label", attrs: { sm: "2" } },
+                        "b-row",
+                        { staticClass: "my-1" },
                         [
-                          _c("label", { attrs: { for: "input-large" } }, [
-                            _vm._v("First Name")
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "b-col",
-                        { attrs: { sm: "10" } },
-                        [
-                          _c("b-form-input", {
-                            attrs: {
-                              id: "input-large",
-                              size: "lg",
-                              placeholder: "Enter your First name"
-                            },
-                            model: {
-                              value: _vm.$auth.user().first_name,
-                              callback: function($$v) {
-                                _vm.$set(_vm.$auth.user(), "first_name", $$v)
-                              },
-                              expression: "$auth.user().first_name"
-                            }
-                          })
+                          _c(
+                            "b-col",
+                            { staticClass: "label", attrs: { sm: "2" } },
+                            [
+                              _c("label", { attrs: { for: "input-large" } }, [
+                                _vm._v("First Name")
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "b-col",
+                            { attrs: { sm: "10" } },
+                            [
+                              _c("b-form-input", {
+                                attrs: {
+                                  id: "input-large",
+                                  size: "lg",
+                                  placeholder: "Enter your First name"
+                                },
+                                model: {
+                                  value: _vm.first_name,
+                                  callback: function($$v) {
+                                    _vm.first_name = $$v
+                                  },
+                                  expression: "first_name"
+                                }
+                              })
+                            ],
+                            1
+                          )
                         ],
                         1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "b-row",
-                    { staticClass: "my-1" },
-                    [
-                      _c(
-                        "b-col",
-                        { staticClass: "label", attrs: { sm: "2" } },
-                        [
-                          _c("label", { attrs: { for: "input-large" } }, [
-                            _vm._v("Last Name")
-                          ])
-                        ]
                       ),
                       _vm._v(" "),
                       _c(
-                        "b-col",
-                        { attrs: { sm: "10" } },
+                        "b-row",
+                        { staticClass: "my-1" },
                         [
-                          _c("b-form-input", {
-                            attrs: {
-                              id: "input-large",
-                              size: "lg",
-                              placeholder: "Enter your Last name"
-                            },
-                            model: {
-                              value: _vm.$auth.user().last_name,
-                              callback: function($$v) {
-                                _vm.$set(_vm.$auth.user(), "last_name", $$v)
-                              },
-                              expression: "$auth.user().last_name"
-                            }
-                          })
+                          _c(
+                            "b-col",
+                            { staticClass: "label", attrs: { sm: "2" } },
+                            [
+                              _c("label", { attrs: { for: "input-large" } }, [
+                                _vm._v("Last Name")
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "b-col",
+                            { attrs: { sm: "10" } },
+                            [
+                              _c("b-form-input", {
+                                attrs: {
+                                  id: "input-large",
+                                  size: "lg",
+                                  placeholder: "Enter your Last name"
+                                },
+                                model: {
+                                  value: _vm.last_name,
+                                  callback: function($$v) {
+                                    _vm.last_name = $$v
+                                  },
+                                  expression: "last_name"
+                                }
+                              })
+                            ],
+                            1
+                          )
                         ],
                         1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "b-row",
-                    { staticClass: "my-1" },
-                    [
-                      _c(
-                        "b-col",
-                        { staticClass: "label", attrs: { sm: "2" } },
-                        [
-                          _c("label", { attrs: { for: "input-large" } }, [
-                            _vm._v("Email")
-                          ])
-                        ]
                       ),
                       _vm._v(" "),
                       _c(
-                        "b-col",
-                        { attrs: { sm: "10" } },
+                        "b-row",
+                        { staticClass: "my-1" },
                         [
-                          _c("b-form-input", {
-                            attrs: {
-                              id: "input-large",
-                              size: "lg",
-                              placeholder: "Enter your Email"
-                            },
-                            model: {
-                              value: _vm.$auth.user().email,
-                              callback: function($$v) {
-                                _vm.$set(_vm.$auth.user(), "email", $$v)
-                              },
-                              expression: "$auth.user().email"
-                            }
-                          })
+                          _c(
+                            "b-col",
+                            { staticClass: "label", attrs: { sm: "2" } },
+                            [
+                              _c("label", { attrs: { for: "input-large" } }, [
+                                _vm._v("Email")
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "b-col",
+                            { attrs: { sm: "10" } },
+                            [
+                              _c("b-form-input", {
+                                attrs: {
+                                  id: "input-large",
+                                  size: "lg",
+                                  placeholder: "Enter your Email"
+                                },
+                                model: {
+                                  value: _vm.email,
+                                  callback: function($$v) {
+                                    _vm.email = $$v
+                                  },
+                                  expression: "email"
+                                }
+                              })
+                            ],
+                            1
+                          )
                         ],
                         1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "b-row",
-                    { staticClass: "my-1" },
-                    [
-                      _c(
-                        "b-col",
-                        {
-                          staticClass: "label",
-                          staticStyle: { "padding-right": "0px" },
-                          attrs: { sm: "2" }
-                        },
-                        [
-                          _c("label", { attrs: { for: "input-large" } }, [
-                            _vm._v("Home Phone")
-                          ])
-                        ]
                       ),
                       _vm._v(" "),
                       _c(
-                        "b-col",
-                        { attrs: { sm: "10" } },
+                        "b-row",
+                        { staticClass: "my-1" },
                         [
-                          _c("b-form-input", {
-                            attrs: {
-                              id: "input-large",
-                              size: "lg",
-                              placeholder: "Enter your Home Phone"
+                          _c(
+                            "b-col",
+                            {
+                              staticClass: "label",
+                              staticStyle: { "padding-right": "0px" },
+                              attrs: { sm: "2" }
                             },
-                            model: {
-                              value: _vm.$userAddress.loadAddress().home_phone,
-                              callback: function($$v) {
-                                _vm.$set(
-                                  _vm.$userAddress.loadAddress(),
-                                  "home_phone",
-                                  $$v
-                                )
-                              },
-                              expression:
-                                "$userAddress.loadAddress().home_phone"
-                            }
-                          })
+                            [
+                              _c("label", { attrs: { for: "input-large" } }, [
+                                _vm._v("Home Phone")
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "b-col",
+                            { attrs: { sm: "10" } },
+                            [
+                              _c("b-form-input", {
+                                attrs: {
+                                  id: "input-large",
+                                  size: "lg",
+                                  placeholder: "Enter your Home Phone"
+                                },
+                                model: {
+                                  value: _vm.homePhone,
+                                  callback: function($$v) {
+                                    _vm.homePhone = $$v
+                                  },
+                                  expression: "homePhone"
+                                }
+                              })
+                            ],
+                            1
+                          )
                         ],
                         1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "b-row",
-                    { staticClass: "my-1" },
-                    [
-                      _c(
-                        "b-col",
-                        { staticClass: "label", attrs: { sm: "2" } },
-                        [
-                          _c("label", { attrs: { for: "input-large" } }, [
-                            _vm._v("Work Phone")
-                          ])
-                        ]
                       ),
                       _vm._v(" "),
                       _c(
-                        "b-col",
-                        { attrs: { sm: "10" } },
+                        "b-row",
+                        { staticClass: "my-1" },
                         [
-                          _c("b-form-input", {
-                            attrs: {
-                              id: "input-large",
-                              size: "lg",
-                              placeholder: "Enter your Work Phone"
-                            }
-                          })
+                          _c(
+                            "b-col",
+                            { staticClass: "label", attrs: { sm: "2" } },
+                            [
+                              _c("label", { attrs: { for: "input-large" } }, [
+                                _vm._v("Work Phone")
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "b-col",
+                            { attrs: { sm: "10" } },
+                            [
+                              _c("b-form-input", {
+                                attrs: {
+                                  id: "input-large",
+                                  size: "lg",
+                                  placeholder: "Enter your Work Phone"
+                                },
+                                model: {
+                                  value: _vm.workPhone,
+                                  callback: function($$v) {
+                                    _vm.workPhone = $$v
+                                  },
+                                  expression: "workPhone"
+                                }
+                              })
+                            ],
+                            1
+                          )
                         ],
                         1
                       )
@@ -87129,57 +87350,215 @@ var render = function() {
                 ],
                 1
               )
-            ],
-            1
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "profileContent" }, [
-          _c("p", { staticClass: "profileTitle" }, [
-            _vm._v("Address Information")
-          ]),
-          _vm._v(" "),
-          _c(
-            "form",
-            {
-              attrs: { method: "POST" },
-              on: {
-                submit: function($event) {
-                  $event.preventDefault()
-                  return _vm.updateUserAddress($event)
-                }
-              }
-            },
-            [
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "profileContent" }, [
+              _c("p", { staticClass: "profileTitle" }, [
+                _vm._v("Address Information")
+              ]),
+              _vm._v(" "),
               _c(
-                "b-container",
-                { attrs: { fluid: "" } },
+                "form",
                 [
                   _c(
-                    "b-row",
-                    { staticClass: "my-1" },
+                    "b-container",
+                    { attrs: { fluid: "" } },
                     [
                       _c(
-                        "b-col",
-                        { staticClass: "label", attrs: { sm: "2" } },
+                        "b-row",
+                        { staticClass: "my-1" },
                         [
-                          _c("label", { attrs: { for: "input-large" } }, [
-                            _vm._v("Address")
-                          ])
-                        ]
+                          _c(
+                            "b-col",
+                            { staticClass: "label", attrs: { sm: "2" } },
+                            [
+                              _c("label", { attrs: { for: "input-large" } }, [
+                                _vm._v("Address")
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "b-col",
+                            { attrs: { sm: "10" } },
+                            [
+                              _c("b-form-input", {
+                                attrs: {
+                                  id: "input-large",
+                                  size: "lg",
+                                  placeholder: "Enter your Address"
+                                },
+                                model: {
+                                  value: _vm.addressLine1,
+                                  callback: function($$v) {
+                                    _vm.addressLine1 = $$v
+                                  },
+                                  expression: "addressLine1"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
                       ),
                       _vm._v(" "),
                       _c(
-                        "b-col",
-                        { attrs: { sm: "10" } },
+                        "b-row",
+                        { staticClass: "my-1" },
                         [
-                          _c("b-form-input", {
-                            attrs: {
-                              id: "input-large",
-                              size: "lg",
-                              placeholder: "Enter your Address"
-                            }
-                          })
+                          _c(
+                            "b-col",
+                            { staticClass: "label", attrs: { sm: "2" } },
+                            [
+                              _c("label", { attrs: { for: "input-large" } }, [
+                                _vm._v("Suite No.")
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "b-col",
+                            { attrs: { sm: "10" } },
+                            [
+                              _c("b-form-input", {
+                                attrs: {
+                                  id: "input-large",
+                                  size: "lg",
+                                  placeholder: "Enter your Suite No."
+                                },
+                                model: {
+                                  value: _vm.suiteNo,
+                                  callback: function($$v) {
+                                    _vm.suiteNo = $$v
+                                  },
+                                  expression: "suiteNo"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-row",
+                        { staticClass: "my-1" },
+                        [
+                          _c(
+                            "b-col",
+                            { staticClass: "label", attrs: { sm: "2" } },
+                            [
+                              _c("label", { attrs: { for: "input-large" } }, [
+                                _vm._v("City")
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "b-col",
+                            { attrs: { sm: "10" } },
+                            [
+                              _c("b-form-input", {
+                                attrs: {
+                                  id: "input-large",
+                                  size: "lg",
+                                  placeholder: "Enter your City"
+                                },
+                                model: {
+                                  value: _vm.city,
+                                  callback: function($$v) {
+                                    _vm.city = $$v
+                                  },
+                                  expression: "city"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-row",
+                        { staticClass: "my-1" },
+                        [
+                          _c(
+                            "b-col",
+                            { staticClass: "label", attrs: { sm: "2" } },
+                            [
+                              _c("label", { attrs: { for: "input-large" } }, [
+                                _vm._v("State")
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "b-col",
+                            { attrs: { sm: "10" } },
+                            [
+                              _c("b-form-select", {
+                                staticStyle: { width: "500px" },
+                                attrs: {
+                                  id: "states",
+                                  name: "states",
+                                  required: "",
+                                  options: _vm.stateOptions,
+                                  placeholder: "Select your State",
+                                  size: "lg"
+                                },
+                                model: {
+                                  value: _vm.selected,
+                                  callback: function($$v) {
+                                    _vm.selected = $$v
+                                  },
+                                  expression: "selected"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-row",
+                        { staticClass: "my-1" },
+                        [
+                          _c(
+                            "b-col",
+                            { staticClass: "label", attrs: { sm: "2" } },
+                            [
+                              _c("label", { attrs: { for: "input-large" } }, [
+                                _vm._v("Zip Code")
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "b-col",
+                            { attrs: { sm: "10" } },
+                            [
+                              _c("b-form-input", {
+                                attrs: {
+                                  id: "input-large",
+                                  size: "lg",
+                                  placeholder: "Enter your Zip Code"
+                                },
+                                model: {
+                                  value: _vm.zip,
+                                  callback: function($$v) {
+                                    _vm.zip = $$v
+                                  },
+                                  expression: "zip"
+                                }
+                              })
+                            ],
+                            1
+                          )
                         ],
                         1
                       )
@@ -87187,148 +87566,90 @@ var render = function() {
                     1
                   ),
                   _vm._v(" "),
-                  _c(
-                    "b-row",
-                    { staticClass: "my-1" },
-                    [
-                      _c(
-                        "b-col",
-                        { staticClass: "label", attrs: { sm: "2" } },
-                        [
-                          _c("label", { attrs: { for: "input-large" } }, [
-                            _vm._v("Suite No.")
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "b-col",
-                        { attrs: { sm: "10" } },
-                        [
-                          _c("b-form-input", {
-                            attrs: {
-                              id: "input-large",
-                              size: "lg",
-                              placeholder: "Enter your Suite No."
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  ),
+                  _c("input", {
+                    staticClass: "btn1",
+                    attrs: { type: "submit", value: "Apply Changes" },
+                    on: {
+                      click: function($event) {
+                        return _vm.updateUser(_vm.userid)
+                      }
+                    }
+                  }),
                   _vm._v(" "),
                   _c(
-                    "b-row",
-                    { staticClass: "my-1" },
+                    "span",
                     [
                       _c(
-                        "b-col",
-                        { staticClass: "label", attrs: { sm: "2" } },
+                        "b-button",
+                        {
+                          directives: [
+                            {
+                              name: "b-modal",
+                              rawName: "v-b-modal",
+                              value: "remove-user",
+                              expression: "`remove-user`"
+                            }
+                          ],
+                          staticClass: "tablebuttons"
+                        },
                         [
-                          _c("label", { attrs: { for: "input-large" } }, [
-                            _vm._v("City")
-                          ])
-                        ]
+                          _c("b-icon", {
+                            attrs: {
+                              id: "icons",
+                              icon: "trash-fill",
+                              variant: "danger"
+                            }
+                          }),
+                          _vm._v("Remove Account\r\n            ")
+                        ],
+                        1
                       ),
                       _vm._v(" "),
                       _c(
-                        "b-col",
-                        { attrs: { sm: "10" } },
-                        [
-                          _c("b-form-input", {
-                            attrs: {
-                              id: "input-large",
-                              size: "lg",
-                              placeholder: "Enter your City"
+                        "b-modal",
+                        {
+                          attrs: {
+                            id: "remove-user",
+                            centered: "",
+                            title: "Remove Account"
+                          },
+                          on: {
+                            ok: function($event) {
+                              return _vm.removeUser(_vm.userid)
                             }
-                          })
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "b-row",
-                    { staticClass: "my-1" },
-                    [
-                      _c(
-                        "b-col",
-                        { staticClass: "label", attrs: { sm: "2" } },
+                          }
+                        },
                         [
-                          _c("label", { attrs: { for: "input-large" } }, [
-                            _vm._v("State")
+                          _c("p", { staticClass: "my-4" }, [
+                            _vm._v(
+                              "Are you sure you want to remove this account?"
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "my-2" }, [
+                            _vm._v("Select Ok to proceed.")
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "my-4" }, [
+                            _vm._v(
+                              "Select Cancel or click out of the popup box to continue StoryTime."
+                            )
                           ])
                         ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "b-col",
-                        { attrs: { sm: "10" } },
-                        [
-                          _c("b-form-input", {
-                            attrs: {
-                              id: "input-large",
-                              size: "lg",
-                              placeholder: "Enter your State"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "b-row",
-                    { staticClass: "my-1" },
-                    [
-                      _c(
-                        "b-col",
-                        { staticClass: "label", attrs: { sm: "2" } },
-                        [
-                          _c("label", { attrs: { for: "input-large" } }, [
-                            _vm._v("Zip Code")
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "b-col",
-                        { attrs: { sm: "10" } },
-                        [
-                          _c("b-form-input", {
-                            attrs: {
-                              id: "input-large",
-                              size: "lg",
-                              placeholder: "Enter your Zip Code"
-                            }
-                          })
-                        ],
-                        1
                       )
                     ],
                     1
                   )
                 ],
                 1
-              ),
-              _vm._v(" "),
-              _c("input", {
-                staticClass: "btn1",
-                attrs: { type: "submit", value: "Apply Changes" }
-              })
-            ],
-            1
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("navbottom")
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("navbottom")
+        ],
+        1
+      )
     ],
     1
   )
@@ -105474,8 +105795,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\User\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\User\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\tmaas\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\tmaas\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

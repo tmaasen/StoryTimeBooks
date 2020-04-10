@@ -34,6 +34,12 @@ Route::prefix('v1')->group(function () {
                 Route::post('logout', 'Users\AuthController@logout');
                 // Removes a user
                 Route::post('removeuser/{id}', 'Users\UserController@removeUser');
+                 // Get user address info
+                 Route::get('useraddress/{id}', 'Users\UserController@userAddress');
+                // Update user address info
+                Route::put('updateuseraddress/{id}', 'Users\UserController@updateUserAddress');
+                // Update user info
+                Route::put('updateuser/{id}', 'Users\UserController@updateUser');
                         });
         });
 // Below mention routes are admin. Non-admin users have no access.
@@ -53,6 +59,6 @@ Route::prefix('v1')->group(function () {
         // Create a new publisher
         Route::post('newpublisher', 'Books\BookController@createPublisher');
         // Removes a product
-        Route::post('removeproduct/{id}', 'Books\BookController@removeProduct'); // PROBLEM CHILD
+        Route::post('removeproduct/{id}', 'Books\BookController@removeProduct');
     });
 });

@@ -36,41 +36,64 @@ class UserController extends Controller
     }
 
     /**
-     * Returns ALL user addresses. THIS IS AN ADMIN FUNCTION
-     */
-    public function userAddress()
-    {
-        $userAddresses = UserAddress::all();
-        return response()->json(
-            [
-                'status' => 'success',
-                'users' => $userAddresses
-            ], 200);
-    }
-
-    /**
-     * Update the specified resource in storage.
+     * Update the specified user in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      */
-    public function update(Request $request, $id)
+    public function updateUser(Request $request)
     {
 
-        $user = User::findOrFail($id);
-
-        $this->validate($request,[
-            'first_name' => 'required|string|max:191',
-            'last_name' => 'required|string|max:191',
-            'email' => 'required|email|unique:users,email,'.$user->id,
-            'password' => 'sometimes',
-            'role' => 'sometimes',
-            'is_deleted' => 'sometimes'
+        DB::table('users')->where('id', $request->id)->update([
+            
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+       
         ]);
 
-        $user->update($request->all());
-        return ['message' => 'Updated the user info'];
+        return response()->json(
+            [
+                'status' => 'success',
+                'message' => 'Updated user info successfully'
+            ], 200);
     }
+
+    /**
+     * Update the specified user address in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     */
+    public function updateUserAddress(Request $request)
+    {
+        DB::table('user_address')->where('user_id', $request->user_id)->update([
+            
+            'address_line_1' => $request->address_line_1,
+            'suite_no' => $request->suite_no,
+            'city' => $request->city,
+            'state_id' => $request->state_id,
+            'zipcode' => $request->zipcode,
+            'home_phone' => $request->home_phone,
+            'work_phone' => $request->work_phone,
+
+        ]);
+
+        return response()->json(
+            [
+                'status' => 'success',
+                'message' => 'Updated user address info successfully'
+            ], 200);
+    }
+
+//     public function update(Request $request, $id)
+// {
+//   $crud = Crud::findOrFail($id);
+//   $crud->color = $request->color;
+//   $crud->save();
+
+//   return response(null, Response::HTTP_OK);
+// }
 
     /**
      * Remove the specified resource from storage.
@@ -92,15 +115,16 @@ class UserController extends Controller
     }
 
     /**
-     * Get authenticated user
+     * Get authenticated user's address
      */
-    public function loadAddress(Request $id)
-    {
-        // how to get data...Auth::user()->whatever parameter in the user record
-        $loadAddress = UserAddress::loadAddress();
+    public function userAddress(Request $request) {
+
+        //$address = UserAddress::getUserAddress($request->id);
+        $address = DB::table('user_address')->where('user_id', $request->id)->first();
+        
          return response()->json([
             'status' => 'success',
-            'data' => $loadAddress
+            'address' => $address
         ]);
     }
 }

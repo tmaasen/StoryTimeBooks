@@ -80,7 +80,7 @@
       head-variant="light"
       class="w-85"
     >
-      <!-- Delete icon....1 icon click shows up all the modals for that icon for that table -->
+      <!-- Delete icon -->
       <template v-slot:cell(actions)="books">
         <b-button class="tablebuttons" v-b-modal="`remove-product-${books.item.id}`">
           <b-icon id="icons" icon="trash-fill" variant="danger"></b-icon>
@@ -192,7 +192,7 @@ export default {
         .catch(function(response) {
           console.log(response);
           alert("There has been an error. Please try again.");
-        });
+        }); 
     },
     editUser() {
       // put request
