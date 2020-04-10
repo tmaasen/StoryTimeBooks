@@ -38,4 +38,10 @@ class UserAddress extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    public static function getUserAddress($id) {
+
+        DB::table('useraddress')->find($id);
+
+    }
 }

@@ -7,6 +7,7 @@ use App\UserAddress;
 use App\User;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -90,4 +91,16 @@ class UserController extends Controller
             ], 200);
     }
 
+    /**
+     * Get authenticated user
+     */
+    public function loadAddress(Request $id)
+    {
+        // how to get data...Auth::user()->whatever parameter in the user record
+        $loadAddress = UserAddress::loadAddress();
+         return response()->json([
+            'status' => 'success',
+            'data' => $loadAddress
+        ]);
+    }
 }

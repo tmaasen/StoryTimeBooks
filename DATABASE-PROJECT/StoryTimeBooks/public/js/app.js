@@ -86953,6 +86953,13 @@ var render = function() {
                               id: "input-large",
                               size: "lg",
                               placeholder: "Enter your First name"
+                            },
+                            model: {
+                              value: _vm.$auth.user().first_name,
+                              callback: function($$v) {
+                                _vm.$set(_vm.$auth.user(), "first_name", $$v)
+                              },
+                              expression: "$auth.user().first_name"
                             }
                           })
                         ],
@@ -86985,6 +86992,13 @@ var render = function() {
                               id: "input-large",
                               size: "lg",
                               placeholder: "Enter your Last name"
+                            },
+                            model: {
+                              value: _vm.$auth.user().last_name,
+                              callback: function($$v) {
+                                _vm.$set(_vm.$auth.user(), "last_name", $$v)
+                              },
+                              expression: "$auth.user().last_name"
                             }
                           })
                         ],
@@ -87017,6 +87031,13 @@ var render = function() {
                               id: "input-large",
                               size: "lg",
                               placeholder: "Enter your Email"
+                            },
+                            model: {
+                              value: _vm.$auth.user().email,
+                              callback: function($$v) {
+                                _vm.$set(_vm.$auth.user(), "email", $$v)
+                              },
+                              expression: "$auth.user().email"
                             }
                           })
                         ],
@@ -87053,6 +87074,18 @@ var render = function() {
                               id: "input-large",
                               size: "lg",
                               placeholder: "Enter your Home Phone"
+                            },
+                            model: {
+                              value: _vm.$userAddress.loadAddress().home_phone,
+                              callback: function($$v) {
+                                _vm.$set(
+                                  _vm.$userAddress.loadAddress(),
+                                  "home_phone",
+                                  $$v
+                                )
+                              },
+                              expression:
+                                "$userAddress.loadAddress().home_phone"
                             }
                           })
                         ],
@@ -105441,8 +105474,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\tmaas\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\tmaas\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\User\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\User\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

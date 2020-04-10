@@ -19,7 +19,7 @@
             <label for="input-large">First Name</label>
           </b-col>
           <b-col sm="10">
-            <b-form-input id="input-large" size="lg" placeholder="Enter your First name"></b-form-input>
+            <b-form-input id="input-large" size="lg" placeholder="Enter your First name" v-model="$auth.user().first_name"></b-form-input>
           </b-col>
         </b-row>
 
@@ -28,7 +28,7 @@
             <label for="input-large">Last Name</label>
           </b-col>
           <b-col sm="10">
-            <b-form-input id="input-large" size="lg" placeholder="Enter your Last name"></b-form-input>
+            <b-form-input id="input-large" size="lg" placeholder="Enter your Last name"  v-model="$auth.user().last_name"></b-form-input>
           </b-col>
         </b-row>
 
@@ -37,7 +37,7 @@
             <label for="input-large">Email</label>
           </b-col>
           <b-col sm="10">
-            <b-form-input id="input-large" size="lg" placeholder="Enter your Email"></b-form-input>
+            <b-form-input id="input-large" size="lg" placeholder="Enter your Email" v-model="$auth.user().email"></b-form-input>
           </b-col>
         </b-row>
 
@@ -46,7 +46,7 @@
             <label for="input-large">Home Phone</label>
           </b-col>
           <b-col sm="10">
-            <b-form-input id="input-large" size="lg" placeholder="Enter your Home Phone"></b-form-input>
+            <b-form-input id="input-large" size="lg" placeholder="Enter your Home Phone" v-model="$userAddress.loadAddress().home_phone"></b-form-input>
           </b-col>
         </b-row>
 
