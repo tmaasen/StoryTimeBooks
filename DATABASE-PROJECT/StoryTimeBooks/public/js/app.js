@@ -104127,7 +104127,14 @@ var map = {
 	"./1586113217.jpg": "./public/uploads/products/1586113217.jpg",
 	"./1586113338.jpg": "./public/uploads/products/1586113338.jpg",
 	"./1586113450.jpg": "./public/uploads/products/1586113450.jpg",
-	"./1586233966.jpg": "./public/uploads/products/1586233966.jpg"
+	"./1586233966.jpg": "./public/uploads/products/1586233966.jpg",
+	"./1586549627.jpg": "./public/uploads/products/1586549627.jpg",
+	"./1586549818.jpg": "./public/uploads/products/1586549818.jpg",
+	"./1586550153.jpg": "./public/uploads/products/1586550153.jpg",
+	"./1586550330.jpg": "./public/uploads/products/1586550330.jpg",
+	"./1586550494.jpg": "./public/uploads/products/1586550494.jpg",
+	"./1586550650.jpg": "./public/uploads/products/1586550650.jpg",
+	"./1586550798.jpg": "./public/uploads/products/1586550798.jpg"
 };
 
 
@@ -104424,6 +104431,83 @@ module.exports = "/images/1586113450.jpg?0f53f0edbd059d969cf8ee519919d065";
 /***/ (function(module, exports) {
 
 module.exports = "/images/1586233966.jpg?2d09d04b880934ae4996465d5b95815a";
+
+/***/ }),
+
+/***/ "./public/uploads/products/1586549627.jpg":
+/*!************************************************!*\
+  !*** ./public/uploads/products/1586549627.jpg ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1586549627.jpg?30615dafbea0a51a7d9caaf0864e623e";
+
+/***/ }),
+
+/***/ "./public/uploads/products/1586549818.jpg":
+/*!************************************************!*\
+  !*** ./public/uploads/products/1586549818.jpg ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1586549818.jpg?108aee95f5b49c619ef35f0873ad1836";
+
+/***/ }),
+
+/***/ "./public/uploads/products/1586550153.jpg":
+/*!************************************************!*\
+  !*** ./public/uploads/products/1586550153.jpg ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1586550153.jpg?33d559d173e8cc8109c453b62cdf1efd";
+
+/***/ }),
+
+/***/ "./public/uploads/products/1586550330.jpg":
+/*!************************************************!*\
+  !*** ./public/uploads/products/1586550330.jpg ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1586550330.jpg?4c6f521c0c592a2e14dc2cfceb5890aa";
+
+/***/ }),
+
+/***/ "./public/uploads/products/1586550494.jpg":
+/*!************************************************!*\
+  !*** ./public/uploads/products/1586550494.jpg ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1586550494.jpg?670f8a322beb56a5433df47b43359b3a";
+
+/***/ }),
+
+/***/ "./public/uploads/products/1586550650.jpg":
+/*!************************************************!*\
+  !*** ./public/uploads/products/1586550650.jpg ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1586550650.jpg?3e638feb37fe63d71285bdc05d67ea3f";
+
+/***/ }),
+
+/***/ "./public/uploads/products/1586550798.jpg":
+/*!************************************************!*\
+  !*** ./public/uploads/products/1586550798.jpg ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1586550798.jpg?bf51849bd1cf29aee72abe1db2445121";
 
 /***/ }),
 
@@ -105795,8 +105879,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\tmaas\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\tmaas\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\User\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\User\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
