@@ -150,9 +150,8 @@
                   required
                   v-model="selected"
                   :options="stateOptions"
-                  placeholder="Select your State"
                   size="lg"
-                  style="width:500px"
+                  style="width:500px;color:slategrey"
                 ></b-form-select>
               </b-col>
             </b-row>
@@ -219,7 +218,7 @@ export default {
       searchFilter: "a",
       expmonth: null,
       states: [],
-      stateOptions: [],
+      stateOptions: [{text: "Select your State"}],
       selected: null
     };
   },
@@ -243,6 +242,7 @@ export default {
         })
         .then(function(response) {
           console.log(response);
+          if (response.data.address !== null) {
           user.homePhone = response.data.address.home_phone;
           user.workPhone = response.data.address.work_phone;
           user.addressLine1 = response.data.address.address_line_1;
@@ -250,6 +250,7 @@ export default {
           user.city = response.data.address.city;
           user.selected = response.data.address.state_id;
           user.zip = response.data.address.zipcode;
+          }
       user.busy = false;
         })
         .catch(error => {

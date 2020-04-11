@@ -5290,7 +5290,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5311,7 +5310,9 @@ __webpack_require__.r(__webpack_exports__);
       searchFilter: "a",
       expmonth: null,
       states: [],
-      stateOptions: [],
+      stateOptions: [{
+        text: "Select your State"
+      }],
       selected: null
     };
   },
@@ -5335,13 +5336,17 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (response) {
         console.log(response);
-        user.homePhone = response.data.address.home_phone;
-        user.workPhone = response.data.address.work_phone;
-        user.addressLine1 = response.data.address.address_line_1;
-        user.suiteNo = response.data.address.suite_no;
-        user.city = response.data.address.city;
-        user.selected = response.data.address.state_id;
-        user.zip = response.data.address.zipcode;
+
+        if (response.data.address !== null) {
+          user.homePhone = response.data.address.home_phone;
+          user.workPhone = response.data.address.work_phone;
+          user.addressLine1 = response.data.address.address_line_1;
+          user.suiteNo = response.data.address.suite_no;
+          user.city = response.data.address.city;
+          user.selected = response.data.address.state_id;
+          user.zip = response.data.address.zipcode;
+        }
+
         user.busy = false;
       })["catch"](function (error) {
         console.log(error);
@@ -87539,13 +87544,15 @@ var render = function() {
                             { attrs: { sm: "10" } },
                             [
                               _c("b-form-select", {
-                                staticStyle: { width: "500px" },
+                                staticStyle: {
+                                  width: "500px",
+                                  color: "slategrey"
+                                },
                                 attrs: {
                                   id: "states",
                                   name: "states",
                                   required: "",
                                   options: _vm.stateOptions,
-                                  placeholder: "Select your State",
                                   size: "lg"
                                 },
                                 model: {
