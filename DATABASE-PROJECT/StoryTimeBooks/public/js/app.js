@@ -4775,6 +4775,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -4783,6 +4807,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      busy: false,
       product_name: "",
       perPage: 4,
       currentUserPage: 1,
@@ -4823,7 +4848,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     removeProduct: function removeProduct(idToRemove) {
       // soft delete
-      //console.log("ID: " + idToRemove); // id works!!
       axios.post("http://127.0.0.1:8000/api/v1/admin/removeproduct/{id}", {
         id: {
           idToRemove: idToRemove
@@ -5264,6 +5288,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5289,12 +5316,8 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    var app = this;
-    app.busy = true;
-    this.getUser(userid);
-    this.getUserAddress(userid);
+    this.getUser();
     this.setStateOptions();
-    app.busy = false;
   },
   mounted: function mounted() {
     console.log("Profile mounted.");
@@ -5319,23 +5342,22 @@ __webpack_require__.r(__webpack_exports__);
         user.city = response.data.address.city;
         user.selected = response.data.address.state_id;
         user.zip = response.data.address.zipcode;
+        user.busy = false;
       })["catch"](function (error) {
         console.log(error);
         alert("There has been an error loading user address data. Please try again.");
       });
     },
-    getUser: function getUser(userid) {
+    getUser: function getUser() {
       var user = this;
-      axios.get("http://127.0.0.1:8000/api/v1/auth/user", {
-        params: {
-          id: userid
-        }
-      }).then(function (response) {
+      user.busy = true;
+      axios.get("http://127.0.0.1:8000/api/v1/auth/user").then(function (response) {
         console.log(response);
         user.userid = response.data.data.id;
         user.first_name = response.data.data.first_name;
         user.last_name = response.data.data.last_name;
         user.email = response.data.data.email;
+        user.getUserAddress(user.userid);
       })["catch"](function (error) {
         console.log(error);
         alert("There has been an error loading user data. Please try again.");
@@ -5343,6 +5365,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     updateUserAddress: function updateUserAddress(userid) {
       var user = this;
+      user.busy = true;
       axios.put("http://127.0.0.1:8000/api/v1/auth/updateuseraddress/{id}", {
         address_line_1: user.addressLine1,
         suite_no: user.suiteNo,
@@ -5354,7 +5377,7 @@ __webpack_require__.r(__webpack_exports__);
         user_id: user.userid
       }).then(function (response) {
         console.log(response);
-        window.location.reload();
+        user.busy = false; // window.location.reload();
       })["catch"](function (error) {
         console.log(error);
         alert("There has been an error updating user address information. Please try again.");
@@ -86437,420 +86460,433 @@ var render = function() {
     [
       _vm._m(0),
       _vm._v(" "),
-      _c("navtop"),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("h1", { staticStyle: { "text-align": "center" } }, [
-        _vm._v("Welcome, Administrator")
-      ]),
-      _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
       _c(
-        "div",
-        { attrs: { id: "wrapper" } },
+        "b-overlay",
+        { attrs: { show: _vm.busy, rounded: "lg", opacity: "0.6" } },
         [
+          _c("navtop"),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
           _c("h1", { staticStyle: { "text-align": "center" } }, [
-            _vm._v("Users")
+            _vm._v("Welcome, Administrator")
           ]),
           _vm._v(" "),
-          _c("b-pagination", {
-            attrs: {
-              "total-rows": _vm.userrows,
-              "per-page": _vm.perPage,
-              "aria-controls": "users-table"
-            },
-            model: {
-              value: _vm.currentUserPage,
-              callback: function($$v) {
-                _vm.currentUserPage = $$v
-              },
-              expression: "currentUserPage"
-            }
-          }),
+          _c("hr"),
           _vm._v(" "),
           _c(
-            "p",
-            { staticClass: "mt-3" },
+            "div",
+            { attrs: { id: "wrapper" } },
             [
-              _vm._v(
-                "\r\n      Current Page: " +
-                  _vm._s(_vm.currentUserPage) +
-                  "\r\n      "
-              ),
-              _c(
-                "b-button",
-                {
-                  directives: [
-                    {
-                      name: "b-modal",
-                      rawName: "v-b-modal.userModal",
-                      modifiers: { userModal: true }
-                    }
-                  ],
-                  staticClass: "addbtn",
-                  staticStyle: { color: "white" }
+              _c("h1", { staticStyle: { "text-align": "center" } }, [
+                _vm._v("Users")
+              ]),
+              _vm._v(" "),
+              _c("b-pagination", {
+                attrs: {
+                  "total-rows": _vm.userrows,
+                  "per-page": _vm.perPage,
+                  "aria-controls": "users-table"
                 },
-                [_vm._v("Add User")]
+                model: {
+                  value: _vm.currentUserPage,
+                  callback: function($$v) {
+                    _vm.currentUserPage = $$v
+                  },
+                  expression: "currentUserPage"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "p",
+                { staticClass: "mt-3" },
+                [
+                  _vm._v(
+                    "\r\n        Current Page: " +
+                      _vm._s(_vm.currentUserPage) +
+                      "\r\n        "
+                  ),
+                  _c(
+                    "b-button",
+                    {
+                      directives: [
+                        {
+                          name: "b-modal",
+                          rawName: "v-b-modal.userModal",
+                          modifiers: { userModal: true }
+                        }
+                      ],
+                      staticClass: "addbtn",
+                      staticStyle: { color: "white" }
+                    },
+                    [_vm._v("Add User")]
+                  ),
+                  _vm._v(" "),
+                  _c("userModal", { attrs: { title: "Add User" } })
+                ],
+                1
               ),
               _vm._v(" "),
-              _c("userModal", { attrs: { title: "Add User" } })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("b-table", {
-            staticClass: "w-85",
-            attrs: {
-              id: "users-table",
-              selectable: "",
-              "select-mode": "single",
-              "per-page": _vm.perPage,
-              "current-page": _vm.currentUserPage,
-              small: "",
-              "sticky-header": "",
-              striped: "",
-              hover: "",
-              items: _vm.users,
-              "head-variant": "light"
-            },
-            scopedSlots: _vm._u([
-              {
-                key: "cell(actions)",
-                fn: function(users) {
-                  return [
-                    _c(
-                      "b-button",
-                      {
-                        directives: [
+              _c("b-table", {
+                staticClass: "w-85",
+                attrs: {
+                  id: "users-table",
+                  selectable: "",
+                  "select-mode": "single",
+                  "per-page": _vm.perPage,
+                  "current-page": _vm.currentUserPage,
+                  small: "",
+                  "sticky-header": "",
+                  striped: "",
+                  hover: "",
+                  items: _vm.users,
+                  "head-variant": "light"
+                },
+                scopedSlots: _vm._u([
+                  {
+                    key: "cell(actions)",
+                    fn: function(users) {
+                      return [
+                        _c(
+                          "b-button",
                           {
-                            name: "b-modal",
-                            rawName: "v-b-modal",
-                            value: "remove-user-" + users.item.id,
-                            expression: "`remove-user-${users.item.id}`"
-                          }
-                        ],
-                        staticClass: "tablebuttons"
-                      },
-                      [
-                        _c("b-icon", {
-                          attrs: {
-                            id: "icons",
-                            icon: "trash-fill",
-                            variant: "danger"
-                          }
-                        })
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "b-modal",
-                      {
-                        attrs: {
-                          id: "remove-user-" + users.item.id,
-                          centered: "",
-                          title: "Delete User"
-                        },
-                        on: {
-                          ok: function($event) {
-                            return _vm.removeUser(users.item.id)
-                          }
-                        }
-                      },
-                      [
-                        _c("p", { staticClass: "my-4" }, [
-                          _vm._v("Are you sure you want to remove "),
-                          _c("i", [
-                            _c("b", [
+                            directives: [
+                              {
+                                name: "b-modal",
+                                rawName: "v-b-modal",
+                                value: "remove-user-" + users.item.id,
+                                expression: "`remove-user-${users.item.id}`"
+                              }
+                            ],
+                            staticClass: "tablebuttons"
+                          },
+                          [
+                            _c("b-icon", {
+                              attrs: {
+                                id: "icons",
+                                icon: "trash-fill",
+                                variant: "danger"
+                              }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "b-modal",
+                          {
+                            attrs: {
+                              id: "remove-user-" + users.item.id,
+                              centered: "",
+                              title: "Delete User"
+                            },
+                            on: {
+                              ok: function($event) {
+                                return _vm.removeUser(users.item.id)
+                              }
+                            }
+                          },
+                          [
+                            _c("p", { staticClass: "my-4" }, [
                               _vm._v(
-                                _vm._s(users.item.first_name) +
-                                  " " +
-                                  _vm._s(users.item.last_name)
+                                "\r\n              Are you sure you want to remove\r\n              "
+                              ),
+                              _c("i", [
+                                _c("b", [
+                                  _vm._v(
+                                    _vm._s(users.item.first_name) +
+                                      " " +
+                                      _vm._s(users.item.last_name)
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" ?\r\n            ")
+                            ]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "my-2" }, [
+                              _vm._v(
+                                "Select Ok to proceed with removing this user."
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "my-4" }, [
+                              _vm._v(
+                                "Select Cancel to cancel this process, or click out of the popup box."
                               )
                             ])
-                          ]),
-                          _vm._v(" ?")
-                        ]),
+                          ]
+                        ),
                         _vm._v(" "),
-                        _c("p", { staticClass: "my-2" }, [
-                          _vm._v(
-                            "Select Ok to proceed with removing this user."
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "my-4" }, [
-                          _vm._v(
-                            "Select Cancel to cancel this process, or click out of the popup box."
-                          )
-                        ])
+                        _c(
+                          "b-button",
+                          { staticClass: "tablebuttons" },
+                          [
+                            _c("b-icon", {
+                              staticStyle: { "margin-top": "5px" },
+                              attrs: {
+                                id: "icons",
+                                icon: "pencil-square",
+                                variant: "info"
+                              }
+                            })
+                          ],
+                          1
+                        )
                       ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "b-button",
-                      { staticClass: "tablebuttons" },
-                      [
-                        _c("b-icon", {
-                          staticStyle: { "margin-top": "5px" },
-                          attrs: {
-                            id: "icons",
-                            icon: "pencil-square",
-                            variant: "info"
-                          }
-                        })
-                      ],
-                      1
-                    )
-                  ]
-                }
-              }
-            ])
-          }),
-          _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _c("h1", { staticStyle: { "text-align": "center" } }, [
-            _vm._v("Books")
-          ]),
-          _vm._v(" "),
-          _c("b-pagination", {
-            staticClass: "table",
-            attrs: {
-              "total-rows": _vm.bookrows,
-              "per-page": _vm.perPage,
-              "aria-controls": "books-table"
-            },
-            model: {
-              value: _vm.currentBookPage,
-              callback: function($$v) {
-                _vm.currentBookPage = $$v
-              },
-              expression: "currentBookPage"
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "p",
-            { staticClass: "mt-3" },
-            [
-              _vm._v(
-                "\r\n      Current Page: " +
-                  _vm._s(_vm.currentBookPage) +
-                  "\r\n      "
-              ),
-              _c(
-                "b-button",
-                {
-                  directives: [
-                    {
-                      name: "b-modal",
-                      rawName: "v-b-modal.bookModal",
-                      modifiers: { bookModal: true }
                     }
-                  ],
-                  staticClass: "addbtn",
-                  staticStyle: { color: "white" }
-                },
-                [_vm._v("Add Book")]
-              ),
+                  }
+                ])
+              }),
               _vm._v(" "),
-              _c("bookModal", { attrs: { title: "Add Product" } })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("b-table", {
-            staticClass: "w-85",
-            attrs: {
-              id: "books-table",
-              selectable: "",
-              "select-mode": "single",
-              "per-page": _vm.perPage,
-              "current-page": _vm.currentBookPage,
-              small: "",
-              "sticky-header": "",
-              striped: "",
-              hover: "",
-              items: _vm.books,
-              "head-variant": "light"
-            },
-            scopedSlots: _vm._u([
-              {
-                key: "cell(actions)",
-                fn: function(books) {
-                  return [
-                    _c(
-                      "b-button",
-                      {
-                        directives: [
-                          {
-                            name: "b-modal",
-                            rawName: "v-b-modal",
-                            value: "remove-product-" + books.item.id,
-                            expression: "`remove-product-${books.item.id}`"
-                          }
-                        ],
-                        staticClass: "tablebuttons"
-                      },
-                      [
-                        _c("b-icon", {
-                          attrs: {
-                            id: "icons",
-                            icon: "trash-fill",
-                            variant: "danger"
-                          }
-                        })
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "b-modal",
-                      {
-                        attrs: {
-                          id: "remove-product-" + books.item.id,
-                          centered: "",
-                          title: "Delete Product"
-                        },
-                        on: {
-                          ok: function($event) {
-                            return _vm.removeProduct(books.item.id)
-                          }
+              _c("hr"),
+              _vm._v(" "),
+              _c("h1", { staticStyle: { "text-align": "center" } }, [
+                _vm._v("Books")
+              ]),
+              _vm._v(" "),
+              _c("b-pagination", {
+                staticClass: "table",
+                attrs: {
+                  "total-rows": _vm.bookrows,
+                  "per-page": _vm.perPage,
+                  "aria-controls": "books-table"
+                },
+                model: {
+                  value: _vm.currentBookPage,
+                  callback: function($$v) {
+                    _vm.currentBookPage = $$v
+                  },
+                  expression: "currentBookPage"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "p",
+                { staticClass: "mt-3" },
+                [
+                  _vm._v(
+                    "\r\n        Current Page: " +
+                      _vm._s(_vm.currentBookPage) +
+                      "\r\n        "
+                  ),
+                  _c(
+                    "b-button",
+                    {
+                      directives: [
+                        {
+                          name: "b-modal",
+                          rawName: "v-b-modal.bookModal",
+                          modifiers: { bookModal: true }
                         }
-                      },
-                      [
-                        _c("p", { staticClass: "my-4" }, [
-                          _vm._v(" Are you sure you want to delete "),
-                          _c("i", [
-                            _c("b", [_vm._v(_vm._s(books.item.product_name))])
-                          ]),
-                          _vm._v(" ?")
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "my-2" }, [
-                          _vm._v(
-                            "Select Ok to proceed with removing this product from StoryTime Book's inventory."
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "my-4" }, [
-                          _vm._v(
-                            "Select Cancel to cancel this process, or click out of the popup box."
-                          )
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "b-button",
-                      { staticClass: "tablebuttons" },
-                      [
-                        _c("b-icon", {
-                          staticStyle: { "margin-top": "5px" },
-                          attrs: {
-                            id: "icons",
-                            icon: "pencil-square",
-                            variant: "info"
-                          }
-                        })
                       ],
-                      1
-                    )
-                  ]
-                }
-              },
-              {
-                key: "cell(product_image)",
-                fn: function(books) {
-                  return [
-                    _c("img", {
-                      attrs: {
-                        src: _vm.getImgUrl(books.item.product_image),
-                        width: "60",
-                        height: "75"
-                      }
-                    })
-                  ]
-                }
-              }
-            ])
-          }),
-          _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _c("h1", { staticStyle: { "text-align": "center" } }, [
-            _vm._v("Publishers")
-          ]),
-          _vm._v(" "),
-          _c("b-pagination", {
-            staticClass: "table",
-            attrs: {
-              "total-rows": _vm.publisherrows,
-              "per-page": _vm.perPage,
-              "aria-controls": "publishers-table"
-            },
-            model: {
-              value: _vm.currentPublisherPage,
-              callback: function($$v) {
-                _vm.currentPublisherPage = $$v
-              },
-              expression: "currentPublisherPage"
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "p",
-            { staticClass: "mt-3" },
-            [
-              _vm._v(
-                "\r\n      Current Page: " +
-                  _vm._s(_vm.currentPublisherPage) +
-                  "\r\n      "
-              ),
-              _c(
-                "b-button",
-                {
-                  directives: [
-                    {
-                      name: "b-modal",
-                      rawName: "v-b-modal.publisherModal",
-                      modifiers: { publisherModal: true }
-                    }
-                  ],
-                  staticClass: "addbtn",
-                  staticStyle: { color: "white" }
-                },
-                [_vm._v("Add Publisher")]
+                      staticClass: "addbtn",
+                      staticStyle: { color: "white" }
+                    },
+                    [_vm._v("Add Book")]
+                  ),
+                  _vm._v(" "),
+                  _c("bookModal", { attrs: { title: "Add Product" } })
+                ],
+                1
               ),
               _vm._v(" "),
-              _c("publisherModal", { attrs: { title: "Add Publisher" } })
+              _c("b-table", {
+                staticClass: "w-85",
+                attrs: {
+                  id: "books-table",
+                  selectable: "",
+                  "select-mode": "single",
+                  "per-page": _vm.perPage,
+                  "current-page": _vm.currentBookPage,
+                  small: "",
+                  "sticky-header": "",
+                  striped: "",
+                  hover: "",
+                  items: _vm.books,
+                  "head-variant": "light"
+                },
+                scopedSlots: _vm._u([
+                  {
+                    key: "cell(actions)",
+                    fn: function(books) {
+                      return [
+                        _c(
+                          "b-button",
+                          {
+                            directives: [
+                              {
+                                name: "b-modal",
+                                rawName: "v-b-modal",
+                                value: "remove-product-" + books.item.id,
+                                expression: "`remove-product-${books.item.id}`"
+                              }
+                            ],
+                            staticClass: "tablebuttons"
+                          },
+                          [
+                            _c("b-icon", {
+                              attrs: {
+                                id: "icons",
+                                icon: "trash-fill",
+                                variant: "danger"
+                              }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "b-modal",
+                          {
+                            attrs: {
+                              id: "remove-product-" + books.item.id,
+                              centered: "",
+                              title: "Delete Product"
+                            },
+                            on: {
+                              ok: function($event) {
+                                return _vm.removeProduct(books.item.id)
+                              }
+                            }
+                          },
+                          [
+                            _c("p", { staticClass: "my-4" }, [
+                              _vm._v(
+                                "\r\n              Are you sure you want to delete\r\n              "
+                              ),
+                              _c("i", [
+                                _c("b", [
+                                  _vm._v(_vm._s(books.item.product_name))
+                                ])
+                              ]),
+                              _vm._v(" ?\r\n            ")
+                            ]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "my-2" }, [
+                              _vm._v(
+                                "Select Ok to proceed with removing this product from StoryTime Book's inventory."
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "my-4" }, [
+                              _vm._v(
+                                "Select Cancel to cancel this process, or click out of the popup box."
+                              )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "b-button",
+                          { staticClass: "tablebuttons" },
+                          [
+                            _c("b-icon", {
+                              staticStyle: { "margin-top": "5px" },
+                              attrs: {
+                                id: "icons",
+                                icon: "pencil-square",
+                                variant: "info"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ]
+                    }
+                  },
+                  {
+                    key: "cell(product_image)",
+                    fn: function(books) {
+                      return [
+                        _c("img", {
+                          attrs: {
+                            src: _vm.getImgUrl(books.item.product_image),
+                            width: "60",
+                            height: "75"
+                          }
+                        })
+                      ]
+                    }
+                  }
+                ])
+              }),
+              _vm._v(" "),
+              _c("hr"),
+              _vm._v(" "),
+              _c("h1", { staticStyle: { "text-align": "center" } }, [
+                _vm._v("Publishers")
+              ]),
+              _vm._v(" "),
+              _c("b-pagination", {
+                staticClass: "table",
+                attrs: {
+                  "total-rows": _vm.publisherrows,
+                  "per-page": _vm.perPage,
+                  "aria-controls": "publishers-table"
+                },
+                model: {
+                  value: _vm.currentPublisherPage,
+                  callback: function($$v) {
+                    _vm.currentPublisherPage = $$v
+                  },
+                  expression: "currentPublisherPage"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "p",
+                { staticClass: "mt-3" },
+                [
+                  _vm._v(
+                    "\r\n        Current Page: " +
+                      _vm._s(_vm.currentPublisherPage) +
+                      "\r\n        "
+                  ),
+                  _c(
+                    "b-button",
+                    {
+                      directives: [
+                        {
+                          name: "b-modal",
+                          rawName: "v-b-modal.publisherModal",
+                          modifiers: { publisherModal: true }
+                        }
+                      ],
+                      staticClass: "addbtn",
+                      staticStyle: { color: "white" }
+                    },
+                    [_vm._v("Add Publisher")]
+                  ),
+                  _vm._v(" "),
+                  _c("publisherModal", { attrs: { title: "Add Publisher" } })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("b-table", {
+                staticClass: "w-50",
+                attrs: {
+                  id: "publishers-table",
+                  selectable: "",
+                  "select-mode": "single",
+                  "per-page": _vm.perPage,
+                  "current-page": _vm.currentPublisherPage,
+                  small: "",
+                  "sticky-header": "",
+                  striped: "",
+                  hover: "",
+                  items: _vm.publishers,
+                  "head-variant": "light"
+                }
+              })
             ],
             1
           ),
           _vm._v(" "),
-          _c("b-table", {
-            staticClass: "w-50",
-            attrs: {
-              id: "publishers-table",
-              selectable: "",
-              "select-mode": "single",
-              "per-page": _vm.perPage,
-              "current-page": _vm.currentPublisherPage,
-              small: "",
-              "sticky-header": "",
-              striped: "",
-              hover: "",
-              items: _vm.publishers,
-              "head-variant": "light"
-            }
-          })
+          _c("navbottom")
         ],
         1
-      ),
-      _vm._v(" "),
-      _c("navbottom")
+      )
     ],
     1
   )
@@ -87168,7 +87204,8 @@ var render = function() {
                                 attrs: {
                                   id: "input-large",
                                   size: "lg",
-                                  placeholder: "Enter your First name"
+                                  placeholder: "Enter your First name",
+                                  required: ""
                                 },
                                 model: {
                                   value: _vm.first_name,
@@ -87207,7 +87244,8 @@ var render = function() {
                                 attrs: {
                                   id: "input-large",
                                   size: "lg",
-                                  placeholder: "Enter your Last name"
+                                  placeholder: "Enter your Last name",
+                                  required: ""
                                 },
                                 model: {
                                   value: _vm.last_name,
@@ -87246,7 +87284,8 @@ var render = function() {
                                 attrs: {
                                   id: "input-large",
                                   size: "lg",
-                                  placeholder: "Enter your Email"
+                                  placeholder: "Enter your Email",
+                                  required: ""
                                 },
                                 model: {
                                   value: _vm.email,
@@ -105879,8 +105918,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\User\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\User\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\tmaas\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\tmaas\git\Database-Systems\DATABASE-PROJECT\StoryTimeBooks\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -26,6 +26,7 @@
                   size="lg"
                   placeholder="Enter your First name"
                   v-model="first_name"
+                  required
                 ></b-form-input>
               </b-col>
             </b-row>
@@ -40,6 +41,7 @@
                   size="lg"
                   placeholder="Enter your Last name"
                   v-model="last_name"
+                  required
                 ></b-form-input>
               </b-col>
             </b-row>
@@ -54,6 +56,7 @@
                   size="lg"
                   placeholder="Enter your Email"
                   v-model="email"
+                  required
                 ></b-form-input>
               </b-col>
             </b-row>
@@ -221,12 +224,8 @@ export default {
     };
   },
   created() {
-    var app = this;
-    app.busy = true;
-    this.getUser(userid);
-    this.getUserAddress(userid);
+    this.getUser();
     this.setStateOptions();
-    app.busy = false;
   },
   mounted() {
     console.log("Profile mounted.");
@@ -251,6 +250,7 @@ export default {
           user.city = response.data.address.city;
           user.selected = response.data.address.state_id;
           user.zip = response.data.address.zipcode;
+      user.busy = false;
         })
         .catch(error => {
           console.log(error);
@@ -259,18 +259,19 @@ export default {
           );
         });
     },
-    getUser(userid) {
+    getUser() {
       var user = this;
+    user.busy = true;
       axios
-        .get("http://127.0.0.1:8000/api/v1/auth/user", {
-          params: { id: userid }
-        })
+        .get("http://127.0.0.1:8000/api/v1/auth/user"
+        )
         .then(function(response) {
           console.log(response);
           user.userid = response.data.data.id;
           user.first_name = response.data.data.first_name;
           user.last_name = response.data.data.last_name;
           user.email = response.data.data.email;
+          user.getUserAddress(user.userid);
         })
         .catch(error => {
           console.log(error);
@@ -279,6 +280,7 @@ export default {
     },
     updateUserAddress(userid) {
       const user = this;
+    user.busy = true;
       axios
         .put("http://127.0.0.1:8000/api/v1/auth/updateuseraddress/{id}", {
           address_line_1: user.addressLine1,
@@ -292,7 +294,8 @@ export default {
         })
         .then(function(response) {
           console.log(response);
-          window.location.reload();
+      user.busy = false;
+         // window.location.reload();
         })
         .catch(error => {
           console.log(error);
