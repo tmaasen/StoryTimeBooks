@@ -55,10 +55,12 @@ Route::prefix('v1')->group(function () {
         // Get all states
         Route::get('states', 'Books\BookController@allStates');
         // Create a new book
-        Route::post('newproduct', 'Books\BookController@createBook');
+        Route::post('newproduct', 'Books\BookController@addProduct');
         // Create a new publisher
         Route::post('newpublisher', 'Books\BookController@createPublisher');
         // Removes a product
         Route::post('removeproduct/{id}', 'Books\BookController@removeProduct');
+        // Updates a product
+        Route::put('updateproduct/{id}', 'Books\BookController@updateProduct');
     });
 });

@@ -86,15 +86,6 @@ class UserController extends Controller
             ], 200);
     }
 
-//     public function update(Request $request, $id)
-// {
-//   $crud = Crud::findOrFail($id);
-//   $crud->color = $request->color;
-//   $crud->save();
-
-//   return response(null, Response::HTTP_OK);
-// }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -103,8 +94,6 @@ class UserController extends Controller
      */
     public function removeUser(Request $request)
     {
-
-        //$this->authorize('isAdmin');
         User::remove($request->id);
 
         return response()->json(

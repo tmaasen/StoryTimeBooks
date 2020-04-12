@@ -34,6 +34,10 @@ class AuthController extends Controller
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->email_verified_at = now();
+        if ($request->role !== null) {
+            $user->role = $request->role;
+            $user->is_Deleted = $request->is_Deleted;
+        }
         $user->save();
         return response()->json(['status' => 'success'], 200);
     }

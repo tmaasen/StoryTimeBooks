@@ -1,5 +1,5 @@
 <template>
-  <b-modal centered scrollable id="bookModal" :title="title" @ok="handleOk" ok-title="Add Product">
+  <b-modal centered scrollable :id="`product-modal-${bookid}`" :title="title" @ok="handleOk">
     <b-overlay :show="busy" rounded="lg" opacity="0.6">
       <form method="POST" @submit.prevent="addProduct" ref="form" enctype="multipart/form-data">
         <!-- Product Name -->
@@ -32,7 +32,7 @@
             :state="productState"
             name="categories"
             id="categories"
-            v-model="selected_category"
+            v-model="categorySelected"
             :options="categoryOptions"
           ></b-form-select>
         </b-form-group>
@@ -48,7 +48,7 @@
             :state="productState"
             name="publishers"
             id="publishers"
-            v-model="selected_publisher"
+            v-model="publisherSelected"
             :options="publisherOptions"
           ></b-form-select>
         </b-form-group>
@@ -130,6 +130,22 @@
             drop-placeholder="Drop file here..."
           ></b-form-file>
         </b-form-group>
+        <!-- Is Deleted -->
+        <b-form-group
+          label="Product State"
+          label-for="isDeleted"
+          invalid-feedback="A product must have a active (0) or inactive (1) state"
+          :state="productState"
+        >
+          <b-form-select
+            id="isDeleted"
+            name="isDeleted"
+            required
+            :state="productState"
+            v-model="deleteSelected"
+            :options="deleteOptions"
+          ></b-form-select>
+        </b-form-group>
       </form>
     </b-overlay>
   </b-modal>
@@ -142,28 +158,46 @@ export default {
     var maxDate = new Date(today.getDate);
     return {
       busy: false,
-      name: "",
-      author: "",
-      publisher: null,
-      isbn13: "",
-      copyright: null,
-      retail: "",
-      cost: "",
-      quantity: 1,
-      image: {},
+      bookid1: this.bookid,
+      name1: this.name,
+      author1: this.author,
+      publisher1: this.publisher,
+      isbn131: this.isbn13,
+      copyright1: this.copyright,
+      retail1: this.retail,
+      cost1: this.cost,
+      quantity1: this.quantity,
+      image1: this.image,
+      publisherSelected1: this.publisherSelected,
+      categorySelected1: this.categorySelected,
+      deleteSelected1: this.deleteSelected,
       productState: null,
       publishers: [],
       publisherOptions: [],
-      selected_publisher: null,
       categories: [],
       categoryOptions: [],
-      selected_category: null,
-      max: maxDate
+      max: maxDate,
+      deleteOptions: [
+        { value: 0, text: "0" },
+        { value: 1, text: "1" },
+        { text: "0 is active, 1 is inactive" }
+      ]
     };
   },
   props: {
     title: String,
-    value: [{File}, {Array}]
+    bookid: String,
+    image: String,
+    name: String,
+    author: String,
+    categorySelected: String,
+    publisherSelected: String,
+    isbn13: String,
+    copyright: String,
+    retail: String,
+    cost: String,
+    quantity: String,
+    deleteSelected: String
   },
   created() {
     this.setPublisherOptions();
@@ -172,7 +206,7 @@ export default {
   methods: {
     setPublisherOptions() {
       axios
-        .get("http://127.0.0.1:8000/api/v1/admin/publishers ")
+        .get("http://127.0.0.1:8000/api/v1/admin/publishers")
         .then(response => {
           this.publishers = response.data.publishers;
           for (var i = 0; i < this.publishers.length; i++) {
@@ -218,12 +252,10 @@ export default {
       return valid;
     },
     handleOk(bvModalEvt) {
-      this.busy = true; // loading indicator
       bvModalEvt.preventDefault(); // Prevent modal from closing
       if (this.checkFormValidity()) {
-        this.addProduct();
-        this.busy = false;
-        location.reload(true);
+        if (this.bookid !== null) this.updateProduct();
+        else this.addProduct();
       }
     },
     onFileChange(e) {
@@ -232,25 +264,58 @@ export default {
     },
     addProduct() {
       let formData = new FormData();
-      formData.append("product_image", this.image);
-      formData.append("product_name", this.name);
-      formData.append("author", this.author);
-      formData.append("category_id", this.selected_category);
-      formData.append("publisher_id", this.selected_publisher);
-      formData.append("isbn_13", this.isbn13);
-      formData.append("copyright_date", this.copyright);
-      formData.append("retail_price", this.retail);
-      formData.append("company_cost", this.cost);
-      formData.append("quantity_on_hand", this.quantity);
-      
-      axios.post("http://127.0.0.1:8000/api/v1/admin/newproduct", formData)
+      formData.append("product_image", this.image1);
+      formData.append("product_name", this.name1);
+      formData.append("author", this.author1);
+      formData.append("category_id", this.categorySelected1);
+      formData.append("publisher_id", this.publisherSelected1);
+      formData.append("isbn_13", this.isbn131);
+      formData.append("copyright_date", this.copyright1);
+      formData.append("retail_price", this.retail1);
+      formData.append("company_cost", this.cost1);
+      formData.append("quantity_on_hand", this.quantity1);
+      formData.append("is_deleted", this.deleteSelected1);
+
+      axios
+        .post("http://127.0.0.1:8000/api/v1/admin/newproduct", formData)
         .then(function(response) {
           console.log(response);
+          window.location.reload();
         })
         .catch(function(response) {
           this.busy = false;
           console.log(response);
-          alert("There has been an error. Please try again.");
+          alert(
+            "There has been an error creating a new product. Please try again."
+          );
+        });
+    },
+    updateProduct(bookid) {
+      const product = this;
+      axios
+        .put("http://127.0.0.1:8000/api/v1/admin/updateproduct/{id}", {
+          id: product.bookid,
+          product_image: product.image,
+          product_name: product.name,
+          author: product.author,
+          category_id: product.categorySelected,
+          publisher_id: product.publisherSelected,
+          isbn_13: product.isbn13,
+          copyright_date: product.copyright,
+          retail_price: product.retail,
+          company_cost: product.cost,
+          quantity_on_hand: product.quantity,
+          is_deleted: product.deleteSelected
+        })
+        .then(function(response) {
+          console.log(response);
+          window.location.reload();
+        })
+        .catch(error => {
+          console.log(error);
+          alert(
+            "There has been an error updating product information. Please try again."
+          );
         });
     }
   }

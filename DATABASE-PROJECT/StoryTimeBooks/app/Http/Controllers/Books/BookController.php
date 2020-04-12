@@ -70,7 +70,7 @@ class BookController extends Controller
     /**
      * Creates a new book entry. THIS IS AN ADMIN FUNCTION.
      */
-    public function createBook(Request $request) {
+    public function addProduct(Request $request) {
 
         $v = Validator::make($request->all(), [
             'product_image' => 'image|max:2048',
@@ -101,7 +101,7 @@ class BookController extends Controller
             $file->move('uploads/products/', $filename); // check this line. It's duplicating image creations in public/images...
             $book->product_image = $filename;
         } else {
-            $book->prouct_image = '';
+            $book->product_image = '';
         }
         $book->product_name = $request->product_name;
         $book->author = $request->author;
@@ -112,6 +112,7 @@ class BookController extends Controller
         $book->retail_price = $request->retail_price;
         $book->company_cost = $request->company_cost;
         $book->quantity_on_hand = $request->quantity_on_hand;
+        $book->is_deleted = $request->is_deleted;
         $book->save();
 
         return response()->json(['status' => 'success'], 200);
@@ -148,6 +149,48 @@ class BookController extends Controller
         $publisher->save();
 
         return response()->json(['status' => 'success'], 200);
+    }
+
+    /**
+     * Update the specified product in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     */
+    public function updateProduct(Request $request)
+    {
+
+        if ($request->hasfile('product_image')) {
+            $file = $request->file('product_image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('uploads/products/', $filename); // check this line. It's duplicating image creations in public/images...
+            //$book->product_image = $filename;
+        } else {
+            $filename = $request->product_image;
+        }
+
+        DB::table('products')->where('id', $request->id)->update([
+
+            'product_image' => $filename,
+            'product_name' => $request->product_name,
+            'author' => $request->author,
+            'category_id' => $request->category_id,
+            'publisher_id' => $request->publisher_id,
+            'isbn_13'  => $request->isbn_13,
+            'copyright_date' => $request->copyright_date,
+            'retail_price' => $request->retail_price,
+            'company_cost' => $request->company_cost,
+            'quantity_on_hand' => $request->quantity_on_hand,
+            'is_deleted' => $request->is_deleted
+
+        ]);
+
+        return response()->json(
+            [
+                'status' => 'success',
+                'message' => 'Updated product info successfully'
+            ], 200);
     }
 
     /**

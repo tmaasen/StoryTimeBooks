@@ -4,10 +4,8 @@
     <title>StoryTime | Admin</title>
   </head>
   <b-overlay :show="busy" rounded="lg" opacity="0.6">
-    <navtop />
+    <adminnav />
     <br />
-    <h1 style="text-align:center">Welcome, Administrator</h1>
-    <hr />
     <div id="wrapper">
       <!-- Users -->
       <h1 style="text-align:center">Users</h1>
@@ -19,8 +17,8 @@
       ></b-pagination>
       <p class="mt-3">
         Current Page: {{ currentUserPage }}
-        <b-button class="addbtn" style="color:white" v-b-modal.userModal>Add User</b-button>
-        <userModal title="Add User" />
+        <b-button class="addbtn" style="color:white" v-b-modal="`userModal${null}`">Add User</b-button>
+        <userModal title="Add User" :userid="null" />
       </p>
       <b-table
         id="users-table"
@@ -47,19 +45,36 @@
             title="Delete User"
             @ok="removeUser(users.item.id)"
           >
-            <p class="my-4">
-              Are you sure you want to remove
-              <i>
-                <b>{{users.item.first_name}} {{users.item.last_name}}</b>
-              </i> ?
-            </p>
-            <p class="my-2">Select Ok to proceed with removing this user.</p>
-            <p class="my-4">Select Cancel to cancel this process, or click out of the popup box.</p>
+            <div v-if="users.item.is_deleted === 0">
+              <p class="my-4">
+                Are you sure you want to remove
+                <i>
+                  <b>{{users.item.first_name}} {{users.item.last_name}}</b>
+                </i> ?
+              </p>
+              <p class="my-2">Select Ok to proceed with removing this user.</p>
+              <p class="my-4">Select Cancel to cancel this process, or click out of the popup box.</p>
+            </div>
+            <div v-else>
+              <p class="my-2">This user has already been removed.</p>
+            </div>
           </b-modal>
           <!-- Edit icon -->
-          <b-button class="tablebuttons">
+          <b-button class="tablebuttons" v-b-modal="`userModal${users.item.id}`">
             <b-icon id="icons" style="margin-top:5px" icon="pencil-square" variant="info"></b-icon>
           </b-button>
+          <userModal
+            :id="`userModal${users.item.id}`"
+            title="Edit User"
+            :userid="`${users.item.id}`"
+            :firstname="`${users.item.first_name}`"
+            :lastname="`${users.item.last_name}`"
+            :email="`${users.item.email}`"
+            :password="`${users.item.password}`"
+            :password_confirmation="`${users.item.password_confirmation}`"
+            :roleSelected="`${users.item.role}`"
+            :deleteSelected="`${users.item.is_deleted}`"
+          />
         </template>
       </b-table>
       <hr />
@@ -74,8 +89,8 @@
       ></b-pagination>
       <p class="mt-3">
         Current Page: {{ currentBookPage }}
-        <b-button class="addbtn" style="color:white" v-b-modal.bookModal>Add Book</b-button>
-        <bookModal title="Add Product" />
+        <b-button class="addbtn" style="color:white" v-b-modal="`product-modal-${null}`">Add Book</b-button>
+        <bookModal title="Add Product" :bookid="null" />
       </p>
       <b-table
         id="books-table"
@@ -102,21 +117,42 @@
             title="Delete Product"
             @ok="removeProduct(books.item.id)"
           >
-            <p class="my-4">
-              Are you sure you want to delete
-              <i>
-                <b>{{books.item.product_name}}</b>
-              </i> ?
-            </p>
-            <p
-              class="my-2"
-            >Select Ok to proceed with removing this product from StoryTime Book's inventory.</p>
-            <p class="my-4">Select Cancel to cancel this process, or click out of the popup box.</p>
+            <div v-if="books.item.is_deleted === 0">
+              <p class="my-4">
+                Are you sure you want to delete
+                <i>
+                  <b>{{books.item.product_name}}</b>
+                </i> ?
+              </p>
+              <p
+                class="my-2"
+              >Select Ok to proceed with removing this product from StoryTime Book's inventory.</p>
+              <p class="my-4">Select Cancel to cancel this process, or click out of the popup box.</p>
+            </div>
+            <div v-else>
+              <p class="my-4">This product has already been deleted.</p>
+            </div>
           </b-modal>
           <!-- Edit icon -->
-          <b-button class="tablebuttons">
+          <b-button class="tablebuttons" v-b-modal="`product-modal-${books.item.id}`">
             <b-icon id="icons" style="margin-top:5px" icon="pencil-square" variant="info"></b-icon>
           </b-button>
+          <bookModal
+            :id="`product-modal-${books.item.id}`"
+            title="Edit Product"
+            :bookid="`${books.item.id}`"
+            :image="`${books.item.product_image}`"
+            :name="`${books.item.product_name}`"
+            :author="`${books.item.author}`"
+            :categorySelected="`${books.item.category_id}`"
+            :publisherSelected="`${books.item.publisher_id}`"
+            :isbn13="`${books.item.isbn_13}`"
+            :copyright="`${books.item.copyright_date}`"
+            :retail="`${books.item.retail_price}`"
+            :cost="`${books.item.company_cost}`"
+            :quantity="`${books.item.quantity_on_hand}`"
+            :deleteSelected="`${books.item.is_deleted}`"
+          />
         </template>
         <!-- Book image -->
         <template v-slot:cell(product_image)="books">
@@ -153,13 +189,22 @@
         class="w-50"
       ></b-table>
     </div>
-    <navbottom />
+    <hr />
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p>Copyright StoryTime Books © 2020. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </b-overlay>
 </div>
 </template>
 
 <script>
-import navtop from "../components/navtop";
+import adminnav from "../components/administratornav";
 import navbottom from "../components/navbottom";
 import userModal from "../components/usermodal";
 import bookModal from "../components/bookmodal";
@@ -179,7 +224,7 @@ export default {
     };
   },
   components: {
-    navtop,
+    adminnav,
     navbottom,
     userModal,
     bookModal,
@@ -224,12 +269,6 @@ export default {
           console.log(response);
           alert("There has been an error. Please try again.");
         });
-    },
-    editUser() {
-      // put request
-    },
-    editProduct() {
-      // put request
     }
   },
   computed: {
