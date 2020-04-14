@@ -3,7 +3,7 @@ co<template>
   <head>
     <title>StoryTime | Home</title>
   </head>
-  <navtop class="pb-5"/>
+  <navtop class="pb-5" id="home"/>
   <!-- <div v-if="$auth.check()">
     <h1 class="welcomeMessage">Hello, {{ $auth.user().first_name }}</h1>
   </div> -->
