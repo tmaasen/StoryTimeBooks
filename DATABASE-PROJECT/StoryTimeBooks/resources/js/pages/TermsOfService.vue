@@ -159,9 +159,7 @@
 
         <p>As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.</p>
         <p style="font-size: 30px">
-          <router-link to="register">
-          <a href="#">Back</a>
-          </router-link>
+          <a @click="goBack" href="#">Back</a>
         </p>
       </div>
     </div>
@@ -190,6 +188,11 @@ export default {
   name: "termsofservice",
   components: {
       authnav,
+  },
+  methods: {
+    goBack() {
+    window.history.back();
+    }
   }
 };
 </script>  

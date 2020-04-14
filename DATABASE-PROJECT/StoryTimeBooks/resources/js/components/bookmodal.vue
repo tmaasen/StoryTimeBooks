@@ -187,7 +187,7 @@ export default {
   props: {
     title: String,
     bookid: String,
-    image: String,
+    image: Array,
     name: String,
     author: String,
     categorySelected: String,
@@ -196,7 +196,7 @@ export default {
     copyright: String,
     retail: String,
     cost: String,
-    quantity: String,
+    quantity: Number,
     deleteSelected: String
   },
   created() {
@@ -263,6 +263,8 @@ export default {
       this.image = e.target.files[0];
     },
     addProduct() {
+      var app = this
+      app.busy = true;
       let formData = new FormData();
       formData.append("product_image", this.image1);
       formData.append("product_name", this.name1);
@@ -280,11 +282,13 @@ export default {
         .post("http://127.0.0.1:8000/api/v1/admin/newproduct", formData)
         .then(function(response) {
           console.log(response);
-          window.location.reload();
+          app.busy = false
+          //window.location.reload();
         })
         .catch(function(response) {
           this.busy = false;
           console.log(response);
+          app.busy = false
           alert(
             "There has been an error creating a new product. Please try again."
           );
@@ -292,6 +296,7 @@ export default {
     },
     updateProduct(bookid) {
       const product = this;
+      product.busy = true;
       axios
         .put("http://127.0.0.1:8000/api/v1/admin/updateproduct/{id}", {
           id: product.bookid,
@@ -309,10 +314,12 @@ export default {
         })
         .then(function(response) {
           console.log(response);
-          window.location.reload();
+          product.busy = false
+         // window.location.reload();
         })
         .catch(error => {
           console.log(error);
+          product.busy = false
           alert(
             "There has been an error updating product information. Please try again."
           );

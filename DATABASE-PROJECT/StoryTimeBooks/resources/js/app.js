@@ -9,6 +9,7 @@ import auth from './auth'
 import router from './router'
 import VueProgressBar from 'vue-progressbar'
 import VueMask from 'vue-masked-input'
+import vueScrollto from 'vue-scrollto'
 
 window.Vue = require('vue')
 window.Vue = require('./bootstrap')
@@ -17,6 +18,7 @@ Vue.use(IconsPlugin)
 Vue.router = router
 Vue.use(VueRouter)
 Vue.use(VueMask)
+Vue.use(vueScrollto)
 
 Vue.use(VueProgressBar, {
   color: 'rgb(255, 141, 30)',
@@ -40,7 +42,7 @@ const app = new Vue({
     this.$Progress.start()
     this.$router.beforeEach((to, from, next) => {
       this.$Progress.start()
-      next() // continue to next page
+      next()
     })
     this.$router.afterEach((to, from) => {
       this.$Progress.finish()

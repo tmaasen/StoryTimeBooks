@@ -10,6 +10,7 @@ class AuthenticateAdmin
             return $next($request);
         }
         else {
+            abort(403);
             return response()->json(['error' => 'Unauthorized'], 403);
         }
     }

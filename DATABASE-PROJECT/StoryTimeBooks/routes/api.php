@@ -21,8 +21,7 @@ Route::prefix('v1')->group(function () {
         // Create New User
         Route::post('register', 'Users\AuthController@register');
         // Login User
-        Route::post('login', 'Users\AuthController@login');
-                
+        Route::post('login', 'Users\AuthController@login');    
         // Refresh the JWT Token
         Route::get('refresh', 'Users\AuthController@refresh');
                 
@@ -34,20 +33,21 @@ Route::prefix('v1')->group(function () {
                 Route::post('logout', 'Users\AuthController@logout');
                 // Removes a user
                 Route::post('removeuser/{id}', 'Users\UserController@removeUser');
-                 // Get user address info
-                 Route::get('useraddress/{id}', 'Users\UserController@userAddress');
+                // Get user address info
+                Route::get('userinfo/{id}', 'Users\UserController@userInfo');
                 // Update user address info
                 Route::put('updateuseraddress/{id}', 'Users\UserController@updateUserAddress');
                 // Update user info
                 Route::put('updateuser/{id}', 'Users\UserController@updateUser');
+                // Get all books
+                Route::get('products', 'Books\BookController@allBooks');
+                // add product to shopping cart (POST)
+                // display product on product details page (GET)
+                // display products in users cart (GET)
                         });
         });
 // Below mention routes are admin. Non-admin users have no access.
     Route::prefix('admin')->group(function () {
-        // Get all users info
-        Route::get('users', 'Users\UserController@allUsers');
-        // Get all books
-        Route::get('products', 'Books\BookController@allBooks');
         // Get all book categories
         Route::get('categories', 'Books\BookController@allCategories');
         // Get all publishers
@@ -62,5 +62,7 @@ Route::prefix('v1')->group(function () {
         Route::post('removeproduct/{id}', 'Books\BookController@removeProduct');
         // Updates a product
         Route::put('updateproduct/{id}', 'Books\BookController@updateProduct');
+        // Gets all data needed for admin panel 
+        Route::get('all', 'Books\BookController@allAdmin');
     });
 });

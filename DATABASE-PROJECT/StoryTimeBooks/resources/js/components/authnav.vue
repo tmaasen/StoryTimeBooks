@@ -2,7 +2,9 @@
   <div id="app" class="padding">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
       <div class="container">
-        <a class="navbar-brand" href="/">StoryTime Books</a>
+        <router-link :to="{name: 'Home'}">
+          <a class="navbar-brand" href="#">StoryTime Books</a>
+        </router-link>
         <button
           class="navbar-toggler"
           type="button"

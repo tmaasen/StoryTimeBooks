@@ -21,19 +21,6 @@ class UserController extends Controller
     {
         return view('welcome', ['user' => User::findOrFail($id)]);
     }
-    /**
-     * Returns ALL users. THIS IS AN ADMIN FUNCTION
-     */
-    public function allUsers()
-    {
-        $users = User::all();
-
-        return response()->json(
-            [
-                'status' => 'success',
-                'users' => $users
-            ], 200);
-    }
 
     /**
      * Update the specified user in storage.
@@ -104,16 +91,31 @@ class UserController extends Controller
     }
 
     /**
-     * Get authenticated user's address
+     * Get authenticated user's information.
      */
-    public function userAddress(Request $request) {
+    public function userInfo(Request $request) {
 
-        //$address = UserAddress::getUserAddress($request->id);
-        $address = DB::table('user_address')->where('user_id', $request->id)->first();
-        
+        $userInfo = DB::table('users')
+            ->join('user_address', 'users.id', '=', 'user_address.user_id')
+            ->select(
+            'users.id',
+            'users.first_name',
+            'users.last_name',
+            'users.email', 
+            'user_address.address_line_1',
+            'user_address.suite_no',
+            'user_address.city',
+            'user_address.state_id',
+            'user_address.zipcode',
+            'user_address.home_phone',
+            'user_address.work_phone',
+            )
+            ->where('users.id', $request->id)
+            ->first();
+
          return response()->json([
             'status' => 'success',
-            'address' => $address
+            'user' => $userInfo
         ]);
     }
 }

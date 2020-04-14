@@ -103,20 +103,6 @@
 </div>
 </template>
 
-<style scoped>
-a {
-  color: #3490dc;
-  text-decoration: none;
-  background-color: transparent;
-}
-
-a:hover {
-  color: #1d68a7;
-  text-decoration: underline; 
-  background-color: transparent;
-}
-</style>
-
 <script>
 import authnav from '../components/authnav'
 export default {
@@ -139,6 +125,7 @@ export default {
     },
     methods: {
       register() {
+        this.$Progress.start();
         var app = this
         this.$auth.register({
           data: {
@@ -150,16 +137,31 @@ export default {
           },
           success: function () {
             app.success = true
-            //this.$router.push('/login', {params: {successRegistrationRedirect: true}})
+            this.$Progress.finish();
           },
           error: function (res) {
             // console.log(res.response.data.errors)
             app.has_error = true
             app.error = res.response.data.error
             app.errors = res.response.data.errors || {}
+            this.$Progress.fail();
           }
         })
       }
     }
 };
 </script>
+
+<style scoped>
+a {
+  color: #3490dc;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+a:hover {
+  color: #1d68a7;
+  text-decoration: underline; 
+  background-color: transparent;
+}
+</style>

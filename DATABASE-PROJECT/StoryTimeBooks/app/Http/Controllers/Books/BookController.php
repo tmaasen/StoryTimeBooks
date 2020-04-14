@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Books;
+use App\User;
 use App\Product;
 use App\Publisher;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Users\UserController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
 use Validator;
@@ -211,4 +213,22 @@ class BookController extends Controller
                 'message' => 'Product Removed'
             ], 200);
     }
-}
+
+    /**
+     * Retrieves all info needed for the admin panel. THIS IS AN ADMIN FUNCTION.
+     */
+    public function allAdmin() {
+
+        $books = DB::table('products')->get();
+        $publishers = DB::table('publishers')->get();
+        $users = User::all();
+
+        return response()->json(
+            [
+                'status' => 'success',
+                'users' => $users,
+                'books' => $books,
+                'publishers' => $publishers
+            ], 200);
+    }
+ }

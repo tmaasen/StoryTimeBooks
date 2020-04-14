@@ -132,6 +132,8 @@ export default {
       this.addPublisher();
     },
     addPublisher() {
+      var app = this
+      app.busy = true
       axios
       .post("http://127.0.0.1:8000/api/v1/admin/newpublisher", {
         publisher_name: this.publisher_name,
@@ -142,12 +144,12 @@ export default {
         phone: this.phone,
       })
       .then(function(response) {
-        // success
         console.log(response);
-        location.reload(true);
+        app.busy = false
+        // window.location.reload(true);
       })
       .catch(function(response) {
-        // error
+        app.busy = false
         console.log(response);
         alert("There has been an error. Please try again.");
       });

@@ -3,12 +3,14 @@
   <head>
     <title>StoryTime | Home</title>
   </head>
-  <navtop />
-  <div v-if="$auth.check()">
+  <navtop class="pb-5"/>
+  <!-- <div v-if="$auth.check()">
     <h1 class="welcomeMessage">Hello, {{ $auth.user().first_name }}</h1>
-    <hr />
-  </div>
+  </div> -->
   <HomePageEdit />
+  <div class="toTop">
+  <b-button v-scroll-to="'#home'" variant="primary" class="toTop rounded-circle p-2"><b-icon-arrow-up font-scale="2" /></b-button>
+  </div>
   <navbottom />
 </div>
 </template>
@@ -20,9 +22,7 @@ import navbottom from "../components/navbottom";
 
 export default {
   data() {
-    return {
-      firstname: ""
-    };
+    return {};
   },
   mounted() {
     console.log("Home mounted.");
@@ -35,8 +35,16 @@ export default {
 };
 </script>
 <style scoped>
-.welcomeMessage {
+.toTop {
   text-align: center;
-  padding-top: 10px;
+  padding: 10px;
+}
+.btn {
+    background-color: #ff8d1e;
+    color: #fff;
+}
+.btn:hover {
+    background-color: #2196f3;
+    color: #fff;
 }
 </style>

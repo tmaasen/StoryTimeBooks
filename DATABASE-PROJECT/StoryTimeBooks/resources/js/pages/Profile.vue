@@ -8,7 +8,7 @@
     />
   </head>
   <b-overlay :show="busy" rounded="lg" opacity="0.6">
-    <navtop />
+    <navtop id="profile" />
     <div class="profileBody">
       <div class="profileContent">
         <p class="profileTitle">Edit Profile</p>
@@ -151,7 +151,7 @@
                   v-model="selected"
                   :options="stateOptions"
                   size="lg"
-                  style="width:500px;color:slategrey"
+                  style="width:500px;color:#495057"
                 ></b-form-select>
               </b-col>
             </b-row>
@@ -223,7 +223,7 @@ export default {
     };
   },
   created() {
-    this.getUser();
+    this.getUserInfo();
     this.setStateOptions();
   },
   mounted() {
@@ -234,54 +234,40 @@ export default {
     navbottom
   },
   methods: {
-    getUserAddress(userid) {
+    getUserInfo(userid) {
       var user = this;
+      user.busy = true;
       axios
-        .get("http://127.0.0.1:8000/api/v1/auth/useraddress/{id}", {
-          params: { id: userid }
+        .get("http://127.0.0.1:8000/api/v1/auth/userinfo/{id}", {
+          params: { id: this.$auth.user().id }
         })
         .then(function(response) {
           console.log(response);
-          if (response.data.address !== null) {
-          user.homePhone = response.data.address.home_phone;
-          user.workPhone = response.data.address.work_phone;
-          user.addressLine1 = response.data.address.address_line_1;
-          user.suiteNo = response.data.address.suite_no;
-          user.city = response.data.address.city;
-          user.selected = response.data.address.state_id;
-          user.zip = response.data.address.zipcode;
+          if (response.data.user !== null) {
+          user.userid = response.data.user.id;
+          user.first_name = response.data.user.first_name;
+          user.last_name = response.data.user.last_name;
+          user.email = response.data.user.email;
+          user.homePhone = response.data.user.home_phone;
+          user.workPhone = response.data.user.work_phone;
+          user.addressLine1 = response.data.user.address_line_1;
+          user.suiteNo = response.data.user.suite_no;
+          user.city = response.data.user.city;
+          user.selected = response.data.user.state_id;
+          user.zip = response.data.user.zipcode;
+          user.setStateOptions();
           }
-      user.busy = false;
         })
         .catch(error => {
           console.log(error);
+          user.busy = false
           alert(
-            "There has been an error loading user address data. Please try again."
+            "There has been an error loading user data. Please try again."
           );
-        });
-    },
-    getUser() {
-      var user = this;
-    user.busy = true;
-      axios
-        .get("http://127.0.0.1:8000/api/v1/auth/user"
-        )
-        .then(function(response) {
-          console.log(response);
-          user.userid = response.data.data.id;
-          user.first_name = response.data.data.first_name;
-          user.last_name = response.data.data.last_name;
-          user.email = response.data.data.email;
-          user.getUserAddress(user.userid);
-        })
-        .catch(error => {
-          console.log(error);
-          alert("There has been an error loading user data. Please try again.");
         });
     },
     updateUserAddress(userid) {
       const user = this;
-    user.busy = true;
       axios
         .put("http://127.0.0.1:8000/api/v1/auth/updateuseraddress/{id}", {
           address_line_1: user.addressLine1,
@@ -295,11 +281,12 @@ export default {
         })
         .then(function(response) {
           console.log(response);
-      user.busy = false;
+          user.busy = false;
          // window.location.reload();
         })
         .catch(error => {
           console.log(error);
+          user.busy = false
           alert(
             "There has been an error updating user address information. Please try again."
           );
@@ -307,6 +294,7 @@ export default {
     },
     updateUser(userid) {
       const user = this;
+      user.busy = true;
       axios
         .put("http://127.0.0.1:8000/api/v1/auth/updateuser/{id}", {
           first_name: user.first_name,
@@ -319,6 +307,7 @@ export default {
         })
         .catch(error => {
           console.log(error);
+          user.busy = false
           alert(
             "There has been an error updating user information. Please try again."
           );
@@ -339,20 +328,25 @@ export default {
       });
     },
     removeUser(idToRemove) {
+      var app = this
+      app.busy = true
       axios
         .post("http://127.0.0.1:8000/api/v1/auth/removeuser/{id}", {
           id: { idToRemove }
         })
         .then(function(response) {
           console.log(response);
+          app.busy = false
         })
         .catch(error => {
           console.log(error);
+          app.busy = false
           alert("There has been an error removing the user. Please try again.");
         });
       this.logout();
     },
     setStateOptions() {
+      var user = this
       axios
         .get("http://127.0.0.1:8000/api/v1/admin/states")
         .then(response => {
@@ -367,6 +361,7 @@ export default {
               }
             }
             this.stateOptions.push(Object.assign({}, option));
+            user.busy = false;
           }
         })
         .catch(error => {

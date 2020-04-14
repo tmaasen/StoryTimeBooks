@@ -1,13 +1,15 @@
 <template>
   <div style="overflow:visible;flex-grow: 1;text-align: center;">
-    <img
-      src="https://dispatch.barnesandnoble.com/content/dam/ccr/homepage/daily/2020/03/17B/Homepage_Billboard_HeroA_03-17.jpg"
-      alt="Trulli"
-      width="80%"
-      height="600px"
-    />
+    <b-jumbotron class="jumbotron">
+      <div class="jumbomessage">
+        <h1>It's StoryTime</h1>
+        <h4>10% off all orders of $75 or more!</h4>
+        <h4>FREE shipping on all orders!</h4>
+        <b-button variant="primary" v-scroll-to="'#computer'">Start Your Story</b-button>
+      </div>
+    </b-jumbotron>
     <div style="width:70%; margin:0 15%; padding:10px;">
-      <p class="title">Computer Sciences</p>
+      <p class="title" id="computer">Computer Sciences</p>
       <!--Carousel Wrapper-->
       <div id="computerSience" class="carousel slide carousel-multi-item" data-ride="carousel">
         <!--Controls-->
@@ -498,7 +500,7 @@ export default {
   },
   created() {
     axios
-      .get("http://127.0.0.1:8000/api/v1/admin/products")
+      .get("http://127.0.0.1:8000/api/v1/auth/products")
       .then(response => {
         // loop through the array, setting each book into a category group
         this.books = response.data.books;
@@ -567,6 +569,25 @@ export default {
 </script>
 
 <style scoped>
+template {
+  scroll-behavior: smooth !important;
+}
+.jumbotron {
+  background-image: url("../assets/colorful-books-on-shelf-5710.jpg");
+  background-size: contain;
+  padding: 10rem 2rem;
+  margin-bottom: 2rem;
+  background-color: #e9ecef;
+  border-radius: 0.3rem;
+  padding-left: 400px;
+  padding-right: 400px;
+}
+.jumbomessage {
+  background-color:#e9ecef;
+  border-radius:0.5em;
+  font:status-bar;
+  padding:10px;
+}
 .card-img-top {
   height: 300px;
   width: 250px;
