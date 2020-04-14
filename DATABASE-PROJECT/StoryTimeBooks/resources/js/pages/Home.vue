@@ -1,4 +1,4 @@
-<template>
+co<template>
 <div v-if="$auth.ready()">
   <head>
     <title>StoryTime | Home</title>
@@ -14,7 +14,7 @@
   <navbottom />
 </div>
 </template>
-   
+
 <script>
 import navtop from "../components/navtop";
 import HomePageEdit from "../components/HomePageEdit";
