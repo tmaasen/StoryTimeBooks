@@ -1,5 +1,5 @@
 <template>
-  <b-modal centered scrollable :id="`product-modal-${bookid}`" :title="title" @ok="handleOk">
+  <b-modal centered scrollable ref="bookModel" :id="`product-modal-${bookid}`" :title="title" @ok="handleOk">
     <b-overlay :show="busy" rounded="lg" opacity="0.6">
       <form method="POST" @submit.prevent="addProduct" ref="form" enctype="multipart/form-data">
         <!-- Product Name -->
@@ -73,7 +73,6 @@
             v-model="copyright"
             required
             :state="productState"
-            class="border rounded p-2"
             locale="en"
             :max="max"
           ></b-form-datepicker>
@@ -197,7 +196,7 @@ export default {
     retail: String,
     cost: String,
     quantity: Number,
-    deleteSelected: String
+    deleteSelected: String,
   },
   created() {
     this.setPublisherOptions();
@@ -263,32 +262,31 @@ export default {
       this.image = e.target.files[0];
     },
     addProduct() {
-      var app = this
-      app.busy = true;
+      var product = this
       let formData = new FormData();
-      formData.append("product_image", this.image1);
-      formData.append("product_name", this.name1);
-      formData.append("author", this.author1);
-      formData.append("category_id", this.categorySelected1);
-      formData.append("publisher_id", this.publisherSelected1);
-      formData.append("isbn_13", this.isbn131);
-      formData.append("copyright_date", this.copyright1);
-      formData.append("retail_price", this.retail1);
-      formData.append("company_cost", this.cost1);
-      formData.append("quantity_on_hand", this.quantity1);
-      formData.append("is_deleted", this.deleteSelected1);
+      formData.append("product_image", this.image);
+      formData.append("product_name", this.name);
+      formData.append("author", this.author);
+      formData.append("category_id", this.categorySelected);
+      formData.append("publisher_id", this.publisherSelected);
+      formData.append("isbn_13", this.isbn13);
+      formData.append("copyright_date", this.copyright);
+      formData.append("retail_price", this.retail);
+      formData.append("company_cost", this.cost);
+      formData.append("quantity_on_hand", this.quantity);
+      formData.append("is_deleted", this.deleteSelected);
 
       axios
         .post("http://127.0.0.1:8000/api/v1/admin/newproduct", formData)
         .then(function(response) {
           console.log(response);
-          app.busy = false
-          //window.location.reload();
+          product.$refs['bookModel'].hide()  
+          window.location.reload() // PROBLEM CHILD -> cannot find new image "module" path
+          //product.$emit('image', product.image)    
+          //product.$emit('refreshTables') // calls the event listener in Admin.vue, which calls the getAll() method
         })
         .catch(function(response) {
-          this.busy = false;
           console.log(response);
-          app.busy = false
           alert(
             "There has been an error creating a new product. Please try again."
           );
@@ -296,7 +294,6 @@ export default {
     },
     updateProduct(bookid) {
       const product = this;
-      product.busy = true;
       axios
         .put("http://127.0.0.1:8000/api/v1/admin/updateproduct/{id}", {
           id: product.bookid,
@@ -314,17 +311,16 @@ export default {
         })
         .then(function(response) {
           console.log(response);
-          product.busy = false
-         // window.location.reload();
+          product.$refs['bookModel'].hide()       
+          product.$emit('refreshTables') // calls the event listener in Admin.vue, which calls the getAll() method
         })
         .catch(error => {
           console.log(error);
-          product.busy = false
           alert(
             "There has been an error updating product information. Please try again."
           );
         });
-    }
+    },
   }
 };
 </script>

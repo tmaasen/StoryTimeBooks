@@ -30,14 +30,24 @@ class UserController extends Controller
      */
     public function updateUser(Request $request)
     {
-
-        DB::table('users')->where('id', $request->id)->update([
+        if ($request->password != null) {
+            DB::table('users')->where('id', $request->id)->update([
+                
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'email' => $request->email,
+                'password' => $request->password,
+                'role' => $request->role,
+                'is_deleted' => $request->is_Deleted,
+            ]);
+        } else {
+            DB::table('users')->where('id', $request->id)->update([
             
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'email' => $request->email,
-       
-        ]);
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'email' => $request->email,
+            ]);
+         }
 
         return response()->json(
             [

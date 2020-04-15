@@ -1,5 +1,12 @@
 <template>
-  <b-modal centered scrollable :id="`userModal${userid}`" @ok="updateUser(userid)" :title="title">
+  <b-modal
+    centered
+    scrollable
+    ref="userModal"
+    :id="`userModal${userid}`"
+    @ok="handleOk"
+    :title="title"
+  >
     <b-overlay :show="busy" rounded="lg" opacity="0.6">
       <form method="POST" @submit.prevent="register" ref="form" v-if="!success">
         <!-- First Name -->
@@ -149,11 +156,22 @@ export default {
     deleteSelected: String
   },
   methods: {
+    checkFormValidity() {
+      const valid = this.$refs.form.checkValidity();
+      this.userState = valid;
+      return valid;
+    },
+    handleOk(bvModalEvt) {
+      bvModalEvt.preventDefault(); // Prevent modal from closing
+      if (this.checkFormValidity()) {
+        if (this.userid !== null) this.updateUser(this.userid);
+        else this.registerUser();
+      }
+    },
     updateUser(idToUpdate) {
       if (idToUpdate === null) this.registerUser();
       else {
         const user = this;
-        user.busy = true
         axios
           .put("http://127.0.0.1:8000/api/v1/auth/updateuser/{id}", {
             first_name: user.firstname,
@@ -167,12 +185,11 @@ export default {
           })
           .then(function(response) {
             console.log(response);
-            user.busy = false
-            // window.location.reload();
+            user.$refs["userModal"].hide();
+            user.$emit("refreshTables"); // calls the event listener in Admin.vue, which calls the getAll() method
           })
           .catch(error => {
             console.log(error);
-            user.busy = false
             alert(
               "There has been an error updating user information. Please try again."
             );
@@ -180,31 +197,28 @@ export default {
       }
     },
     registerUser() {
-      var app = this;
-      app.busy = true
-      this.$auth.register({
-        data: {
-          firstname: app.firstname1,
-          lastname: app.lastname1,
-          email: app.email1,
-          password: app.password1,
-          password_confirmation: app.password_confirmation1,
-          role: app.roleSelected1,
-          is_Deleted: app.deleteSelected1
-        },
-        success: function() {
-          app.success = true;
-          app.busy = false
-          // window.location.reload();
-        },
-        error: function(res) {
-          console.log(res.response.data.errors);
-          app.busy = false
-          app.has_error = true;
-          app.error = res.response.data.error;
-          app.errors = res.response.data.errors || {};
-        }
-      });
+      const app = this;
+      axios
+        .post("http://127.0.0.1:8000/api/v1/auth/register", {
+          firstname: app.firstname,
+          lastname: app.lastname,
+          email: app.email,
+          password: app.password,
+          password_confirmation: app.password_confirmation,
+          role: app.roleSelected,
+          is_Deleted: app.deleteSelected
+        })
+        .then(function(response) {
+          console.log(response);
+          app.$refs["userModal"].hide();
+          app.$emit("refreshTables"); // calls the event listener in Admin.vue, which calls the getAll() method
+        })
+        .catch(error => {
+          console.log(error);
+          alert(
+            "There has been an error registering the user. Please try again."
+          );
+        });
     }
   }
 };

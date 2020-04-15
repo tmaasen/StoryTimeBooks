@@ -1,5 +1,5 @@
 <template>
-  <b-modal centered id="publisherModal" :title="title" @ok="handleOk" ok-title="Add Publisher">
+  <b-modal centered ref="publisherModal" id="publisherModal" :title="title" @ok="handleOk" ok-title="Add Publisher">
     <form method="POST" @submit.prevent="addPublisher" ref="form">
       <!-- Publisher Name -->
       <b-form-group
@@ -133,7 +133,6 @@ export default {
     },
     addPublisher() {
       var app = this
-      app.busy = true
       axios
       .post("http://127.0.0.1:8000/api/v1/admin/newpublisher", {
         publisher_name: this.publisher_name,
@@ -145,13 +144,12 @@ export default {
       })
       .then(function(response) {
         console.log(response);
-        app.busy = false
-        // window.location.reload(true);
+        app.$refs['publisherModal'].hide()          
+        app.$emit('refreshTables') // calls the event listener in Admin.vue, which calls the getAll() method
       })
       .catch(function(response) {
-        app.busy = false
         console.log(response);
-        alert("There has been an error. Please try again.");
+        alert("There has been an error adding a publisher. Please try again.");
       });
       }
     }

@@ -19,7 +19,10 @@
         <p class="mt-3">
           Current Page: {{ currentUserPage }}
           <b-button class="addbtn" style="color:white" v-b-modal="`userModal${null}`">Add User</b-button>
-          <userModal title="Add User" :userid="null" />
+          <userModal 
+          title="Add User" 
+          :userid="null" 
+          v-on:refreshTables="getAll" />
         </p>
         <b-table
           id="users-table"
@@ -78,6 +81,7 @@
               :password_confirmation="`${users.item.password_confirmation}`"
               :roleSelected="`${users.item.role}`"
               :deleteSelected="`${users.item.is_deleted}`"
+              v-on:refreshTables="getAll"
             />
           </template>
         </b-table>
@@ -94,7 +98,11 @@
         <p class="mt-3">
           Current Page: {{ currentBookPage }}
           <b-button class="addbtn" style="color:white" v-b-modal="`product-modal-${null}`">Add Book</b-button>
-          <bookModal title="Add Product" :bookid="null" />
+          <bookModal 
+          title="Add Product" 
+          :bookid="null" 
+          v-on:image="getImgUrl"
+          v-on:refreshTables="getAll" />
         </p>
         <b-table
           id="books-table"
@@ -157,6 +165,7 @@
               :cost="`${books.item.company_cost}`"
               :quantity="`${books.item.quantity_on_hand}`"
               :deleteSelected="`${books.item.is_deleted}`"
+              v-on:refreshTables="getAll"
             />
           </template>
           <!-- Book image -->
@@ -177,7 +186,10 @@
         <p class="mt-3">
           Current Page: {{ currentPublisherPage }}
           <b-button class="addbtn" style="color:white" v-b-modal.publisherModal>Add Publisher</b-button>
-          <publisherModal title="Add Publisher" />
+          <publisherModal 
+          title="Add Publisher" 
+          v-on:refreshTables="getAll"
+          />
         </p>
         <b-table
           id="publishers-table"
@@ -266,9 +278,7 @@ export default {
         .then(function(response) {
           console.log(response);
           app.busy = false;
-          // app.$refs.userTable.refresh();
-          // app.$root.$emit('bv::refresh::table', 'users-table');
-          window.location.reload();
+          app.getAll();
         })
         .catch(function(response) {
           console.log(response);
@@ -286,7 +296,7 @@ export default {
         .then(function(response) {
           console.log(response);
           app.busy = false;
-          window.location.reload();
+          app.getAll();
         })
         .catch(function(response) {
           console.log(response);

@@ -282,7 +282,6 @@ export default {
         .then(function(response) {
           console.log(response);
           user.busy = false;
-         // window.location.reload();
         })
         .catch(error => {
           console.log(error);
