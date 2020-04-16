@@ -4,8 +4,8 @@
     <head>
       <title>StoryTime | Admin</title>
     </head>
-    <b-overlay :show="busy" rounded="lg" opacity="0.6">
       <adminnav />
+      <b-overlay :show="busy" rounded="lg" opacity="1.0">
       <br />
       <div id="wrapper">
         <!-- Users -->

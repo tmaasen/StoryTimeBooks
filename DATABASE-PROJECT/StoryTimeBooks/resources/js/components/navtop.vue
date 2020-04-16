@@ -17,17 +17,26 @@
             <b-button size="lg" class="my-2 my-lg-0" type="submit">Search</b-button>
           </b-nav-form>
           <div>
-            <a class="navbar-brand" id="shoppingCart" href="#">
-              <span class="input-group-addon">
-                <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 0 24 24" width="30">
-                  <path
-                    d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"
-                  />
-                  <path d="M0 0h24v24H0z" fill="none" />
-                </svg>
-              </span>
-              Cart<span>({{ $cartCounter }})</span>
-            </a>
+            <router-link :to="`/user/cart/${$auth.user().id}`">
+              <a class="navbar-brand" id="shoppingCart" href="#">
+                <span class="input-group-addon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="30"
+                    viewBox="0 0 24 24"
+                    width="30"
+                  >
+                    <path
+                      d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"
+                    />
+                    <path d="M0 0h24v24H0z" fill="none" />
+                  </svg>
+                </span>
+                Cart
+                <span v-if="cartCounter > 0">({{ cartCounter }})</span>
+                <span v-else>(0)</span>
+              </a>
+            </router-link>
           </div>
           <b-dropdown variant="primary" id="dropdown-right" text="Left align">
             <template v-slot:button-content>
@@ -37,13 +46,13 @@
             </template>
 
             <router-link :to="{name: 'Admin'}" class="link">
-            <b-dropdown-item-button v-if="$auth.user().role === '2'">
-              Admin
-              <span class="sr-only">(Not selected)</span>
-            </b-dropdown-item-button>
+              <b-dropdown-item-button v-if="$auth.user().role === '2'">
+                Admin
+                <span class="sr-only">(Not selected)</span>
+              </b-dropdown-item-button>
             </router-link>
 
-            <router-link :to="{name: 'Profile'}" class="link">
+            <router-link :to="`/user/profile/${$auth.user().id}`" class="link">
               <b-dropdown-item-button v-if="$auth.check()">
                 Profile
                 <span class="sr-only">(Not selected)</span>
@@ -77,16 +86,15 @@
       </b-collapse>
     </b-navbar>
   </div>
-  <!-- </header> -->
 </template>
 
 <script>
 export default {
   data() {
     return {
+      cartCounter: null,
       searchFilter: "a",
       options: [
-        // { value: null, text: "Please select some item" },
         { value: "a", text: "All" },
         { value: "b", text: "Title" },
         { value: "c", text: "Author" },
@@ -95,6 +103,9 @@ export default {
       ]
     };
   },
+  created() {
+    this.getCartItems()
+  },
   methods: {
     logout() {
       this.$Progress.start();
@@ -102,7 +113,7 @@ export default {
         makeRequest: true,
         params: {
           name: ""
-        }, // data: {} in axios
+        },
         success: function() {
           this.$Progress.finish();
         },
@@ -112,6 +123,18 @@ export default {
         redirect: "/login"
       });
       this.$Progress.finish();
+    },
+    getCartItems(userid) {
+      var app = this
+      axios.get("http://127.0.0.1:8000/api/v1/auth/itemsincart/{id}", 
+        {params: { user_id: this.$auth.user().id }})
+      .then(function(response) {
+        console.log(response);
+        app.cartCounter = response.data.items
+      })
+      .catch((error) => {
+        console.log(error)
+      });
     }
   }
 };
@@ -155,7 +178,7 @@ svg {
   background-color: #252525;
 }
 .btn {
-  background-color:#ff8d1e;
+  background-color: #ff8d1e;
 }
 .btn:hover {
   background-color: #2196f3;

@@ -7,6 +7,7 @@ import Register from './pages/Register'
 import Admin from './pages/Admin'
 import Profile from './pages/Profile'
 import Restricted from './pages/403'
+import ShoppingCart from './pages/ShoppingCart'
 
 Vue.use(VueRouter)
 
@@ -24,7 +25,8 @@ const router = new VueRouter({
         { path: '/login', component: Login, name: 'Login', meta: { auth: false } },
         { path: '/register', component: Register, name: 'Register', meta: { auth: undefined } },
         { path: '/admin', component: Admin, name: 'Admin', meta: { admin: true, auth: true } },
-        { path: '/profile', component: Profile, name: 'Profile', meta: { auth: true } },
+        { path: '/user/profile/:id', component: Profile, name: 'Profile', meta: { auth: true } },
+        { path: '/user/cart/:id', component: ShoppingCart, name: 'ShoppingCart', meta: { auth: true } },
 
     ]
 

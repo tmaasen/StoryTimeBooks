@@ -7,8 +7,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
   </head>
-  <b-overlay :show="busy" rounded="lg" opacity="0.6">
     <navtop id="profile" />
+    <b-overlay :show="busy" rounded="lg" opacity="1.0">
     <div class="profileBody">
       <div class="profileContent">
         <p class="profileTitle">Edit Profile</p>

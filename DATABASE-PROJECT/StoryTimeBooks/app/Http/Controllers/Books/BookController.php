@@ -100,7 +100,7 @@ class BookController extends Controller
             $file = $request->file('product_image');
             $extension = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extension;
-            $file->move('uploads/products/', $filename); // check this line. It's duplicating image creations in public/images...
+            $file->move('uploads/products/', $filename);
             $book->product_image = $filename;
         } else {
             $book->product_image = '';
@@ -229,6 +229,44 @@ class BookController extends Controller
                 'users' => $users,
                 'books' => $books,
                 'publishers' => $publishers
+            ], 200);
+    }
+
+    /**
+     * Get number of items in shopping cart per user.
+     */
+    public function getCartItemCount(Request $request) {
+        
+        $cart = DB::table('customer_shopping_cart')
+            ->where('user_id', $request->user_id)
+            ->count();
+       
+        return response()->json(
+            [
+                'status' => 'success',
+                'items' => $cart
+            ], 200);
+    }
+
+    /**
+     * Get number of items in shopping cart per user.
+     */
+    public function getCartItems(Request $request) {
+        
+        $cart = DB::table('customer_shopping_cart')
+            ->join('products', 'customer_shopping_cart.product_id', '=', 'products.id')
+            ->select('*')
+            ->where('user_id', $request->user_id)
+            ->get();
+            // select * from (customer_shopping_cart
+            // inner join products
+            // on customer_shopping_cart.product_id = products.id)
+            // where customer_shopping_cart.user_id = 31;
+       
+        return response()->json(
+            [
+                'status' => 'success',
+                'products' => $cart
             ], 200);
     }
  }
