@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Books;
 use App\User;
 use App\Product;
 use App\Publisher;
+use App\ShoppingCart;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Users\UserController;
 use Illuminate\Support\Facades\DB;
@@ -255,18 +256,38 @@ class BookController extends Controller
         
         $cart = DB::table('customer_shopping_cart')
             ->join('products', 'customer_shopping_cart.product_id', '=', 'products.id')
-            ->select('*')
+            ->select('products.product_image',
+            'products.product_name',
+            'products.author',
+            'products.copyright_date',
+            'products.isbn_13',
+            'customer_shopping_cart.product_id',
+            'customer_shopping_cart.quantity',
+            'customer_shopping_cart.actions')
             ->where('user_id', $request->user_id)
             ->get();
-            // select * from (customer_shopping_cart
-            // inner join products
-            // on customer_shopping_cart.product_id = products.id)
-            // where customer_shopping_cart.user_id = 31;
        
         return response()->json(
             [
                 'status' => 'success',
                 'products' => $cart
+            ], 200);
+    }
+
+    /**
+     * Add item to user's cart.
+     */
+    public function addToCart(Request $request) {
+        $cartItem = new ShoppingCart();
+
+        $cartItem->user_id = $request->user_id;
+        $cartItem->product_id = $request->book_id; // make sure these request field names match up
+        $cartItem->save();
+
+        return response()->json(
+            [
+                'status' => 'success',
+                'item' => $cartItem
             ], 200);
     }
  }

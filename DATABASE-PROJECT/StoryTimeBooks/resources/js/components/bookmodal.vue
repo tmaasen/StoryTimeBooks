@@ -120,12 +120,23 @@
         <!-- Product Image -->
         <b-form-group label="Product Image" label-for="image" :state="productState">
           <b-form-file
+            v-if="!image"
             name="image"
             id="image"
             v-model="image"
             v-on:change="onFileChange"
             :state="productState"
             placeholder="Choose a file or drop it here..."
+            drop-placeholder="Drop file here..."
+          ></b-form-file>
+          <b-form-file
+            v-else
+            name="image"
+            id="image"
+            v-model="image"
+            v-on:change="onFileChange"
+            :state="productState"
+            placeholder="Replace current product image..."
             drop-placeholder="Drop file here..."
           ></b-form-file>
         </b-form-group>

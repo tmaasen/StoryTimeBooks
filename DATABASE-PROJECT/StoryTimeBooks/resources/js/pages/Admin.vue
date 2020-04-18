@@ -273,7 +273,7 @@ export default {
       app.busy = true;
       axios
         .post("http://127.0.0.1:8000/api/v1/auth/removeuser/{id}", {
-          id: { idToRemove }
+          params: {id: { idToRemove }}
         })
         .then(function(response) {
           console.log(response);
@@ -291,7 +291,7 @@ export default {
       app.busy = true;
       axios
         .post("http://127.0.0.1:8000/api/v1/admin/removeproduct/{id}", {
-          id: { idToRemove }
+         params:{ id: { idToRemove }}
         })
         .then(function(response) {
           console.log(response);

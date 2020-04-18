@@ -42,11 +42,12 @@ Route::prefix('v1')->group(function () {
                 // Update user info
                 Route::put('updateuser/{id}', 'Users\UserController@updateUser');
                 // add product to shopping cart (POST)
-                // display product on product details page (GET)
+                Route::post('addtocart/{id}', 'Books\BookController@addToCart');
                 // display products in users cart (GET)
                 Route::get('shoppingcart/{id}', 'Books\BookController@getCartItems');
                 // display user cart count on navbar
                 Route::get('itemsincart/{id}', 'Books\BookController@getCartItemCount');
+                // display product on product details page (GET)
                 });
         });
 // Below mention routes are admin. Non-admin users have no access.

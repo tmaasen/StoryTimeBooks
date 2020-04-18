@@ -187,6 +187,7 @@ a:hover {
 }
 .footer-1 {
   position: relative;
+  /* position: fixed; */
   bottom: 0;
   width: 100%;
   padding-top: 20px;
