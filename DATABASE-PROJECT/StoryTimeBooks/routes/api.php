@@ -43,6 +43,10 @@ Route::prefix('v1')->group(function () {
                 Route::put('updateuser/{id}', 'Users\UserController@updateUser');
                 // add product to shopping cart (POST)
                 Route::post('addtocart/{id}', 'Books\BookController@addToCart');
+                // remove product from shopping cart
+                Route::post('removefromcart/{id}', 'Books\BookController@removeFromCart');
+                // update cart quantity for specific item
+                Route::put('updatecartquantity/{id}', 'Books\BookController@setCartQuantity');
                 // display products in users cart (GET)
                 Route::get('shoppingcart/{id}', 'Books\BookController@getCartItems');
                 // display user cart count on navbar

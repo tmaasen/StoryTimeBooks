@@ -261,6 +261,7 @@ class BookController extends Controller
             'products.author',
             'products.copyright_date',
             'products.isbn_13',
+            'products.retail_price',
             'customer_shopping_cart.product_id',
             'customer_shopping_cart.quantity',
             'customer_shopping_cart.actions')
@@ -279,15 +280,50 @@ class BookController extends Controller
      */
     public function addToCart(Request $request) {
         $cartItem = new ShoppingCart();
-
+        // if product_id already exists for $request->user_id, then increment quantity
         $cartItem->user_id = $request->user_id;
         $cartItem->product_id = $request->book_id; // make sure these request field names match up
+        $cartItem->quantity = $request->quantity;
         $cartItem->save();
 
         return response()->json(
             [
                 'status' => 'success',
                 'item' => $cartItem
+            ], 200);
+    }
+    
+    /**
+     * Remove the specified cart item from storage.
+     *
+     * @param  Request $book_id
+     * @return \Illuminate\Http\Response
+     */
+    public function removeFromCart(Request $request) {
+
+        ShoppingCart::remove($request->user_id, $request->product_id);
+
+        return response()->json(
+            [
+                'status' => 'success',
+                'message' => 'Item Removed'
+            ], 200);
+    }
+
+    /**
+     * Update the quantity for a specified cart item from storage.
+     *
+     * @param  Request $book_id
+     * @return \Illuminate\Http\Response
+     */
+    public function setCartQuantity(Request $request) {
+        
+       ShoppingCart::updateCartQuantity($request->product_id, $request->user_id, $request->quantity);
+
+        return response()->json(
+            [
+                'status' => 'success',
+                'message' => 'Item Updated'
             ], 200);
     }
  }
