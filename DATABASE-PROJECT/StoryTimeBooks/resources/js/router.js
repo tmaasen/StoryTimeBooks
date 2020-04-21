@@ -8,7 +8,6 @@ import Admin from './pages/Admin'
 import Profile from './pages/Profile'
 import Restricted from './pages/403'
 import ShoppingCart from './pages/ShoppingCart'
-import ProductDetail from './components/ProductDetail'
 
 Vue.use(VueRouter)
 
@@ -28,7 +27,6 @@ const router = new VueRouter({
         { path: '/admin', component: Admin, name: 'Admin', meta: { admin: true, auth: true } },
         { path: '/user/profile/:id', component: Profile, name: 'Profile', meta: { auth: true } },
         { path: '/user/cart/:id', component: ShoppingCart, name: 'ShoppingCart', meta: { auth: true } },
-        { path: '/productdetail', component: ProductDetail, name: 'ProductDetail', meta: { auth: undefined } },
     ]
 
 });

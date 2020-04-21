@@ -1,60 +1,218 @@
 <template>
-  <div style="overflow:visible;flex-grow: 1;text-align: center;">
-    <b-jumbotron class="jumbotron">
-      <div class="jumbomessage">
-        <h1>It's StoryTime</h1>
-        <h4>10% off all orders of $75 or more!</h4>
-        <h4>FREE shipping on all orders!</h4>
-        <b-button variant="primary" v-scroll-to="'#computer'">Start Your Story</b-button>
+<div>
+  <navtop ref="navbar" class="pb-5" id="home"/>
+    <div style="overflow:visible;flex-grow: 1;text-align: center;">
+      <b-jumbotron class="jumbotron">
+        <div class="jumbomessage">
+          <h1>It's StoryTime</h1>
+          <h4>10% off all orders of $75 or more!</h4>
+          <h4>FREE shipping on all orders!</h4>
+          <b-button variant="primary" v-scroll-to="'#computer'">Start Your Story</b-button>
+        </div>
+      </b-jumbotron>
+      <div style="width:70%; margin:0 15%; padding:10px;">
+        <p class="title" id="computer">Computer Sciences</p>
+        <!--Carousel Wrapper-->
+        <div id="computerSience" class="carousel slide carousel-multi-item" data-ride="carousel">
+          <!--Controls-->
+          <div style="margin:auto">
+            <a
+              class="carousel-control left carousel-control-prev"
+              href="#computerSience"
+              data-slide="prev"
+              style="color:red;outline: black;"
+            ></a>
+            <i class="fa fa-angle-left"></i>
+          </div>
+          <div style="margin:auto">
+            <a
+              class="carousel-control right carousel-control-next"
+              href="#computerSience"
+              data-slide="next"
+              style="color:red;outline: black;"
+            ></a>
+            <i class="fa fa-angle-right"></i>
+          </div>
+          <!--/.Controls-->
+
+          <!--Slides-->
+          <div class="carousel-inner" role="listbox">
+            <!--First slide-->
+            <div class="carousel-item active">
+              <div class="col-md-4" v-for="book in books_ComputerScience" :key="book.id">
+                <div class="card mb-2">
+                  <div class="cardContainer">
+                    <b-img-lazy
+                      class="card-img-top"
+                      :src="getImgUrl(book.product_image)"
+                      width="250"
+                      height="300"
+                      title="Product Details"
+                      v-b-modal="`productdetails-${book.id}`"
+                    />
+                    <ProductDetailModal
+                      :id="`productdetails-${book.id}`"
+                      title="Product Details"
+                      :bookid="`${book.id}`"
+                      :image="`${book.product_image}`"
+                      :name="`${book.product_name}`"
+                      :author="`${book.author}`"
+                      :category="`${book.category_id}`"
+                      :publisher="`${book.publisher_id}`"
+                      :isbn13="`${book.isbn_13}`"
+                      :copyright="`${book.copyright_date}`"
+                      :retail="`${book.retail_price}`"
+                      :quantity="`${book.quantity_on_hand}`"
+                      v-on:refreshCartCounter="updateNavbarCart"
+                    />
+                  </div>
+                  <h4 class="card-title">{{ book.product_name }}</h4>
+                  <div class="card-body">
+                    <div class="card-contentNoTitle">
+                      <p class="card-text">
+                        {{ book.author }}
+                        <br />PAPERBACK
+                        <br />
+                        ISBN: {{ book.isbn_13 }}
+                        <br />
+                        RETAIL: ${{ book.retail_price }}
+                      </p>
+                      <b-overlay
+                        :show="busy"
+                        rounded
+                        opacity="0.6"
+                        spinner-small
+                        spinner-variant="primary"
+                        class="d-inline-block"
+                      >
+                        <a class="btn btn-primary">
+                          <b @click="quickAdd(book.id, book.product_name)">Quick Add</b>
+                        </a>
+                      </b-overlay>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Second slide-->
+            <div class="carousel-item">
+              <div class="col-md-4" v-for="book in books_ComputerScience2" :key="book.id">
+                <div class="card mb-2">
+                  <div class="cardContainer">
+                    <b-img-lazy
+                      class="card-img-top"
+                      :src="getImgUrl(book.product_image)"
+                      width="250"
+                      height="300"
+                      title="Product Details"
+                      v-b-modal="`productdetails-${book.id}`"
+                    />
+                    <ProductDetailModal
+                      :id="`productdetails-${book.id}`"
+                      title="Product Details"
+                      :bookid="`${book.id}`"
+                      :image="`${book.product_image}`"
+                      :name="`${book.product_name}`"
+                      :author="`${book.author}`"
+                      :category="`${book.category_id}`"
+                      :publisher="`${book.publisher_id}`"
+                      :isbn13="`${book.isbn_13}`"
+                      :copyright="`${book.copyright_date}`"
+                      :retail="`${book.retail_price}`"
+                      :quantity="`${book.quantity_on_hand}`"
+                      v-on:refreshCartCounter="updateNavbarCart"
+                    />
+                  </div>
+                  <h4 class="card-title">{{ book.product_name }}</h4>
+                  <div class="card-body">
+                    <div class="card-contentNoTitle">
+                      <p class="card-text">
+                        {{ book.author }}
+                        <br />PAPERBACK
+                        <br />
+                        ISBN: {{ book.isbn_13 }}
+                        <br />
+                        RETAIL: ${{ book.retail_price }}
+                      </p>
+                      <b-overlay
+                        :show="busy"
+                        rounded
+                        opacity="0.6"
+                        spinner-small
+                        spinner-variant="primary"
+                        class="d-inline-block"
+                      >
+                        <a class="btn btn-primary">
+                          <b @click="quickAdd(book.id, book.product_name)">Quick Add</b>
+                        </a>
+                      </b-overlay>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--/.Slides-->
+        </div>
+        <!--/.Carousel Wrapper-->
       </div>
-    </b-jumbotron>
-    <div style="width:70%; margin:0 15%; padding:10px;">
-      <p class="title" id="computer">Computer Sciences</p>
-      <!--Carousel Wrapper-->
-      <div id="computerSience" class="carousel slide carousel-multi-item" data-ride="carousel">
-        <!--Controls-->
-        <div style="margin:auto">
-          <a
-            class="carousel-control left carousel-control-prev"
-            href="#computerSience"
-            data-slide="prev"
-            style="color:red;outline: black;"
-          ></a>
-          <i class="fa fa-angle-left"></i>
-        </div>
-        <div style="margin:auto">
-          <a
-            class="carousel-control right carousel-control-next"
-            href="#computerSience"
-            data-slide="next"
-            style="color:red;outline: black;"
-          ></a>
-          <i class="fa fa-angle-right"></i>
-        </div>
-        <!--/.Controls-->
 
-        <!--Slides-->
-        <div class="carousel-inner" role="listbox">
-          <!--First slide-->
-          <div class="carousel-item active">
-            <div class="col-md-4" v-for="book in books_ComputerScience" :key="book.id">
-              <div class="card mb-2">
-                <div class="cardContainer">
+      <div style="width:70%; margin:1% 15%; padding:10px;">
+        <p class="title">Business</p>
+        <!--Carousel Wrapper-->
+        <div id="business" class="carousel slide carousel-multi-item" data-ride="carousel">
+          <!--Controls-->
+          <div style="margin:auto">
+            <a
+              class="carousel-control left carousel-control-prev"
+              href="#business"
+              data-slide="prev"
+              style="color:red;outline: black;"
+            ></a>
+            <i class="fa fa-angle-left"></i>
+          </div>
+          <div style="margin:auto">
+            <a
+              class="carousel-control right carousel-control-next"
+              href="#business"
+              data-slide="next"
+              style="color:red;outline: black;"
+            ></a>
+            <i class="fa fa-angle-right"></i>
+          </div>
+          <!--/.Controls-->
+
+          <!--Slides-->
+          <div class="carousel-inner" role="listbox">
+            <!--First slide-->
+            <div class="carousel-item active">
+              <div class="col-md-4" v-for="book in books_Business" :key="book.id">
+                <div class="card mb-2">
                   <b-img-lazy
                     class="card-img-top"
                     :src="getImgUrl(book.product_image)"
                     width="250"
                     height="300"
-                    alt="Card image cap"
-                    v-b-modal.modal-1
+                    title="Product Details"
+                    v-b-modal="`productdetails-${book.id}`"
                   />
-                  <b-modal id="modal-1" title="BootstrapVue">
-                    <ProductDetail />
-                  </b-modal>
-                </div>
-                <h4 class="card-title">{{ book.product_name }}</h4>
-                <div class="card-body">
-                  <div class="card-contentNoTitle">
+                  <ProductDetailModal
+                    :id="`productdetails-${book.id}`"
+                    title="Product Details"
+                    :bookid="`${book.id}`"
+                    :image="`${book.product_image}`"
+                    :name="`${book.product_name}`"
+                    :author="`${book.author}`"
+                    :category="`${book.category_id}`"
+                    :publisher="`${book.publisher_id}`"
+                    :isbn13="`${book.isbn_13}`"
+                    :copyright="`${book.copyright_date}`"
+                    :retail="`${book.retail_price}`"
+                    :quantity="`${book.quantity_on_hand}`"
+                    v-on:refreshCartCounter="updateNavbarCart"
+                  />
+                  <h4 class="card-title">{{ book.product_name }}</h4>
+                  <div class="card-body">
                     <p class="card-text">
                       {{ book.author }}
                       <br />PAPERBACK
@@ -63,30 +221,51 @@
                       <br />
                       RETAIL: ${{ book.retail_price }}
                     </p>
-                    <a class="btn btn-primary">
-                      <b>Add To Cart</b>
-                    </a>
+                      <b-overlay
+                        :show="busy"
+                        rounded
+                        opacity="0.6"
+                        spinner-small
+                        spinner-variant="primary"
+                        class="d-inline-block"
+                      >
+                        <a class="btn btn-primary">
+                          <b @click="quickAdd(book.id, book.product_name)">Quick Add</b>
+                        </a>
+                      </b-overlay>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <!--Second slide-->
-          <div class="carousel-item">
-            <div class="col-md-4" v-for="book in books_ComputerScience2" :key="book.id">
-              <div class="card mb-2">
-                <div class="cardContainer">
+            <!--Second slide-->
+            <div class="carousel-item">
+              <div class="col-md-4" v-for="book in books_Business2" :key="book.id">
+                <div class="card mb-2">
                   <b-img-lazy
                     class="card-img-top"
                     :src="getImgUrl(book.product_image)"
                     width="250"
                     height="300"
-                    alt="Card image cap"
+                    title="Product Details"
+                    v-b-modal="`productdetails-${book.id}`"
                   />
-                </div>
-                <h4 class="card-title">{{ book.product_name }}</h4>
-                <div class="card-body">
-                  <div class="card-contentNoTitle">
+                  <ProductDetailModal
+                    :id="`productdetails-${book.id}`"
+                    title="Product Details"
+                    :bookid="`${book.id}`"
+                    :image="`${book.product_image}`"
+                    :name="`${book.product_name}`"
+                    :author="`${book.author}`"
+                    :category="`${book.category_id}`"
+                    :publisher="`${book.publisher_id}`"
+                    :isbn13="`${book.isbn_13}`"
+                    :copyright="`${book.copyright_date}`"
+                    :retail="`${book.retail_price}`"
+                    :quantity="`${book.quantity_on_hand}`"
+                    v-on:refreshCartCounter="updateNavbarCart"
+                  />
+                  <h4 class="card-title">{{ book.product_name }}</h4>
+                  <div class="card-body">
                     <p class="card-text">
                       {{ book.author }}
                       <br />PAPERBACK
@@ -95,402 +274,479 @@
                       <br />
                       RETAIL: ${{ book.retail_price }}
                     </p>
-                    <a class="btn btn-primary">
-                      <b>Add To Cart</b>
-                    </a>
+                      <b-overlay
+                        :show="busy"
+                        rounded
+                        opacity="0.6"
+                        spinner-small
+                        spinner-variant="primary"
+                        class="d-inline-block"
+                      >
+                        <a class="btn btn-primary">
+                          <b @click="quickAdd(book.id, book.product_name)">Quick Add</b>
+                        </a>
+                      </b-overlay>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <!--/.Slides-->
         </div>
-        <!--/.Slides-->
+        <!--/.Carousel Wrapper-->
       </div>
-      <!--/.Carousel Wrapper-->
-    </div>
 
-    <div style="width:70%; margin:1% 15%; padding:10px;">
-      <p class="title">Business</p>
-      <!--Carousel Wrapper-->
-      <div id="business" class="carousel slide carousel-multi-item" data-ride="carousel">
-        <!--Controls-->
-        <div style="margin:auto">
-          <a
-            class="carousel-control left carousel-control-prev"
-            href="#business"
-            data-slide="prev"
-            style="color:red;outline: black;"
-          ></a>
-          <i class="fa fa-angle-left"></i>
-        </div>
-        <div style="margin:auto">
-          <a
-            class="carousel-control right carousel-control-next"
-            href="#business"
-            data-slide="next"
-            style="color:red;outline: black;"
-          ></a>
-          <i class="fa fa-angle-right"></i>
-        </div>
-        <!--/.Controls-->
+      <div style="width:70%; margin:0 15%; padding:10px;">
+        <p class="title">Psychology</p>
+        <!--Carousel Wrapper-->
+        <div id="psychology" class="carousel slide carousel-multi-item" data-ride="carousel">
+          <!--Controls-->
+          <div style="margin:auto">
+            <a
+              class="carousel-control left carousel-control-prev"
+              href="#psychology"
+              data-slide="prev"
+              style="color:red;outline: black;"
+            ></a>
+            <i class="fa fa-angle-left"></i>
+          </div>
+          <div style="margin:auto">
+            <a
+              class="carousel-control right carousel-control-next"
+              href="#psychology"
+              data-slide="next"
+              style="color:red;outline: black;"
+            ></a>
+            <i class="fa fa-angle-right"></i>
+          </div>
+          <!--/.Controls-->
 
-        <!--Slides-->
-        <div class="carousel-inner" role="listbox">
-          <!--First slide-->
-          <div class="carousel-item active">
-            <div class="col-md-4" v-for="book in books_Business" :key="book.id">
-              <div class="card mb-2">
-                <b-img-lazy
-                  class="card-img-top"
-                  :src="getImgUrl(book.product_image)"
-                  width="250"
-                  height="300"
-                  alt="Card image cap"
-                />
-                <h4 class="card-title">{{ book.product_name }}</h4>
-                <div class="card-body">
-                  <p class="card-text">
-                    {{ book.author }}
-                    <br />PAPERBACK
-                    <br />
-                    ISBN: {{ book.isbn_13 }}
-                    <br />
-                    RETAIL: ${{ book.retail_price }}
-                  </p>
-                  <a class="btn btn-primary">
-                    <b>Add To Cart</b>
-                  </a>
+          <!--Slides-->
+          <div class="carousel-inner" role="listbox">
+            <!--First slide-->
+            <div class="carousel-item active">
+              <div class="col-md-4" v-for="book in books_Psychology" :key="book.id">
+                <div class="card mb-2">
+                  <div class="cardContainer">
+                    <b-img-lazy
+                      class="card-img-top"
+                      :src="getImgUrl(book.product_image)"
+                      width="250"
+                      height="300"
+                      title="Product Details"
+                      v-b-modal="`productdetails-${book.id}`"
+                    />
+                    <ProductDetailModal
+                      :id="`productdetails-${book.id}`"
+                      title="Product Details"
+                      :bookid="`${book.id}`"
+                      :image="`${book.product_image}`"
+                      :name="`${book.product_name}`"
+                      :author="`${book.author}`"
+                      :category="`${book.category_id}`"
+                      :publisher="`${book.publisher_id}`"
+                      :isbn13="`${book.isbn_13}`"
+                      :copyright="`${book.copyright_date}`"
+                      :retail="`${book.retail_price}`"
+                      :quantity="`${book.quantity_on_hand}`"
+                      v-on:refreshCartCounter="updateNavbarCart"
+                    />
+                  </div>
+                  <h4 class="card-title">{{ book.product_name }}</h4>
+                  <div class="card-body">
+                    <div class="card-contentNoTitle">
+                      <p class="card-text">
+                        {{ book.author }}
+                        <br />PAPERBACK
+                        <br />
+                        ISBN: {{ book.isbn_13 }}
+                        <br />
+                        RETAIL: ${{ book.retail_price }}
+                      </p>
+                      <b-overlay
+                        :show="busy"
+                        rounded
+                        opacity="0.6"
+                        spinner-small
+                        spinner-variant="primary"
+                        class="d-inline-block"
+                      >
+                        <a class="btn btn-primary">
+                          <b @click="quickAdd(book.id, book.product_name)">Quick Add</b>
+                        </a>
+                      </b-overlay>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Second slide-->
+            <div class="carousel-item">
+              <div class="col-md-4" v-for="book in books_Psychology2" :key="book.id">
+                <div class="card mb-2">
+                  <div class="cardContainer">
+                    <b-img-lazy
+                      class="card-img-top"
+                      :src="getImgUrl(book.product_image)"
+                      width="250"
+                      height="300"
+                      title="Product Details"
+                      v-b-modal="`productdetails-${book.id}`"
+                    />
+                    <ProductDetailModal
+                      :id="`productdetails-${book.id}`"
+                      title="Product Details"
+                      :bookid="`${book.id}`"
+                      :image="`${book.product_image}`"
+                      :name="`${book.product_name}`"
+                      :author="`${book.author}`"
+                      :category="`${book.category_id}`"
+                      :publisher="`${book.publisher_id}`"
+                      :isbn13="`${book.isbn_13}`"
+                      :copyright="`${book.copyright_date}`"
+                      :retail="`${book.retail_price}`"
+                      :quantity="`${book.quantity_on_hand}`"
+                      v-on:refreshCartCounter="updateNavbarCart"
+                    />
+                  </div>
+                  <h4 class="card-title">{{ book.product_name }}</h4>
+                  <div class="card-body">
+                    <div class="card-contentNoTitle">
+                      <p class="card-text">
+                        {{ book.author }}
+                        <br />PAPERBACK
+                        <br />
+                        ISBN: {{ book.isbn_13 }}
+                        <br />
+                        RETAIL: ${{ book.retail_price }}
+                      </p>
+                      <b-overlay
+                        :show="busy"
+                        rounded
+                        opacity="0.6"
+                        spinner-small
+                        spinner-variant="primary"
+                        class="d-inline-block"
+                      >
+                        <a class="btn btn-primary">
+                          <b @click="quickAdd(book.id, book.product_name)">Quick Add</b>
+                        </a>
+                      </b-overlay>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <!--Second slide-->
-          <div class="carousel-item">
-            <div class="col-md-4" v-for="book in books_Business2" :key="book.id">
-              <div class="card mb-2">
-                <b-img-lazy
-                  class="card-img-top"
-                  :src="getImgUrl(book.product_image)"
-                  width="250"
-                  height="300"
-                  alt="Card image cap"
-                />
-                <h4 class="card-title">{{ book.product_name }}</h4>
-                <div class="card-body">
-                  <p class="card-text">
-                    {{ book.author }}
-                    <br />PAPERBACK
-                    <br />
-                    ISBN: {{ book.isbn_13 }}
-                    <br />
-                    RETAIL: ${{ book.retail_price }}
-                  </p>
-                  <a class="btn btn-primary">
-                    <b>Add To Cart</b>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+          <!--/.Slides-->
         </div>
-        <!--/.Slides-->
+        <!--/.Carousel Wrapper-->
       </div>
-      <!--/.Carousel Wrapper-->
-    </div>
 
-    <div style="width:70%; margin:0 15%; padding:10px;">
-      <p class="title">Psychology</p>
-      <!--Carousel Wrapper-->
-      <div id="psychology" class="carousel slide carousel-multi-item" data-ride="carousel">
-        <!--Controls-->
-        <div style="margin:auto">
-          <a
-            class="carousel-control left carousel-control-prev"
-            href="#psychology"
-            data-slide="prev"
-            style="color:red;outline: black;"
-          ></a>
-          <i class="fa fa-angle-left"></i>
-        </div>
-        <div style="margin:auto">
-          <a
-            class="carousel-control right carousel-control-next"
-            href="#psychology"
-            data-slide="next"
-            style="color:red;outline: black;"
-          ></a>
-          <i class="fa fa-angle-right"></i>
-        </div>
-        <!--/.Controls-->
+      <div style="width:70%; margin:0 15%; padding:10px;">
+        <p class="title">Engineering</p>
+        <!--Carousel Wrapper-->
+        <div id="engineering" class="carousel slide carousel-multi-item" data-ride="carousel">
+          <!--Controls-->
+          <div style="margin:auto">
+            <a
+              class="carousel-control left carousel-control-prev"
+              href="#engineering"
+              data-slide="prev"
+              style="color:red;outline: black;"
+            ></a>
+            <i class="fa fa-angle-left"></i>
+          </div>
+          <div style="margin:auto">
+            <a
+              class="carousel-control right carousel-control-next"
+              href="#engineering"
+              data-slide="next"
+              style="color:red;outline: black;"
+            ></a>
+            <i class="fa fa-angle-right"></i>
+          </div>
+          <!--/.Controls-->
 
-        <!--Slides-->
-        <div class="carousel-inner" role="listbox">
-          <!--First slide-->
-          <div class="carousel-item active">
-            <div class="col-md-4" v-for="book in books_Psychology" :key="book.id">
-              <div class="card mb-2">
-                <div class="cardContainer">
-                  <b-img-lazy
-                    class="card-img-top"
-                    :src="getImgUrl(book.product_image)"
-                    width="250"
-                    height="300"
-                  />
+          <!--Slides-->
+          <div class="carousel-inner" role="listbox">
+            <!--First slide-->
+            <div class="carousel-item active">
+              <div class="col-md-4" v-for="book in books_Engineering" :key="book.id">
+                <div class="card mb-2">
+                  <div class="cardContainer">
+                    <b-img-lazy
+                      class="card-img-top"
+                      :src="getImgUrl(book.product_image)"
+                      width="250"
+                      height="300"
+                      title="Product Details"
+                      v-b-modal="`productdetails-${book.id}`"
+                    />
+                    <ProductDetailModal
+                      :id="`productdetails-${book.id}`"
+                      title="Product Details"
+                      :bookid="`${book.id}`"
+                      :image="`${book.product_image}`"
+                      :name="`${book.product_name}`"
+                      :author="`${book.author}`"
+                      :category="`${book.category_id}`"
+                      :publisher="`${book.publisher_id}`"
+                      :isbn13="`${book.isbn_13}`"
+                      :copyright="`${book.copyright_date}`"
+                      :retail="`${book.retail_price}`"
+                      :quantity="`${book.quantity_on_hand}`"
+                      v-on:refreshCartCounter="updateNavbarCart"
+                    />
+                  </div>
+                  <h4 class="card-title">{{ book.product_name }}</h4>
+                  <div class="card-body">
+                    <div class="card-contentNoTitle">
+                      <p class="card-text">
+                        {{ book.author }}
+                        <br />PAPERBACK
+                        <br />
+                        ISBN: {{ book.isbn_13 }}
+                        <br />
+                        RETAIL: ${{ book.retail_price }}
+                      </p>
+                      <b-overlay
+                        :show="busy"
+                        rounded
+                        opacity="0.6"
+                        spinner-small
+                        spinner-variant="primary"
+                        class="d-inline-block"
+                      >
+                        <a class="btn btn-primary">
+                          <b @click="quickAdd(book.id, book.product_name)">Quick Add</b>
+                        </a>
+                      </b-overlay>
+                    </div>
+                  </div>
                 </div>
-                <h4 class="card-title">{{ book.product_name }}</h4>
-                <div class="card-body">
-                  <div class="card-contentNoTitle">
-                    <p class="card-text">
-                      {{ book.author }}
-                      <br />PAPERBACK
-                      <br />
-                      ISBN: {{ book.isbn_13 }}
-                      <br />
-                      RETAIL: ${{ book.retail_price }}
-                    </p>
-                    <a class="btn btn-primary">
-                      <b>Add To Cart</b>
-                    </a>
+              </div>
+            </div>
+            <!--Second slide-->
+            <div class="carousel-item">
+              <div class="col-md-4" v-for="book in books_Engineering2" :key="book.id">
+                <div class="card mb-2">
+                  <div class="cardContainer">
+                    <b-img-lazy
+                      class="card-img-top"
+                      :src="getImgUrl(book.product_image)"
+                      width="250"
+                      height="300"
+                      title="Product Details"
+                      v-b-modal="`productdetails-${book.id}`"
+                    />
+                    <ProductDetailModal
+                      :id="`productdetails-${book.id}`"
+                      title="Product Details"
+                      :bookid="`${book.id}`"
+                      :image="`${book.product_image}`"
+                      :name="`${book.product_name}`"
+                      :author="`${book.author}`"
+                      :category="`${book.category_id}`"
+                      :publisher="`${book.publisher_id}`"
+                      :isbn13="`${book.isbn_13}`"
+                      :copyright="`${book.copyright_date}`"
+                      :retail="`${book.retail_price}`"
+                      :quantity="`${book.quantity_on_hand}`"
+                      v-on:refreshCartCounter="updateNavbarCart"
+                    />
+                  </div>
+                  <h4 class="card-title">{{ book.product_name }}</h4>
+                  <div class="card-body">
+                    <div class="card-contentNoTitle">
+                      <p class="card-text">
+                        {{ book.author }}
+                        <br />PAPERBACK
+                        <br />
+                        ISBN: {{ book.isbn_13 }}
+                        <br />
+                        RETAIL: ${{ book.retail_price }}
+                      </p>
+                      <b-overlay
+                        :show="busy"
+                        rounded
+                        opacity="0.6"
+                        spinner-small
+                        spinner-variant="primary"
+                        class="d-inline-block"
+                      >
+                        <a class="btn btn-primary">
+                          <b @click="quickAdd(book.id, book.product_name)">Quick Add</b>
+                        </a>
+                      </b-overlay>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <!--Second slide-->
-          <div class="carousel-item">
-            <div class="col-md-4" v-for="book in books_Psychology2" :key="book.id">
-              <div class="card mb-2">
-                <div class="cardContainer">
-                  <b-img-lazy
-                    class="card-img-top"
-                    :src="getImgUrl(book.product_image)"
-                    width="250"
-                    height="300"
-                  />
-                </div>
-                <h4 class="card-title">{{ book.product_name }}</h4>
-                <div class="card-body">
-                  <div class="card-contentNoTitle">
-                    <p class="card-text">
-                      {{ book.author }}
-                      <br />PAPERBACK
-                      <br />
-                      ISBN: {{ book.isbn_13 }}
-                      <br />
-                      RETAIL: ${{ book.retail_price }}
-                    </p>
-                    <a class="btn btn-primary">
-                      <b>Add To Cart</b>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <!--/.Slides-->
         </div>
-        <!--/.Slides-->
+        <!--/.Carousel Wrapper-->
       </div>
-      <!--/.Carousel Wrapper-->
-    </div>
 
-    <div style="width:70%; margin:0 15%; padding:10px;">
-      <p class="title">Engineering</p>
-      <!--Carousel Wrapper-->
-      <div id="engineering" class="carousel slide carousel-multi-item" data-ride="carousel">
-        <!--Controls-->
-        <div style="margin:auto">
-          <a
-            class="carousel-control left carousel-control-prev"
-            href="#engineering"
-            data-slide="prev"
-            style="color:red;outline: black;"
-          ></a>
-          <i class="fa fa-angle-left"></i>
-        </div>
-        <div style="margin:auto">
-          <a
-            class="carousel-control right carousel-control-next"
-            href="#engineering"
-            data-slide="next"
-            style="color:red;outline: black;"
-          ></a>
-          <i class="fa fa-angle-right"></i>
-        </div>
-        <!--/.Controls-->
+      <div style="width:70%; margin:0 15%; padding:10px;">
+        <p class="title">Music / Theatre</p>
+        <!--Carousel Wrapper-->
+        <div id="musicTheatre" class="carousel slide carousel-multi-item" data-ride="carousel">
+          <!--Controls-->
+          <div style="margin:auto">
+            <a
+              class="carousel-control left carousel-control-prev"
+              href="#musicTheatre"
+              data-slide="prev"
+              style="color:red;outline: black;"
+            ></a>
+            <i class="fa fa-angle-left"></i>
+          </div>
+          <div style="margin:auto">
+            <a
+              class="carousel-control right carousel-control-next"
+              href="#musicTheatre"
+              data-slide="next"
+              style="color:red;outline: black;"
+            ></a>
+            <i class="fa fa-angle-right"></i>
+          </div>
+          <!--/.Controls-->
 
-        <!--Slides-->
-        <div class="carousel-inner" role="listbox">
-          <!--First slide-->
-          <div class="carousel-item active">
-            <div class="col-md-4" v-for="book in books_Engineering" :key="book.id">
-              <div class="card mb-2">
-                <div class="cardContainer">
-                  <b-img-lazy
-                    class="card-img-top"
-                    :src="getImgUrl(book.product_image)"
-                    width="250"
-                    height="300"
-                  />
+          <!--Slides-->
+          <div class="carousel-inner" role="listbox">
+            <!--First slide-->
+            <div class="carousel-item active">
+              <div class="col-md-4" v-for="book in books_MusicTheatre" :key="book.id">
+                <div class="card mb-2">
+                  <div class="cardContainer">
+                    <b-img-lazy
+                      class="card-img-top"
+                      :src="getImgUrl(book.product_image)"
+                      width="250"
+                      height="300"
+                      title="Product Details"
+                      v-b-modal="`productdetails-${book.id}`"
+                    />
+                    <ProductDetailModal
+                      :id="`productdetails-${book.id}`"
+                      title="Product Details"
+                      :bookid="`${book.id}`"
+                      :image="`${book.product_image}`"
+                      :name="`${book.product_name}`"
+                      :author="`${book.author}`"
+                      :category="`${book.category_id}`"
+                      :publisher="`${book.publisher_id}`"
+                      :isbn13="`${book.isbn_13}`"
+                      :copyright="`${book.copyright_date}`"
+                      :retail="`${book.retail_price}`"
+                      :quantity="`${book.quantity_on_hand}`"
+                      v-on:refreshCartCounter="updateNavbarCart"
+                    />
+                  </div>
+                  <h4 class="card-title">{{ book.product_name }}</h4>
+                  <div class="card-body">
+                    <div class="card-contentNoTitle">
+                      <p class="card-text">
+                        {{ book.author }}
+                        <br />PAPERBACK
+                        <br />
+                        ISBN: {{ book.isbn_13 }}
+                        <br />
+                        RETAIL: ${{ book.retail_price }}
+                      </p>
+                      <b-overlay
+                        :show="busy"
+                        rounded
+                        opacity="0.6"
+                        spinner-small
+                        spinner-variant="primary"
+                        class="d-inline-block"
+                      >
+                        <a class="btn btn-primary">
+                          <b @click="quickAdd(book.id, book.product_name)">Quick Add</b>
+                        </a>
+                      </b-overlay>
+                    </div>
+                  </div>
                 </div>
-                <h4 class="card-title">{{ book.product_name }}</h4>
-                <div class="card-body">
-                  <div class="card-contentNoTitle">
-                    <p class="card-text">
-                      {{ book.author }}
-                      <br />PAPERBACK
-                      <br />
-                      ISBN: {{ book.isbn_13 }}
-                      <br />
-                      RETAIL: ${{ book.retail_price }}
-                    </p>
-                    <a class="btn btn-primary">
-                      <b>Add To Cart</b>
-                    </a>
+              </div>
+            </div>
+            <!--Second slide-->
+            <div class="carousel-item">
+              <div class="col-md-4" v-for="book in books_MusicTheatre2" :key="book.id">
+                <div class="card mb-2">
+                  <div class="cardContainer">
+                    <b-img-lazy
+                      class="card-img-top"
+                      :src="getImgUrl(book.product_image)"
+                      width="250"
+                      height="300"
+                      title="Product Details"
+                      v-b-modal="`productdetails-${book.id}`"
+                    />
+                    <ProductDetailModal
+                      :id="`productdetails-${book.id}`"
+                      title="Product Details"
+                      :bookid="`${book.id}`"
+                      :image="`${book.product_image}`"
+                      :name="`${book.product_name}`"
+                      :author="`${book.author}`"
+                      :category="`${book.category_id}`"
+                      :publisher="`${book.publisher_id}`"
+                      :isbn13="`${book.isbn_13}`"
+                      :copyright="`${book.copyright_date}`"
+                      :retail="`${book.retail_price}`"
+                      :quantity="`${book.quantity_on_hand}`"
+                      v-on:refreshCartCounter="updateNavbarCart"
+                    />
+                  </div>
+                  <h4 class="card-title">{{ book.product_name }}</h4>
+                  <div class="card-body">
+                    <div class="card-contentNoTitle">
+                      <p class="card-text">
+                        {{ book.author }}
+                        <br />PAPERBACK
+                        <br />
+                        ISBN: {{ book.isbn_13 }}
+                        <br />
+                        RETAIL: ${{ book.retail_price }}
+                      </p>
+                      <b-overlay
+                        :show="busy"
+                        rounded
+                        opacity="0.6"
+                        spinner-small
+                        spinner-variant="primary"
+                        class="d-inline-block"
+                      >
+                        <a class="btn btn-primary">
+                          <b @click="quickAdd(book.id, book.product_name)">Quick Add</b>
+                        </a>
+                      </b-overlay>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <!--Second slide-->
-          <div class="carousel-item">
-            <div class="col-md-4" v-for="book in books_Engineering2" :key="book.id">
-              <div class="card mb-2">
-                <div class="cardContainer">
-                  <b-img-lazy
-                    class="card-img-top"
-                    :src="getImgUrl(book.product_image)"
-                    width="250"
-                    height="300"
-                  />
-                </div>
-                <h4 class="card-title">{{ book.product_name }}</h4>
-                <div class="card-body">
-                  <div class="card-contentNoTitle">
-                    <p class="card-text">
-                      {{ book.author }}
-                      <br />PAPERBACK
-                      <br />
-                      ISBN: {{ book.isbn_13 }}
-                      <br />
-                      RETAIL: ${{ book.retail_price }}
-                    </p>
-                    <a class="btn btn-primary">
-                      <b>Add To Cart</b>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <!--/.Slides-->
         </div>
-        <!--/.Slides-->
+        <!--/.Carousel Wrapper-->
       </div>
-      <!--/.Carousel Wrapper-->
-    </div>
-
-    <div style="width:70%; margin:0 15%; padding:10px;">
-      <p class="title">Music / Theatre</p>
-      <!--Carousel Wrapper-->
-      <div id="musicTheatre" class="carousel slide carousel-multi-item" data-ride="carousel">
-        <!--Controls-->
-        <div style="margin:auto">
-          <a
-            class="carousel-control left carousel-control-prev"
-            href="#musicTheatre"
-            data-slide="prev"
-            style="color:red;outline: black;"
-          ></a>
-          <i class="fa fa-angle-left"></i>
-        </div>
-        <div style="margin:auto">
-          <a
-            class="carousel-control right carousel-control-next"
-            href="#musicTheatre"
-            data-slide="next"
-            style="color:red;outline: black;"
-          ></a>
-          <i class="fa fa-angle-right"></i>
-        </div>
-        <!--/.Controls-->
-
-        <!--Slides-->
-        <div class="carousel-inner" role="listbox">
-          <!--First slide-->
-          <div class="carousel-item active">
-            <div class="col-md-4" v-for="book in books_MusicTheatre" :key="book.id">
-              <div class="card mb-2">
-                <div class="cardContainer">
-                  <b-img-lazy
-                    class="card-img-top"
-                    :src="getImgUrl(book.product_image)"
-                    width="250"
-                    height="300"
-                  />
-                </div>
-                <h4 class="card-title">{{ book.product_name }}</h4>
-                <div class="card-body">
-                  <div class="card-contentNoTitle">
-                    <p class="card-text">
-                      {{ book.author }}
-                      <br />PAPERBACK
-                      <br />
-                      ISBN: {{ book.isbn_13 }}
-                      <br />
-                      RETAIL: ${{ book.retail_price }}
-                    </p>
-                    <a class="btn btn-primary">
-                      <b>Add To Cart</b>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--Second slide-->
-          <div class="carousel-item">
-            <div class="col-md-4" v-for="book in books_MusicTheatre2" :key="book.id">
-              <div class="card mb-2">
-                <div class="cardContainer">
-                  <b-img-lazy
-                    class="card-img-top"
-                    :src="getImgUrl(book.product_image)"
-                    width="250"
-                    height="300"
-                  />
-                </div>
-                <h4 class="card-title">{{ book.product_name }}</h4>
-                <div class="card-body">
-                  <div class="card-contentNoTitle">
-                    <p class="card-text">
-                      {{ book.author }}
-                      <br />PAPERBACK
-                      <br />
-                      ISBN: {{ book.isbn_13 }}
-                      <br />
-                      RETAIL: ${{ book.retail_price }}
-                    </p>
-                    <a class="btn btn-primary">
-                      <b>Add To Cart</b>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--/.Slides-->
-      </div>
-      <!--/.Carousel Wrapper-->
     </div>
   </div>
 </template>
 
 <script>
-import ProductDetailModal from "../components/ProductDetailModal";
-import ProductDetail from "../components/ProductDetail";
+import ProductDetailModal from "../components/productdetailmodal";
+import navtop from './navtop'
 export default {
   data() {
     return {
+      busy: false,
       books: [],
       books_Business: [],
       books_Business2: [],
@@ -506,7 +762,7 @@ export default {
   },
   components: {
     ProductDetailModal,
-    ProductDetail
+    navtop
   },
   created() {
     axios
@@ -573,6 +829,33 @@ export default {
         );
         return images("./" + pic);
       }
+    },
+    updateNavbarCart() {
+      var app = this
+      app.$refs.navbar.getItemsInCart();
+    },
+    quickAdd(product_id) { // item will be added to cart with default quantity of 1
+      var app = this;
+      app.busy = true;
+      axios
+        .post("http://127.0.0.1:8000/api/v1/auth/addtocart/{id}", {
+          product_id: product_id,
+          user_id: app.$auth.user().id,
+          quantity: 1
+        })
+        .then(function(response) {
+          console.log(response);
+          app.busy = false;
+          app.updateNavbarCart();
+          alert("This item has been added to your cart.")
+        })
+        .catch(error => {
+          console.log(error);
+          app.busy = false;
+          alert(
+            "There has been an error adding this item to your cart. Please try again."
+          );
+        });
     }
   }
 };
@@ -602,6 +885,7 @@ template {
   height: 300px;
   width: 250px;
   margin: auto;
+  cursor: pointer;
 }
 .img-fluid {
   max-width: 100%;

@@ -1,85 +1,210 @@
 <template>
 <b-modal
+  size="xl"
   centered
   scrollable
   ref="ProductDetailModal"
-  :id="`ProductDetailModal${userid}`"
+  :id="`productdetails-${bookid}`"
   :title="title"
 >
   <b-overlay :show="busy" rounded="lg" opacity="0.6">
-    <head>
-      <title>StoryTime | Product Detail</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-    </head>
-
     <div class="book-detail-container">
-      <div id="img-container" class="block">
-        <img src="https://images.bwbcovers.com/155/People-Who-Led-to-My-Plays-9781559361255.jpg" />
+      <div id="img-container" class="column1">
+        <b-img :src="getImgUrl(image)" />
       </div>
 
+    <div class="cloumn2">
       <div class="block detail-texts">
         <div class="detail-title-and-author">
-          <h1>People Who Led to My Plays</h1>
-          <h2>by Adrienne Kennedy</h2>
+          <h1>{{name}}</h1>
+          <h2>by {{author}}</h2>
         </div>
+
         <div class="detail-description-box">
           <h6>
-            <strong>Description</strong>
+            <strong>Publisher</strong>
+            <span>{{setPublisherOptions(publisher)}}</span>
           </h6>
-          <p>I think it. This is a box for some descriptions of this book.</p>
+          <h6>
+            <strong>Retail</strong><span> $ {{retail}}</span>
+          </h6>
         </div>
+        
         <div class="cart-button-holder">
-          <b-button class="add-to-cart-btn">Add To Cart</b-button>
+          <b-form-spinbutton
+            v-model="quantity1"
+            required
+            min="1"
+            max="50"
+            class="spinbutton"
+          ></b-form-spinbutton>
+          <b-button class="add-to-cart-btn" @click="addToCart(bookid, quantity1)">Add To Cart</b-button>
         </div>
       </div>
 
       <div>
-        <b-table class="detail-table" striped hover :items="detailsTable"></b-table>
+        <b-table 
+        class="detail-table" 
+        striped 
+        hover 
+        :items="product_details">
+         <!-- <template v-slot:cell(CATEGORY)="">
+           <span>setCategoryOptions()</span>
+         </template> -->
+        </b-table>
       </div>
     </div>
+  </div>
 
-    <div class="promo-container">
-      <img class="promo-image" src="../assets/promotion-banner.jpg" />
-    </div>
   </b-overlay>
 </b-modal>
 </template>
 
 <script>
-
 export default {
   data() {
     return {
-      detailsTable: [
-        { "ISBN-13": 9780134322759, TYPE: "PAPERBACK", PRICE: 102.32 }
+      busy:false,
+      bookid1: this.bookid,
+      name1: this.name,
+      author1: this.author,
+      publisher1: this.publisher,
+      category1: this.category,
+      isbn131: this.isbn13,
+      copyright1: this.copyright,
+      retail1: this.retail,
+      quantity1: 1,
+      image1: this.image,
+      product_details: [
+        { CATEGORY: this.setCategoryOptions(this.category), 
+          COPYRIGHT_DATE: this.copyright, 
+          ISBN_13: this.isbn13, TYPE: "PAPERBACK", 
+          QUANTITY_AVAILABLE: this.quantity
+        }
       ]
     };
-  }
+  },
+  props: {
+    title: String,
+    bookid: String,
+    image: Array,
+    name: String,
+    author: String,
+    category: String,
+    publisher: String,
+    isbn13: String,
+    copyright: String,
+    retail: String,
+    cost: String,
+    quantity: Number,
+  },
+  methods: {
+    getImgUrl(pic) {
+      if (pic !== null) {
+        var images = require.context(
+          "../../../public/uploads/products/",
+          false,
+          /\.jpg$/
+        );
+        return images("./" + pic);
+      }
+    },
+    setPublisherOptions(publisher_id) {
+      var publishers = []
+      axios
+        .get("http://127.0.0.1:8000/api/v1/admin/publishers")
+        .then(response => {
+          this.publishers = response.data.publishers;
+          console.log("Pub ID:" + publisher_id)
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    setCategoryOptions(category_id) {
+      var categories = []
+      axios
+        .get("http://127.0.0.1:8000/api/v1/admin/categories")
+        .then(response => {
+          this.categories = response.data.categories;
+          console.log("Cat ID:" + category_id)
+          // for (var r = 0; r < this.categories.length; r++) {
+          //   for (var c = 0; c < this.categories.length; c++) {
+          //     if (this.categories[r][c] === category_id) {
+
+          //     }
+          //   }
+          // }
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    addToCart(product_id, quantity) {
+      var app = this;
+      app.busy = true;
+      axios
+        .post("http://127.0.0.1:8000/api/v1/auth/addtocart/{id}", {
+          product_id: product_id,
+          user_id: app.$auth.user().id,
+          quantity: quantity
+        })
+        .then(function(response) {
+          console.log(response);
+          app.busy = false;
+          app.$emit('refreshCartCounter')
+          alert("This item has been added to your cart")
+        })
+        .catch(error => {
+          console.log(error);
+          app.busy = false
+          alert(
+            "There has been an error adding this item to your cart. Please try again."
+          );
+        });
+    }
+  },
 };
 </script>
 
 <style scoped>
-.block {
-  display: inline-block;
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
-
+.column1 {
+  float: left;
+  width: 30% !important;
+  padding-bottom: 1.5rem !important;
+  padding-left: 3rem !important;
+  margin-right: 6rem;
+}
+.column2 {
+  padding-right: 3rem !important;
+  float: left;
+  width: 20rem;
+}
 .book-detail-container {
   margin: 1% 5%;
   text-align: center;
 }
-
-.add-to-cart-btn {
-  background-color: #3490dc;
-  width: 40%;
-  font-size: 150%;
-}
-.promo-container {
+.spinbutton {
+  width: 15%!important;
+  margin-left: 40%;
+  margin-top: 5px;
   text-align: center;
-  margin: 5% 0%;
 }
-.promo-image {
-  width: 80%;
-  min-height: 350px;
+.add-to-cart-btn {
+  background-color: #ff8d1e;
+  width: 40%;
+  font-size: 1.4rem;
+  margin-left: auto;
+}
+.add-to-cart-btn:hover {
+  background-color: #2196f3;
+  width: 40%;
+  font-size: 1.4rem;
 }
 .block.detail-texts {
   margin: 2% 4%;
@@ -90,8 +215,9 @@ export default {
   margin-top: 5%;
 }
 .cart-button-holder {
-  margin-top: 20%;
+  margin-top: 10%;
   text-align: right;
+  display:flex;
 }
 .detail-table {
   margin-top: 1%;

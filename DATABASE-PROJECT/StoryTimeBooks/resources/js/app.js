@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { BootstrapVue, IconsPlugin} from 'bootstrap-vue'
+import { BootstrapVue, IconsPlugin, ToastPlugin} from 'bootstrap-vue'
 import 'es6-promise/auto'
 import Axios from 'axios'
 import VueAuth from '@websanova/vue-auth'
@@ -15,6 +15,7 @@ window.Vue = require('vue')
 window.Vue = require('./bootstrap')
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
+Vue.use(ToastPlugin)
 Vue.router = router
 Vue.use(VueRouter)
 Vue.use(VueMask)
@@ -25,6 +26,7 @@ Vue.use(VueProgressBar, {
   failedColor: 'red',
   height: '4px',
 })
+
 
 Vue.use(VueAxios, Axios)
 axios.defaults.baseURL = `http://127.0.0.1:8000/api/v1`
