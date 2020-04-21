@@ -279,18 +279,29 @@ class BookController extends Controller
      * Add item to user's cart.
      */
     public function addToCart(Request $request) {
-        $cartItem = new ShoppingCart();
-        // if product_id already exists for $request->user_id, then increment quantity
-        $cartItem->user_id = $request->user_id;
-        $cartItem->product_id = $request->book_id; // make sure these request field names match up
-        $cartItem->quantity = $request->quantity;
-        $cartItem->save();
 
-        return response()->json(
-            [
-                'status' => 'success',
-                'item' => $cartItem
-            ], 200);
+        $existingCartItem = ShoppingCart::checkIfBookExistsInCart($request->product_id, $request->user_id, $request->quantity); 
+
+        if ($existingCartItem === false) {
+            $cartItem = new ShoppingCart();
+            $cartItem->user_id = $request->user_id;
+            $cartItem->product_id = $request->product_id; // make sure these request field names match up
+            $cartItem->quantity = $request->quantity;
+            $cartItem->save();
+
+            return response()->json(
+                [
+                    'status' => 'success',
+                    'item' => $cartItem
+                ], 200);
+        
+        } else {
+            return response()->json(
+                [
+                    'status' => 'success',
+                    'updated item' => $existingCartItem
+                ], 200);
+        }
     }
     
     /**
