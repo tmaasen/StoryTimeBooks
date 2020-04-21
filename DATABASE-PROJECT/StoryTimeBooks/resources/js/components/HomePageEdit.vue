@@ -46,7 +46,11 @@
                     width="250"
                     height="300"
                     alt="Card image cap"
+                    v-b-modal.modal-1
                   />
+                  <b-modal id="modal-1" title="BootstrapVue">
+                    <ProductDetail />
+                  </b-modal>
                 </div>
                 <h4 class="card-title">{{ book.product_name }}</h4>
                 <div class="card-body">
@@ -482,6 +486,8 @@
 </template>
 
 <script>
+import ProductDetailModal from "../components/ProductDetailModal";
+import ProductDetail from "../components/ProductDetail";
 export default {
   data() {
     return {
@@ -497,6 +503,10 @@ export default {
       books_Engineering: [],
       books_Engineering2: []
     };
+  },
+  components: {
+    ProductDetailModal,
+    ProductDetail
   },
   created() {
     axios
@@ -583,10 +593,10 @@ template {
   padding-right: 400px;
 }
 .jumbomessage {
-  background-color:#e9ecef;
-  border-radius:0.5em;
-  font:status-bar;
-  padding:10px;
+  background-color: #e9ecef;
+  border-radius: 0.5em;
+  font: status-bar;
+  padding: 10px;
 }
 .card-img-top {
   height: 300px;
