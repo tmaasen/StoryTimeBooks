@@ -17,13 +17,16 @@ use Illuminate\Http\Request;
 class BookController extends Controller
 {
     /**
-     * Returns ALL books. THIS IS AN ADMIN FUNCTION.
+     * Returns ALL books.
      * 
-     * Method still needs work to encode
      */
     public function allBooks()
     {
-        $books = DB::table('products')->get(); // will have to run a check somewhere for if a book is_deleted = 1
+        $books = DB::table('products')
+            ->join('product_categories', 'products.category_id', '=', 'product_categories.id')
+            ->join('publishers', 'products.publisher_id', '=', 'publishers.id')
+            ->select('products.*', 'product_categories.category', 'publishers.publisher_name')
+            ->get(); // will have to run a check somewhere for if a book is_deleted = 1
         return response()->json(
             [
                 'status' => 'success',
@@ -32,7 +35,7 @@ class BookController extends Controller
     }
 
     /**
-     * Returns ALL books. THIS WILL BE AN ADMIN FUNCTION
+     * Returns ALL book publishers.
      */
     public function allPublishers()
     {
@@ -45,7 +48,7 @@ class BookController extends Controller
     }
 
     /**
-     * Returns ALL book categories. THIS WILL BE AN ADMIN FUNCTION
+     * Returns ALL book categories.
      */
     public function allCategories()
     {
@@ -262,6 +265,7 @@ class BookController extends Controller
             'products.copyright_date',
             'products.isbn_13',
             'products.retail_price',
+            'products.quantity_on_hand',
             'customer_shopping_cart.product_id',
             'customer_shopping_cart.quantity',
             'customer_shopping_cart.actions')

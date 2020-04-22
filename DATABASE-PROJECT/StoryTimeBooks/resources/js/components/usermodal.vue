@@ -187,12 +187,30 @@ export default {
             console.log(response);
             user.$refs["userModal"].hide();
             user.$emit("refreshTables"); // calls the event listener in Admin.vue, which calls the getAll() method
+            user.$notify({
+              message: "User successfully updated",
+              type: "success",
+              top: true,
+              bottom: false,
+              left: false,
+              right: true,
+              showClose: true,
+              closeDelay: 4500,
+            });
           })
           .catch(error => {
             console.log(error);
-            alert(
-              "There has been an error updating user information. Please try again."
-            );
+            user.$refs["userModal"].hide();
+            user.$notify({
+              message: "There has been an error updating this user",
+              type: "error",
+              top: true,
+              bottom: false,
+              left: false,
+              right: true,
+              showClose: true,
+              closeDelay: 10000,
+            });
           });
       }
     },
@@ -212,12 +230,29 @@ export default {
           console.log(response);
           app.$refs["userModal"].hide();
           app.$emit("refreshTables"); // calls the event listener in Admin.vue, which calls the getAll() method
+          app.$notify({
+              message: "User successfully registered",
+              type: "success",
+              top: true,
+              bottom: false,
+              left: false,
+              right: true,
+              showClose: true,
+              closeDelay: 4500,
+            });
         })
         .catch(error => {
           console.log(error);
-          alert(
-            "There has been an error registering the user. Please try again."
-          );
+          app.$notify({
+              message: "There has been an error registering this user",
+              type: "error",
+              top: true,
+              bottom: false,
+              left: false,
+              right: true,
+              showClose: true,
+              closeDelay: 4500,
+            });
         });
     }
   }
