@@ -146,10 +146,30 @@ export default {
         console.log(response);
         app.$refs['publisherModal'].hide()          
         app.$emit('refreshTables') // calls the event listener in Admin.vue, which calls the getAll() method
+        app.$notify({
+              message: "Publisher successfully added",
+              type: "success",
+              top: true,
+              bottom: false,
+              left: false,
+              right: true,
+              showClose: true,
+              closeDelay: 4500,
+            });
       })
       .catch(function(response) {
         console.log(response);
-        alert("There has been an error adding a publisher. Please try again.");
+        app.$refs['publisherModal'].hide()
+        app.$notify({
+              message: "There has been an error adding this publisher",
+              type: "error",
+              top: true,
+              bottom: false,
+              left: false,
+              right: true,
+              showClose: true,
+              closeDelay: 4500,
+            });
       });
       }
     }

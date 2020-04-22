@@ -60,8 +60,8 @@
             id="quantity"
             v-model="cart.item.quantity"
             required
-            min="0"
-            max="50"
+            min="1"
+            :max="quantityOnHand[cart.index]"
             v-on:change="setCartQuantity(cart.item.product_id, $auth.user().id, cart.item.quantity)"
           ></b-form-spinbutton>
         </template>
@@ -139,7 +139,8 @@ export default {
       total: null,
       product_id: null,
       quantity: null,
-      totalItemsInCart: null
+      totalItemsInCart: null,
+      quantityOnHand: null
     };
   },
   mounted() {
@@ -172,6 +173,7 @@ export default {
         .then(function(response) {
           console.log(response);
           app.cart = response.data.products;
+          app.quantityOnHand = response.data.products.map(x => x.quantity_on_hand);
           app.busy = false;
           app.totalItemsInCart = app.$refs.navbar.getItemsInCart();
           app.calculatesubtotal(app.cart);
@@ -179,9 +181,16 @@ export default {
         .catch(error => {
           console.log(error);
           app.busy = false;
-          alert(
-            "There has been an error loading your shopping cart data. Please try again."
-          );
+          app.$notify({
+              message: "There has been an error loading your shopping cart. Please try again.",
+              type: "error",
+              top: true,
+              bottom: false,
+              left: false,
+              right: true,
+              showClose: true,
+              closeDelay: 4500,
+            });
         });
     },
     calculatesubtotal(cart) {
@@ -216,9 +225,16 @@ export default {
         .catch(error => {
           console.log(error);
           app.busy = false;
-          alert(
-            "There has been an error removing this item from your cart. Please try again."
-          );
+          app.$notify({
+              message: "There has been an error removing this item from your cart. Please try again",
+              type: "error",
+              top: true,
+              bottom: false,
+              left: false,
+              right: true,
+              showClose: true,
+              closeDelay: 4500,
+            });
         });
     },
     setCartQuantity(product_id, user_id, quantity) {
@@ -238,9 +254,16 @@ export default {
         .catch(error => {
           console.log(error);
           app.totalsboxbusy = false;
-          alert(
-            "There has been an error setting the correct item quantity for your cart. Please try again."
-          );
+          app.$notify({
+              message: "There has been an error setting the correct quantity for your cart item. Please try again",
+              type: "error",
+              top: true,
+              bottom: false,
+              left: false,
+              right: true,
+              showClose: true,
+              closeDelay: 4500,
+            });
         });
     },
     getImgUrl(pic) {

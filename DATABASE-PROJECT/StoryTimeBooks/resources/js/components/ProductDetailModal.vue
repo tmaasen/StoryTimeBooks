@@ -16,18 +16,17 @@
     <div class="cloumn2">
       <div class="block detail-texts">
         <div class="detail-title-and-author">
-          <h1>{{name}}</h1>
-          <h2>by {{author}}</h2>
+          <h1>{{ name }}</h1>
+          <h2>by {{ author }}</h2>
         </div>
 
         <div class="detail-description-box">
-          <h6>
-            <strong>Publisher</strong>
-            <span>{{setPublisherOptions(publisher)}}</span>
-          </h6>
-          <h6>
-            <strong>Retail</strong><span> $ {{retail}}</span>
-          </h6>
+          <h5>
+            <strong>Publisher: </strong><span>{{ publisher }}</span>
+          </h5>
+          <h5>
+            <strong>Retail Price: </strong><span> $ {{ retail }}</span>
+          </h5>
         </div>
         
         <div class="cart-button-holder">
@@ -35,7 +34,7 @@
             v-model="quantity1"
             required
             min="1"
-            max="50"
+            :max="this.quantity"
             class="spinbutton"
           ></b-form-spinbutton>
           <b-button class="add-to-cart-btn" @click="addToCart(bookid, quantity1)">Add To Cart</b-button>
@@ -48,9 +47,6 @@
         striped 
         hover 
         :items="product_details">
-         <!-- <template v-slot:cell(CATEGORY)="">
-           <span>setCategoryOptions()</span>
-         </template> -->
         </b-table>
       </div>
     </div>
@@ -76,7 +72,7 @@ export default {
       quantity1: 1,
       image1: this.image,
       product_details: [
-        { CATEGORY: this.setCategoryOptions(this.category), 
+        { CATEGORY: this.category, 
           COPYRIGHT_DATE: this.copyright, 
           ISBN_13: this.isbn13, TYPE: "PAPERBACK", 
           QUANTITY_AVAILABLE: this.quantity
@@ -109,36 +105,17 @@ export default {
         return images("./" + pic);
       }
     },
-    setPublisherOptions(publisher_id) {
-      var publishers = []
-      axios
-        .get("http://127.0.0.1:8000/api/v1/admin/publishers")
-        .then(response => {
-          this.publishers = response.data.publishers;
-          console.log("Pub ID:" + publisher_id)
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    },
-    setCategoryOptions(category_id) {
-      var categories = []
-      axios
-        .get("http://127.0.0.1:8000/api/v1/admin/categories")
-        .then(response => {
-          this.categories = response.data.categories;
-          console.log("Cat ID:" + category_id)
-          // for (var r = 0; r < this.categories.length; r++) {
-          //   for (var c = 0; c < this.categories.length; c++) {
-          //     if (this.categories[r][c] === category_id) {
-
-          //     }
-          //   }
-          // }
-        })
-        .catch(error => {
-          console.log(error);
-        });
+    showSuccessNotification () {
+      this.$notify({
+        message: "Item has been added to your cart",
+        type: "success",
+        top: true,
+        bottom: false,
+        left: false,
+        right: true,
+        showClose: true,
+        closeDelay: 4500
+      });
     },
     addToCart(product_id, quantity) {
       var app = this;
@@ -152,17 +129,26 @@ export default {
         .then(function(response) {
           console.log(response);
           app.busy = false;
+          app.$refs['ProductDetailModal'].hide()
           app.$emit('refreshCartCounter')
-          alert("This item has been added to your cart")
+          app.showSuccessNotification();
         })
         .catch(error => {
           console.log(error);
           app.busy = false
-          alert(
-            "There has been an error adding this item to your cart. Please try again."
-          );
-        });
-    }
+          app.$refs['ProductDetailModal'].hide()
+            app.$notify({
+              message: "There has been an error adding this item to your cart",
+              type: "error",
+              top: true,
+              bottom: false,
+              left: false,
+              right: true,
+              showClose: true,
+              closeDelay: 4500,
+            });
+          });
+      }
   },
 };
 </script>
@@ -212,10 +198,10 @@ export default {
   text-align: left;
 }
 .detail-description-box {
-  margin-top: 5%;
+  margin-top: 3%;
 }
 .cart-button-holder {
-  margin-top: 10%;
+  margin-top: 5%!important;
   text-align: right;
   display:flex;
 }

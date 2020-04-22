@@ -51,14 +51,15 @@
                       v-b-modal="`productdetails-${book.id}`"
                     />
                     <ProductDetailModal
+                      v-if="book.quantity_on_hand > 0"
                       :id="`productdetails-${book.id}`"
                       title="Product Details"
                       :bookid="`${book.id}`"
                       :image="`${book.product_image}`"
                       :name="`${book.product_name}`"
                       :author="`${book.author}`"
-                      :category="`${book.category_id}`"
-                      :publisher="`${book.publisher_id}`"
+                      :category="`${book.category}`"
+                      :publisher="`${book.publisher_name}`"
                       :isbn13="`${book.isbn_13}`"
                       :copyright="`${book.copyright_date}`"
                       :retail="`${book.retail_price}`"
@@ -85,9 +86,10 @@
                         spinner-variant="primary"
                         class="d-inline-block"
                       >
-                        <a class="btn btn-primary">
+                        <a class="btn btn-primary" v-if="book.quantity_on_hand > 0">
                           <b @click="quickAdd(book.id, book.product_name)">Quick Add</b>
                         </a>
+                        <h3 v-else>Out of Stock</h3>
                       </b-overlay>
                     </div>
                   </div>
@@ -108,14 +110,15 @@
                       v-b-modal="`productdetails-${book.id}`"
                     />
                     <ProductDetailModal
+                      v-if="book.quantity_on_hand > 0"
                       :id="`productdetails-${book.id}`"
                       title="Product Details"
                       :bookid="`${book.id}`"
                       :image="`${book.product_image}`"
                       :name="`${book.product_name}`"
                       :author="`${book.author}`"
-                      :category="`${book.category_id}`"
-                      :publisher="`${book.publisher_id}`"
+                      :category="`${book.category}`"
+                      :publisher="`${book.publisher_name}`"
                       :isbn13="`${book.isbn_13}`"
                       :copyright="`${book.copyright_date}`"
                       :retail="`${book.retail_price}`"
@@ -142,9 +145,10 @@
                         spinner-variant="primary"
                         class="d-inline-block"
                       >
-                        <a class="btn btn-primary">
+                        <a class="btn btn-primary" v-if="book.quantity_on_hand > 0">
                           <b @click="quickAdd(book.id, book.product_name)">Quick Add</b>
                         </a>
+                        <h3 v-else>Out of Stock</h3>
                       </b-overlay>
                     </div>
                   </div>
@@ -197,14 +201,15 @@
                     v-b-modal="`productdetails-${book.id}`"
                   />
                   <ProductDetailModal
+                    v-if="book.quantity_on_hand > 0"
                     :id="`productdetails-${book.id}`"
                     title="Product Details"
                     :bookid="`${book.id}`"
                     :image="`${book.product_image}`"
                     :name="`${book.product_name}`"
                     :author="`${book.author}`"
-                    :category="`${book.category_id}`"
-                    :publisher="`${book.publisher_id}`"
+                    :category="`${book.category}`"
+                    :publisher="`${book.publisher_name}`"
                     :isbn13="`${book.isbn_13}`"
                     :copyright="`${book.copyright_date}`"
                     :retail="`${book.retail_price}`"
@@ -229,9 +234,10 @@
                         spinner-variant="primary"
                         class="d-inline-block"
                       >
-                        <a class="btn btn-primary">
+                        <a class="btn btn-primary" v-if="book.quantity_on_hand > 0">
                           <b @click="quickAdd(book.id, book.product_name)">Quick Add</b>
                         </a>
+                        <h3 v-else>Out of Stock</h3>
                       </b-overlay>
                   </div>
                 </div>
@@ -250,14 +256,15 @@
                     v-b-modal="`productdetails-${book.id}`"
                   />
                   <ProductDetailModal
+                    v-if="book.quantity_on_hand > 0"
                     :id="`productdetails-${book.id}`"
                     title="Product Details"
                     :bookid="`${book.id}`"
                     :image="`${book.product_image}`"
                     :name="`${book.product_name}`"
                     :author="`${book.author}`"
-                    :category="`${book.category_id}`"
-                    :publisher="`${book.publisher_id}`"
+                    :category="`${book.category}`"
+                    :publisher="`${book.publisher_name}`"
                     :isbn13="`${book.isbn_13}`"
                     :copyright="`${book.copyright_date}`"
                     :retail="`${book.retail_price}`"
@@ -282,9 +289,10 @@
                         spinner-variant="primary"
                         class="d-inline-block"
                       >
-                        <a class="btn btn-primary">
+                        <a class="btn btn-primary" v-if="book.quantity_on_hand > 0">
                           <b @click="quickAdd(book.id, book.product_name)">Quick Add</b>
                         </a>
+                        <h3 v-else>Out of Stock</h3>
                       </b-overlay>
                   </div>
                 </div>
@@ -337,14 +345,15 @@
                       v-b-modal="`productdetails-${book.id}`"
                     />
                     <ProductDetailModal
+                      v-if="book.quantity_on_hand > 0"
                       :id="`productdetails-${book.id}`"
                       title="Product Details"
                       :bookid="`${book.id}`"
                       :image="`${book.product_image}`"
                       :name="`${book.product_name}`"
                       :author="`${book.author}`"
-                      :category="`${book.category_id}`"
-                      :publisher="`${book.publisher_id}`"
+                      :category="`${book.category}`"
+                      :publisher="`${book.publisher_name}`"
                       :isbn13="`${book.isbn_13}`"
                       :copyright="`${book.copyright_date}`"
                       :retail="`${book.retail_price}`"
@@ -371,9 +380,10 @@
                         spinner-variant="primary"
                         class="d-inline-block"
                       >
-                        <a class="btn btn-primary">
+                        <a class="btn btn-primary" v-if="book.quantity_on_hand > 0">
                           <b @click="quickAdd(book.id, book.product_name)">Quick Add</b>
                         </a>
+                        <h3 v-else>Out of Stock</h3>
                       </b-overlay>
                     </div>
                   </div>
@@ -394,14 +404,15 @@
                       v-b-modal="`productdetails-${book.id}`"
                     />
                     <ProductDetailModal
+                      v-if="book.quantity_on_hand > 0"
                       :id="`productdetails-${book.id}`"
                       title="Product Details"
                       :bookid="`${book.id}`"
                       :image="`${book.product_image}`"
                       :name="`${book.product_name}`"
                       :author="`${book.author}`"
-                      :category="`${book.category_id}`"
-                      :publisher="`${book.publisher_id}`"
+                      :category="`${book.category}`"
+                      :publisher="`${book.publisher_name}`"
                       :isbn13="`${book.isbn_13}`"
                       :copyright="`${book.copyright_date}`"
                       :retail="`${book.retail_price}`"
@@ -428,9 +439,10 @@
                         spinner-variant="primary"
                         class="d-inline-block"
                       >
-                        <a class="btn btn-primary">
+                        <a class="btn btn-primary" v-if="book.quantity_on_hand > 0">
                           <b @click="quickAdd(book.id, book.product_name)">Quick Add</b>
                         </a>
+                        <h3 v-else>Out of Stock</h3>
                       </b-overlay>
                     </div>
                   </div>
@@ -484,14 +496,15 @@
                       v-b-modal="`productdetails-${book.id}`"
                     />
                     <ProductDetailModal
+                      v-if="book.quantity_on_hand > 0"
                       :id="`productdetails-${book.id}`"
                       title="Product Details"
                       :bookid="`${book.id}`"
                       :image="`${book.product_image}`"
                       :name="`${book.product_name}`"
                       :author="`${book.author}`"
-                      :category="`${book.category_id}`"
-                      :publisher="`${book.publisher_id}`"
+                      :category="`${book.category}`"
+                      :publisher="`${book.publisher_name}`"
                       :isbn13="`${book.isbn_13}`"
                       :copyright="`${book.copyright_date}`"
                       :retail="`${book.retail_price}`"
@@ -518,9 +531,10 @@
                         spinner-variant="primary"
                         class="d-inline-block"
                       >
-                        <a class="btn btn-primary">
+                        <a class="btn btn-primary" v-if="book.quantity_on_hand > 0">
                           <b @click="quickAdd(book.id, book.product_name)">Quick Add</b>
                         </a>
+                        <h3 v-else>Out of Stock</h3>
                       </b-overlay>
                     </div>
                   </div>
@@ -541,14 +555,15 @@
                       v-b-modal="`productdetails-${book.id}`"
                     />
                     <ProductDetailModal
+                      v-if="book.quantity_on_hand > 0"
                       :id="`productdetails-${book.id}`"
                       title="Product Details"
                       :bookid="`${book.id}`"
                       :image="`${book.product_image}`"
                       :name="`${book.product_name}`"
                       :author="`${book.author}`"
-                      :category="`${book.category_id}`"
-                      :publisher="`${book.publisher_id}`"
+                      :category="`${book.category}`"
+                      :publisher="`${book.publisher_name}`"
                       :isbn13="`${book.isbn_13}`"
                       :copyright="`${book.copyright_date}`"
                       :retail="`${book.retail_price}`"
@@ -575,9 +590,10 @@
                         spinner-variant="primary"
                         class="d-inline-block"
                       >
-                        <a class="btn btn-primary">
+                        <a class="btn btn-primary" v-if="book.quantity_on_hand > 0">
                           <b @click="quickAdd(book.id, book.product_name)">Quick Add</b>
                         </a>
+                        <h3 v-else>Out of Stock</h3>
                       </b-overlay>
                     </div>
                   </div>
@@ -631,14 +647,15 @@
                       v-b-modal="`productdetails-${book.id}`"
                     />
                     <ProductDetailModal
+                      v-if="book.quantity_on_hand > 0"
                       :id="`productdetails-${book.id}`"
                       title="Product Details"
                       :bookid="`${book.id}`"
                       :image="`${book.product_image}`"
                       :name="`${book.product_name}`"
                       :author="`${book.author}`"
-                      :category="`${book.category_id}`"
-                      :publisher="`${book.publisher_id}`"
+                      :category="`${book.category}`"
+                      :publisher="`${book.publisher_name}`"
                       :isbn13="`${book.isbn_13}`"
                       :copyright="`${book.copyright_date}`"
                       :retail="`${book.retail_price}`"
@@ -665,9 +682,10 @@
                         spinner-variant="primary"
                         class="d-inline-block"
                       >
-                        <a class="btn btn-primary">
+                        <a class="btn btn-primary" v-if="book.quantity_on_hand > 0">
                           <b @click="quickAdd(book.id, book.product_name)">Quick Add</b>
                         </a>
+                        <h3 v-else>Out of Stock</h3>
                       </b-overlay>
                     </div>
                   </div>
@@ -688,14 +706,15 @@
                       v-b-modal="`productdetails-${book.id}`"
                     />
                     <ProductDetailModal
+                      v-if="book.quantity_on_hand > 0"
                       :id="`productdetails-${book.id}`"
                       title="Product Details"
                       :bookid="`${book.id}`"
                       :image="`${book.product_image}`"
                       :name="`${book.product_name}`"
                       :author="`${book.author}`"
-                      :category="`${book.category_id}`"
-                      :publisher="`${book.publisher_id}`"
+                      :category="`${book.category}`"
+                      :publisher="`${book.publisher_name}`"
                       :isbn13="`${book.isbn_13}`"
                       :copyright="`${book.copyright_date}`"
                       :retail="`${book.retail_price}`"
@@ -722,9 +741,10 @@
                         spinner-variant="primary"
                         class="d-inline-block"
                       >
-                        <a class="btn btn-primary">
+                        <a class="btn btn-primary" v-if="book.quantity_on_hand > 0">
                           <b @click="quickAdd(book.id, book.product_name)">Quick Add</b>
                         </a>
+                        <h3 v-else>Out of Stock</h3>
                       </b-overlay>
                     </div>
                   </div>
@@ -757,7 +777,7 @@ export default {
       books_MusicTheatre: [],
       books_MusicTheatre2: [],
       books_Engineering: [],
-      books_Engineering2: []
+      books_Engineering2: [],
     };
   },
   components: {
@@ -765,7 +785,23 @@ export default {
     navtop
   },
   created() {
-    axios
+    this.getProducts();
+  },
+  methods: {
+    showNotification () {
+      this.$notify({
+        message: "Item has been added to your cart",
+        type: "success",
+        top: true,
+        bottom: false,
+        left: false,
+        right: true,
+        showClose: true,
+        closeDelay: 4500
+      });
+    },
+    getProducts() {
+      axios
       .get("http://127.0.0.1:8000/api/v1/auth/products")
       .then(response => {
         // loop through the array, setting each book into a category group
@@ -818,8 +854,7 @@ export default {
       .then(error => {
         console.log(error);
       });
-  },
-  methods: {
+    },
     getImgUrl(pic) {
       if (pic !== null) {
         var images = require.context(
@@ -836,6 +871,18 @@ export default {
     },
     quickAdd(product_id) { // item will be added to cart with default quantity of 1
       var app = this;
+    if (!app.$auth.check()) {
+        app.$notify({
+        message: "Please log in before adding items to your cart",
+        type: "warning",
+        top: true,
+        bottom: false,
+        left: false,
+        right: true,
+        showClose: true,
+        closeDelay: 4500,
+      });
+    } else {
       app.busy = true;
       axios
         .post("http://127.0.0.1:8000/api/v1/auth/addtocart/{id}", {
@@ -847,15 +894,23 @@ export default {
           console.log(response);
           app.busy = false;
           app.updateNavbarCart();
-          alert("This item has been added to your cart.")
+          app.showNotification();
         })
         .catch(error => {
           console.log(error);
           app.busy = false;
-          alert(
-            "There has been an error adding this item to your cart. Please try again."
-          );
-        });
+          app.$notify({
+              message: "There has been an error adding this item to your cart",
+              type: "error",
+              top: true,
+              bottom: false,
+              left: false,
+              right: true,
+              showClose: true,
+              closeDelay: 4500,
+            });
+          });
+      }
     }
   }
 };

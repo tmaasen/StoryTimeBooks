@@ -261,9 +261,16 @@ export default {
         .catch(error => {
           console.log(error);
           user.busy = false
-          alert(
-            "There has been an error loading user data. Please try again."
-          );
+          user.$notify({
+              message: "There has been an error loading user information. Please try again.",
+              type: "error",
+              top: true,
+              bottom: false,
+              left: false,
+              right: true,
+              showClose: true,
+              closeDelay: 4500,
+            });
         });
     },
     updateUserAddress(userid) {
@@ -286,9 +293,16 @@ export default {
         .catch(error => {
           console.log(error);
           user.busy = false
-          alert(
-            "There has been an error updating user address information. Please try again."
-          );
+          user.$notify({
+              message: "There has been an error updating user address information. Please try again.",
+              type: "error",
+              top: true,
+              bottom: false,
+              left: false,
+              right: true,
+              showClose: true,
+              closeDelay: 4500,
+            });
         });
     },
     updateUser(userid) {
@@ -307,9 +321,16 @@ export default {
         .catch(error => {
           console.log(error);
           user.busy = false
-          alert(
-            "There has been an error updating user information. Please try again."
-          );
+          user.$notify({
+              message: "There has been an error updating user information. Please try again.",
+              type: "error",
+              top: true,
+              bottom: false,
+              left: false,
+              right: true,
+              showClose: true,
+              closeDelay: 4500,
+            });
         });
       this.updateUserAddress(userid);
     },
@@ -336,13 +357,22 @@ export default {
         .then(function(response) {
           console.log(response);
           app.busy = false
+          app.logout();
         })
         .catch(error => {
           console.log(error);
           app.busy = false
-          alert("There has been an error removing the user. Please try again.");
+          app.$notify({
+              message: "There has been an error removing this user.",
+              type: "error",
+              top: true,
+              bottom: false,
+              left: false,
+              right: true,
+              showClose: true,
+              closeDelay: 4500,
+            });
         });
-      this.logout();
     },
     setStateOptions() {
       var user = this
