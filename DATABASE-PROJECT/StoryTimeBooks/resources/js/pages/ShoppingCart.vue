@@ -93,25 +93,25 @@
       <!-- Totals box -->
       <b-overlay :show="totalsboxbusy" rounded="lg" opacity="0.6">
         <div class="column2">
-          <b-card :header="`${totalItemsInCart} Items in your Cart`" class="checkoutCard">
+          <b-card :header="`${totalItemsInCart} Items In Your Cart`" class="checkoutCard">
             <b-card-text v-model="subtotal">
               Subtotal:&nbsp;
-              <span
-                style="text-align:center!important;"
+              <span style="float:right"
               >$ {{ formatPrice(subtotal) }}</span>
             </b-card-text>
             <hr />
-            <b-card-text>Shipping:&nbsp;$0.00</b-card-text>
+            <b-card-text>Shipping:&nbsp;<span style="float:right">$ 0.00</span></b-card-text>
             <hr />
-            <b-card-text v-if="subtotal >= 75">Discount:&nbsp;10%</b-card-text>
+            <b-card-text v-model="discount" v-if="subtotal >= 75">Discount:&nbsp;
+              <span style="float:right">$ {{ formatPrice(discount) }} (10%)</span></b-card-text>
             <b-card-text v-else>Discount:&nbsp;NONE</b-card-text>
             <hr />
             <b-card-text v-model="total">
               <b>Total:</b>
-              &nbsp;$ {{ formatPrice(total) }}
+              &nbsp;<span style="float:right">$ {{ formatPrice(total) }}</span>
             </b-card-text>
             <template v-slot:footer>
-              <router-link to="#">
+              <router-link :to="`/user/${$auth.user().id}/purchase/info`">
                 <b-button block class="checkoutbtn" variant="primary">Checkout</b-button>
               </router-link>
             </template>
@@ -136,6 +136,7 @@ export default {
       tableFields: ["Product", "Product_Info", "Price", "Quantity", "Total"],
       cart: [],
       subtotal: null,
+      discount:null,
       total: null,
       product_id: null,
       quantity: null,
@@ -148,7 +149,7 @@ export default {
   },
   components: {
     navtop,
-    navbottom
+    navbottom,
   },
   created() {
     this.getCartItems();
@@ -201,7 +202,14 @@ export default {
           parseFloat(this.cart[i].quantity);
       }
       this.calculatetotal(this.subtotal);
+      this.calculatediscount(this.subtotal);
       return this.subtotal;
+    },
+    calculatediscount(subtotal) {
+      if (this.subtotal >= 75) {
+        this.discount = this.subtotal * 0.1;
+      } else this.discount = 0;
+      return this.discount;
     },
     calculatetotal(subtotal) {
       if (this.subtotal >= 75) {
@@ -286,6 +294,14 @@ export default {
   font-size: 1rem;
   margin-left: auto;
 }
+.checkoutbtn {
+  background-color: #ff8d1e;
+  font-size: 1.4rem;
+}
+.checkoutbtn:hover {
+  background-color: #2196f3;
+  font-size: 1.4rem;
+}
 .row:after {
   content: "";
   display: table;
@@ -314,13 +330,5 @@ export default {
 .card-footer {
   text-align: center;
   background-color: #e9ecef;
-}
-.checkoutbtn {
-  background-color: #ff8d1e;
-  font-size: 1.4rem;
-}
-.checkoutbtn:hover {
-  background-color: #2196f3;
-  font-size: 1.4rem;
 }
 </style>

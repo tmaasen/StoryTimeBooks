@@ -107,11 +107,14 @@ class UserController extends Controller
 
         $userInfo = DB::table('users')
             ->join('user_address', 'users.id', '=', 'user_address.user_id')
+            ->join('user_creditcard', 'users.id', '=', 'user_creditcard.user_id')
             ->select(
+            // general info
             'users.id',
             'users.first_name',
             'users.last_name',
-            'users.email', 
+            'users.email',
+            // address info
             'user_address.address_line_1',
             'user_address.suite_no',
             'user_address.city',
@@ -119,6 +122,12 @@ class UserController extends Controller
             'user_address.zipcode',
             'user_address.home_phone',
             'user_address.work_phone',
+            // financial info
+            'user_creditcard.card_name',
+            'user_creditcard.card_id',
+            'user_creditcard.card_number',
+            'user_creditcard.exp_month',
+            'user_creditcard.exp_year',
             )
             ->where('users.id', $request->id)
             ->first();

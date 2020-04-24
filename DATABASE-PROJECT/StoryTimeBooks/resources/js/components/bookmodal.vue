@@ -8,7 +8,7 @@
           label-for="name"
           invalid-feedback="Product Name is required"
           :state="productState"
-        >
+        > 
           <b-form-input id="name" v-model="name" required :state="productState"></b-form-input>
         </b-form-group>
         <!-- Author -->

@@ -1,9 +1,4 @@
 <template>
-<div>
-  <head>
-    <title>StoryTime | Checkout</title>
-  </head>
-
   <div>
     <div class="profileContent">
       <p class="profileTitle">Credit Card Information</p>
@@ -141,7 +136,7 @@
                 <label>
                   <input type="checkbox" checked="checked" name="sameadr" /> Shipping address same as billing
                 </label>
-                <input type="submit" value="Apply Changes" class="btn1" />
+                <input type="submit" value="Checkout" class="btn1" />
               </form>
             </div>
           </div>
@@ -149,7 +144,6 @@
       </b-container>
     </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -162,6 +156,14 @@ export default {
 
 
 <style scoped>
+.checkoutbtn {
+  background-color: #ff8d1e;
+  font-size: 1.4rem;
+}
+.checkoutbtn:hover {
+  background-color: #2196f3;
+  font-size: 1.4rem;
+}
 .profileContent {
   margin: 5% 25% 5% 0%;
 }
