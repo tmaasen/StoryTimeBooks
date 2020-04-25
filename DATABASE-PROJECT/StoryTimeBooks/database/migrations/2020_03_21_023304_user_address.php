@@ -18,6 +18,8 @@ class UserAddress extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedInteger('address_type_id');
+            $table->foreign('address_type_id')->references('id')->on('address_type');
             $table->string('address_line_1');
             $table->string('suite_no');
             $table->string('city');

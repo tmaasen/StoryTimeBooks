@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use App\UserAddress;
+use App\UserCreditCard;
 use App\User;
 use DB;
 use Illuminate\Http\Request;
@@ -30,8 +31,9 @@ class UserController extends Controller
      */
     public function updateUser(Request $request)
     {
+        $user = null;
         if ($request->password != null) {
-            DB::table('users')->where('id', $request->id)->update([
+            $user = DB::table('users')->where('id', $request->id)->update([
                 
                 'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
@@ -41,7 +43,7 @@ class UserController extends Controller
                 'is_deleted' => $request->is_Deleted,
             ]);
         } else {
-            DB::table('users')->where('id', $request->id)->update([
+            $user = DB::table('users')->where('id', $request->id)->update([
             
                 'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
@@ -49,10 +51,40 @@ class UserController extends Controller
             ]);
          }
 
+        if ($request->address_line_1 !== null) 
+            $this->updateUserAddress($request);
+
         return response()->json(
             [
                 'status' => 'success',
-                'message' => 'Updated user info successfully'
+                'message' => 'Updated user info successfully',
+                'user' => $user
+            ], 200);
+    }
+
+    /**
+     * Add the specified address in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     */
+    public function addUserAddress(Request $request)
+    {
+            $shipping = new UserAddress();
+            $shipping->user_id = $request->id;
+            $shipping->address_type_id = 1;
+            $shipping->address_line_1 = $request->address_line_1;
+            $shipping->suite_no = $request->suite_no;
+            $shipping->city = $request->city;
+            $shipping->state_id = $request->state_id;
+            $shipping->zipcode = $request->zipcode;
+            $shipping->save();
+
+        return response()->json(
+            [
+                'status' => 'success',
+                'message' => 'Added user address successfully',
+                'address' => $shipping
             ], 200);
     }
 
@@ -64,22 +96,145 @@ class UserController extends Controller
      */
     public function updateUserAddress(Request $request)
     {
-        DB::table('user_address')->where('user_id', $request->user_id)->update([
-            
-            'address_line_1' => $request->address_line_1,
-            'suite_no' => $request->suite_no,
-            'city' => $request->city,
-            'state_id' => $request->state_id,
-            'zipcode' => $request->zipcode,
-            'home_phone' => $request->home_phone,
-            'work_phone' => $request->work_phone,
+        if (DB::table('user_address')->where('user_id', $request->id)->where('address_type_id', 1)->exists()) {
+            $address = DB::table('user_address')->where('user_id', $request->id)->where('address_type_id', 1)->update([
+                
+                'address_line_1' => $request->address_line_1,
+                'suite_no' => $request->suite_no,
+                'city' => $request->city,
+                'state_id' => $request->state_id,
+                'zipcode' => $request->zipcode,
+                'home_phone' => $request->home_phone,
+                'work_phone' => $request->work_phone,
 
-        ]);
+            ]);
+        } else {
+            $this->addUserAddress($request);
+        }
+
+        if ($request->card_type !== null) 
+            $this->updatePaymentMethod($request);
 
         return response()->json(
             [
                 'status' => 'success',
-                'message' => 'Updated user address info successfully'
+                'message' => 'Updated user address info successfully',
+                'address' => $address
+            ], 200);
+    }
+
+    /**
+     * Update the specified user billing address in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     */
+    public function updateBillingAddress(Request $request)
+    {
+        if (DB::table('user_address')->where('user_id', $request->id)->where('address_type_id', 2)->exists()) {
+
+            $address = DB::table('user_address')->where('user_id', $request->id)->where('address_type_id', 2)->update([
+                
+                'address_line_1' => $request->billing_address,
+                'suite_no' => $request->billing_suite_no,
+                'city' => $request->billing_city,
+                'state_id' => $request->billing_state,
+                'zipcode' => $request->billing_zip,
+
+            ]);
+        } else {
+            $this->addBillingAddress($request);
+        }
+
+        return response()->json(
+            [
+                'status' => 'success',
+                'message' => 'Updated user billing address info successfully',
+                'address' => $address
+            ], 200);
+    }
+
+    /**
+     * Add the specified billing address in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     */
+    public function addBillingAddress(Request $request)
+    {
+            $billing = new UserAddress();
+            $billing->user_id = $request->id;
+            $billing->address_type_id = 2;
+            $billing->address_line_1 = $request->billing_address;
+            $billing->suite_no = $request->billing_suite_no;
+            $billing->city = $request->billing_city;
+            $billing->state_id = $request->billing_state;
+            $billing->zipcode = $request->billing_zip;
+            $billing->save();
+
+        return response()->json(
+            [
+                'status' => 'success',
+                'message' => 'Added billing address successfully',
+                'address' => $billing
+            ], 200);
+    }
+    
+    /**
+     * Add a payment method under the specified user in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     */
+    public function addPaymentMethod(Request $request)
+    {
+        $card = new UserCreditCard();
+        $card->user_id = $request->id;
+        $card->card_id = $request->card_type;
+        $card->card_name = $request->card_name;
+        $card->card_number = $request->card_number;
+        $card->exp_month = $request->exp_month;
+        $card->exp_year = $request->exp_year;
+        $card->save();
+
+        return response()->json([
+            'status' => 'success',
+            'card' => $card
+        ], 200);
+    }
+
+    /**
+     * Update the specified user payment method in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     */
+    public function updatePaymentMethod(Request $request)
+    {
+        $cardInfo = null;
+        if (DB::table('user_creditcard')->where('user_id', $request->id)->exists()) {
+            $cardInfo = DB::table('user_creditcard')->where('user_id', $request->id)->update([
+                
+                'card_name' => $request->card_name,
+                'card_id' => $request->card_type,
+                'card_number' => $request->card_number,
+                'exp_month' => $request->exp_month,
+                'exp_year' => $request->exp_year,
+
+            ]);
+
+        } else {
+            $this->addPaymentMethod($request);
+        }
+
+        if ($request->billing_address !== null) 
+            $this->updateBillingAddress($request);
+
+        return response()->json(
+            [
+                'status' => 'success',
+                'message' => 'Updated user card info successfully',
+                'credit card' => $cardInfo
             ], 200);
     }
 
@@ -103,38 +258,74 @@ class UserController extends Controller
     /**
      * Get authenticated user's information.
      */
-    public function userInfo(Request $request) {
-
+    public function allUserInfo(Request $request) {
+        $shippingInfo = null;
+        $cardInfo = null;
+        $billingAddress = null;
         $userInfo = DB::table('users')
-            ->join('user_address', 'users.id', '=', 'user_address.user_id')
-            ->join('user_creditcard', 'users.id', '=', 'user_creditcard.user_id')
             ->select(
-            // general info
             'users.id',
             'users.first_name',
             'users.last_name',
             'users.email',
-            // address info
-            'user_address.address_line_1',
-            'user_address.suite_no',
-            'user_address.city',
-            'user_address.state_id',
-            'user_address.zipcode',
-            'user_address.home_phone',
-            'user_address.work_phone',
-            // financial info
-            'user_creditcard.card_name',
-            'user_creditcard.card_id',
-            'user_creditcard.card_number',
-            'user_creditcard.exp_month',
-            'user_creditcard.exp_year',
             )
             ->where('users.id', $request->id)
             ->first();
 
+        if (DB::table('user_address')->where('user_id', $request->id)
+            ->where('user_address.address_type_id', 1)->exists()) {
+            $shippingInfo = DB::table('user_address')
+                ->select(
+                    'user_address.address_type_id',
+                    'user_address.address_line_1',
+                    'user_address.suite_no',
+                    'user_address.city',
+                    'user_address.state_id',
+                    'user_address.zipcode',
+                    'user_address.home_phone',
+                    'user_address.work_phone',
+                )
+                ->where('user_id', $request->id)
+                ->where('user_address.address_type_id', 1)
+                ->first();
+        }
+
+        if (DB::table('user_creditcard')->where('user_id', $request->id)->exists()) {
+            $cardInfo = DB::table('user_creditcard')
+                ->select(
+                    'user_creditcard.card_name',
+                    'user_creditcard.card_id',
+                    'user_creditcard.card_number',
+                    'user_creditcard.exp_month',
+                    'user_creditcard.exp_year',
+                )
+                ->where('user_id', $request->id)
+                ->first();
+        }
+
+        if (DB::table('user_address')
+            ->where('user_id', $request->id)
+            ->where('user_address.address_type_id', 2)
+            ->exists()) {
+            $billingAddress = DB::table('user_address')
+                ->select(
+                    'user_address.address_type_id',
+                    'user_address.address_line_1',
+                    'user_address.suite_no',
+                    'user_address.city',
+                    'user_address.state_id',
+                    'user_address.zipcode'
+                )->where('user_id', $request->id)
+                ->where('user_address.address_type_id', 2)
+                ->first();
+        }
+
          return response()->json([
             'status' => 'success',
-            'user' => $userInfo
+            'user' => $userInfo,
+            'shipping' => $shippingInfo,
+            'card' => $cardInfo,
+            'billing' => $billingAddress
         ]);
     }
 }

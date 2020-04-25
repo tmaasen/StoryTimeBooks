@@ -121,3 +121,9 @@ INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('17
 INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('18', 'Family');
 INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('19', 'Crime');
 INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('20', 'Comics');
+
+INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('1', 'Business');
+INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('2', 'Computer Sciences');
+INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('3', 'Psychology');
+INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('4', 'Music/Theatre');
+INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('5', 'Engineering');

@@ -13,16 +13,16 @@ class OrderTable extends Migration
      */
     public function up()
     {
-        Schema::create('order_table',
+        Schema::create('orders',
         function(Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('user_id')->on('customer_shopping_cart');
             $table->integer('items_ordered');
-            $table->decimal('subtotal');
-            $table->decimal('discount');
-            $table->decimal('total');
-            $table->integer('confirmation_number', 15) -> unique();
+            $table->decimal('subtotal', 8, 2);
+            $table->decimal('discount', 8, 2);
+            $table->decimal('total', 8, 2);
+            $table->integer('confirmation_number')->unique();
             $table->timestamps();
         });
     }
@@ -34,6 +34,6 @@ class OrderTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_table');
+        Schema::dropIfExists('orders');
     }
 }

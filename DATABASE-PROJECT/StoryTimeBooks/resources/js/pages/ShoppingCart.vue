@@ -5,7 +5,7 @@
   </head>
   <navtop ref="navbar" @updateItemCount="updateItemCount($event)" />
   <b-overlay :show="busy" rounded="lg" opacity="1.0">
-    <h1 class="pt-4 pl-5">{{ $auth.user().first_name }}'s Shopping Cart</h1>
+    <h1 class="pt-4" style="padding-left:2rem;">{{ $auth.user().first_name }}'s Shopping Cart</h1>
     <div class="row">
       <b-table
         id="shoppingcart-table"
@@ -111,7 +111,7 @@
               &nbsp;<span style="float:right">$ {{ formatPrice(total) }}</span>
             </b-card-text>
             <template v-slot:footer>
-              <router-link :to="`/user/${$auth.user().id}/purchase/info`">
+              <router-link style="text-decoration:none" :to="`/user/${$auth.user().id}/order/info`">
                 <b-button block class="checkoutbtn" variant="primary">Checkout</b-button>
               </router-link>
             </template>

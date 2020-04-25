@@ -36,7 +36,7 @@ Route::prefix('v1')->group(function () {
                 // Removes a user
                 Route::post('removeuser/{id}', 'Users\UserController@removeUser');
                 // Get user address info
-                Route::get('userinfo/{id}', 'Users\UserController@userInfo');
+                Route::get('userinfo/{id}', 'Users\UserController@allUserInfo');
                 // Update user address info
                 Route::put('updateuseraddress/{id}', 'Users\UserController@updateUserAddress');
                 // Update user info
@@ -51,6 +51,8 @@ Route::prefix('v1')->group(function () {
                 Route::get('shoppingcart/{id}', 'BookController@getCartItems');
                 // display user cart count on navbar
                 Route::get('itemsincart/{id}', 'BookController@getCartItemCount');
+                // insert or update all order info given by user
+                Route::post('orderinfo/{id}', 'Users\UserController@updateUser');
                 // insert an order
                 Route::post('order', 'OrderController@insertOrder');
                 // insert order_item(s)

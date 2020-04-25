@@ -13,16 +13,15 @@ class OrderItemTable extends Migration
      */
     public function up()
     {
-        Schema::create('order_item_table',
-        function(Blueprint $table) {
+        Schema::create('order_item', function(Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_order_id');
-            $table->foreign('user_order_id')->references('user_id')->on('order_table');
+            $table->foreign('user_order_id')->references('user_id')->on('orders');
             $table->unsignedInteger('product_id');
             $table->foreign('product_id')->references('product_id')->on('customer_shopping_cart');
             $table->unsignedInteger('quantity_ordered');
-            $table->foreign('quantity_ordered')->references('product_id')->on('customer_shopping_cart');
-            $table->decimal('product_total');
+            // $table->foreign('quantity_ordered')->references('quantity')->on('customer_shopping_cart');
+            $table->decimal('product_total', 8, 2);
             $table->timestamps();
         });
     }
@@ -34,6 +33,6 @@ class OrderItemTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_item_table');
+        Schema::dropIfExists('order_item');
     }
 }
