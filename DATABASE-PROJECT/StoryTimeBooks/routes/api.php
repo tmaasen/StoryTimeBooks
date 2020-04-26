@@ -26,6 +26,8 @@ Route::prefix('v1')->group(function () {
         Route::get('refresh', 'Users\AuthController@refresh');
         // Get all books
         Route::get('products', 'Books\BookController@allBooks');
+        //search update
+//
 
         // Below mention routes are available only for the authenticated users.
             Route::middleware('auth:api')->group(function () {

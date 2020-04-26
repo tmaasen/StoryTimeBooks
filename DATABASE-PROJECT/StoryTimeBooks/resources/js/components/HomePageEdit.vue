@@ -106,7 +106,7 @@
     </div>
 
     <div style="width:70%; margin:1% 15%; padding:10px;">
-      <p class="title">Business</p>
+      <p id="businessScroll" class="title">Business</p>
       <!--Carousel Wrapper-->
       <div id="business" class="carousel slide carousel-multi-item" data-ride="carousel">
         <!--Controls-->
@@ -195,7 +195,7 @@
     </div>
 
     <div style="width:70%; margin:0 15%; padding:10px;">
-      <p class="title">Psychology</p>
+      <p class="title" id="psychologyScroll">Psychology</p>
       <!--Carousel Wrapper-->
       <div id="psychology" class="carousel slide carousel-multi-item" data-ride="carousel">
         <!--Controls-->
@@ -290,7 +290,7 @@
     </div>
 
     <div style="width:70%; margin:0 15%; padding:10px;">
-      <p class="title">Engineering</p>
+      <p class="title" id="engineeringScroll">Engineering</p>
       <!--Carousel Wrapper-->
       <div id="engineering" class="carousel slide carousel-multi-item" data-ride="carousel">
         <!--Controls-->
@@ -385,7 +385,7 @@
     </div>
 
     <div style="width:70%; margin:0 15%; padding:10px;">
-      <p class="title">Music / Theatre</p>
+      <p class="title" id="musicTheatreScroll">Music / Theatre</p>
       <!--Carousel Wrapper-->
       <div id="musicTheatre" class="carousel slide carousel-multi-item" data-ride="carousel">
         <!--Controls-->

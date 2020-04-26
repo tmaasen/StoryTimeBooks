@@ -10,6 +10,8 @@ import router from './router'
 import VueProgressBar from 'vue-progressbar'
 import VueMask from 'vue-masked-input'
 import vueScrollto from 'vue-scrollto'
+import VueFuse from 'vue-fuse'
+
 
 window.Vue = require('vue')
 window.Vue = require('./bootstrap')
@@ -19,6 +21,7 @@ Vue.router = router
 Vue.use(VueRouter)
 Vue.use(VueMask)
 Vue.use(vueScrollto)
+Vue.use(VueFuse)
 
 Vue.use(VueProgressBar, {
   color: 'rgb(255, 141, 30)',

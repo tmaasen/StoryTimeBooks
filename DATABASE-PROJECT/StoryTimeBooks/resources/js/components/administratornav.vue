@@ -10,7 +10,7 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav class="ml-auto">
-          <nav class="mt-2 reports">
+            npm install vue-fuse      <nav class="mt-2 reports">
             <a href="#">Report 1</a>
             <a href="#">Report 2</a>
             <a href="#">Report 3</a>
