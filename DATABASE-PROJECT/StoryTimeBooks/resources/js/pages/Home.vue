@@ -112,7 +112,7 @@
         overflow-x:auto;
         -webkit-overflow-scrolling: touch;
         white-space: nowrap;
-        padding-bottom: 0;
+        padding-bottom: 3rem;
     }
 
 </style>

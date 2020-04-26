@@ -119,6 +119,7 @@
     #searchResults {
         background-color: white;
         width: 10rem;
+
     }
 
     span {
