@@ -8,7 +8,7 @@
           label-for="name"
           invalid-feedback="Product Name is required"
           :state="productState"
-        >
+        > 
           <b-form-input id="name" v-model="name" required :state="productState"></b-form-input>
         </b-form-group>
         <!-- Author -->
@@ -298,10 +298,17 @@ export default {
         })
         .catch(function(response) {
           console.log(response);
-          alert(
-            "There has been an error creating a new product. Please try again."
-          );
-        });
+          product.$notify({
+              message: "There has been an error adding this product",
+              type: "error",
+              top: true,
+              bottom: false,
+              left: false,
+              right: true,
+              showClose: true,
+              closeDelay: 4500,
+            });
+          });
     },
     updateProduct(bookid) {
       const product = this;
@@ -324,12 +331,30 @@ export default {
           console.log(response);
           product.$refs['bookModel'].hide()       
           product.$emit('refreshTables') // calls the event listener in Admin.vue, which calls the getAll() method
+          product.$notify({
+            message: "Book successfully updated",
+            type: "success",
+            top: true,
+            bottom: false,
+            left: false,
+            right: true,
+            showClose: true,
+            closeDelay: 4500,
+          });
         })
         .catch(error => {
           console.log(error);
-          alert(
-            "There has been an error updating product information. Please try again."
-          );
+          product.$refs['bookModel'].hide()
+          product.$notify({
+              message: "There has been an error updating this product",
+              type: "error",
+              top: true,
+              bottom: false,
+              left: false,
+              right: true,
+              showClose: true,
+              closeDelay: 4500,
+            });
         });
     },
   }

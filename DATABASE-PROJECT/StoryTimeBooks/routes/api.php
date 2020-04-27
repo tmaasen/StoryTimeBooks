@@ -25,9 +25,7 @@ Route::prefix('v1')->group(function () {
         // Refresh the JWT Token
         Route::get('refresh', 'Users\AuthController@refresh');
         // Get all books
-        Route::get('products', 'Books\BookController@allBooks');
-        //search update
-//
+        Route::get('products', 'BookController@allBooks');
 
         // Below mention routes are available only for the authenticated users.
             Route::middleware('auth:api')->group(function () {
@@ -38,37 +36,46 @@ Route::prefix('v1')->group(function () {
                 // Removes a user
                 Route::post('removeuser/{id}', 'Users\UserController@removeUser');
                 // Get user address info
-                Route::get('userinfo/{id}', 'Users\UserController@userInfo');
+                Route::get('userinfo/{id}', 'Users\UserController@allUserInfo');
                 // Update user address info
                 Route::put('updateuseraddress/{id}', 'Users\UserController@updateUserAddress');
                 // Update user info
                 Route::put('updateuser/{id}', 'Users\UserController@updateUser');
                 // add product to shopping cart (POST)
-                Route::post('addtocart/{id}', 'Books\BookController@addToCart');
+                Route::post('addtocart/{id}', 'BookController@addToCart');
+                // remove product from shopping cart
+                Route::post('removefromcart/{id}', 'BookController@removeFromCart');
+                // update cart quantity for specific item
+                Route::put('updatecartquantity/{id}', 'BookController@setCartQuantity');
                 // display products in users cart (GET)
-                Route::get('shoppingcart/{id}', 'Books\BookController@getCartItems');
+                Route::get('shoppingcart/{id}', 'BookController@getCartItems');
                 // display user cart count on navbar
-                Route::get('itemsincart/{id}', 'Books\BookController@getCartItemCount');
-                // display product on product details page (GET)
+                Route::get('itemsincart/{id}', 'BookController@getCartItemCount');
+                // insert or update all order info given by user
+                Route::post('orderinfo/{id}', 'Users\UserController@updateUser');
+                // insert an order
+                Route::post('order', 'OrderController@insertOrder');
+                // insert order_item(s)
+                Route::post('orderitems', 'OrderController@insertOrderItems');
                 });
         });
 // Below mention routes are admin. Non-admin users have no access.
     Route::prefix('admin')->group(function () {
         // Get all book categories
-        Route::get('categories', 'Books\BookController@allCategories');
+        Route::get('categories', 'BookController@allCategories');
         // Get all publishers
-        Route::get('publishers', 'Books\BookController@allPublishers');
+        Route::get('publishers', 'BookController@allPublishers');
         // Get all states
-        Route::get('states', 'Books\BookController@allStates');
+        Route::get('states', 'BookController@allStates');
         // Create a new book
-        Route::post('newproduct', 'Books\BookController@addProduct');
+        Route::post('newproduct', 'BookController@addProduct');
         // Create a new publisher
-        Route::post('newpublisher', 'Books\BookController@createPublisher');
+        Route::post('newpublisher', 'BookController@createPublisher');
         // Removes a product
-        Route::post('removeproduct/{id}', 'Books\BookController@removeProduct');
+        Route::post('removeproduct/{id}', 'BookController@removeProduct');
         // Updates a product
-        Route::put('updateproduct/{id}', 'Books\BookController@updateProduct');
+        Route::put('updateproduct/{id}', 'BookController@updateProduct');
         // Gets all data needed for admin panel
-        Route::get('all', 'Books\BookController@allAdmin');
+        Route::get('all', 'BookController@allAdmin');
     });
 });

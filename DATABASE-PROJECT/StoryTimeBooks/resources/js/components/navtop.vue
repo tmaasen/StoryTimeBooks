@@ -139,6 +139,9 @@
             this.getCartItems()
             this.getBooks()
         },
+        mounted() {
+            console.log("navtop mounted")
+        },
         methods: {
             filterSearch() {
                 console.log("filter search called, value is: " + this.searchInput)
@@ -180,11 +183,22 @@
                 });
                 this.$Progress.finish();
             },
-            getCartItems(userid) {
-
+            getItemsInCart() {
+                var app = this
+                axios.get("http://127.0.0.1:8000/api/v1/auth/itemsincart/{id}",
+                    {params: {user_id: this.$auth.user().id}})
+                    .then(function (response) {
+                        console.log(response);
+                        app.cartCounter = response.data.items
+                        app.$emit('updateItemCount', app.cartCounter)
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    });
             }
-        }
-    };
+        };
+    }
+}
 </script>
 
 

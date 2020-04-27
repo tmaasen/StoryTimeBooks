@@ -18,7 +18,7 @@ class UserCreditCard extends Model
      * @var array
      */
     protected $fillable = [
-        'card_type', 'card_number', 'exp_month' , 'exp_year',
+        'card_number', 'exp_month' , 'exp_year',
     ];
 
     /**

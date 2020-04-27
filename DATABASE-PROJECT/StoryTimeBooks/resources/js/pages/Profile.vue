@@ -13,7 +13,6 @@
       <div class="profileContent">
         <p class="profileTitle">Edit Profile</p>
 
-        <form method="POST" @submit.prevent="updateUser">
           <b-container fluid>
             <!-- First Name -->
             <b-row class="my-1">
@@ -89,7 +88,6 @@
               </b-col>
             </b-row>
           </b-container>
-        </form>
       </div>
 
       <div class="profileContent">
@@ -107,6 +105,7 @@
                   size="lg"
                   placeholder="Enter your Address"
                   v-model="addressLine1"
+                  required
                 ></b-form-input>
               </b-col>
             </b-row>
@@ -135,6 +134,7 @@
                   size="lg"
                   placeholder="Enter your City"
                   v-model="city"
+                  required
                 ></b-form-input>
               </b-col>
             </b-row>
@@ -166,12 +166,13 @@
                   size="lg"
                   placeholder="Enter your Zip Code"
                   v-model="zip"
+                  required
                 ></b-form-input>
               </b-col>
             </b-row>
           </b-container>
           <!-- Submit Changes -->
-          <input type="submit" value="Apply Changes" class="btn1" v-on:click="updateUser(userid)" />
+          <b-button class="btn1" @click="updateUser(userid)">Apply Changes</b-button>
           <!-- Remove Account -->
           <span>
             <b-button class="tablebuttons" v-b-modal="`remove-user`">
@@ -218,7 +219,7 @@ export default {
       searchFilter: "a",
       expmonth: null,
       states: [],
-      stateOptions: [{text: "Select your State"}],
+      stateOptions: [{value:null, text: "Please select a state or US territory"}],
       selected: null
     };
   },
@@ -248,22 +249,30 @@ export default {
           user.first_name = response.data.user.first_name;
           user.last_name = response.data.user.last_name;
           user.email = response.data.user.email;
-          user.homePhone = response.data.user.home_phone;
-          user.workPhone = response.data.user.work_phone;
-          user.addressLine1 = response.data.user.address_line_1;
-          user.suiteNo = response.data.user.suite_no;
-          user.city = response.data.user.city;
-          user.selected = response.data.user.state_id;
-          user.zip = response.data.user.zipcode;
-          user.setStateOptions();
           }
+          if (response.data.shipping.address_line_1 !== null) {
+          user.addressLine1 = response.data.shipping.address_line_1;
+          user.city = response.data.shipping.city;
+          user.selected = response.data.shipping.state_id;
+          user.zip = response.data.shipping.zipcode;
+          }
+          user.homePhone = response.data.shipping.home_phone;
+          user.workPhone = response.data.shipping.work_phone;
+          user.setStateOptions();
         })
         .catch(error => {
           console.log(error);
           user.busy = false
-          alert(
-            "There has been an error loading user data. Please try again."
-          );
+          user.$notify({
+              message: "There has been an error loading user information. Please try again.",
+              type: "error",
+              top: true,
+              bottom: false,
+              left: false,
+              right: true,
+              showClose: true,
+              closeDelay: 4500,
+            });
         });
     },
     updateUserAddress(userid) {
@@ -277,7 +286,7 @@ export default {
           zipcode: user.zip,
           home_phone: user.homePhone,
           work_phone: user.workPhone,
-          user_id: user.userid
+          id: user.userid
         })
         .then(function(response) {
           console.log(response);
@@ -286,9 +295,16 @@ export default {
         .catch(error => {
           console.log(error);
           user.busy = false
-          alert(
-            "There has been an error updating user address information. Please try again."
-          );
+          user.$notify({
+              message: "There has been an error updating user address information. Please try again.",
+              type: "error",
+              top: true,
+              bottom: false,
+              left: false,
+              right: true,
+              showClose: true,
+              closeDelay: 4500,
+            });
         });
     },
     updateUser(userid) {
@@ -303,15 +319,22 @@ export default {
         })
         .then(function(response) {
           console.log(response);
+          user.updateUserAddress(userid);
         })
         .catch(error => {
           console.log(error);
           user.busy = false
-          alert(
-            "There has been an error updating user information. Please try again."
-          );
+          user.$notify({
+              message: "There has been an error updating user information. Please try again.",
+              type: "error",
+              top: true,
+              bottom: false,
+              left: false,
+              right: true,
+              showClose: true,
+              closeDelay: 4500,
+            });
         });
-      this.updateUserAddress(userid);
     },
     logout() {
       this.$auth.logout({
@@ -336,13 +359,22 @@ export default {
         .then(function(response) {
           console.log(response);
           app.busy = false
+          app.logout();
         })
         .catch(error => {
           console.log(error);
           app.busy = false
-          alert("There has been an error removing the user. Please try again.");
+          app.$notify({
+              message: "There has been an error removing this user.",
+              type: "error",
+              top: true,
+              bottom: false,
+              left: false,
+              right: true,
+              showClose: true,
+              closeDelay: 4500,
+            });
         });
-      this.logout();
     },
     setStateOptions() {
       var user = this
@@ -388,8 +420,8 @@ svg {
 }
 .btn,
 .btn:hover {
-  background: white !important;
-  color: black !important;
+  background: white;
+  color: black;
 }
 .creditInput {
   margin-bottom: 5%;
@@ -455,6 +487,7 @@ label {
 
 .btn1:hover {
   background-color: #2196f3;
+  color: white;
 }
 .profileBody {
   border: 1px solid black;

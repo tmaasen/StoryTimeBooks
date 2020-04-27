@@ -1,3 +1,20 @@
+co<template>
+<div v-if="$auth.ready()">
+  <head>
+    <title>StoryTime | Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <!-- <div v-if="$auth.check()">
+    <h1 class="welcomeMessage">Hello, {{ $auth.user().first_name }}</h1>
+  </div>-->
+  <HomePageEdit />
+  <div class="toTop">
+    <b-button v-scroll-to="'#home'" variant="primary" class="toTop rounded-circle p-2">
+      <b-icon-arrow-up font-scale="2" />
+    </b-button>
+  </div>
+  <navbottom />
+</div>
 <template>
     <div v-if="$auth.ready()">
         <head>

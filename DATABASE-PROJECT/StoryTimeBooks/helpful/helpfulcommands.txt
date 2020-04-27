@@ -6,7 +6,7 @@ php artisan optimize // clears config and route cache
 php artisan serve
 
 composer update // refreshes and updates all project dependencies
-composer dump-autoload // autolaods all the model tables from the db once you have configured them
+composer dump-autoload // autoloads all the model tables from the db once you have configured them
 
 php artisan migrate // will run migrations of tables to the database
 php artisan migrate:rollback // will rollback 1 migration iteration, in case a small change needed to be made after the migration was executed
@@ -121,3 +121,9 @@ INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('17
 INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('18', 'Family');
 INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('19', 'Crime');
 INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('20', 'Comics');
+
+INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('1', 'Business');
+INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('2', 'Computer Sciences');
+INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('3', 'Psychology');
+INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('4', 'Music/Theatre');
+INSERT INTO `storytimebooks`.`product_categories` (`id`, `category`) VALUES ('5', 'Engineering');

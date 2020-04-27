@@ -283,7 +283,16 @@ export default {
         .catch(function(response) {
           console.log(response);
           app.busy = false;
-          alert("There has been an error. Please try again.");
+          app.$notify({
+            message: "There has been an error while removing this user. Please try again.",
+            type: "error",
+            top: true,
+            bottom: false,
+            left: false,
+            right: true,
+            showClose: true,
+            closeDelay: 4500,
+          });
         });
     },
     removeProduct(idToRemove) {
@@ -301,25 +310,34 @@ export default {
         .catch(function(response) {
           console.log(response);
           app.busy = false;
-          alert("There has been an removing this product error. Please try again.");
+          app.$notify({
+              message: "There has been an error while removing this product. Please try again.",
+              type: "error",
+              top: true,
+              bottom: false,
+              left: false,
+              right: true,
+              showClose: true,
+              closeDelay: 4500,
+            });
         });
     },
     getAll() {
-    var app = this
-    app.busy = true;
-    axios
-      .get("http://127.0.0.1:8000/api/v1/admin/all")
-      .then(response => {
-        this.users = response.data.users;
-        this.books = response.data.books;
-        this.publishers = response.data.publishers;
-        console.log(response);
-    app.busy = false;
-      })
-      .then(error => {
-        console.log(error);
-      });
-    },
+      var app = this
+      app.busy = true;
+      axios
+        .get("http://127.0.0.1:8000/api/v1/admin/all")
+        .then(response => {
+          this.users = response.data.users;
+          this.books = response.data.books;
+          this.publishers = response.data.publishers;
+          console.log(response);
+          app.busy = false;
+        })
+        .then(error => {
+          console.log(error);
+        });
+      },
   },
   computed: {
     userrows() {

@@ -14,6 +14,7 @@ $factory->define(UserAddress::class, function (Faker $faker) {
     }
     return [
         'user_id' => $faker->randomelement($users),
+        'address_type_id' => 1,
         'address_line_1' => $faker->streetAddress,
         'suite_no' => $faker->secondaryAddress,
         'city' => $faker->city,
