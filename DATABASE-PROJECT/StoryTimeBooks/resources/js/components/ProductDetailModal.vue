@@ -1,59 +1,56 @@
 <template>
-<b-modal
-  size="xl"
-  centered
-  scrollable
-  ref="ProductDetailModal"
-  :id="`productdetails-${bookid}`"
-  :title="title"
->
-  <b-overlay :show="busy" rounded="lg" opacity="0.6">
-    <div class="book-detail-container">
-      <div id="img-container" class="column1">
-        <b-img :src="getImgUrl(image)" />
-      </div>
-
-    <div class="cloumn2">
-      <div class="block detail-texts">
-        <div class="detail-title-and-author">
-          <h1>{{ name }}</h1>
-          <h2>by {{ author }}</h2>
+  <b-modal
+    size="xl"
+    centered
+    scrollable
+    ref="ProductDetailModal"
+    :id="`productdetails-${bookid}`"
+    :title="title"
+    hide-footer
+  >
+    <b-overlay :show="busy" rounded="lg" opacity="0.6">
+      <div class="book-detail-container">
+        <div id="img-container" class="column1">
+          <b-img :src="getImgUrl(image)" />
         </div>
 
-        <div class="detail-description-box">
-          <h5>
-            <strong>Publisher: </strong><span>{{ publisher }}</span>
-          </h5>
-          <h5>
-            <strong>Retail Price: </strong><span> $ {{ retail }}</span>
-          </h5>
-        </div>
-        
-        <div class="cart-button-holder">
-          <b-form-spinbutton
-            v-model="quantity1"
-            required
-            min="1"
-            :max="this.quantity"
-            class="spinbutton"
-          ></b-form-spinbutton>
-          <b-button class="add-to-cart-btn" @click="addToCart(bookid, quantity1)">Add To Cart</b-button>
+        <div class="cloumn2">
+          <div class="block detail-texts">
+            <div class="detail-title-and-author">
+              <h1>{{ name }}</h1>
+              <h2>by {{ author }}</h2>
+            </div>
+
+            <div class="detail-description-box">
+              <h5>
+                <strong>Publisher:</strong>
+                <span>{{ publisher }}</span>
+              </h5>
+              <h5>
+                <strong>Retail Price:</strong>
+                <span>$ {{ retail }}</span>
+              </h5>
+            </div>
+
+            <div class="cart-button-holder">
+              <b-form-spinbutton
+                v-model="quantity1"
+                required
+                min="1"
+                :max="this.quantity"
+                class="spinbutton"
+              ></b-form-spinbutton>
+              <b-button class="add-to-cart-btn" @click="addToCart(bookid, quantity1)">Add To Cart</b-button>
+            </div>
+          </div>
+
+          <div>
+            <b-table class="detail-table" striped hover :items="product_details"></b-table>
+          </div>
         </div>
       </div>
-
-      <div>
-        <b-table 
-        class="detail-table" 
-        striped 
-        hover 
-        :items="product_details">
-        </b-table>
-      </div>
-    </div>
-  </div>
-
-  </b-overlay>
-</b-modal>
+    </b-overlay>
+  </b-modal>
 </template>
 
 <script>
@@ -119,6 +116,19 @@ export default {
     },
     addToCart(product_id, quantity) {
       var app = this;
+      if (!app.$auth.check()) {
+        app.$refs['ProductDetailModal'].hide()
+        app.$notify({
+          message: "Please log in before adding items to your cart",
+          type: "warning",
+          top: true,
+          bottom: false,
+          left: false,
+          right: true,
+          showClose: true,
+          closeDelay: 4500
+        });
+      } else {
       app.busy = true;
       axios
         .post("http://127.0.0.1:8000/api/v1/auth/addtocart/{id}", {
@@ -149,6 +159,7 @@ export default {
             });
           });
       }
+    }
   },
 };
 </script>
@@ -176,7 +187,7 @@ export default {
   text-align: center;
 }
 .spinbutton {
-  width: 15%!important;
+  width: 15% !important;
   margin-left: 40%;
   margin-top: 5px;
   text-align: center;
@@ -201,9 +212,9 @@ export default {
   margin-top: 3%;
 }
 .cart-button-holder {
-  margin-top: 5%!important;
+  margin-top: 5% !important;
   text-align: right;
-  display:flex;
+  display: flex;
 }
 .detail-table {
   margin-top: 1%;

@@ -309,10 +309,10 @@ export default {
 }
 .column1 {
   float: left;
-  width: 70% !important;
+  width: 74% !important;
   padding-bottom: 1.5rem !important;
   padding-left: 3rem !important;
-  margin-right: 6rem;
+  margin-right: 3rem;
 }
 .column2 {
   padding-right: 3rem !important;

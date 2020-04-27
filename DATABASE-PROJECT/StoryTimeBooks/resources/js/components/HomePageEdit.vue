@@ -1,55 +1,74 @@
 <template>
   <div>
-    <navtop @childSearchResults="childSearchResults($event)" :books="this.books" ref="navbar" class="pb-5" id="home" />
-<!--      search results-->
-      <div id="searchResults" ref="results">
-          <ul class="list-group list-group-horizontal">
-              <div v-if="searchResults == null">
-                  <li class="list-group-item">There are no search results!</li>
-              </div>
-              <div v-for="(post, index) in searchResults"
-                   :key="index">
-
-                  <div v-if="post.item.category_id == 1">
-                      <li class="list-group-item"><a :href="'#'"
-                                                     v-scroll-to="'#businessScroll'"
-                                                     class="list-group-item list-group-item-action">
-                          <p>{{post.item.product_name}}</p>
-                      </a></li>
-                  </div>
-                  <div v-if="post.item.category_id == 2">
-                      <li class="list-group-item"><a :href="'#'"
-                                                     v-scroll-to="'#computer'"
-                                                     class="list-group-item list-group-item-action">
-                          <p>{{post.item.product_name}}</p>
-                      </a></li>
-                  </div>
-                  <div v-if="post.item.category_id == 3">
-                      <li class="list-group-item"><a :href="'#'"
-                                                     v-scroll-to="'#psychologyScroll'"
-                                                     class="list-group-item list-group-item-action">
-                          <p>{{post.item.product_name}}</p>
-                      </a></li>
-                  </div>
-                  <div v-if="post.item.category_id == 4">
-                      <li class="list-group-item"><a :href="'#'"
-                                                     v-scroll-to="'#musicTheatreScroll'"
-                                                     class="list-group-item list-group-item-action">
-                          <p>{{post.item.product_name}}</p>
-                      </a></li>
-                  </div>
-                  <div v-if="post.item.category_id == 5">
-                      <li class="list-group-item"><a :href="'#'"
-                                                     v-scroll-to="'#engineeringScroll'"
-                                                     class="list-group-item list-group-item-action">
-                          <p>{{post.item.product_name}}</p>
-                      </a></li>
-                  </div>
-
-              </div>
-          </ul>
-      </div>
-<!--      end search results-->
+    <navtop
+      @childSearchResults="childSearchResults($event)"
+      :books="this.books"
+      ref="navbar"
+      id="home"
+    />
+    <!--search results-->
+    <div id="searchResults" ref="results">
+      <ul class="list-group list-group-horizontal">
+        <div v-for="(post, index) in searchResults" :key="index">
+          <div v-if="post.item.category_id == 1">
+            <li class="list-group-item">
+              <a
+                :href="'#'"
+                v-scroll-to="'#businessScroll'"
+                class="list-group-item list-group-item-action"
+              >
+                <p>{{post.item.product_name}}</p>
+              </a>
+            </li>
+          </div>
+          <div v-if="post.item.category_id == 2">
+            <li class="list-group-item">
+              <a
+                :href="'#'"
+                v-scroll-to="'#computer'"
+                class="list-group-item list-group-item-action"
+              >
+                <p>{{post.item.product_name}}</p>
+              </a>
+            </li>
+          </div>
+          <div v-if="post.item.category_id == 3">
+            <li class="list-group-item">
+              <a
+                :href="'#'"
+                v-scroll-to="'#psychologyScroll'"
+                class="list-group-item list-group-item-action"
+              >
+                <p>{{post.item.product_name}}</p>
+              </a>
+            </li>
+          </div>
+          <div v-if="post.item.category_id == 4">
+            <li class="list-group-item">
+              <a
+                :href="'#'"
+                v-scroll-to="'#musicTheatreScroll'"
+                class="list-group-item list-group-item-action"
+              >
+                <p>{{post.item.product_name}}</p>
+              </a>
+            </li>
+          </div>
+          <div v-if="post.item.category_id == 5">
+            <li class="list-group-item">
+              <a
+                :href="'#'"
+                v-scroll-to="'#engineeringScroll'"
+                class="list-group-item list-group-item-action"
+              >
+                <p>{{post.item.product_name}}</p>
+              </a>
+            </li>
+          </div>
+        </div>
+      </ul>
+    </div>
+    <!--end search results-->
 
     <div style="overflow:visible;flex-grow: 1;text-align: center;">
       <b-overlay :show="busy" rounded="sm" opacity="0.6" spinner-small spinner-variant="primary">
@@ -196,30 +215,30 @@
           <!--/.Carousel Wrapper-->
         </div>
 
-    <div style="width:70%; margin:1% 15%; padding:10px;">
-      <p id="businessScroll" class="title">Business</p>
-      <!--Carousel Wrapper-->
-      <div id="business" class="carousel slide carousel-multi-item" data-ride="carousel">
-        <!--Controls-->
-        <div style="margin:auto">
-          <a
-            class="carousel-control left carousel-control-prev"
-            href="#business"
-            data-slide="prev"
-            style="color:red;outline: black;"
-          ></a>
-          <i class="fa fa-angle-left"></i>
-        </div>
-        <div style="margin:auto">
-          <a
-            class="carousel-control right carousel-control-next"
-            href="#business"
-            data-slide="next"
-            style="color:red;outline: black;"
-          ></a>
-          <i class="fa fa-angle-right"></i>
-        </div>
-        <!--/.Controls-->
+        <div style="width:70%; margin:1% 15%; padding:10px;">
+          <p id="businessScroll" class="title">Business</p>
+          <!--Carousel Wrapper-->
+          <div id="business" class="carousel slide carousel-multi-item" data-ride="carousel">
+            <!--Controls-->
+            <div style="margin:auto">
+              <a
+                class="carousel-control left carousel-control-prev"
+                href="#business"
+                data-slide="prev"
+                style="color:red;outline: black;"
+              ></a>
+              <i class="fa fa-angle-left"></i>
+            </div>
+            <div style="margin:auto">
+              <a
+                class="carousel-control right carousel-control-next"
+                href="#business"
+                data-slide="next"
+                style="color:red;outline: black;"
+              ></a>
+              <i class="fa fa-angle-right"></i>
+            </div>
+            <!--/.Controls-->
 
             <!--Slides-->
             <div class="carousel-inner" role="listbox">
@@ -323,30 +342,30 @@
           <!--/.Carousel Wrapper-->
         </div>
 
-    <div style="width:70%; margin:0 15%; padding:10px;">
-      <p class="title" id="psychologyScroll">Psychology</p>
-      <!--Carousel Wrapper-->
-      <div id="psychology" class="carousel slide carousel-multi-item" data-ride="carousel">
-        <!--Controls-->
-        <div style="margin:auto">
-          <a
-            class="carousel-control left carousel-control-prev"
-            href="#psychology"
-            data-slide="prev"
-            style="color:red;outline: black;"
-          ></a>
-          <i class="fa fa-angle-left"></i>
-        </div>
-        <div style="margin:auto">
-          <a
-            class="carousel-control right carousel-control-next"
-            href="#psychology"
-            data-slide="next"
-            style="color:red;outline: black;"
-          ></a>
-          <i class="fa fa-angle-right"></i>
-        </div>
-        <!--/.Controls-->
+        <div style="width:70%; margin:0 15%; padding:10px;">
+          <p class="title" id="psychologyScroll">Psychology</p>
+          <!--Carousel Wrapper-->
+          <div id="psychology" class="carousel slide carousel-multi-item" data-ride="carousel">
+            <!--Controls-->
+            <div style="margin:auto">
+              <a
+                class="carousel-control left carousel-control-prev"
+                href="#psychology"
+                data-slide="prev"
+                style="color:red;outline: black;"
+              ></a>
+              <i class="fa fa-angle-left"></i>
+            </div>
+            <div style="margin:auto">
+              <a
+                class="carousel-control right carousel-control-next"
+                href="#psychology"
+                data-slide="next"
+                style="color:red;outline: black;"
+              ></a>
+              <i class="fa fa-angle-right"></i>
+            </div>
+            <!--/.Controls-->
 
             <!--Slides-->
             <div class="carousel-inner" role="listbox">
@@ -458,30 +477,30 @@
           <!--/.Carousel Wrapper-->
         </div>
 
-    <div style="width:70%; margin:0 15%; padding:10px;">
-      <p class="title" id="engineeringScroll">Engineering</p>
-      <!--Carousel Wrapper-->
-      <div id="engineering" class="carousel slide carousel-multi-item" data-ride="carousel">
-        <!--Controls-->
-        <div style="margin:auto">
-          <a
-            class="carousel-control left carousel-control-prev"
-            href="#engineering"
-            data-slide="prev"
-            style="color:red;outline: black;"
-          ></a>
-          <i class="fa fa-angle-left"></i>
-        </div>
-        <div style="margin:auto">
-          <a
-            class="carousel-control right carousel-control-next"
-            href="#engineering"
-            data-slide="next"
-            style="color:red;outline: black;"
-          ></a>
-          <i class="fa fa-angle-right"></i>
-        </div>
-        <!--/.Controls-->
+        <div style="width:70%; margin:0 15%; padding:10px;">
+          <p class="title" id="engineeringScroll">Engineering</p>
+          <!--Carousel Wrapper-->
+          <div id="engineering" class="carousel slide carousel-multi-item" data-ride="carousel">
+            <!--Controls-->
+            <div style="margin:auto">
+              <a
+                class="carousel-control left carousel-control-prev"
+                href="#engineering"
+                data-slide="prev"
+                style="color:red;outline: black;"
+              ></a>
+              <i class="fa fa-angle-left"></i>
+            </div>
+            <div style="margin:auto">
+              <a
+                class="carousel-control right carousel-control-next"
+                href="#engineering"
+                data-slide="next"
+                style="color:red;outline: black;"
+              ></a>
+              <i class="fa fa-angle-right"></i>
+            </div>
+            <!--/.Controls-->
 
             <!--Slides-->
             <div class="carousel-inner" role="listbox">
@@ -593,30 +612,30 @@
           <!--/.Carousel Wrapper-->
         </div>
 
-    <div style="width:70%; margin:0 15%; padding:10px;">
-      <p class="title" id="musicTheatreScroll">Music / Theatre</p>
-      <!--Carousel Wrapper-->
-      <div id="musicTheatre" class="carousel slide carousel-multi-item" data-ride="carousel">
-        <!--Controls-->
-        <div style="margin:auto">
-          <a
-            class="carousel-control left carousel-control-prev"
-            href="#musicTheatre"
-            data-slide="prev"
-            style="color:red;outline: black;"
-          ></a>
-          <i class="fa fa-angle-left"></i>
-        </div>
-        <div style="margin:auto">
-          <a
-            class="carousel-control right carousel-control-next"
-            href="#musicTheatre"
-            data-slide="next"
-            style="color:red;outline: black;"
-          ></a>
-          <i class="fa fa-angle-right"></i>
-        </div>
-        <!--/.Controls-->
+        <div style="width:70%; margin:0 15%; padding:10px;">
+          <p class="title" id="musicTheatreScroll">Music / Theatre</p>
+          <!--Carousel Wrapper-->
+          <div id="musicTheatre" class="carousel slide carousel-multi-item" data-ride="carousel">
+            <!--Controls-->
+            <div style="margin:auto">
+              <a
+                class="carousel-control left carousel-control-prev"
+                href="#musicTheatre"
+                data-slide="prev"
+                style="color:red;outline: black;"
+              ></a>
+              <i class="fa fa-angle-left"></i>
+            </div>
+            <div style="margin:auto">
+              <a
+                class="carousel-control right carousel-control-next"
+                href="#musicTheatre"
+                data-slide="next"
+                style="color:red;outline: black;"
+              ></a>
+              <i class="fa fa-angle-right"></i>
+            </div>
+            <!--/.Controls-->
 
             <!--Slides-->
             <div class="carousel-inner" role="listbox">
@@ -751,23 +770,21 @@ export default {
       books_MusicTheatre2: [],
       books_Engineering: [],
       books_Engineering2: [],
-        searchResults: [],
+      searchResults: []
     };
   },
   components: {
     ProductDetailModal,
-    navtop,
-
+    navtop
   },
   created() {
     this.getProducts();
   },
   methods: {
-      childSearchResults(param) {
-          console.log("search results called in Home" + param)
-          this.searchResults = param;
-
-      },
+    childSearchResults(param) {
+      console.log("search results called in Home" + param);
+      this.searchResults = param;
+    },
     showNotification() {
       this.$notify({
         message: "Item has been added to your cart",
@@ -995,12 +1012,12 @@ template {
   color: #fff;
 }
 .list-group {
-    max-height: 100px;
-    margin-bottom: 2px;
-    /*overflow:scroll;*/
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    white-space: nowrap;
-    padding-bottom: 3rem;
+  max-height: 100px;
+  margin-bottom: 2px;
+  /*overflow:scroll;*/
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+  padding-bottom: 3rem;
 }
 </style>
