@@ -1,6 +1,55 @@
 <template>
   <div>
-    <navtop ref="navbar" class="pb-5" id="home" />
+    <navtop @childSearchResults="childSearchResults($event)" :books="this.books" ref="navbar" class="pb-5" id="home" />
+<!--      search results-->
+      <div id="searchResults" ref="results">
+          <ul class="list-group list-group-horizontal">
+              <div v-if="searchResults == null">
+                  <li class="list-group-item">There are no search results!</li>
+              </div>
+              <div v-for="(post, index) in searchResults"
+                   :key="index">
+
+                  <div v-if="post.item.category_id == 1">
+                      <li class="list-group-item"><a :href="'#'"
+                                                     v-scroll-to="'#businessScroll'"
+                                                     class="list-group-item list-group-item-action">
+                          <p>{{post.item.product_name}}</p>
+                      </a></li>
+                  </div>
+                  <div v-if="post.item.category_id == 2">
+                      <li class="list-group-item"><a :href="'#'"
+                                                     v-scroll-to="'#computer'"
+                                                     class="list-group-item list-group-item-action">
+                          <p>{{post.item.product_name}}</p>
+                      </a></li>
+                  </div>
+                  <div v-if="post.item.category_id == 3">
+                      <li class="list-group-item"><a :href="'#'"
+                                                     v-scroll-to="'#psychologyScroll'"
+                                                     class="list-group-item list-group-item-action">
+                          <p>{{post.item.product_name}}</p>
+                      </a></li>
+                  </div>
+                  <div v-if="post.item.category_id == 4">
+                      <li class="list-group-item"><a :href="'#'"
+                                                     v-scroll-to="'#musicTheatreScroll'"
+                                                     class="list-group-item list-group-item-action">
+                          <p>{{post.item.product_name}}</p>
+                      </a></li>
+                  </div>
+                  <div v-if="post.item.category_id == 5">
+                      <li class="list-group-item"><a :href="'#'"
+                                                     v-scroll-to="'#engineeringScroll'"
+                                                     class="list-group-item list-group-item-action">
+                          <p>{{post.item.product_name}}</p>
+                      </a></li>
+                  </div>
+
+              </div>
+          </ul>
+      </div>
+<!--      end search results-->
 
     <div style="overflow:visible;flex-grow: 1;text-align: center;">
       <b-overlay :show="busy" rounded="sm" opacity="0.6" spinner-small spinner-variant="primary">
@@ -686,6 +735,7 @@
 <script>
 import ProductDetailModal from "../components/productdetailmodal";
 import navtop from "./navtop";
+
 export default {
   data() {
     return {
@@ -700,17 +750,24 @@ export default {
       books_MusicTheatre: [],
       books_MusicTheatre2: [],
       books_Engineering: [],
-      books_Engineering2: []
+      books_Engineering2: [],
+        searchResults: [],
     };
   },
   components: {
     ProductDetailModal,
-    navtop
+    navtop,
+
   },
   created() {
     this.getProducts();
   },
   methods: {
+      childSearchResults(param) {
+          console.log("search results called in Home" + param)
+          this.searchResults = param;
+
+      },
     showNotification() {
       this.$notify({
         message: "Item has been added to your cart",
@@ -936,5 +993,14 @@ template {
 .btn:hover {
   background-color: #2196f3;
   color: #fff;
+}
+.list-group {
+    max-height: 100px;
+    margin-bottom: 2px;
+    /*overflow:scroll;*/
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    padding-bottom: 3rem;
 }
 </style>

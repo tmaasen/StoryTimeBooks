@@ -425,7 +425,7 @@ export default {
           console.log(error);
         });
     },
-    getCartItems(user_id) {
+    getCartItems() {
       var app = this;
       var subtotalarray = [];
       var quantityarray = [];

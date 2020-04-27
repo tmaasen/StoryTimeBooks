@@ -6,7 +6,7 @@
             </router-link>
             <!--        link to github repo-->
             <a alt="View on Github"
-               href="https://github.com/polyestercupcake/Database-Systems/tree/master/DATABASE-PROJECT/StoryTimeBooks"
+               target="_blank" href="https://github.com/polyestercupcake/Database-Systems/tree/master/DATABASE-PROJECT/StoryTimeBooks"
                id="githubButton">
                 <img img src="../../../public/images/GitHub_Logo_White.png" width="60px" align="center"></a>
 
@@ -100,7 +100,7 @@
 </template>
 
 <script>
-    import search from './search'
+
 
     export default {
 
@@ -119,7 +119,7 @@
                     {value: "e", text: "Publisher"}
                 ],
                 name: "search",
-                books: [],
+                books1: this.books,
                 searchOptions: {
                     shouldSort: true,
                     includeMatches: true,
@@ -133,8 +133,11 @@
 
             };
         },
-        components: {search},
 
+        props: {
+            books: Array,
+
+        },
         created() {
             this.getCartItems()
             this.getBooks()
@@ -153,10 +156,9 @@
                 //sends the data to Home.vue
                 this.$emit("childSearchResults", this.searchResults)
 
-                this.$emit("childSearchResults", this.searchResults)
             },
             getBooks() {
-                axios.get("http://127.0.0.1:8000/api/v1/auth/products")
+                axios.get("http://127.0.0.1:8000/api/v1/auth/products/test")
                     .then(response => {
                         // loop through the array, setting each book into a category group
                         this.books = response.data.books;
@@ -196,9 +198,9 @@
                         console.log(error)
                     });
             }
-        };
+        },
     }
-}
+
 </script>
 
 
