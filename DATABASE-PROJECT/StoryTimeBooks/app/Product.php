@@ -33,4 +33,19 @@ class Product extends Model
         ->update(['is_deleted' => 1]);
 
     }
+
+    /**
+     * Updates product's quantity after an order has been placed.
+     */
+    public static function updateProductQuantity($product_id, $quantityOrdered) {
+
+        $quantityOnHand = DB::table('products')->select('quantity_on_hand')->where('id', $product_id);
+
+        DB::table('products')
+        ->where('id', $product_id)
+        ->update([
+            'quantity' => $quantityOnHand - $quantityOrdered
+        ]);
+
+    }   
 }

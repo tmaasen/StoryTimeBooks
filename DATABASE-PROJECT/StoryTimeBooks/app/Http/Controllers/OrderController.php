@@ -46,6 +46,8 @@ class OrderController extends Controller {
         $order->confirmation_number = str_random(15);
         $order->save();
 
+        $this->insertOrderItems($request);
+
         return response()->json(
             [
                 'status' => 'success',
@@ -53,22 +55,24 @@ class OrderController extends Controller {
             ], 200);
     }
     /**
-     * Inserts a specifiec amount of order items into the order_item table.
+     * Inserts a specific amount of order items into the order_item table.
      * 
      */
-    public function insertOrderItem(Request $request)
+    public function insertOrderItems(Request $request)
     {
         $order_items = [];
+
         for($i= 0; $i < count($request->products); $i++){
-        $order_items[] = [
-            'user_order_id' => $request->user_id,
-            'product_id' => $request->products->product_id,
-            'quantity_ordered' => $request->products->quantity_ordered,
-            'product_total' => $request->products->product_total,
-            ];
+            $order_items[] = [
+                'user_order_id' => $request->user_id,
+                'product_id' => $request->products->product_id,
+                'quantity_ordered' => $request->products->quantity_ordered,
+                'product_total' => $request->products->product_total,
+                ];
         }
         
         DB::table('order_item')->insert($order_items);
+        Product::updateProductQuantity($request->product_id, $request->quantity_ordered);
 
         return response()->json(
             [

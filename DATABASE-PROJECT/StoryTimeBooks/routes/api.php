@@ -53,10 +53,8 @@ Route::prefix('v1')->group(function () {
                 Route::get('itemsincart/{id}', 'BookController@getCartItemCount');
                 // insert or update all order info given by user
                 Route::post('orderinfo/{id}', 'Users\UserController@updateUser');
-                // insert an order
+                // place an order
                 Route::post('order', 'OrderController@insertOrder');
-                // insert order_item(s)
-                Route::post('orderitems', 'OrderController@insertOrderItems');
                 });
         });
 // Below mention routes are admin. Non-admin users have no access.
