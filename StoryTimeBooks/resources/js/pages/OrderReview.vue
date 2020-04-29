@@ -23,7 +23,7 @@
                 required
                 :state="purchaseInfoState"
                 placeholder="Enter your first name"
-                :disabled="firstname"
+                :readonly="firstname"
               ></b-form-input>
             </b-form-group>
 
@@ -38,7 +38,7 @@
                 required
                 :state="purchaseInfoState"
                 placeholder="Enter your last name"
-                :disabled="lastname"
+                :readonly="lastname"
               ></b-form-input>
             </b-form-group>
 
@@ -53,7 +53,7 @@
                 required
                 :state="purchaseInfoState"
                 placeholder="Enter your email address"
-                :disabled="email"
+                :readonly="email"
               ></b-form-input>
             </b-form-group>
 
@@ -70,7 +70,7 @@
                 :state="purchaseInfoState"
                 required
                 placeholder="Enter your address"
-                :disabled="shippingaddress"
+                :readonly="shippingaddress"
               ></b-form-input>
             </b-form-group>
 
@@ -79,7 +79,7 @@
                 v-model="shippingsuiteno"
                 :state="purchaseInfoState"
                 placeholder="Enter your suite number"
-                :disabled="shippingsuiteno"
+                :readonly="shippingsuiteno"
               ></b-form-input>
             </b-form-group>
 
@@ -94,7 +94,7 @@
                 :state="purchaseInfoState"
                 required
                 placeholder="Enter your city"
-                :disabled="shippingcity"
+                :readonly="shippingcity"
               ></b-form-input>
             </b-form-group>
 
@@ -128,11 +128,11 @@
                 :state="purchaseInfoState"
                 required
                 placeholder="Enter your zip code"
-                :disabled="shippingzip"
+                :readonly="shippingzip"
               ></b-form-input>
             </b-form-group>
             <label style="opacity:0%">
-              <input disabled v-model="checked" type="checkbox" name="sameadress" />
+              <input readonly v-model="checked" type="checkbox" name="sameadress" />
               Shipping address same as billing
             </label>
             <div v-if="!checked">
@@ -143,14 +143,14 @@
                 v-model="billingaddress"
                 required
                 placeholder="Enter your billing address"
-                :disabled="billingaddress"
+                :readonly="billingaddress"
               ></b-form-input>
 
               <label for="suiteno">Suite No</label>
               <b-form-input
                 v-model="billingsuiteno"
                 placeholder="Enter your suite number"
-                :disabled="billingsuiteno"
+                :readonly="billingsuiteno"
               ></b-form-input>
 
               <label for="city">City</label>
@@ -158,7 +158,7 @@
                 v-model="billingcity"
                 required
                 placeholder="Enter your city"
-                :disabled="billingcity"
+                :readonly="billingcity"
               ></b-form-input>
 
               <label for="state">State</label>
@@ -179,7 +179,7 @@
                   v-model="billingzip"
                   required
                   placeholder="Enter your zip code"
-                  :disabled="billingzip"
+                  :readonly="billingzip"
                 ></b-form-input>
               </b-form-group>
             </div>
@@ -221,7 +221,7 @@
                 required
                 :state="purchaseInfoState"
                 placeholder="Enter the name on your credit card"
-                :disabled="cardname"
+                :readonly="cardname"
               ></b-form-input>
             </b-form-group>
             <b-form-group
@@ -235,7 +235,7 @@
                 required
                 :state="purchaseInfoState"
                 placeholder="Enter your credit card number"
-                :disabled="cardnumber"
+                :readonly="cardnumber"
               ></b-form-input>
             </b-form-group>
             <b-form-group
@@ -334,10 +334,10 @@
                   id="quantity"
                   v-model="cart.item.quantity"
                   required
+                  readonly
                   min="1"
                   :max="quantityOnHand[cart.index]"
                   v-on:change="setCartQuantity(cart.item.product_id, $auth.user().id, cart.item.quantity)"
-                  :disabled="cart.item.quantity"
                 ></b-form-spinbutton>
               </template>
               <!-- Total Price -->
@@ -349,7 +349,7 @@
               </template>
             </b-table>
             <div class="column3">
-              <b-card :header="`${totalItemsInCart} Items In Your Cart`" class="checkoutCardHeader">
+              <b-card class="checkoutCardHeader">
                 <b-card-text v-model="subtotal">
                   Subtotal:&nbsp;
                   <span style="float:right">$ {{ formatPrice(subtotal) }}</span>
@@ -611,7 +611,7 @@ export default {
             x => x.quantity_on_hand
           );
           app.busy = false;
-          //app.totalItemsInCart = app.$refs.navbar.getItemsInCart();
+          app.totalItemsInCart = app.$refs.navbar.getItemsInCart();
           app.calculatesubtotal(app.cart);
         })
         .catch(error => {
@@ -629,6 +629,17 @@ export default {
             closeDelay: 4500
           });
         });
+    },
+    calculatesubtotal(cart) {
+      this.subtotal = 0;
+      for (let i = 0; i < this.cart.length; i++) {
+        this.subtotal +=
+          parseFloat(this.cart[i].retail_price) *
+          parseFloat(this.cart[i].quantity);
+      }
+      this.calculatetotal(this.subtotal);
+      this.calculatediscount(this.subtotal);
+      return this.subtotal;
     },
     getUserInfo(userid) {
       var user = this;
@@ -813,9 +824,8 @@ export default {
   cursor: not-allowed;
 }
 .column-table {
-  min-width: 50rem;
+  min-width: 65rem;
   margin-top: 2%;
-  margin-left: -50%;
 }
 .checkoutCardHeader {
   font-size: 1.5rem;
@@ -825,15 +835,14 @@ export default {
   padding: 5px 20px 15px 20px;
   border: 1px solid lightgrey;
   border-radius: 3px;
-  margin-left: 4%;
+  margin: auto;
   margin-bottom: 3%;
-  width: 60%;
+  width: 70%;
 }
 
 .column1 {
   float: left;
   width: 45%;
-  margin: 0 30%;
 }
 .column2 {
   float: left;
@@ -846,15 +855,12 @@ export default {
   float: left;
   /*width: 20rem;*/
   margin-right: 3rem;
-  margin-left: -50%;
   margin-bottom: 2rem;
   min-width: 50rem;
 }
 .checkoutbtn {
   background-color: #ff8d1e;
   font-size: 1.4rem;
-  margin-left: -10%;
-
 }
 .checkoutbtn:hover {
   background-color: #2196f3;
@@ -864,8 +870,11 @@ export default {
   font-size: 40px;
   margin-top: 3%;
   border-bottom: 3px solid black;
-  width: 760px;
-  margin-left: 4%;
+  /*width: 760px;*/
+  margin-left: 15%;
+  margin: auto;
+  margin-bottom: 3%;
+  width: 70%;
 }
 .creditInput {
   margin-bottom: 5%;
