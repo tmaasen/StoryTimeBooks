@@ -264,10 +264,12 @@
               <input v-model="checked" type="checkbox" name="sameadress" />
               Shipping address same as billing
             </label>
+            <router-link style="text-decoration:none" :to="`/user/${$auth.user().id}/order/review`">
             <b-button block class="checkoutbtn" variant="primary" @click="proceedToReview">
               Proceed to Order Review
               <b-icon-arrow-right font-scale="2" />
             </b-button>
+            </router-link>
           </div>
         </b-form>
       </div>
