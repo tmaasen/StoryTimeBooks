@@ -264,7 +264,7 @@
               <input v-model="checked" type="checkbox" name="sameadress" />
               Shipping address same as billing
             </label>
-            <router-link style="text-decoration:none" :to="`/user/${$auth.user().id}/order/review`">
+            <router-link style="text-decoration:none" :to="`/user/${$auth.user().id}/${checked}/order/review`">
             <b-button block class="checkoutbtn" variant="primary" @click="proceedToReview">
               Proceed to Order Review
               <b-icon-arrow-right font-scale="2" />
@@ -290,7 +290,7 @@
             Discount:&nbsp;
             <span style="float:right">$ {{ formatPrice(discount) }} (10%)</span>
           </b-card-text>
-          <b-card-text v-else>Discount:&nbsp;NONE</b-card-text>
+          <b-card-text v-else>Discount:&nbsp;<span style="float:right">NONE</span></b-card-text>
           <hr />
           <b-card-text v-model="total">
             <b>Total:</b>

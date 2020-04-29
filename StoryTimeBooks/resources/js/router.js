@@ -30,7 +30,7 @@ const router = new VueRouter({
         { path: '/user/profile/:id', component: Profile, name: 'Profile', meta: { auth: true } },
         { path: '/user/cart/:id', component: ShoppingCart, name: 'ShoppingCart', meta: { auth: true } },
         { path: '/user/:id/order/info', component: OrderInfo, name: 'OrderInfo', meta: { auth: true } },
-        { path: '/user/:id/order/review', component: OrderReview, name: 'OrderReview', meta: { auth: true } },
+        { path: '/user/:id/:checked/order/review', component: OrderReview, props:true, name: 'OrderReview', meta: { auth: true } },
     ]
 
 });

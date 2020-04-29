@@ -33,6 +33,17 @@ class ShoppingCart extends Model
     }
 
     /**
+     * Clears a shopping cart after a purchase.
+     */
+    public static function clear($user_id) {
+
+        DB::table('customer_shopping_cart')
+        ->where('user_id', $user_id)
+        ->delete();
+
+    }
+
+    /**
      * Updates cart quantity.
      */
     public static function updateCartQuantity($product_id, $user_id, $quantity) {

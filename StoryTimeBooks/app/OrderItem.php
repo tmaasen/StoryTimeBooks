@@ -5,14 +5,14 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use DB;
 
-class Order extends Model
+class OrderItem extends Model
 {
-    public $table = 'orders';
+    public $table = 'order_item';
     public $timestamps = true;
 
     protected $fillable = [
 
-        'items_ordered', 'subtotal', 'discount', 'total'
+        'user_id', 'product_id','quantity_ordered', 'product_total', 
     ];
 
     /**

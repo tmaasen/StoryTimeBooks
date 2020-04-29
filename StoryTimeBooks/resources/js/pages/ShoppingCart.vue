@@ -103,8 +103,9 @@
             <b-card-text>Shipping:&nbsp;<span style="float:right">$ 0.00</span></b-card-text>
             <hr />
             <b-card-text v-model="discount" v-if="subtotal >= 75">Discount:&nbsp;
-              <span style="float:right">$ {{ formatPrice(discount) }} (10%)</span></b-card-text>
-            <b-card-text v-else>Discount:&nbsp;NONE</b-card-text>
+              <span style="float:right">$ {{ formatPrice(discount) }} (10%)</span>
+            </b-card-text>
+            <b-card-text v-else>Discount:&nbsp;<span style="float:right">NONE</span></b-card-text>
             <hr />
             <b-card-text v-model="total">
               <b>Total:</b>
@@ -112,7 +113,8 @@
             </b-card-text>
             <template v-slot:footer>
               <router-link style="text-decoration:none" :to="`/user/${$auth.user().id}/order/info`">
-                <b-button block class="checkoutbtn" variant="primary">Checkout</b-button>
+                <b-button v-if="total > 0" block class="checkoutbtn" variant="primary">Checkout</b-button>
+                <b-button v-else disabled block class="checkoutbtn" variant="primary">Checkout</b-button>
               </router-link>
             </template>
           </b-card>
@@ -293,6 +295,7 @@ export default {
   width: 20rem;
   font-size: 1rem;
   margin-left: auto;
+  margin-bottom: 5%;
 }
 .checkoutbtn {
   background-color: #ff8d1e;

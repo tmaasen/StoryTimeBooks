@@ -57,7 +57,8 @@
               ></b-form-input>
             </b-form-group>
 
-            <h3 style="margin-top:10%">Shipping Address</h3>
+            <h3 style="margin-top:10%" v-if="checked =='false'">Shipping Address</h3>
+            <h3 style="margin-top:10%" v-else>Billing / Shipping Address</h3>
 
             <b-form-group
               label="Address"
@@ -79,7 +80,7 @@
                 v-model="shippingsuiteno"
                 :state="purchaseInfoState"
                 placeholder="Enter your suite number"
-                :readonly="shippingsuiteno"
+                readonly
               ></b-form-input>
             </b-form-group>
 
@@ -131,11 +132,8 @@
                 :readonly="shippingzip"
               ></b-form-input>
             </b-form-group>
-            <label style="opacity:0%">
-              <input readonly v-model="checked" type="checkbox" name="sameadress" />
-              Shipping address same as billing
-            </label>
-            <div v-if="!checked">
+
+            <div v-if="checked =='false'">
               <h3>Billing Address</h3>
 
               <label for="adr">Address</label>
@@ -150,7 +148,7 @@
               <b-form-input
                 v-model="billingsuiteno"
                 placeholder="Enter your suite number"
-                :readonly="billingsuiteno"
+                readonly
               ></b-form-input>
 
               <label for="city">City</label>
@@ -184,13 +182,6 @@
               </b-form-group>
             </div>
             <h3>Payment Method</h3>
-            <!-- <label for="fname">Accepted Cards</label>
-            <div class="icon-container">
-              <i class="fa fa-cc-visa" style="color:navy;"></i>
-              <i class="fa fa-cc-amex" style="color:blue;"></i>
-              <i class="fa fa-cc-mastercard" style="color:red;"></i>
-              <i class="fa fa-cc-discover" style="color:orange;"></i>
-            </div>-->
             <b-form-group
               label="Card Type"
               label-for="cardtype"
@@ -274,14 +265,6 @@
                 :disabled="expyearselected"
               ></b-form-select>
             </b-form-group>
-            <!-- <b-form-group
-              label="CVV"
-              label-for="cvv"
-              invalid-feedback="CVV Code is required"
-              :state="purchaseInfoState"
-            >
-              <b-form-input v-model="cardcvv" :state="purchaseInfoState" required placeholder="Enter your card's cvv code"></b-form-input>
-            </b-form-group>-->
             <b-table
               id="shoppingcart-table"
               show-empty
@@ -344,7 +327,7 @@
               <template v-slot:cell(Total)="cart">
                 <label
                   style="padding-bottom:6rem;"
-                >$ {{ formatPrice(cart.item.retail_price * cart.item.quantity) }}</label>
+                >$ {{ formatPrice(itemtotal[cart.index]) }}</label>
                 <br />
               </template>
             </b-table>
@@ -364,7 +347,7 @@
                   Discount:&nbsp;
                   <span style="float:right">$ {{ formatPrice(discount) }} (10%)</span>
                 </b-card-text>
-                <b-card-text v-else>Discount:&nbsp;NONE</b-card-text>
+                <b-card-text v-else>Discount:&nbsp;<span style="float:right">NONE</span></b-card-text>
                 <hr />
                 <b-card-text v-model="total">
                   <b>Total:</b>
@@ -381,7 +364,7 @@
               </b-card>
             </div>
             <div style="text-align:left">
-              <b-button block class="checkoutbtn" variant="primary" @click="proceedToReview">
+              <b-button block class="checkoutbtn" variant="primary" @click="placeOrder">
                 Place Order
                 <b-icon-arrow-right font-scale="2" />
               </b-button>
@@ -408,9 +391,8 @@ export default {
       product_id: null,
       quantity: null,
       quantityOnHand: null,
-
       busy: true,
-      checked: true,
+      checked1: this.checked,
       arrivalDate: "",
       purchaseInfoState: null,
       firstname: "",
@@ -434,6 +416,7 @@ export default {
       totalItemsInCart: null,
       subtotal: 0,
       discount: 0,
+      itemtotal:[],
       total: 0,
       stateOptions: [
         { value: null, text: "Please select a state or US territory" }
@@ -468,6 +451,9 @@ export default {
       ]
     };
   },
+  props: {
+    checked: Boolean
+  },
   components: {
     navtop,
     navbottom
@@ -476,39 +462,8 @@ export default {
     this.getUserInfo();
     this.getCartItems();
     this.getItemsInCart();
-    this.getCartItems1();
   },
   methods: {
-    setCartQuantity(product_id, user_id, quantity) {
-      var app = this;
-      app.totalsboxbusy = true;
-      axios
-        .put("http://127.0.0.1:8000/api/v1/auth/updatecartquantity/{id}", {
-          product_id: product_id,
-          user_id: user_id,
-          quantity: quantity
-        })
-        .then(function(response) {
-          console.log(response);
-          app.calculatesubtotal(app.cart);
-          app.totalsboxbusy = false;
-        })
-        .catch(error => {
-          console.log(error);
-          app.totalsboxbusy = false;
-          app.$notify({
-            message:
-              "There has been an error setting the correct quantity for your cart item. Please try again",
-            type: "error",
-            top: true,
-            bottom: false,
-            left: false,
-            right: true,
-            showClose: true,
-            closeDelay: 4500
-          });
-        });
-    },
     getImgUrl(pic) {
       if (pic !== null) {
         var images = require.context(
@@ -570,9 +525,13 @@ export default {
         })
         .then(function(response) {
           console.log(response);
+          app.cart = response.data.products;
+          app.quantityOnHand = response.data.products.map(
+            x => x.quantity_on_hand)
           app.subtotalarray = response.data.products.map(x => x.retail_price);
           app.quantityarray = response.data.products.map(x => x.quantity);
           for (var i = 0; i < app.subtotalarray.length; i++) {
+            app.itemtotal[i] = app.subtotalarray[i] * app.quantityarray[i];
             app.subtotal =
               app.subtotal +
               parseFloat(app.subtotalarray[i]) * app.quantityarray[i];
@@ -586,7 +545,7 @@ export default {
           app.busy = false;
           app.$notify({
             message:
-              "There has been an error loading your shopping cart. Please try again.",
+              "There has been an error loading your order review. Please try again.",
             type: "error",
             top: true,
             bottom: false,
@@ -596,50 +555,6 @@ export default {
             closeDelay: 4500
           });
         });
-    },
-    getCartItems1(user_id) {
-      var app = this;
-      app.busy = true;
-      axios
-        .get("http://127.0.0.1:8000/api/v1/auth/shoppingcart/{id}", {
-          params: { user_id: this.$auth.user().id }
-        })
-        .then(function(response) {
-          console.log(response);
-          app.cart = response.data.products;
-          app.quantityOnHand = response.data.products.map(
-            x => x.quantity_on_hand
-          );
-          app.busy = false;
-          app.totalItemsInCart = app.$refs.navbar.getItemsInCart();
-          app.calculatesubtotal(app.cart);
-        })
-        .catch(error => {
-          console.log(error);
-          app.busy = false;
-          app.$notify({
-            message:
-              "There has been an error loading your shopping cart. Please try again.",
-            type: "error",
-            top: true,
-            bottom: false,
-            left: false,
-            right: true,
-            showClose: true,
-            closeDelay: 4500
-          });
-        });
-    },
-    calculatesubtotal(cart) {
-      this.subtotal = 0;
-      for (let i = 0; i < this.cart.length; i++) {
-        this.subtotal +=
-          parseFloat(this.cart[i].retail_price) *
-          parseFloat(this.cart[i].quantity);
-      }
-      this.calculatetotal(this.subtotal);
-      this.calculatediscount(this.subtotal);
-      return this.subtotal;
     },
     getUserInfo(userid) {
       var user = this;
@@ -671,14 +586,11 @@ export default {
             user.expyearselected = response.data.card.exp_year;
           }
           if (response.data.billing !== null) {
-            user.checked = false;
             user.billingaddress = response.data.billing.address_line_1;
             user.billingsuiteno = response.data.billing.suite_no;
             user.billingcity = response.data.billing.city;
             user.billingstateselected = response.data.billing.state_id;
             user.billingzip = response.data.billing.zipcode;
-          } else {
-            user.checked = true;
           }
           user.setStateOptions();
         })
@@ -698,96 +610,48 @@ export default {
           });
         });
     },
-    proceedToReview() {
+    placeOrder() {
       var app = this;
       app.busy = true;
-      if (app.checkFormValidity()) {
-        if (!app.checked) {
-          axios
-            .post("http://127.0.0.1:8000/api/v1/auth/orderinfo/{id}", {
-              id: this.$auth.user().id,
-              first_name: app.firstname,
-              last_name: app.lastname,
-              email: app.email,
-              // shipping info
-              address_line_1: app.shippingaddress,
-              suite_no: app.shippingsuiteno,
-              city: app.shippingcity,
-              state_id: app.shippingstateselected,
-              zipcode: app.shippingzip,
-              // payment info
-              card_type: app.cardtypeselected,
-              card_name: app.cardname,
-              card_number: app.cardnumber,
-              exp_month: app.expmonthselected,
-              exp_year: app.expyearselected,
-              // billing info
-              billing_address: app.billingaddress,
-              billing_suite_no: app.billingsuiteno,
-              billing_city: app.billingcity,
-              billing_state: app.billingstateselected,
-              billing_zip: app.billingzip
-            })
-            .then(function(response) {
-              console.log(response);
-              app.busy = false;
-            })
-            .catch(error => {
-              console.log(error);
-              app.busy = false;
-              app.$notify({
-                message:
-                  "There has been an error adding your billing / shipping information. Please try again.",
-                type: "error",
-                top: true,
-                bottom: false,
-                left: false,
-                right: true,
-                showClose: true,
-                closeDelay: 4500
-              });
-            });
-        } else {
-          axios
-            .post("http://127.0.0.1:8000/api/v1/auth/orderinfo/{id}", {
-              id: this.$auth.user().id,
-              first_name: app.firstname,
-              last_name: app.lastname,
-              email: app.email,
-              // shipping info
-              address_line_1: app.shippingaddress,
-              suite_no: app.shippingsuiteno,
-              city: app.shippingcity,
-              state_id: app.shippingstateselected,
-              zipcode: app.shippingzip,
-              // payment info
-              card_type: app.cardtypeselected,
-              card_name: app.cardname,
-              card_number: app.cardnumber,
-              exp_month: app.expmonthselected,
-              exp_year: app.expyearselected
-            })
-            .then(function(response) {
-              console.log(response);
-              app.busy = false;
-            })
-            .catch(error => {
-              console.log(error);
-              app.busy = false;
-              app.$notify({
-                message:
-                  "There has been an error adding your shipping information. Please try again.",
-                type: "error",
-                top: true,
-                bottom: false,
-                left: false,
-                right: true,
-                showClose: true,
-                closeDelay: 4500
-              });
-            });
-        }
-      }
+      axios
+        .post("http://127.0.0.1:8000/api/v1/auth/order", {
+          user_id: this.$auth.user().id,
+          items_ordered: app.cart.length,
+          subtotal: app.subtotal,
+          discount: app.discount,
+          total: app.total,
+          products: app.cart,
+          product_total: app.itemtotal,
+        })
+        .then(function(response) {
+          console.log(response);
+          app.busy = false;
+          app.$notify({
+            message: "Your order has been placed!",
+            type: "success",
+            top: true,
+            bottom: false,
+            left: false,
+            right: true,
+            showClose: true,
+            closeDelay: 4500
+          });
+        })
+        .catch(error => {
+          console.log(error);
+          app.busy = false;
+          app.$notify({
+            message:
+              "There has been an error placing your order. Please try again.",
+            type: "error",
+            top: true,
+            bottom: false,
+            left: false,
+            right: true,
+            showClose: true,
+            closeDelay: 4500
+          });
+        });
     },
     setStateOptions() {
       var user = this;
@@ -870,10 +734,7 @@ export default {
   font-size: 40px;
   margin-top: 3%;
   border-bottom: 3px solid black;
-  /*width: 760px;*/
   margin-left: 15%;
-  margin: auto;
-  margin-bottom: 3%;
   width: 70%;
 }
 .creditInput {

@@ -6,6 +6,8 @@ use App\User;
 use App\Product;
 use App\Publisher;
 use App\ShoppingCart;
+use App\Order;
+use App\OrderItem;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Users\UserController;
 use Illuminate\Support\Facades\DB;
@@ -43,7 +45,7 @@ class OrderController extends Controller {
         $order->subtotal = $request->subtotal;
         $order->discount = $request->discount;
         $order->total = $request->total;
-        $order->confirmation_number = str_random(15);
+        $order->confirmation_number = $this->generateRandomString();
         $order->save();
 
         $this->insertOrderItems($request);
@@ -61,23 +63,37 @@ class OrderController extends Controller {
     public function insertOrderItems(Request $request)
     {
         $order_items = [];
-
         for($i= 0; $i < count($request->products); $i++){
-            $order_items[] = [
-                'user_order_id' => $request->user_id,
-                'product_id' => $request->products->product_id,
-                'quantity_ordered' => $request->products->quantity_ordered,
-                'product_total' => $request->products->product_total,
-                ];
+
+            $orderitem = new OrderItem();
+            $orderitem->user_order_id = $request->user_id;
+            $orderitem->product_id = $request->products[$i]['product_id'];
+            $orderitem->quantity_ordered = $request->products[$i]['quantity'];
+            $orderitem->product_total = $request->product_total[$i];
+            $orderitem->save();
+                
+            Product::updateProductQuantity($request->products[$i]['product_id'], $request->products[$i]['quantity']); // ISSUES
         }
-        
-        DB::table('order_item')->insert($order_items);
-        Product::updateProductQuantity($request->product_id, $request->quantity_ordered);
+
+        ShoppingCart::clear($request->user_id);
 
         return response()->json(
             [
                 'status' => 'success',
                 'items' => $order_items,
             ], 200);
+    }
+
+    /**
+     * Generates an order confirmation number.
+     */
+    function generateRandomString($length = 15) {
+        $characters = '0123456789';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i <= $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
     }
 }

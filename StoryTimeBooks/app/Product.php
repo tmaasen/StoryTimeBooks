@@ -39,12 +39,12 @@ class Product extends Model
      */
     public static function updateProductQuantity($product_id, $quantityOrdered) {
 
-        $quantityOnHand = DB::table('products')->select('quantity_on_hand')->where('id', $product_id);
+        $quantityOnHand = DB::table('products')->select('quantity_on_hand')->where('id', $product_id)->value('id');
 
         DB::table('products')
         ->where('id', $product_id)
         ->update([
-            'quantity' => $quantityOnHand - $quantityOrdered
+            'quantity_on_hand' => ((int)$quantityOnHand - (int)$quantityOrdered)
         ]);
 
     }   

@@ -5,7 +5,7 @@
         <img src="../assets/StoryTime.png" width="200" class="navbar-brand" title="Go Home" />
       </router-link>
       <a
-        title="View our source code on Github"
+        title="View our source code on GitHub"
         target="_blank"
         href="https://github.com/polyestercupcake/Database-Systems/tree/master/DATABASE-PROJECT/StoryTimeBooks"
         id="githubButton"

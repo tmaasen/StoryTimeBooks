@@ -54,7 +54,7 @@ Route::prefix('v1')->group(function () {
                 // insert or update all order info given by user
                 Route::post('orderinfo/{id}', 'Users\UserController@updateUser');
                 // place an order
-                Route::post('order', 'OrderController@insertOrder');
+                Route::post('order', 'OrderController@insertOrder');                
                 });
         });
 // Below mention routes are admin. Non-admin users have no access.

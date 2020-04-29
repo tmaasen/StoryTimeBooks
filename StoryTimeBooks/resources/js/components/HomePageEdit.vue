@@ -71,7 +71,7 @@
     <!--end search results-->
 
     <div style="overflow:visible;flex-grow: 1;text-align: center;">
-      <b-overlay :show="busy" rounded="sm" opacity="0.6" spinner-small spinner-variant="primary">
+      <b-overlay :show="busy" rounded="sm" opacity="0.6">
         <b-jumbotron class="jumbotron">
           <div class="jumbomessage">
             <h1>It's StoryTime</h1>
