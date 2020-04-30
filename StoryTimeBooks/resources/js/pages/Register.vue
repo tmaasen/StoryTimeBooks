@@ -56,12 +56,13 @@
                 <div class="col-md-6">
                   <input
                     v-model="password"
-                    type="password"
+                    :type="passwordFieldType"
                     id="password"
                     class="form-control"
                     placeholder="Password"
                     required
                   />
+                  <b-icon-eye-fill font-scale="1.5" @click="switchVisibility" />
                 </div>
 
               </div>
@@ -120,10 +121,14 @@ export default {
         has_error: false,
         error: '',
         errors: {},
+        passwordFieldType: 'password',
         success: false
       }
     },
     methods: {
+      switchVisibility() {
+       this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password'
+      },
       register() {
         this.$Progress.start();
         var app = this

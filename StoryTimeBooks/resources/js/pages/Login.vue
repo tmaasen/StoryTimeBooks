@@ -43,10 +43,11 @@
                   <input
                     v-model="password"
                     id="password"
-                    type="password"
+                    :type="passwordFieldType"
                     class="form-control"
                     required
                   />
+                  <b-icon-eye-fill font-scale="1.5" @click="switchVisibility" />
                 </div>
               </div>
               <!-- Login button -->
@@ -75,6 +76,7 @@ export default {
     return {
       email: null,
       password: null,
+      passwordFieldType: 'password',
       success: false,
       has_error: false,
       error: ""
@@ -84,6 +86,9 @@ export default {
     //
   },
   methods: {
+    switchVisibility() {
+       this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password'
+    },
     login() {
       this.$Progress.start();
       // get the redirect object
