@@ -75,5 +75,10 @@ Route::prefix('v1')->group(function () {
         Route::put('updateproduct/{id}', 'BookController@updateProduct');
         // Gets all data needed for admin panel
         Route::get('all', 'BookController@allAdmin');
+            Route::prefix('reports')->group(function () {
+               Route::get('ordersummary', 'OrderController@orderSummary');
+               Route::get('customersbystate', 'Users\UserController@customersByState'); 
+               Route::get('inventorybycategory', 'BookController@inventoryByCategory'); 
+            });
     });
 });

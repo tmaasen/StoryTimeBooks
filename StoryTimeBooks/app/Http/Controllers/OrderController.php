@@ -45,7 +45,7 @@ class OrderController extends Controller {
         $order->subtotal = $request->subtotal;
         $order->discount = $request->discount;
         $order->total = $request->total;
-        $order->confirmation_number = $this->generateRandomString();
+        $order->confirmation_number = $request->confirmation_number;
         $order->save();
 
         $this->insertOrderItems($request);
@@ -70,6 +70,7 @@ class OrderController extends Controller {
             $orderitem->product_id = $request->products[$i]['product_id'];
             $orderitem->quantity_ordered = $request->products[$i]['quantity'];
             $orderitem->product_total = $request->product_total[$i];
+            $orderitem->confirmation_number = $request->confirmation_number;
             $orderitem->save();
                 
             Product::updateProductQuantity($request->products[$i]['product_id'], $request->products[$i]['quantity']); // ISSUES
@@ -87,13 +88,32 @@ class OrderController extends Controller {
     /**
      * Generates an order confirmation number.
      */
-    function generateRandomString($length = 15) {
-        $characters = '0123456789';
-        $charactersLength = strlen($characters);
-        $randomString = '';
-        for ($i = 0; $i <= $length; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
-        }
-        return $randomString;
+    // public function generateRandomString($length = 15) {
+    //     $characters = '0123456789';
+    //     $charactersLength = strlen($characters);
+    //     $randomString = '';
+    //     for ($i = 0; $i <= $length; $i++) {
+    //         $randomString .= $characters[rand(0, $charactersLength - 1)];
+    //     }
+    //     return $randomString;
+    // }
+
+    /**
+     * Provides a report of all users who have placed an order with StoryTime.
+     * THIS IS AN ADMIN FUNCTION.
+     */
+    public function orderSummary() {
+       // select first_name, last_name, items_ordered, subtotal, discount, total, orders.created_at from orders 
+       // inner join users on orders.user_id = users.id;
+      $results = DB::table('orders')
+        ->join('users', 'orders.user_id', '=', 'users.id')
+        ->select('first_name', 'last_name', 'items_ordered', 'subtotal', 'discount', 'total', 'orders.created_at')
+        ->get();
+
+    return response()->json(
+        [
+            'status' => 'success',
+            'results' => $results
+        ], 200);
     }
 }

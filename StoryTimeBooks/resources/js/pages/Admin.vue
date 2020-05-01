@@ -4,6 +4,7 @@
     <head>
       <title>StoryTime | Admin</title>
     </head>
+      <!-- <adminnav v-on:getreport1="report1" v-on:getreport2="report2" v-on:getreport3="report3" /> -->
       <adminnav />
       <b-overlay :show="busy" rounded="lg" opacity="1.0">
       <br />
@@ -207,6 +208,76 @@
           head-variant="light"
           class="w-50"
         ></b-table>
+        <hr />
+        <!-- Report 1: Order Summary -->
+        <h1 id="report1-table" style="text-align:center">Order Summary</h1>
+        <b-pagination
+          v-model="currentOrderSummaryPage"
+          :total-rows="ordersummaryrows"
+          :per-page="perPage"
+          class="table"
+        ></b-pagination>
+        <b-table
+          ref="report1"
+          selectable
+          select-mode="single"
+          :busy.sync="busy"
+          :per-page="perPage"
+          :current-page="currentOrderSummaryPage"
+          small
+          sticky-header
+          striped
+          hover
+          :items="orderSummary"
+          head-variant="light"
+          class="w-50"
+        ></b-table>
+        <hr />
+        <!-- Report 2: Customers by State -->
+        <h1 id="report2-table" style="text-align:center">Customers By State</h1>
+        <b-pagination
+          v-model="currentCustomerByStatePage"
+          :total-rows="customersbystaterows"
+          :per-page="perStatePage"
+          class="table"
+        ></b-pagination>
+        <b-table
+          selectable
+          select-mode="single"
+          :busy.sync="busy"
+          :per-page="perStatePage"
+          :current-page="currentCustomerByStatePage"
+          small
+          sticky-header
+          striped
+          hover
+          :items="customersByState"
+          head-variant="light"
+          class="w-50"
+        ></b-table>
+        <hr />
+        <!-- Report 3: Inventory by Product Category -->
+        <h1 id="report3-table" style="text-align:center">Inventory By Product Category</h1>
+        <b-pagination
+          v-model="currentInventoryByCategoryPage"
+          :total-rows="inventorybycategoryrows"
+          :per-page="perProductCategoryPage"
+          class="table"
+        ></b-pagination>
+        <b-table
+          selectable
+          select-mode="single"
+          :busy.sync="busy"
+          :per-page="perProductCategoryPage"
+          :current-page="currentInventoryByCategoryPage"
+          small
+          sticky-header
+          striped
+          hover
+          :items="inventoryByCategory"
+          head-variant="light"
+          class="w-50"
+        ></b-table>
       </div>
       <hr />
       <footer>
@@ -238,12 +309,20 @@ export default {
     return {
       busy: false,
       perPage: 4,
+      perStatePage: 10,
+      perProductCategoryPage: 5,
       currentUserPage: 1,
       users: [],
       currentBookPage: 1,
       books: [],
       currentPublisherPage: 1,
-      publishers: []
+      publishers: [],
+      orderSummary:[],
+      currentOrderSummaryPage: 1,
+      customersByState:[],
+      currentCustomerByStatePage: 1,
+      inventoryByCategory:[],
+      currentInventoryByCategoryPage: 1,
     };
   },
   components: {
@@ -256,6 +335,26 @@ export default {
   },
   created() {
     this.getAll();
+  },
+  computed: {
+    userrows() {
+      return this.users.length;
+    },
+    bookrows() {
+      return this.books.length - 1;
+    },
+    publisherrows() {
+      return this.publishers.length;
+    },
+    ordersummaryrows() {
+      return this.orderSummary.length;
+    },
+    customersbystaterows() {
+      return this.customersByState.length;
+    },
+    inventorybycategoryrows() {
+      return this.inventoryByCategory.length;
+    }
   },
   methods: {
     getImgUrl(pic) {
@@ -325,6 +424,9 @@ export default {
     getAll() {
       var app = this
       app.busy = true;
+      this.report1()
+      this.report2()
+      this.report3()
       axios
         .get("http://127.0.0.1:8000/api/v1/admin/all")
         .then(response => {
@@ -336,18 +438,44 @@ export default {
         })
         .then(error => {
           console.log(error);
+          app.busy = false;
         });
       },
-  },
-  computed: {
-    userrows() {
-      return this.users.length;
+    report1() {
+      var app = this
+      axios
+        .get("http://127.0.0.1:8000/api/v1/admin/reports/ordersummary")
+        .then(response => {
+          this.orderSummary = response.data.results;
+          console.log(response);
+        })
+        .then(error => {
+          console.log(error);
+        });
     },
-    bookrows() {
-      return this.books.length - 1;
+    report2() {
+      var app = this
+      axios
+        .get("http://127.0.0.1:8000/api/v1/admin/reports/customersbystate")
+        .then(response => {
+          this.customersByState = response.data.results;
+          console.log(response);
+        })
+        .then(error => {
+          console.log(error);
+        });
     },
-    publisherrows() {
-      return this.publishers.length;
+    report3() {
+      var app = this
+      axios
+        .get("http://127.0.0.1:8000/api/v1/admin/reports/inventorybycategory")
+        .then(response => {
+          this.inventoryByCategory = response.data.results;
+          console.log(response);
+        })
+        .then(error => {
+          console.log(error);
+        });
     }
   },
 };

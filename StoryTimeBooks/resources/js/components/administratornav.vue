@@ -10,10 +10,12 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav class="ml-auto">
-            npm install vue-fuse      <nav class="mt-2 reports">
-            <a href="#">Report 1</a>
-            <a href="#">Report 2</a>
-            <a href="#">Report 3</a>
+           <nav class="mt-2 reports">
+            <a href="#" v-scroll-to="'#report1-table'" @click="emitReport1">Report 1: Order Summary</a>
+            <span>|</span>
+            <a href="#" v-scroll-to="'#report2-table'" @click="emitReport2">&nbsp;Report 2: Customers By State</a>
+            <span>|</span>
+            <a href="#" v-scroll-to="'#report3-table'" @click="emitReport3">&nbsp;Report 3: Inventory By Category</a>
           </nav>
           <b-dropdown variant="primary" id="dropdown-right" text="Left align">
 
@@ -55,6 +57,15 @@ export default {
     return {};
   },
   methods: {
+    emitReport1() {
+      this.$emit('getreport1')
+    },
+    emitReport2() {
+      this.$emit('getreport2')
+    },
+    emitReport3() {
+      this.$emit('getreport3')
+    },
     logout() {
       this.$Progress.start();
       this.$auth.logout({

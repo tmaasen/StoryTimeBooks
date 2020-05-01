@@ -418,6 +418,7 @@ export default {
       discount: 0,
       itemtotal:[],
       total: 0,
+      confirmation: '',
       stateOptions: [
         { value: null, text: "Please select a state or US territory" }
       ],
@@ -462,6 +463,7 @@ export default {
     this.getUserInfo();
     this.getCartItems();
     this.getItemsInCart();
+    this.generateConfirmationNumber();
   },
   methods: {
     getImgUrl(pic) {
@@ -622,6 +624,7 @@ export default {
           total: app.total,
           products: app.cart,
           product_total: app.itemtotal,
+          confirmation_number: app.confirmation
         })
         .then(function(response) {
           console.log(response);
@@ -636,6 +639,7 @@ export default {
             showClose: true,
             closeDelay: 4500
           });
+          app.router.push({ path: `/user/${app.$auth.user().id}/order/invoice/${app.confirmation}` })
         })
         .catch(error => {
           console.log(error);
@@ -675,6 +679,15 @@ export default {
         .catch(error => {
           console.log(error);
         });
+    },
+      generateConfirmationNumber(length = 15) {
+        var characters = '0123456789';
+        var charactersLength = characters.length;
+        var randomString = '';
+        for (var i = 0; i <= length; i++) {
+            randomString = Math.random().toPrecision(length);
+        }
+        this.confirmation = randomString.slice(2,length+2);
     }
   }
 };

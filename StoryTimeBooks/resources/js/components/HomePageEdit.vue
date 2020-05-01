@@ -918,6 +918,11 @@ export default {
 template {
   scroll-behavior: smooth !important;
 }
+@media screen and (max-width: 1000px) {
+  .jumbotron {
+    display: none;
+  }
+}
 .jumbotron {
   background-image: url("../assets/colorful-books-on-shelf-5710.jpg");
   background-size: contain;

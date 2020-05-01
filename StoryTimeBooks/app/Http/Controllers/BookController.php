@@ -341,4 +341,24 @@ class BookController extends Controller
                 'message' => 'Item Updated'
             ], 200);
     }
+
+    /**
+     * Provides a report of all product inventory by category.
+     * THIS IS AN ADMIN FUNCTION.
+     */
+    public function inventoryByCategory() {
+        // select category, sum(quantity_on_hand) as quantity from products
+        // inner join product_categories on product_categories.id = products.category_id
+        // group by category;
+        $results = DB::table('products')
+            ->join('product_categories', 'products.category_id', '=', 'product_categories.id')
+            ->selectRaw('category, sum(quantity_on_hand) as quantity')
+            ->groupBy('category')
+            ->get();
+    return response()->json(
+        [
+            'status' => 'success',
+            'results' => $results
+        ], 200);
+    }
  }

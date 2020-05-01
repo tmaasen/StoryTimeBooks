@@ -328,4 +328,29 @@ class UserController extends Controller
             'billing' => $billingAddress
         ]);
     }
+
+    /**
+     * Provides a report of all users by state.
+     * THIS IS AN ADMIN FUNCTION.
+     */
+    public function customersByState() {
+        //         select first_name, last_name, state, address_type.name from users
+        //         inner join user_address on user_address.user_id = users.id
+        //         inner join states on states.id = user_address.state_id
+        //         inner join address_type on address_type.id = user_address.address_type_id
+        //         order by state;
+        $results = DB::table('users')
+            ->join('user_address', 'users.id', '=', 'user_address.user_id')
+            ->join('states', 'states.id', '=', 'user_address.state_id')
+            ->join('address_type', 'address_type.id', '=', 'user_address.address_type_id')
+            ->select('first_name', 'last_name', 'state', 'address_type.name')
+            ->orderBy('state')
+            ->get();
+            
+        return response()->json(
+            [
+                'status' => 'success',
+                'results' => $results
+            ], 200);
+    }
 }

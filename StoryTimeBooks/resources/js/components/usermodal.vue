@@ -48,37 +48,6 @@
         >
           <b-form-input id="email" v-model="email" type="email" required :state="userState"></b-form-input>
         </b-form-group>
-        <!-- Password -->
-        <b-form-group
-          label="Password"
-          label-for="password"
-          invalid-feedback="Password is required"
-          :state="userState"
-        >
-          <b-form-input
-            id="password"
-            v-model="password"
-            type="password"
-            required
-            :state="userState"
-          ></b-form-input>
-        </b-form-group>
-        <!-- Password Confirm -->
-        <b-form-group
-          label="Confirm Password"
-          label-for="password_confirm"
-          invalid-feedback="Password confirmation does not match"
-          :state="userState"
-        >
-          <b-form-input
-            id="password_confirm"
-            name="password_confirm"
-            type="password"
-            v-model="password_confirmation"
-            required
-            :state="userState"
-          ></b-form-input>
-        </b-form-group>
         <!-- Role -->
         <b-form-group
           label="Role"
@@ -139,6 +108,7 @@ export default {
       password_confirmation1: this.password_confirmation,
       roleSelected1: this.roleSelected,
       deleteSelected1: this.deleteSelected,
+      passwordFieldType: 'password',
       errors: {},
       success: false,
       userState: null
@@ -156,6 +126,9 @@ export default {
     deleteSelected: String
   },
   methods: {
+    switchVisibility() {
+       this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password'
+    },
     checkFormValidity() {
       const valid = this.$refs.form.checkValidity();
       this.userState = valid;

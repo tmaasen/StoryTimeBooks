@@ -10,6 +10,7 @@ import Restricted from './pages/403'
 import ShoppingCart from './pages/ShoppingCart'
 import OrderInfo from './pages/OrderInfo'
 import OrderReview from './pages/OrderReview'
+import OrderInvoice from './pages/OrderInvoice'
 
 Vue.use(VueRouter)
 
@@ -27,10 +28,11 @@ const router = new VueRouter({
         { path: '/login', component: Login, name: 'Login', meta: { auth: false } },
         { path: '/register', component: Register, name: 'Register', meta: { auth: undefined } },
         { path: '/admin', component: Admin, name: 'Admin', meta: { admin: true, auth: true } },
-        { path: '/user/profile/:id', component: Profile, name: 'Profile', meta: { auth: true } },
+        { path: '/user/profile/:id', component: Profile, name: 'Profile', props:true, meta: { auth: true } },
         { path: '/user/cart/:id', component: ShoppingCart, name: 'ShoppingCart', meta: { auth: true } },
         { path: '/user/:id/order/info', component: OrderInfo, name: 'OrderInfo', meta: { auth: true } },
         { path: '/user/:id/:checked/order/review', component: OrderReview, props:true, name: 'OrderReview', meta: { auth: true } },
+        { path: '/user/:id/order/invoice/:number', component: OrderInvoice, props:true, name: 'OrderInvoice', meta: { auth: true } },
     ]
 
 });
