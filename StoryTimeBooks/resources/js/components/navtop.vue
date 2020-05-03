@@ -7,7 +7,7 @@
       <a
         title="View our source code on GitHub"
         target="_blank"
-        href="https://github.com/polyestercupcake/Database-Systems/tree/master/DATABASE-PROJECT/StoryTimeBooks"
+        href="https://github.com/polyestercupcake/StoryTimeBooks/tree/master/StoryTimeBooks"
         id="githubButton"
       >
         <img img src="../assets/GitHub_Logo_White.png" width="60px" align="center" />

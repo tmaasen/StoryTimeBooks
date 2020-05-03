@@ -69,7 +69,9 @@
       </ul>
     </div>
     <!--end search results-->
-
+    <div class="header">
+      <p>DISCLAIMER: This website is for educational use ONLY. Please enjoy.</p>
+    </div>
     <div style="overflow:visible;flex-grow: 1;text-align: center;">
       <b-overlay :show="busy" rounded="sm" opacity="0.6">
         <b-jumbotron class="jumbotron">
@@ -915,6 +917,16 @@ export default {
 </script>
 
 <style scoped>
+/* Header/Logo Title */
+.header {
+  padding: 10px;
+  text-align: center;
+  background: rgb(37, 37, 37);
+  color: white;
+  font-size: 30px;
+  margin-bottom: -1%;
+  font-weight: bold;
+}
 template {
   scroll-behavior: smooth !important;
 }

@@ -54,7 +54,11 @@ Route::prefix('v1')->group(function () {
                 // insert or update all order info given by user
                 Route::post('orderinfo/{id}', 'Users\UserController@updateUser');
                 // place an order
-                Route::post('order', 'OrderController@insertOrder');                
+                Route::post('order', 'OrderController@insertOrder');   
+                // clears the cart once the user lands on the invoice page
+                Route::post('clearcart', 'OrderController@clearCart');
+                // gets order info for a specific order
+                Route::get('invoice', 'OrderController@getInvoiceInfo');          
                 });
         });
 // Below mention routes are admin. Non-admin users have no access.

@@ -362,15 +362,10 @@
               </b-card>
             </div>
             <div style="text-align:left">
-              <router-link
-                :to="`/user/${$auth.user().id}/order/invoice/${$auth.user().confirmation}`"
-                class="link"
-              >
-                <b-button block class="checkoutbtn" variant="primary" @click="placeOrder">
-                  Place Order
-                  <b-icon-arrow-right font-scale="2" />
-                </b-button>
-              </router-link>
+              <b-button block class="checkoutbtn" variant="primary" @click="placeOrder">
+                Place Order
+                <b-icon-arrow-right font-scale="2" />
+              </b-button>
             </div>
           </div>
         </b-form>
@@ -643,11 +638,6 @@ export default {
             showClose: true,
             closeDelay: 4500
           });
-          app.router.push({
-            path: `/user/${app.$auth.user().id}/order/invoice/${
-              app.confirmation
-            }`
-          });
         })
         .catch(error => {
           console.log(error);
@@ -664,6 +654,11 @@ export default {
             closeDelay: 4500
           });
         });
+      app.$router.push({
+        path: `/user/${app.$auth.user().id}/order/${app.checked1}/invoice/${
+          app.confirmation
+        }`
+      });
     },
     setStateOptions() {
       var user = this;
@@ -750,6 +745,7 @@ export default {
 .checkoutbtn:hover {
   background-color: #2196f3;
   font-size: 1.4rem;
+  display: inline-block;
 }
 .profileTitle {
   font-size: 40px;

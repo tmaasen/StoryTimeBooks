@@ -275,12 +275,14 @@ class UserController extends Controller
         if (DB::table('user_address')->where('user_id', $request->id)
             ->where('user_address.address_type_id', 1)->exists()) {
             $shippingInfo = DB::table('user_address')
+            ->join('states', 'states.id', '=', 'user_address.state_id')
                 ->select(
                     'user_address.address_type_id',
                     'user_address.address_line_1',
                     'user_address.suite_no',
                     'user_address.city',
                     'user_address.state_id',
+                    'state',
                     'user_address.zipcode',
                     'user_address.home_phone',
                     'user_address.work_phone',
@@ -308,12 +310,14 @@ class UserController extends Controller
             ->where('user_address.address_type_id', 2)
             ->exists()) {
             $billingAddress = DB::table('user_address')
+            ->join('states', 'states.id', '=', 'user_address.state_id')
                 ->select(
                     'user_address.address_type_id',
                     'user_address.address_line_1',
                     'user_address.suite_no',
                     'user_address.city',
                     'user_address.state_id',
+                    'state',
                     'user_address.zipcode'
                 )->where('user_id', $request->id)
                 ->where('user_address.address_type_id', 2)

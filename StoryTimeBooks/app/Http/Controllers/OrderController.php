@@ -76,8 +76,6 @@ class OrderController extends Controller {
             Product::updateProductQuantity($request->products[$i]['product_id'], $request->products[$i]['quantity']); // ISSUES
         }
 
-        ShoppingCart::clear($request->user_id);
-
         return response()->json(
             [
                 'status' => 'success',
@@ -86,17 +84,27 @@ class OrderController extends Controller {
     }
 
     /**
-     * Generates an order confirmation number.
+     * Gets order info for a specific order.
      */
-    // public function generateRandomString($length = 15) {
-    //     $characters = '0123456789';
-    //     $charactersLength = strlen($characters);
-    //     $randomString = '';
-    //     for ($i = 0; $i <= $length; $i++) {
-    //         $randomString .= $characters[rand(0, $charactersLength - 1)];
-    //     }
-    //     return $randomString;
-    // }
+    public function getInvoiceInfo(Request $request) {
+       
+        $order = DB::table('orders')
+        ->where('confirmation_number', $request->confirmation_number)->get();
+
+        $products = DB::table('order_item')
+        ->join('products', 'products.id', '=', 'order_item.product_id')
+        ->select('product_name', 'quantity_ordered', 'product_total')
+        ->where('confirmation_number', $request->confirmation_number)->get();
+
+        ShoppingCart::clear($request->user_id);
+
+       return response()->json(
+            [
+                'status' => 'success',
+                'order' => $order,
+                'products' => $products,
+            ], 200);
+    }
 
     /**
      * Provides a report of all users who have placed an order with StoryTime.
