@@ -9,6 +9,7 @@
     hide-footer
   >
     <b-overlay :show="busy" rounded="lg" opacity="0.6">
+      <!-- Product Information -->
       <div class="book-detail-container">
         <div id="img-container" class="column1">
           <b-img :src="getImgUrl(image)" />
