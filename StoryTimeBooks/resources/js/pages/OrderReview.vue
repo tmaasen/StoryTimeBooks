@@ -145,11 +145,7 @@
               ></b-form-input>
 
               <label for="suiteno">Suite No</label>
-              <b-form-input
-                v-model="billingsuiteno"
-                placeholder="Enter your suite number"
-                readonly
-              ></b-form-input>
+              <b-form-input v-model="billingsuiteno" placeholder="Enter your suite number" readonly></b-form-input>
 
               <label for="city">City</label>
               <b-form-input
@@ -277,6 +273,7 @@
               :fields="tableFields"
               head-variant="light"
               class="column-table"
+              padding="0px"
             >
               <!-- Book Image -->
               <template v-slot:cell(Product)="cart">
@@ -325,9 +322,7 @@
               </template>
               <!-- Total Price -->
               <template v-slot:cell(Total)="cart">
-                <label
-                  style="padding-bottom:6rem;"
-                >$ {{ formatPrice(itemtotal[cart.index]) }}</label>
+                <label style="padding-bottom:6rem;">$ {{ formatPrice(itemtotal[cart.index]) }}</label>
                 <br />
               </template>
             </b-table>
@@ -347,7 +342,10 @@
                   Discount:&nbsp;
                   <span style="float:right">$ {{ formatPrice(discount) }} (10%)</span>
                 </b-card-text>
-                <b-card-text v-else>Discount:&nbsp;<span style="float:right">NONE</span></b-card-text>
+                <b-card-text v-else>
+                  Discount:&nbsp;
+                  <span style="float:right">NONE</span>
+                </b-card-text>
                 <hr />
                 <b-card-text v-model="total">
                   <b>Total:</b>
@@ -364,10 +362,15 @@
               </b-card>
             </div>
             <div style="text-align:left">
-              <b-button block class="checkoutbtn" variant="primary" @click="placeOrder">
-                Place Order
-                <b-icon-arrow-right font-scale="2" />
-              </b-button>
+              <router-link
+                :to="`/user/${$auth.user().id}/order/invoice/${$auth.user().confirmation}`"
+                class="link"
+              >
+                <b-button block class="checkoutbtn" variant="primary" @click="placeOrder">
+                  Place Order
+                  <b-icon-arrow-right font-scale="2" />
+                </b-button>
+              </router-link>
             </div>
           </div>
         </b-form>
@@ -416,9 +419,9 @@ export default {
       totalItemsInCart: null,
       subtotal: 0,
       discount: 0,
-      itemtotal:[],
+      itemtotal: [],
       total: 0,
-      confirmation: '',
+      confirmation: "",
       stateOptions: [
         { value: null, text: "Please select a state or US territory" }
       ],
@@ -529,7 +532,8 @@ export default {
           console.log(response);
           app.cart = response.data.products;
           app.quantityOnHand = response.data.products.map(
-            x => x.quantity_on_hand)
+            x => x.quantity_on_hand
+          );
           app.subtotalarray = response.data.products.map(x => x.retail_price);
           app.quantityarray = response.data.products.map(x => x.quantity);
           for (var i = 0; i < app.subtotalarray.length; i++) {
@@ -639,7 +643,11 @@ export default {
             showClose: true,
             closeDelay: 4500
           });
-          app.router.push({ path: `/user/${app.$auth.user().id}/order/invoice/${app.confirmation}` })
+          app.router.push({
+            path: `/user/${app.$auth.user().id}/order/invoice/${
+              app.confirmation
+            }`
+          });
         })
         .catch(error => {
           console.log(error);
@@ -680,14 +688,14 @@ export default {
           console.log(error);
         });
     },
-      generateConfirmationNumber(length = 15) {
-        var characters = '0123456789';
-        var charactersLength = characters.length;
-        var randomString = '';
-        for (var i = 0; i <= length; i++) {
-            randomString = Math.random().toPrecision(length);
-        }
-        this.confirmation = randomString.slice(2,length+2);
+    generateConfirmationNumber(length = 15) {
+      var characters = "0123456789";
+      var charactersLength = characters.length;
+      var randomString = "";
+      for (var i = 0; i <= length; i++) {
+        randomString = Math.random().toPrecision(length);
+      }
+      this.confirmation = randomString.slice(2, length + 2);
     }
   }
 };
