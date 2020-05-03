@@ -11,7 +11,7 @@
               </h5>
               <p>
                 This company exists to successfully finsh the database class.
-                Database class is fun, Tanner is fun, and Sogu is fun.
+                Database class is fun, Tanner is fun, Ethan is fun, and Sogu is fun.
               </p>
               <p>
                 We hope this situation will pass soon and all the students
