@@ -257,6 +257,9 @@ export default {
     this.getItemsInCart();
   },
   methods: {
+    scrollToTop() {
+      window.scrollTo(0, 0);
+    },
     getDueDate() {
       let dateObj = new Date();
       dateObj.setDate(dateObj.getDate() + 30);

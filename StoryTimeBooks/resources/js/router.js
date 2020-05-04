@@ -28,12 +28,15 @@ const router = new VueRouter({
         { path: '/login', component: Login, name: 'Login', meta: { auth: false } },
         { path: '/register', component: Register, name: 'Register', meta: { auth: undefined } },
         { path: '/admin', component: Admin, name: 'Admin', meta: { admin: true, auth: true } },
-        { path: '/user/profile/:id', component: Profile, name: 'Profile', props:true, meta: { auth: true } },
+        { path: '/user/profile/:id', component: Profile, name: 'Profile', props: true, meta: { auth: true } },
         { path: '/user/cart/:id', component: ShoppingCart, name: 'ShoppingCart', meta: { auth: true } },
         { path: '/user/:id/order/info', component: OrderInfo, name: 'OrderInfo', meta: { auth: true } },
-        { path: '/user/:id/:checked/order/review', component: OrderReview, props:true, name: 'OrderReview', meta: { auth: true } },
-        { path: '/user/:id/order/:checked/invoice/:number', component: OrderInvoice, props:true, name: 'OrderInvoice', meta: { auth: true } },
-    ]
+        { path: '/user/:id/:checked/order/review', component: OrderReview, props: true, name: 'OrderReview', meta: { auth: true } },
+        { path: '/user/:id/order/:checked/invoice/:number', component: OrderInvoice, props: true, name: 'OrderInvoice', meta: { auth: true } },
+    ],
+    scrollBehavior(to, from, savedPosition) {
+        return { x: 0, y: 0 }
+    }
 
 });
 
