@@ -15,9 +15,9 @@ $factory->define(UserCreditCard::class, function (Faker $faker) {
     
     return [
     'user_id' => $faker->randomelement($users),
-    'card_type' => $faker->creditCardType,
-    'card_number' => $faker->creditCardNumber,
-    'exp_month' => $faker->randomDigit,
-    'exp_year' =>$faker->numberBetween($min = 20, $max = 22)
+    'card_id' => $faker->numberBetween($min = 1, $max = 4),
+    'card_number' => encrypt($faker->creditCardNumber),
+    'exp_month' => $faker->numberBetween($min = 1, $max = 12),
+    'exp_year' => $faker->numberBetween($min = 20, $max = 22)
     ];
 });

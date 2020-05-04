@@ -5,6 +5,7 @@ use App\User;
 use App\Product;
 use App\Publisher;
 use App\ShoppingCart;
+use App\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Users\UserController;
 use Illuminate\Support\Facades\DB;
@@ -17,10 +18,39 @@ use Illuminate\Http\Request;
 class BookController extends Controller
 {
     /**
-     * Returns ALL books.
+     * Returns ALL books. ADMIN Version.
      * 
      */
     public function allBooks()
+    {
+        $products = DB::table('products')
+            ->join('product_categories', 'product_categories.id', '=', 'products.category_id')
+            ->join('publishers', 'publishers.id', '=', 'products.publisher_id')
+            ->select('products.product_image',
+                'products.id', 
+                'products.product_name', 
+                'products.author',
+                'products.category_id',
+                'product_categories.category', 
+                'products.publisher_id',
+                'publishers.publisher_name',
+                'products.isbn_13', 
+                'products.copyright_date', 
+                'products.retail_price', 
+                'products.company_cost', 
+                'products.quantity_on_hand', 
+                'products.is_deleted',
+                'products.actions')
+            ->get();
+        
+        return $products;
+    }
+
+    /**
+     * Returns ALL books. Home page Version.
+     * 
+     */
+    public function allBooksToDisplay()
     {
         $books = DB::table('products')
             ->join('product_categories', 'products.category_id', '=', 'product_categories.id')
@@ -40,10 +70,11 @@ class BookController extends Controller
     public function allPublishers()
     {
         $publishers = DB::table('publishers')->get();
+        
         return response()->json(
             [
                 'status' => 'success',
-                'publishers' => $publishers
+                'publishers' => $publishers,
             ], 200);
     }
 
@@ -53,10 +84,11 @@ class BookController extends Controller
     public function allCategories()
     {
         $categories = DB::table('product_categories')->get();
+        
         return response()->json(
             [
                 'status' => 'success',
-                'categories' => $categories
+                'categories' => $categories,
             ], 200);
     }
 
@@ -70,6 +102,27 @@ class BookController extends Controller
             [
                 'status' => 'success',
                 'states' => $states
+            ], 200);
+    }
+
+    /**
+     * Retrieves all info needed for the admin panel. THIS IS AN ADMIN FUNCTION.
+     */
+    public function allAdmin() {
+
+        $users = User::all();
+        $books = $this->allBooks();
+        $publishers = DB::table('publishers')->join('states', 'states.id', '=', 'publishers.state_id')
+        ->select('publishers.id', 'publisher_name', 'address', 'city', 'states.state', 'zipcode', 'phone')->get();
+        $categories = DB::table('product_categories')->get();
+        
+        return response()->json(
+            [
+                'status' => 'success',
+                'users' => $users,
+                'books' => $books,
+                'publishers' => $publishers,
+                'categories' => $categories
             ], 200);
     }
 
@@ -158,6 +211,18 @@ class BookController extends Controller
     }
 
     /**
+     * Creates a new product category entry. THIS IS AN ADMIN FUNCTION.
+     */
+    public function createCategory(Request $request) {
+
+        $category = new Category();
+        $category->category = $request->category_name;
+        $category->save();
+
+        return response()->json(['status' => 'success'], 200);
+    }
+
+    /**
      * Update the specified product in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -215,24 +280,6 @@ class BookController extends Controller
             [
                 'status' => 'success',
                 'message' => 'Product Removed'
-            ], 200);
-    }
-
-    /**
-     * Retrieves all info needed for the admin panel. THIS IS AN ADMIN FUNCTION.
-     */
-    public function allAdmin() {
-
-        $books = DB::table('products')->get();
-        $publishers = DB::table('publishers')->get();
-        $users = User::all();
-
-        return response()->json(
-            [
-                'status' => 'success',
-                'users' => $users,
-                'books' => $books,
-                'publishers' => $publishers
             ], 200);
     }
 

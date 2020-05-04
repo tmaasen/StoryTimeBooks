@@ -1,0 +1,31 @@
+id,product_image,product_name,author,category_id,publisher_id,isbn_13,copyright_date,retail_price,company_cost,quantity_on_hand,is_deleted,actions
+1,1585971429.jpg,"Fundamentals of Investing: 13th Edition","Scott B. Smart | Lawrence J. Gitman | Michael D. Joehnk",1,2,9782645130362,2015-03-12,99.99,74.99,5,0,NULL
+2,1585971453.jpg,"Information Systems Today: Managing in the Digital World","Joseph Valacich | Christopher Schneider",1,5,9871396750381,2017-04-12,69.99,55.99,8,0,NULL
+34,1586107893.jpg,"Web Development & Design Foundations With HTML5: 8th Edition","Terry Felke-Morris",2,7,9780134322759,2014-04-07,129.99,99.99,0,0,NULL
+35,1586108663.jpg,"Starting Out With Java: 7th Edition","Tony Gaddis",2,7,9780134802213,2017-12-12,149.99,105.99,6,0,NULL
+36,1586108833.jpg,"Project Management: Absolute Beginner's Guide: 4th Edition","Gregory M. Horine",2,4,9780789756756,2018-07-30,26.99,14.99,15,0,NULL
+37,1586108998.jpg,"Business Law Today: 10th Edition - Standard","Roger LeRoy Miller",1,1,9781133273561,2017-04-04,109.99,94.99,20,0,NULL
+38,1586109214.jpg,"Financial Management - Principles & Practice: 7th Edition","Timothy J. Gallagher | Colorado State University",1,5,9780996095464,2018-02-23,49.99,43.99,6,0,NULL
+39,1586109576.jpg,"Understanding Business Strategy: 3rd Edition","Duane Ireland | Robert Hoskisson | Michael Hitt",1,3,9780538476812,2017-09-05,34.99,27.99,5,0,NULL
+40,1586111484.jpg,"Dynamics: 14th Edition","R.C. Hibbeler",5,2,9780133915389,2016-08-16,167.99,152.99,3,0,NULL
+41,1586111648.jpg,"Project Management: Achieving Competitive Advantage: 4th Edition","Jeffrey K. Pinto",1,3,9780133798074,2019-03-24,34.99,29.99,3,0,NULL
+42,1586111747.jpg,"Control Systems: 7th Edition","Norman S. Nise",5,4,9781118170519,2017-03-28,84.99,69.99,3,0,NULL
+43,1586111926.jpg,"Fundamentals of Applied Electromagnetics: 8th Edition - Looseleaf","Fawwaz T. Ulaby | Umberto Ravaioli",5,7,9780135199008,2019-11-29,99.99,74.99,5,0,NULL
+44,1586112033.jpg,"Introduction to Agricultural Engineering Technology: 4th Edition","Harry L. Field | John M. Long",5,4,9783319696782,2016-08-15,49.99,45.99,5,0,NULL
+45,1586112202.jpg,"Music: An Appreciation - Brief","Roger Kamien",4,5,9780077837310,2014-10-01,12.99,7.99,2,0,NULL
+46,1586112348.jpg,"Melodia: A Course on Sight-Singing","Samuel W. Cole | Leo R. Lewis",4,4,9789200129384,2004-11-08,9.99,6.99,1,0,NULL
+47,1586112452.jpg,"The Complete Musician: 4th Edition","Steven G. Laitz",4,2,9780199347094,2017-02-06,19.99,12.99,13,0,NULL
+48,1586112790.jpg,"A History of Western Music: 8th Edition","J. Peter Burkholder | Donald Grout | Claude Palinca",4,1,9780393931259,2008-06-09,9.99,5.99,11,0,NULL
+49,1586112901.jpg,"Psychology: A Concise Introduction: 4th Edition","Richard A. Griggs",3,3,9781429298902,2018-09-10,24.99,12.99,9,0,NULL
+50,1586113140.jpg,"From Séance to Science: 2nd Edition","David B. Baker | Ludy T. Benjamin Jr.",3,3,9871396750824,2016-03-29,9.99,7.99,13,0,NULL
+51,1586113217.jpg,"Experiencing Childhood and Adolescence","Janet Belsky",3,2,9781319133771,2020-01-06,74.99,67.99,7,0,NULL
+52,1586113338.jpg,"Experiencing The Lifespan: 3rd Edition","Janet Belsky",3,2,9781429299220,2016-08-22,55.99,39.99,6,0,NULL
+53,1586113450.jpg,"Industrial / Organizational Psychology: 8th Edition","Michael G. Aamodt",3,3,9781305118423,2018-04-02,79.99,69.99,9,0,NULL
+54,1586233966.jpg,"Starting out with Visual C# (5th Edition)","Tony Gaddis",2,7,9780135183519,2019-04-09,119.99,99.99,5,0,NULL
+55,1586549627.jpg,"Starting Out with C++","Tony Gaddis",2,7,9780134498379,2017-02-23,139.99,104.99,6,0,NULL
+56,1586549818.jpg,"Starting Out with Python (4th Edition)","Tony Gaddis",2,7,9780134444321,2017-03-16,109.99,79.99,5,0,NULL
+57,1586550153.jpg,"Educational Psychology (12th Edition)","Robert E. Slavin",3,7,9780134995199,2018-03-19,84.99,59.99,4,0,NULL
+58,1586550330.jpg,"Engineering Mechanics (14th Edition)","Russell C. Hibbeler",5,7,9780134160689,2015-05-11,179.99,119.99,3,0,NULL
+59,1586550494.jpg,"Manufacturing Processes for Engineering Materials, 6e","Serope Kalpakjian Steven R. Schmid",5,7,9789353062910,2018-01-01,36.99,19.99,1,0,NULL
+60,1586550650.jpg,"Jazz Styles and Jazz Classics (11th Edition)","Mark C. Gridley",4,7,9780205230815,2011-09-03,99.99,69.99,4,0,NULL
+61,1586550798.jpg,"Basic Materials in Music Theory: A Programmed Approach (12th Edition)","Greg A. Steinke",4,7,9780205654208,2009-02-08,53.99,29.99,10,0,NULL

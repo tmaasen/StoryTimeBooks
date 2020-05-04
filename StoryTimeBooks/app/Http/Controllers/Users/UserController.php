@@ -192,7 +192,7 @@ class UserController extends Controller
         $card->user_id = $request->id;
         $card->card_id = $request->card_type;
         $card->card_name = $request->card_name;
-        $card->card_number = $request->card_number;
+        $card->card_number = encrypt($request->card_number);
         $card->exp_month = $request->exp_month;
         $card->exp_year = $request->exp_year;
         $card->save();
@@ -217,7 +217,7 @@ class UserController extends Controller
                 
                 'card_name' => $request->card_name,
                 'card_id' => $request->card_type,
-                'card_number' => $request->card_number,
+                'card_number' => encrypt($request->card_number),
                 'exp_month' => $request->exp_month,
                 'exp_year' => $request->exp_year,
 
@@ -297,12 +297,13 @@ class UserController extends Controller
                 ->select(
                     'user_creditcard.card_name',
                     'user_creditcard.card_id',
-                    'user_creditcard.card_number',
                     'user_creditcard.exp_month',
                     'user_creditcard.exp_year',
                 )
                 ->where('user_id', $request->id)
                 ->first();
+            $cardNumber = DB::table('user_creditcard')->select('card_number')->where('user_id', $request->id)->value('card_number');
+            $cardNumber=\decrypt($cardNumber);
         }
 
         if (DB::table('user_address')
@@ -329,6 +330,7 @@ class UserController extends Controller
             'user' => $userInfo,
             'shipping' => $shippingInfo,
             'card' => $cardInfo,
+            'decoded_card_number' => $cardNumber,
             'billing' => $billingAddress
         ]);
     }

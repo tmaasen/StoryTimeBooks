@@ -10,7 +10,7 @@
     <div id="searchResults" ref="results">
       <ul class="list-group list-group-horizontal">
         <div v-for="(post, index) in searchResults" :key="index">
-          <div v-if="post.item.category_id == 1">
+          <div v-if="post.item.category_id == 8">
             <li class="list-group-item">
               <a
                 :href="'#'"
@@ -21,7 +21,7 @@
               </a>
             </li>
           </div>
-          <div v-if="post.item.category_id == 2">
+          <div v-if="post.item.category_id == 9">
             <li class="list-group-item">
               <a
                 :href="'#'"
@@ -32,7 +32,7 @@
               </a>
             </li>
           </div>
-          <div v-if="post.item.category_id == 3">
+          <div v-if="post.item.category_id == 10">
             <li class="list-group-item">
               <a
                 :href="'#'"
@@ -43,7 +43,7 @@
               </a>
             </li>
           </div>
-          <div v-if="post.item.category_id == 4">
+          <div v-if="post.item.category_id == 11">
             <li class="list-group-item">
               <a
                 :href="'#'"
@@ -54,7 +54,7 @@
               </a>
             </li>
           </div>
-          <div v-if="post.item.category_id == 5">
+          <div v-if="post.item.category_id == 12">
             <li class="list-group-item">
               <a
                 :href="'#'"
@@ -615,7 +615,7 @@
         </div>
 
         <div style="width:70%; margin:0 15%; padding:10px;">
-          <p class="title" id="musicTheatreScroll">Music / Theatre</p>
+          <p class="title" id="musicTheatreScroll">Music & Theatre</p>
           <!--Carousel Wrapper-->
           <div id="musicTheatre" class="carousel slide carousel-multi-item" data-ride="carousel">
             <!--Controls-->
@@ -809,30 +809,30 @@ export default {
           var count2 = 0;
           var count3 = 0;
           var count4 = 0;
-          var count5 = 0;
+          var count5 = 0; 
           for (var i = 0; i < this.books.length; i++) {
-            if (this.books[i].category_id === 1) {
+            if (this.books[i].category_id === 8) {
               if (count1 < 3) {
                 this.books_Business.push(this.books[i]);
                 count1++;
               } else {
                 this.books_Business2.push(this.books[i]);
               }
-            } else if (this.books[i].category_id === 2) {
+            } else if (this.books[i].category_id === 9) {
               if (count2 < 3) {
                 this.books_ComputerScience.push(this.books[i]);
                 count2++;
               } else {
                 this.books_ComputerScience2.push(this.books[i]);
               }
-            } else if (this.books[i].category_id === 3) {
+            } else if (this.books[i].category_id === 10) {
               if (count3 < 3) {
                 this.books_Psychology.push(this.books[i]);
                 count3++;
               } else {
                 this.books_Psychology2.push(this.books[i]);
               }
-            } else if (this.books[i].category_id === 4) {
+            } else if (this.books[i].category_id === 11) {
               if (count4 < 3) {
                 this.books_MusicTheatre.push(this.books[i]);
                 count4++;

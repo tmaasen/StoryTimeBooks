@@ -362,7 +362,11 @@
               </b-card>
             </div>
             <div style="text-align:left">
-              <b-button block class="checkoutbtn" variant="primary" @click="placeOrder">
+              <b-button v-if="total > 0" block class="checkoutbtn" variant="primary" @click="placeOrder">
+                Place Order
+                <b-icon-arrow-right font-scale="2" />
+              </b-button>
+              <b-button v-else disabled block class="checkoutbtn" variant="primary">
                 Place Order
                 <b-icon-arrow-right font-scale="2" />
               </b-button>
@@ -582,7 +586,7 @@ export default {
           if (response.data.card !== null) {
             user.cardtypeselected = response.data.card.card_id;
             user.cardname = response.data.card.card_name;
-            user.cardnumber = response.data.card.card_number;
+            user.cardnumber = response.data.decoded_card_number;
             user.expmonthselected = response.data.card.exp_month;
             user.expyearselected = response.data.card.exp_year;
           }

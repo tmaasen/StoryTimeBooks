@@ -91,7 +91,7 @@
       </div>
 
       <div class="profileContent">
-        <p class="profileTitle">Address Information</p>
+        <p class="profileTitle">Shipping Address Information</p>
         <form>
           <b-container fluid>
             <b-row class="my-1">

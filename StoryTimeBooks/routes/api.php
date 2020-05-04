@@ -25,7 +25,7 @@ Route::prefix('v1')->group(function () {
         // Refresh the JWT Token
         Route::get('refresh', 'Users\AuthController@refresh');
         // Get all books
-        Route::get('products', 'BookController@allBooks');
+        Route::get('products', 'BookController@allBooksToDisplay');
 
         // Below mention routes are available only for the authenticated users.
             Route::middleware('auth:api')->group(function () {
@@ -73,6 +73,8 @@ Route::prefix('v1')->group(function () {
         Route::post('newproduct', 'BookController@addProduct');
         // Create a new publisher
         Route::post('newpublisher', 'BookController@createPublisher');
+        // Create a new product category
+        Route::post('newcategory', 'BookController@createCategory');
         // Removes a product
         Route::post('removeproduct/{id}', 'BookController@removeProduct');
         // Updates a product

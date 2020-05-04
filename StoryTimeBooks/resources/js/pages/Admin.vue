@@ -117,9 +117,40 @@
           striped
           hover
           :items="books"
+          :fields="bookfields"
           head-variant="light"
           class="w-85"
         >
+          <template v-slot:cell(product_image)="books">
+            <img :src="getImgUrl(books.item.product_image)" width="60" height="75" />
+          </template>
+          <template v-slot:cell(product_name)="books">
+            <span>{{books.item.product_name}}</span>
+          </template>
+          <template v-slot:cell(author)="books">
+            <span>{{books.item.author}}</span>
+          </template>
+          <template v-slot:cell(category)="books">
+            <span>{{books.item.category}}</span>
+          </template>
+          <template v-slot:cell(publisher)="books">
+            <span>{{books.item.publisher_name}}</span>
+          </template>
+          <template v-slot:cell(isbn_13)="books">
+            <span>{{books.item.isbn_13}}</span>
+          </template>
+          <template v-slot:cell(copyright)="books">
+            <span>{{books.item.copyright_date}}</span>
+          </template>
+          <template v-slot:cell(retail_price)="books">
+            <span>{{books.item.retail_price}}</span>
+          </template>
+          <template v-slot:cell(company_cost)="books">
+            <span>{{books.item.company_cost}}</span>
+          </template>
+          <template v-slot:cell(quantity_on_hand)="books">
+            <span>{{books.item.quantity_on_hand}}</span>
+          </template>
           <!-- Delete icon -->
           <template v-slot:cell(actions)="books">
             <b-button class="tablebuttons" v-b-modal="`remove-product-${books.item.id}`">
@@ -169,10 +200,6 @@
               v-on:refreshTables="getAll"
             />
           </template>
-          <!-- Book image -->
-          <template v-slot:cell(product_image)="books">
-            <img :src="getImgUrl(books.item.product_image)" width="60" height="75" />
-          </template>
         </b-table>
         <hr />
         <!-- Publishers -->
@@ -205,6 +232,40 @@
           striped
           hover
           :items="publishers"
+          head-variant="light"
+          class="w-50"
+        ></b-table>
+        <hr />
+        <!-- Categories -->
+        <h1 style="text-align:center">Categories</h1>
+        <b-pagination
+          v-model="currentCategoryPage"
+          :total-rows="categoryrows"
+          :per-page="perProductCategoryPage"
+          aria-controls="category-table"
+          class="table"
+        ></b-pagination>
+        <p class="mt-3">
+          Current Page: {{ currentCategoryPage }}
+          <b-button class="addbtn" style="color:white" v-b-modal.categoryModal>Add Product Category</b-button>
+          <categoryModal 
+          title="Add Product Category" 
+          v-on:refreshTables="getAll"
+          />
+        </p>
+        <b-table
+          id="category-table"
+          selectable
+          select-mode="single"
+          ref="categoryTable"
+          :busy.sync="busy"
+          :per-page="perProductCategoryPage"
+          :current-page="currentCategoryPage"
+          small
+          sticky-header
+          striped
+          hover
+          :items="categories"
           head-variant="light"
           class="w-50"
         ></b-table>
@@ -304,6 +365,7 @@ import navbottom from "../components/navbottom";
 import userModal from "../components/usermodal";
 import bookModal from "../components/bookmodal";
 import publisherModal from "../components/publishermodal";
+import categoryModal from "../components/categorymodal"
 export default {
   data() {
     return {
@@ -323,6 +385,10 @@ export default {
       currentCustomerByStatePage: 1,
       inventoryByCategory:[],
       currentInventoryByCategoryPage: 1,
+      currentCategoryPage: 1,
+      categories: [],
+      bookfields:["Product_Image", "Product_Name", "Author", "Category", 
+      "Publisher", "ISBN_13", "Copyright", "Retail_Price", "Company_Cost", "Quantity_On_Hand", "Actions"],
     };
   },
   components: {
@@ -331,7 +397,8 @@ export default {
     navbottom,
     userModal,
     bookModal,
-    publisherModal
+    publisherModal,
+    categoryModal
   },
   created() {
     this.getAll();
@@ -345,6 +412,9 @@ export default {
     },
     publisherrows() {
       return this.publishers.length;
+    },
+    categoryrows() {
+      return this.categories.length;
     },
     ordersummaryrows() {
       return this.orderSummary.length;
@@ -433,6 +503,7 @@ export default {
           this.users = response.data.users;
           this.books = response.data.books;
           this.publishers = response.data.publishers;
+          this.categories = response.data.categories;
           console.log(response);
           app.busy = false;
         })
@@ -481,6 +552,9 @@ export default {
 };
 </script>
 <style scoped>
+.tablewidth {
+  width: 13%!important;
+}
 #icons {
   font-size: 2rem;
 }

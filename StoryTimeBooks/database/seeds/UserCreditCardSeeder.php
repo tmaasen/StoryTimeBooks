@@ -11,6 +11,6 @@ class UserCreditCardSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\UserCreditCard::class, 10)->create();
+        factory(App\UserCreditCard::class, 5)->create();
     }
 }
