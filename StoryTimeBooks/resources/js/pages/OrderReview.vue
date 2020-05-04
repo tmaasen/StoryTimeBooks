@@ -468,6 +468,9 @@ export default {
     this.generateConfirmationNumber();
   },
   methods: {
+    scrollToTop() {
+      window.scrollTo(0, 0);
+    },
     getImgUrl(pic) {
       if (pic !== null) {
         var images = require.context(
