@@ -261,6 +261,7 @@ class UserController extends Controller
     public function allUserInfo(Request $request) {
         $shippingInfo = null;
         $cardInfo = null;
+        $cardNumber = null;
         $billingAddress = null;
         $userInfo = DB::table('users')
             ->select(

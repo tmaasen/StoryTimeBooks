@@ -252,6 +252,7 @@ export default {
           }
           if (response.data.shipping.address_line_1 !== null) {
           user.addressLine1 = response.data.shipping.address_line_1;
+          user.suiteNo = response.data.shipping.suite_no;
           user.city = response.data.shipping.city;
           user.selected = response.data.shipping.state_id;
           user.zip = response.data.shipping.zipcode;
