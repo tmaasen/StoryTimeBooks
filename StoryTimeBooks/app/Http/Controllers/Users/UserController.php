@@ -96,18 +96,30 @@ class UserController extends Controller
      */
     public function updateUserAddress(Request $request)
     {
+        $address = null;
         if (DB::table('user_address')->where('user_id', $request->id)->where('address_type_id', 1)->exists()) {
-            $address = DB::table('user_address')->where('user_id', $request->id)->where('address_type_id', 1)->update([
-                
-                'address_line_1' => $request->address_line_1,
-                'suite_no' => $request->suite_no,
-                'city' => $request->city,
-                'state_id' => $request->state_id,
-                'zipcode' => $request->zipcode,
-                'home_phone' => $request->home_phone,
-                'work_phone' => $request->work_phone,
+            if ($request->home_phone != null) {
+                $address = DB::table('user_address')->where('user_id', $request->id)->where('address_type_id', 1)->update([
+                    
+                    'address_line_1' => $request->address_line_1,
+                    'suite_no' => $request->suite_no,
+                    'city' => $request->city,
+                    'state_id' => $request->state_id,
+                    'zipcode' => $request->zipcode,
+                    'home_phone' => $request->home_phone,
+                    'work_phone' => $request->work_phone,
 
-            ]);
+                ]);
+            } else {
+                $address = DB::table('user_address')->where('user_id', $request->id)->where('address_type_id', 1)->update([
+                
+                    'address_line_1' => $request->address_line_1,
+                    'suite_no' => $request->suite_no,
+                    'city' => $request->city,
+                    'state_id' => $request->state_id,
+                    'zipcode' => $request->zipcode,
+                    ]);
+            }
         } else {
             $this->addUserAddress($request);
         }
@@ -131,6 +143,7 @@ class UserController extends Controller
      */
     public function updateBillingAddress(Request $request)
     {
+        $address = null;
         if (DB::table('user_address')->where('user_id', $request->id)->where('address_type_id', 2)->exists()) {
 
             $address = DB::table('user_address')->where('user_id', $request->id)->where('address_type_id', 2)->update([
@@ -258,9 +271,11 @@ class UserController extends Controller
     /**
      * Get authenticated user's information.
      */
-    public function allUserInfo(Request $request) {
+    public function allUserInfo(Request $request) 
+    {
         $shippingInfo = null;
         $cardInfo = null;
+        $cardNumber = null;
         $billingAddress = null;
         $userInfo = DB::table('users')
             ->select(

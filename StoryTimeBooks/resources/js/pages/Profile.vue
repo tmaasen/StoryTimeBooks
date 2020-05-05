@@ -92,7 +92,7 @@
 
       <div class="profileContent">
         <p class="profileTitle">Shipping Address Information</p>
-        <form>
+        <form @submit.prevent="updateUser(userid)">
           <b-container fluid>
             <b-row class="my-1">
               <b-col class="label" sm="2">
@@ -172,7 +172,7 @@
             </b-row>
           </b-container>
           <!-- Submit Changes -->
-          <b-button class="btn1" @click="updateUser(userid)">Apply Changes</b-button>
+          <b-button class="btn1" type="submit">Apply Changes</b-button>
           <!-- Remove Account -->
           <span>
             <b-button class="tablebuttons" v-b-modal="`remove-user`">
@@ -250,14 +250,15 @@ export default {
           user.last_name = response.data.user.last_name;
           user.email = response.data.user.email;
           }
-          if (response.data.shipping.address_line_1 !== null) {
+          if (response.data.shipping !== null) {
           user.addressLine1 = response.data.shipping.address_line_1;
+          user.suiteNo = response.data.shipping.suite_no;
           user.city = response.data.shipping.city;
           user.selected = response.data.shipping.state_id;
           user.zip = response.data.shipping.zipcode;
-          }
           user.homePhone = response.data.shipping.home_phone;
           user.workPhone = response.data.shipping.work_phone;
+          }
           user.setStateOptions();
         })
         .catch(error => {
