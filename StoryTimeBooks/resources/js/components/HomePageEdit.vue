@@ -69,11 +69,11 @@
       </ul>
     </div>
     <!--end search results-->
+    <b-overlay :show="busy" rounded="sm" opacity="0.6">
     <div class="header">
       <p>DISCLAIMER: This website is for educational use ONLY. Please enjoy.</p>
     </div>
     <div style="overflow:visible;flex-grow: 1;text-align: center;">
-      <b-overlay :show="busy" rounded="sm" opacity="0.6">
         <b-jumbotron class="jumbotron">
           <div class="jumbomessage">
             <h1>It's StoryTime</h1>
@@ -747,9 +747,9 @@
             <!--/.Slides-->
           </div>
           <!--/.Carousel Wrapper-->
-        </div>
-      </b-overlay>
-    </div>
+        </div>  
+      </div>
+    </b-overlay>
   </div>
 </template>
 
