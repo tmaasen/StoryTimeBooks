@@ -39,9 +39,28 @@
           striped
           hover
           :items="users"
+          :fields="userfields"
           head-variant="light"
           class="w-85"
         >
+        <template v-slot:cell(first_name)="users">
+          <span>{{ users.item.first_name }}</span>
+        </template>
+        <template v-slot:cell(last_name)="users">
+          <span>{{ users.item.last_name }}</span>
+        </template>
+        <template v-slot:cell(email)="users">
+          <span>{{ users.item.email }}</span>
+        </template>
+        <template v-slot:cell(role)="users">
+          <span>{{ users.item.role }}</span>
+        </template>
+        <template v-slot:cell(is_deleted)="users">
+          <span>{{ users.item.is_deleted }}</span>
+        </template>
+          <template v-slot:cell(deleted_at)="users">
+          <span>{{ users.item.deleted_at }}</span>
+        </template>
           <!-- Delete icon -->
           <template v-slot:cell(actions)="users">
             <b-button class="tablebuttons" v-b-modal="`remove-user-${users.item.id}`">
@@ -151,6 +170,9 @@
           <template v-slot:cell(quantity_on_hand)="books">
             <span>{{books.item.quantity_on_hand}}</span>
           </template>
+          <template v-slot:cell(is_deleted)="books">
+            <span>{{books.item.is_deleted}}</span>
+          </template>
           <!-- Delete icon -->
           <template v-slot:cell(actions)="books">
             <b-button class="tablebuttons" v-b-modal="`remove-product-${books.item.id}`">
@@ -232,9 +254,29 @@
           striped
           hover
           :items="publishers"
+          :fields="publisherfields"
           head-variant="light"
           class="w-50"
-        ></b-table>
+        >
+          <template v-slot:cell(publisher_name)="publisher">
+            <span>{{ publisher.item.publisher_name }}</span>
+          </template>
+          <template v-slot:cell(address)="publisher">
+            <span>{{ publisher.item.address }}</span>
+          </template>
+          <template v-slot:cell(city)="publisher">
+            <span>{{ publisher.item.city }}</span>
+          </template>
+          <template v-slot:cell(state)="publisher">
+            <span>{{ publisher.item.state }}</span>
+          </template>
+          <template v-slot:cell(zipcode)="publisher">
+            <span>{{ publisher.item.zipcode }}</span>
+          </template>
+          <template v-slot:cell(phone)="publisher">
+            <span>{{ publisher.item.phone }}</span>
+          </template>
+        </b-table>
         <hr />
         <!-- Categories -->
         <h1 style="text-align:center">Categories</h1>
@@ -266,9 +308,17 @@
           striped
           hover
           :items="categories"
+          :fields="categoryfields"
           head-variant="light"
           class="w-50"
-        ></b-table>
+        >
+          <template v-slot:cell(category_name)="category">
+            <span>{{ category.item.category }}</span>
+          </template>
+          <template v-slot:cell(created_at)="category">
+            <span>{{ category.item.created_at }}</span>
+          </template>
+        </b-table>
         <hr />
         <!-- Report 1: Order Summary -->
         <h1 id="report1-table" style="text-align:center">Order Summary</h1>
@@ -388,7 +438,10 @@ export default {
       currentCategoryPage: 1,
       categories: [],
       bookfields:["Product_Image", "Product_Name", "Author", "Category", 
-      "Publisher", "ISBN_13", "Copyright", "Retail_Price", "Company_Cost", "Quantity_On_Hand", "Actions"],
+      "Publisher", "ISBN_13", "Copyright", "Retail_Price", "Company_Cost", "Quantity_On_Hand", "Is_Deleted", "Actions"],
+      userfields:["First_Name", "Last_Name", "Email", "Role", "Is_Deleted", "Deleted_At", "Actions"],
+      publisherfields:["Publisher_Name", "Address", "City", "State", "Zipcode", "Phone"],
+      categoryfields:["Category_Name", "Created_At"],
     };
   },
   components: {
@@ -442,7 +495,7 @@ export default {
       app.busy = true;
       axios
         .post("http://127.0.0.1:8000/api/v1/auth/removeuser/{id}", {
-          params: {id: { idToRemove }}
+          id: idToRemove
         })
         .then(function(response) {
           console.log(response);

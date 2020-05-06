@@ -38,7 +38,7 @@ class UserController extends Controller
                 'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
                 'email' => $request->email,
-                'password' => $request->password,
+                'password' => bcrypt($request->password),
                 'role' => $request->role,
                 'is_deleted' => $request->is_Deleted,
             ]);
@@ -364,7 +364,7 @@ class UserController extends Controller
             ->join('user_address', 'users.id', '=', 'user_address.user_id')
             ->join('states', 'states.id', '=', 'user_address.state_id')
             ->join('address_type', 'address_type.id', '=', 'user_address.address_type_id')
-            ->select('first_name', 'last_name', 'state', 'address_type.name')
+            ->select('first_name', 'last_name', 'state', 'address_type.name AS address_type')
             ->orderBy('state')
             ->get();
             
