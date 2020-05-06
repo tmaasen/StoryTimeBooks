@@ -5,6 +5,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use DB;
 use Validator;
 
 
@@ -46,11 +47,16 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
+        $userStatus = DB::table('users')->where('email', $request->email)->value('is_deleted');
         $credentials = $request->only('email', 'password');
-        if ($token = $this->guard()->attempt($credentials)) {
-            return response()->json(['status' => 'success', 'creds' => $credentials, 'token' => $token], 200)->header('Authorization', $token);
-        }
-        return response()->json(['error' => 'login_error'], 401);
+        
+        if ($userStatus == 0) {
+            if ($token = $this->guard()->attempt($credentials)) {
+                return response()->json(['status' => 'success', 'creds' => $credentials, 'token' => $token], 200)->header('Authorization', $token);
+            } else 
+            return response()->json(['error' => 'login_error'], 401);
+        } else
+        return response()->json(['error' => 'This user has been deleted'], 401);
     }
     /**
      * Logout User

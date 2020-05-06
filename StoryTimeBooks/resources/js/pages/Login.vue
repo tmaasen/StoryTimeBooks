@@ -95,7 +95,7 @@ export default {
       var redirect = this.$auth.redirect();
       var app = this;
       this.$auth.login({
-        data: {
+        data: { 
           email: app.email,
           password: app.password
         },

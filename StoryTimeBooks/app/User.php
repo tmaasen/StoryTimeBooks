@@ -66,7 +66,9 @@ class User extends Authenticatable implements JWTSubject
 
         DB::table('users')
         ->where('id', $id)
-        ->update(['is_deleted' => 1]);
+        ->update(['is_deleted' => 1,
+                  'deleted_at' => DB::raw('now()')
+                ]);
 
     }
 
