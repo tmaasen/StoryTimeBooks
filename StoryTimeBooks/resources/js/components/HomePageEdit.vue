@@ -747,7 +747,7 @@
             <!--/.Slides-->
           </div>
           <!--/.Carousel Wrapper-->
-        </div>  
+        </div>
       </div>
     </b-overlay>
   </div>
@@ -801,7 +801,7 @@ export default {
     },
     getProducts() {
       axios
-        .get("http://127.0.0.1:8000/api/v1/auth/products")
+        .get("../../../api/v1/auth/products")
         .then(response => {
           // loop through the array, setting each book into a category group
           this.books = response.data.books;
@@ -809,7 +809,7 @@ export default {
           var count2 = 0;
           var count3 = 0;
           var count4 = 0;
-          var count5 = 0; 
+          var count5 = 0;
           for (var i = 0; i < this.books.length; i++) {
             if (this.books[i].category_id === 8) {
               if (count1 < 3) {
@@ -885,7 +885,7 @@ export default {
       } else {
         app.busy = true;
         axios
-          .post("http://127.0.0.1:8000/api/v1/auth/addtocart/{id}", {
+          .post("../../../api/v1/auth/addtocart/{id}", {
             product_id: product_id,
             user_id: app.$auth.user().id,
             quantity: 1
