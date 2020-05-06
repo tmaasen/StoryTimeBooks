@@ -34,7 +34,7 @@ Vue.use(VueProgressBar, {
 
 
 Vue.use(VueAxios, Axios)
-axios.defaults.baseURL = `http://127.0.0.1:8000/api/v1`
+axios.defaults.baseURL = `/api/v1`
 
 Vue.use(VueAuth, auth)
 
