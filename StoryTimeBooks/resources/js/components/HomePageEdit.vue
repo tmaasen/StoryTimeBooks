@@ -855,14 +855,15 @@ export default {
         });
     },
     getImgUrl(pic) {
-      if (pic !== null) {
+      if (pic !== "[]") {
         var images = require.context(
           "../../../public/uploads/products/",
           false,
           /\.jpg$/
         );
         return images("./" + pic);
-      }
+      } else
+      return "";
     },
     updateNavbarCart() {
       var app = this;

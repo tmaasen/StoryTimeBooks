@@ -80,6 +80,7 @@
             :options="deleteOptions"
           ></b-form-select>
         </b-form-group>
+        <span style="text-align:left">Default password will be set to '<b>storytime1234</b>' if new user</span>
       </form>
     </b-overlay>
   </b-modal>
@@ -92,7 +93,6 @@ export default {
       busy: false,
       roleOptions: [
         { value: 0, text: "0" },
-        { value: 1, text: "1" },
         { value: 2, text: "2" },
         { text: "0 is normal privileges, 2 is admin" }
       ],
@@ -189,6 +189,10 @@ export default {
     },
     registerUser() {
       const app = this;
+      if (app.password == null) {
+        app.password = 'storytime1234'
+        app.password_confirmation = 'storytime1234'
+      }
       axios
         .post("http://127.0.0.1:8000/api/v1/auth/register", {
           firstname: app.firstname,
