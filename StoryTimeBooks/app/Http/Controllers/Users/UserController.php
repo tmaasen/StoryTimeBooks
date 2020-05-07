@@ -31,6 +31,10 @@ class UserController extends Controller
      */
     public function updateUser(Request $request)
     {
+        if ($request->is_Deleted == 1) {
+            $deleted = DB::raw('now()');
+        } else $deleted = null;
+
         $user = null;
         if ($request->password != null) {
             $user = DB::table('users')->where('id', $request->id)->update([
@@ -41,7 +45,8 @@ class UserController extends Controller
                 'password' => bcrypt($request->password),
                 'role' => $request->role,
                 'is_deleted' => $request->is_Deleted,
-            ]);
+                'deleted_at' => $deleted
+            ]); 
         } else {
             $user = DB::table('users')->where('id', $request->id)->update([
             
