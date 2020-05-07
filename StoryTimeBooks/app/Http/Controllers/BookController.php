@@ -155,10 +155,10 @@ class BookController extends Controller
    
         if ($request->hasfile('product_image')) {
             $file = $request->file('product_image');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $extension;
-            $file->move('uploads/products/', $filename);
-            $book->product_image = $filename;
+            // $extension = $file->getClientOriginalExtension();
+            // $filename = time() . '.' . $extension;
+            $file->move('uploads/products/', $file->getClientOriginalName());
+            $book->product_image = $file->getClientOriginalName();
         } else {
             $book->product_image = '';
         }
