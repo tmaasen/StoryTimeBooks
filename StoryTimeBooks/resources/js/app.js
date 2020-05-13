@@ -8,10 +8,9 @@ import VueRouter from 'vue-router'
 import auth from './auth'
 import router from './router'
 import VueProgressBar from 'vue-progressbar'
-import VueMask from 'vue-masked-input'
 import vueScrollto from 'vue-scrollto'
 import VueFuse from 'vue-fuse'
-
+import VueInputMask from "vue-inputmask"
 import VueNotification from '@mathieustan/vue-notification';
 
 window.Vue = require('vue')
@@ -21,9 +20,9 @@ Vue.use(IconsPlugin)
 Vue.use(ToastPlugin)
 Vue.router = router
 Vue.use(VueRouter)
-Vue.use(VueMask)
 Vue.use(vueScrollto)
 Vue.use(VueFuse)
+Vue.use(VueInputMask.default)
 Vue.use(VueNotification)
 
 Vue.use(VueProgressBar, {

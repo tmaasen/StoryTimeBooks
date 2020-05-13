@@ -59,7 +59,7 @@
           invalid-feedback="ISBN number is required"
           :state="productState"
         >
-          <b-form-input id="isbn13" v-model="isbn13" required :state="productState"></b-form-input>
+          <b-form-input id="isbn13" v-model="isbn13" v-mask="'9999999999999'" required :state="productState"></b-form-input>
         </b-form-group>
         <!-- Copyright Date -->
         <b-form-group
@@ -73,6 +73,7 @@
             v-model="copyright"
             required
             :state="productState"
+            v-on:input="checkCurrentDate"
             locale="en"
             :max="max"
           ></b-form-datepicker>
@@ -86,7 +87,7 @@
           prepend="$"
         >
           <b-input-group prepend="$">
-            <b-form-input id="retail" v-model="retail" required :state="productState"></b-form-input>
+            <b-form-input id="retail" v-model="retail" required v-mask="'9{1,4}.99'" :state="productState"></b-form-input>
           </b-input-group>
         </b-form-group>
         <!-- Company Cost -->
@@ -97,7 +98,7 @@
           :state="productState"
         >
           <b-input-group prepend="$">
-            <b-form-input id="cost" v-model="cost" required :state="productState"></b-form-input>
+            <b-form-input id="cost" v-model="cost" required v-mask="'9{1,4}.99'" :state="productState"></b-form-input>
           </b-input-group>
         </b-form-group>
         <!-- Quantity on Hand -->
@@ -214,6 +215,24 @@ export default {
     this.setCategoryOptions();
   },
   methods: {
+    checkCurrentDate() {
+      let today = new Date().toISOString();
+      let copyrightDate = this.copyright;
+      if (copyrightDate >= today) {
+        this.$notify({
+            message:
+              "A book's copyright date cannot be in the future.",
+            type: "error",
+            top: true,
+            bottom: false,
+            left: false,
+            right: true,
+            showClose: true,
+            closeDelay: 3000
+          });
+        this.copyright = null; 
+      }
+    },
     setPublisherOptions() {
       axios
         .get("http://127.0.0.1:8000/api/v1/admin/publishers")

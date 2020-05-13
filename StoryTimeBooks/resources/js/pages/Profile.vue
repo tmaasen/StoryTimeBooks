@@ -20,7 +20,7 @@
                 <label for="input-large">First Name</label>
               </b-col>
               <b-col sm="10">
-                <b-form-input
+                <b-form-input 
                   id="input-large"
                   size="lg"
                   placeholder="Enter your First name"
@@ -70,6 +70,7 @@
                   size="lg"
                   placeholder="Enter your Home Phone"
                   v-model="homePhone"
+                  v-mask="'(999) 999-9999'"
                 ></b-form-input>
               </b-col>
             </b-row>
@@ -84,6 +85,7 @@
                   size="lg"
                   placeholder="Enter your Work Phone"
                   v-model="workPhone"
+                  v-mask="'(999) 999-9999'"
                 ></b-form-input>
               </b-col>
             </b-row>
@@ -165,6 +167,7 @@
                   id="input-large"
                   size="lg"
                   placeholder="Enter your Zip Code"
+                  v-mask="{ mask: ['99999[-9999]','9A9 A9A'] }"  
                   v-model="zip"
                   required
                 ></b-form-input>

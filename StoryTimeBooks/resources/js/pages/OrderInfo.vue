@@ -121,19 +121,13 @@
                 :state="purchaseInfoState"
                 required
                 placeholder="Enter your zip code"
+                v-mask="{ mask: ['99999[-9999]','9A9 A9A'] }"
               ></b-form-input>
             </b-form-group>
           </div>
 
           <div class="column2">
             <h3>Payment Method</h3>
-            <!-- <label for="fname">Accepted Cards</label>
-            <div class="icon-container">
-              <i class="fa fa-cc-visa" style="color:navy;"></i>
-              <i class="fa fa-cc-amex" style="color:blue;"></i>
-              <i class="fa fa-cc-mastercard" style="color:red;"></i>
-              <i class="fa fa-cc-discover" style="color:orange;"></i>
-            </div>-->
             <b-form-group
               label="Card Type"
               label-for="cardtype"
@@ -176,6 +170,7 @@
                 required
                 :state="purchaseInfoState"
                 placeholder="Enter your credit card number"
+                v-mask="'9999-9999-9999-9999'"
               ></b-form-input>
             </b-form-group>
             <b-form-group
@@ -212,14 +207,6 @@
                 style="color:#495057"
               ></b-form-select>
             </b-form-group>
-            <!-- <b-form-group
-              label="CVV"
-              label-for="cvv"
-              invalid-feedback="CVV Code is required"
-              :state="purchaseInfoState"
-            >
-              <b-form-input v-model="cardcvv" :state="purchaseInfoState" required placeholder="Enter your card's cvv code"></b-form-input>
-            </b-form-group>-->
           </div>
 
           <div v-if="!checked">
@@ -254,6 +241,7 @@
                 style="margin-bottom:5%"
                 v-model="billingzip"
                 required
+                v-mask="{ mask: ['99999[-9999]','9A9 A9A'] }"
                 placeholder="Enter your zip code"
               ></b-form-input>
             </b-form-group>
@@ -264,12 +252,12 @@
               <input v-model="checked" type="checkbox" name="sameadress" />
               Shipping address same as billing
             </label>
-            <router-link style="text-decoration:none" :to="`/user/${$auth.user().id}/${checked}/order/review`">
-            <b-button block class="checkoutbtn" variant="primary" @click="proceedToReview">
+            <!-- <router-link v-if="checkCardExpiration==false" style="text-decoration:none" :to="`/user/${$auth.user().id}/${checked}/order/review`"> -->
+            <b-button @click="checkCardExpiration" block class="checkoutbtn" variant="primary">
               Proceed to Order Review
               <b-icon-arrow-right font-scale="2" />
             </b-button>
-            </router-link>
+            <!-- </router-link> -->
           </div>
         </b-form>
       </div>
@@ -371,9 +359,9 @@ export default {
       ],
       years: [
         { value: null, text: "Card Expiration Year" },
-        { value: 20, text: "20" },
-        { value: 21, text: "21" },
-        { value: 22, text: "22" }
+        { value: 20, text: new Date().getFullYear() },
+        { value: 21, text: new Date().getFullYear()+1 },
+        { value: 22, text: new Date().getFullYear()+2 }
       ]
     };
   },
@@ -391,6 +379,41 @@ export default {
       const valid = this.$refs.form.checkValidity();
       this.purchaseInfoState = valid;
       return valid;
+    },
+    checkCardExpiration() {
+      var expired;
+      let month = new Date();
+      let year = new Date();
+      month = month.getMonth() + 1; // returns a value 0 to 11
+      year = year.getFullYear();
+      let cardyear = '20' + this.expyearselected; // prepend the first 2 digits of the year (i.e. the century)
+      let cardmonth = this.expmonthselected; 
+
+      if (cardyear > year) {
+        expired = false
+        this.proceedToReview()
+        return expired;
+      } else if (cardyear <= year) {
+        if (cardmonth < month) {
+          expired = true;
+          this.$notify({
+            message:
+              "Your credit card is expired. Please change your card parameters or add a new card.",
+            type: "error",
+            top: true,
+            bottom: false,
+            left: false,
+            right: true,
+            showClose: true,
+            closeDelay: 4500
+          });
+          return expired;
+        } else {
+          expired = false;
+          this.proceedToReview();
+          return expired;
+        }
+      }
     },
     getArrivalDate() {
       let dateObj = new Date();
@@ -525,93 +548,94 @@ export default {
     proceedToReview() {
       var app = this;
       app.busy = true;
-      if (app.checkFormValidity()) {
-        if (!app.checked) {
-          axios
-            .post("http://127.0.0.1:8000/api/v1/auth/orderinfo/{id}", {
-              id: this.$auth.user().id,
-              first_name: app.firstname,
-              last_name: app.lastname,
-              email: app.email,
-              // shipping info
-              address_line_1: app.shippingaddress,
-              suite_no: app.shippingsuiteno,
-              city: app.shippingcity,
-              state_id: app.shippingstateselected,
-              zipcode: app.shippingzip,
-              // payment info
-              card_type: app.cardtypeselected,
-              card_name: app.cardname,
-              card_number: app.cardnumber,
-              exp_month: app.expmonthselected,
-              exp_year: app.expyearselected,
-              // billing info
-              billing_address: app.billingaddress,
-              billing_suite_no: app.billingsuiteno,
-              billing_city: app.billingcity,
-              billing_state: app.billingstateselected,
-              billing_zip: app.billingzip
-            })
-            .then(function(response) {
-              console.log(response);
-              app.busy = false;
-            })
-            .catch(error => {
-              console.log(error);
-              app.busy = false;
-              app.$notify({
-                message:
-                  "There has been an error adding your billing / shipping information. Please try again.",
-                type: "error",
-                top: true,
-                bottom: false,
-                left: false,
-                right: true,
-                showClose: true,
-                closeDelay: 4500
+        if (app.checkFormValidity()) {
+          if (!app.checked) {
+            axios
+              .post("http://127.0.0.1:8000/api/v1/auth/orderinfo/{id}", {
+                id: this.$auth.user().id,
+                first_name: app.firstname,
+                last_name: app.lastname,
+                email: app.email,
+                // shipping info
+                address_line_1: app.shippingaddress,
+                suite_no: app.shippingsuiteno,
+                city: app.shippingcity,
+                state_id: app.shippingstateselected,
+                zipcode: app.shippingzip,
+                // payment info
+                card_type: app.cardtypeselected,
+                card_name: app.cardname,
+                card_number: app.cardnumber,
+                exp_month: app.expmonthselected,
+                exp_year: app.expyearselected,
+                // billing info
+                billing_address: app.billingaddress,
+                billing_suite_no: app.billingsuiteno,
+                billing_city: app.billingcity,
+                billing_state: app.billingstateselected,
+                billing_zip: app.billingzip
+              })
+              .then(function(response) {
+                console.log(response);
+                app.$router.push({ path: `/user/${app.$auth.user().id}/${app.checked}/order/review` });
+                app.busy = false;
+              })
+              .catch(error => {
+                console.log(error);
+                app.busy = false;
+                app.$notify({
+                  message:
+                    "There has been an error adding your billing / shipping information. Please try again.",
+                  type: "error",
+                  top: true,
+                  bottom: false,
+                  left: false,
+                  right: true,
+                  showClose: true,
+                  closeDelay: 4500
+                });
               });
-            });
-        } else {
-          axios
-            .post("http://127.0.0.1:8000/api/v1/auth/orderinfo/{id}", {
-              id: this.$auth.user().id,
-              first_name: app.firstname,
-              last_name: app.lastname,
-              email: app.email,
-              // shipping info
-              address_line_1: app.shippingaddress,
-              suite_no: app.shippingsuiteno,
-              city: app.shippingcity,
-              state_id: app.shippingstateselected,
-              zipcode: app.shippingzip,
-              // payment info
-              card_type: app.cardtypeselected,
-              card_name: app.cardname,
-              card_number: app.cardnumber,
-              exp_month: app.expmonthselected,
-              exp_year: app.expyearselected,
-            })
-            .then(function(response) {
-              console.log(response);
-              app.busy = false;
-            })
-            .catch(error => {
-              console.log(error);
-              app.busy = false;
-              app.$notify({
-                message:
-                  "There has been an error adding your shipping information. Please try again.",
-                type: "error",
-                top: true,
-                bottom: false,
-                left: false,
-                right: true,
-                showClose: true,
-                closeDelay: 4500
+          } else {
+            axios
+              .post("http://127.0.0.1:8000/api/v1/auth/orderinfo/{id}", {
+                id: this.$auth.user().id,
+                first_name: app.firstname,
+                last_name: app.lastname,
+                email: app.email,
+                // shipping info
+                address_line_1: app.shippingaddress,
+                suite_no: app.shippingsuiteno,
+                city: app.shippingcity,
+                state_id: app.shippingstateselected,
+                zipcode: app.shippingzip,
+                // payment info
+                card_type: app.cardtypeselected,
+                card_name: app.cardname,
+                card_number: app.cardnumber,
+                exp_month: app.expmonthselected,
+                exp_year: app.expyearselected,
+              })
+              .then(function(response) {
+                console.log(response);
+                app.busy = false;
+              })
+              .catch(error => {
+                console.log(error);
+                app.busy = false;
+                app.$notify({
+                  message:
+                    "There has been an error adding your shipping information. Please try again.",
+                  type: "error",
+                  top: true,
+                  bottom: false,
+                  left: false,
+                  right: true,
+                  showClose: true,
+                  closeDelay: 4500
+                });
               });
-            });
+          }
         }
-      }
     },
     setStateOptions() {
       var user = this;

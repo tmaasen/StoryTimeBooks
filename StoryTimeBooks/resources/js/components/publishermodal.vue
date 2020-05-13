@@ -56,6 +56,7 @@
           v-model="zip_code"
           required
           :state="publisherState"
+          v-mask="{ mask: ['99999[-9999]','9A9 A9A'] }"
         ></b-form-input>
       </b-form-group>
       <!-- Phone -->
@@ -70,6 +71,7 @@
           v-model="phone"
           required
           :state="publisherState"
+          v-mask="'(999) 999-9999'"
         ></b-form-input>
       </b-form-group>
     </form>

@@ -3,7 +3,7 @@
   <head>
     <title>StoryTime | Invoice</title>
   </head>
-  <b-overlay :show="busy" rounded="lg" opacity="1.0">
+  <b-overlay fixed :show="busy" rounded="lg" opacity="1.0">
     <navtop />
     <b-col lg="4" class="pt-2 print-button">
       <b-button onclick="window.print();return false;">
@@ -373,7 +373,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 @media print {
   @page {
     size: A4 landscape;
