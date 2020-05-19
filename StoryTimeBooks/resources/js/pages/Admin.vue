@@ -494,7 +494,7 @@ export default {
       var app = this;
       app.busy = true;
       axios
-        .post("http://127.0.0.1:8000/api/v1/auth/removeuser/{id}", {
+        .post("../../../api/v1/auth/removeuser/{id}", {
           id: idToRemove
         })
         .then(function(response) {
@@ -521,7 +521,7 @@ export default {
       var app = this;
       app.busy = true;
       axios
-        .post("http://127.0.0.1:8000/api/v1/admin/removeproduct/{id}", {
+        .post("../../../api/v1/admin/removeproduct/{id}", {
          id:  idToRemove 
         })
         .then(function(response) {
@@ -551,7 +551,7 @@ export default {
       this.report2()
       this.report3()
       axios
-        .get("http://127.0.0.1:8000/api/v1/admin/all")
+        .get("../../../api/v1/admin/all")
         .then(response => {
           this.users = response.data.users;
           this.books = response.data.books;
@@ -568,7 +568,7 @@ export default {
     report1() {
       var app = this
       axios
-        .get("http://127.0.0.1:8000/api/v1/admin/reports/ordersummary")
+        .get("../../../api/v1/admin/reports/ordersummary")
         .then(response => {
           this.orderSummary = response.data.results;
           console.log(response);
@@ -580,7 +580,7 @@ export default {
     report2() {
       var app = this
       axios
-        .get("http://127.0.0.1:8000/api/v1/admin/reports/customersbystate")
+        .get("../../../api/v1/admin/reports/customersbystate")
         .then(response => {
           this.customersByState = response.data.results;
           console.log(response);
@@ -592,7 +592,7 @@ export default {
     report3() {
       var app = this
       axios
-        .get("http://127.0.0.1:8000/api/v1/admin/reports/inventorybycategory")
+        .get("../../../api/v1/admin/reports/inventorybycategory")
         .then(response => {
           this.inventoryByCategory = response.data.results;
           console.log(response);

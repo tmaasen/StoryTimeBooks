@@ -100,13 +100,9 @@
               <p>
                 If you
                 <strong>forgot your password</strong> or would like to
-                <strong>become an admin</strong>, please call us at one of the numbers below.
+                <strong>become an admin</strong>, please e-mail us below.
               </p>
-              <p>
-                +1 573 694 7085
-                <br />+1 417 429 3356
-                <br />+1 417 920 9524
-              </p>
+              <p>storytimebooks@gmail.com</p>
 
               <ul class="social-footer2">
                 <li class>
@@ -169,19 +165,11 @@
 </template>
 
 <script>
-export default {
-  mounted() {
-    console.log("navbottom mounted");
-  }
-};
+export default {};
 </script>
 
 
 <style scoped>
-/*==================== 
-	Footer 
-====================== */
-
 a:hover {
   background-color: #252525;
   color: #fff;

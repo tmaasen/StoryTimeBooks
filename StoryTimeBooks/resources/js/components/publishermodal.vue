@@ -103,7 +103,7 @@ export default {
   methods: {
     setStateOptions() {
       axios
-        .get("http://127.0.0.1:8000/api/v1/admin/states")
+        .get("../../../api/v1/admin/states")
         .then(response => {
           this.states = response.data.states;
           for (var i = 0; i < this.states.length; i++) {
@@ -136,7 +136,7 @@ export default {
     addPublisher() {
       var app = this
       axios
-      .post("http://127.0.0.1:8000/api/v1/admin/newpublisher", {
+      .post("../../../api/v1/admin/newpublisher", {
         publisher_name: this.publisher_name,
         address: this.address,
         city: this.city,

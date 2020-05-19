@@ -146,7 +146,7 @@ export default {
       else {
         const user = this;
         axios
-          .put("http://127.0.0.1:8000/api/v1/auth/updateuser/{id}", {
+          .put("../../../api/v1/auth/updateuser/{id}", {
             first_name: user.firstname,
             last_name: user.lastname,
             email: user.email,
@@ -194,7 +194,7 @@ export default {
         app.password_confirmation = 'storytime1234'
       }
       axios
-        .post("http://127.0.0.1:8000/api/v1/auth/register", {
+        .post("../../../api/v1/auth/register", {
           firstname: app.firstname,
           lastname: app.lastname,
           email: app.email,

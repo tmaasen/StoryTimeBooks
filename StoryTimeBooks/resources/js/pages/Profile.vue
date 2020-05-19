@@ -242,7 +242,7 @@ export default {
       var user = this;
       user.busy = true;
       axios
-        .get("http://127.0.0.1:8000/api/v1/auth/userinfo/{id}", {
+        .get("../../../api/v1/auth/userinfo/{id}", {
           params: { id: this.$auth.user().id }
         })
         .then(function(response) {
@@ -282,7 +282,7 @@ export default {
     updateUserAddress(userid) {
       const user = this;
       axios
-        .put("http://127.0.0.1:8000/api/v1/auth/updateuseraddress/{id}", {
+        .put("../../../api/v1/auth/updateuseraddress/{id}", {
           address_line_1: user.addressLine1,
           suite_no: user.suiteNo,
           city: user.city,
@@ -315,7 +315,7 @@ export default {
       const user = this;
       user.busy = true;
       axios
-        .put("http://127.0.0.1:8000/api/v1/auth/updateuser/{id}", {
+        .put("../../../api/v1/auth/updateuser/{id}", {
           first_name: user.first_name,
           last_name: user.last_name,
           email: user.email,
@@ -357,7 +357,7 @@ export default {
       var app = this
       app.busy = true
       axios
-        .post("http://127.0.0.1:8000/api/v1/auth/removeuser/{id}", {
+        .post("../../../api/v1/auth/removeuser/{id}", {
           id:  idToRemove 
         })
         .then(function(response) {
@@ -383,7 +383,7 @@ export default {
     setStateOptions() {
       var user = this
       axios
-        .get("http://127.0.0.1:8000/api/v1/admin/states")
+        .get("../../../api/v1/admin/states")
         .then(response => {
           this.states = response.data.states;
           for (var i = 0; i < this.states.length; i++) {

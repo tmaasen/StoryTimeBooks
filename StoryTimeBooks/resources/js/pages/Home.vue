@@ -5,11 +5,9 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         </head>
 
-        <!-- <div v-if="$auth.check()">
-          <h1 class="welcomeMessage">Hello, {{ $auth.user().first_name }}</h1>
-        </div> -->
-
+        <!-- component with product content called -->
         <HomePageEdit/>
+
         <div class="toTop">
             <b-button v-scroll-to="'#home'" variant="primary" class="toTop rounded-circle p-2">
                 <b-icon-arrow-up font-scale="2"/>
@@ -23,45 +21,30 @@
     import navtop from "../components/navtop";
     import HomePageEdit from "../components/HomePageEdit";
     import navbottom from "../components/navbottom";
-
-
     export default {
         data() {
             return {
-                searchResults: [],
             };
-        },
-        mounted() {
-            console.log("Home mounted.");
         },
         components: {
             navtop,
             HomePageEdit,
             navbottom,
-
-        },
-        methods: {
-
-
         },
     };
 </script>
+
 <style scoped>
-    .toTop {
-        text-align: center;
-        padding: 10px;
-    }
-
-    .btn {
-        background-color: #ff8d1e;
-        color: #fff;
-    }
-
-    .btn:hover {
-        background-color: #2196f3;
-        color: #fff;
-    }
-
-
-
+.toTop {
+    text-align: center;
+    padding: 10px;
+}
+.btn {
+    background-color: #ff8d1e;
+    color: #fff;
+}
+.btn:hover {
+    background-color: #2196f3;
+    color: #fff;
+}
 </style>

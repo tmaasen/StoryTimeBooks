@@ -40,7 +40,7 @@ export default {
     addCategory() {
       var app = this
       axios
-      .post("http://127.0.0.1:8000/api/v1/admin/newcategory", {
+      .post("../../../api/v1/admin/newcategory", {
         category_name: this.category_name
       })
       .then(function(response) {

@@ -7,6 +7,7 @@ import Register from './pages/Register'
 import Admin from './pages/Admin'
 import Profile from './pages/Profile'
 import Restricted from './pages/403'
+import NotFound from './pages/404'
 import ShoppingCart from './pages/ShoppingCart'
 import OrderInfo from './pages/OrderInfo'
 import OrderReview from './pages/OrderReview'
@@ -23,6 +24,7 @@ const router = new VueRouter({
     // meta defines the access roles for each route
     routes: [
         { path: '/403', component: Restricted, name: 'Restricted', meta: { auth: undefined } },
+        { path: '/404', component: NotFound, name: 'NotFound', meta: { auth: undefined } },
         { path: '/', component: Home, name: 'Home', meta: { auth: undefined } },
         { path: '/termsofservice', component: TermsOfService, name: 'Terms', meta: { auth: undefined } },
         { path: '/login', component: Login, name: 'Login', meta: { auth: false } },

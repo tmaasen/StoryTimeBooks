@@ -70,6 +70,28 @@ class AuthController extends Controller
         ], 200);
     }
     /**
+     * Checks if given email address exists in an account.
+     */
+    public function checkIfEmailExists(Request $request) {
+        $email = DB::table('users')->where('email', '=', $request->email)->get()->pluck('email');
+        $exists = false;
+        
+        if (!$email->isEmpty()) {
+            $exists = true;
+            return response()->json([
+                'status' => 'success',
+                'email_exists' => $exists,
+                'correct_email' => $email,
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 'success',
+                'email_exists' => $exists,
+                'email' => null
+            ], 200);
+    }
+    }
+    /**
      * Get authenticated user
      */
     public function user(Request $id)

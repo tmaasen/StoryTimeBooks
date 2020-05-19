@@ -170,7 +170,7 @@ export default {
       var app = this;
       app.busy = true;
       axios
-        .get("http://127.0.0.1:8000/api/v1/auth/shoppingcart/{id}", {
+        .get("../../../api/v1/auth/shoppingcart/{id}", {
           params: { user_id: this.$auth.user().id }
         })
         .then(function(response) {
@@ -223,7 +223,7 @@ export default {
       var app = this;
       app.busy = true;
       axios
-        .post("http://127.0.0.1:8000/api/v1/auth/removefromcart/{id}", {
+        .post("../../../api/v1/auth/removefromcart/{id}", {
           product_id: product_id,
           user_id: app.$auth.user().id
         })
@@ -251,7 +251,7 @@ export default {
       var app = this;
       app.totalsboxbusy = true;
       axios
-        .put("http://127.0.0.1:8000/api/v1/auth/updatecartquantity/{id}", {
+        .put("../../../api/v1/auth/updatecartquantity/{id}", {
           product_id: product_id,
           user_id: user_id,
           quantity: quantity

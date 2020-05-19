@@ -439,7 +439,7 @@ export default {
     getItemsInCart() {
       var app = this;
       axios
-        .get("http://127.0.0.1:8000/api/v1/auth/itemsincart/{id}", {
+        .get("../../../api/v1/auth/itemsincart/{id}", {
           params: { user_id: app.$auth.user().id }
         })
         .then(function(response) {
@@ -456,7 +456,7 @@ export default {
       var quantityarray = [];
       app.busy = true;
       axios
-        .get("http://127.0.0.1:8000/api/v1/auth/shoppingcart/{id}", {
+        .get("../../../api/v1/auth/shoppingcart/{id}", {
           params: { user_id: this.$auth.user().id }
         })
         .then(function(response) {
@@ -492,7 +492,7 @@ export default {
       var user = this;
       user.busy = true;
       axios
-        .get("http://127.0.0.1:8000/api/v1/auth/userinfo/{id}", {
+        .get("../../../api/v1/auth/userinfo/{id}", {
           params: { id: this.$auth.user().id }
         })
         .then(function(response) {
@@ -551,7 +551,7 @@ export default {
         if (app.checkFormValidity()) {
           if (!app.checked) {
             axios
-              .post("http://127.0.0.1:8000/api/v1/auth/orderinfo/{id}", {
+              .post("../../../api/v1/auth/orderinfo/{id}", {
                 id: this.$auth.user().id,
                 first_name: app.firstname,
                 last_name: app.lastname,
@@ -597,7 +597,7 @@ export default {
               });
           } else {
             axios
-              .post("http://127.0.0.1:8000/api/v1/auth/orderinfo/{id}", {
+              .post("../../../api/v1/auth/orderinfo/{id}", {
                 id: this.$auth.user().id,
                 first_name: app.firstname,
                 last_name: app.lastname,
@@ -640,7 +640,7 @@ export default {
     setStateOptions() {
       var user = this;
       axios
-        .get("http://127.0.0.1:8000/api/v1/admin/states")
+        .get("../../../api/v1/admin/states")
         .then(response => {
           this.states = response.data.states;
           for (var i = 0; i < this.states.length; i++) {

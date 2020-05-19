@@ -137,7 +137,7 @@ class BookController extends Controller
             'author' => 'required',
             'category_id' => 'required',
             'publisher_id' => 'required',
-            'isbn_13'  => 'required', // make client-side validation for is
+            'isbn_13'  => 'required',
             'copyright_date' => 'required|date',
             'retail_price' => 'required|numeric',
             'company_cost' => 'required|numeric',
@@ -155,8 +155,6 @@ class BookController extends Controller
    
         if ($request->hasfile('product_image')) {
             $file = $request->file('product_image');
-            // $extension = $file->getClientOriginalExtension();
-            // $filename = time() . '.' . $extension;
             $file->move('uploads/products/', $file->getClientOriginalName());
             $book->product_image = $file->getClientOriginalName();
         } else {
@@ -233,17 +231,14 @@ class BookController extends Controller
 
         if ($request->hasfile('product_image')) {
             $file = $request->file('product_image');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $extension;
-            $file->move('uploads/products/', $filename); // check this line. It's duplicating image creations in public/images...
-            //$book->product_image = $filename;
+            $file->move('uploads/products/', $file->getClientOriginalName());
         } else {
-            $filename = $request->product_image;
+            $file = '';
         }
 
         DB::table('products')->where('id', $request->id)->update([
 
-            'product_image' => $filename,
+            'product_image' => $file->getClientOriginalName(),
             'product_name' => $request->product_name,
             'author' => $request->author,
             'category_id' => $request->category_id,

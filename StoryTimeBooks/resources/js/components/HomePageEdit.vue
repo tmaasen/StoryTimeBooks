@@ -857,12 +857,6 @@ export default {
     getImgUrl(pic) {
       if (pic !== "[]") {
         return require(`../../../public/uploads/products/${pic}`);
-        // var images = require.context(
-        //   "../../../public/uploads/products/",
-        //   false,
-        //   /\.jpg$/
-        // );
-        // return images("./" + pic);
       } else
       return "";
     },

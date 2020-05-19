@@ -149,9 +149,6 @@ export default {
   created() {
     this.getItemsInCart();
   },
-  mounted() {
-    console.log("navtop mounted");
-  },
   methods: {
     filterSearch() {
       console.log("filter search called, value is: " + this.searchInput);
@@ -186,7 +183,7 @@ export default {
       var app = this;
       if (app.$auth.check()) {
       axios
-        .get("http://127.0.0.1:8000/api/v1/auth/itemsincart/{id}", {
+        .get("../../../api/v1/auth/itemsincart/{id}", {
           params: { user_id: this.$auth.user().id }
         })
         .then(function(response) {

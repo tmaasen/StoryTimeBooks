@@ -50,8 +50,17 @@
                   <b-icon-eye-fill font-scale="1.5" @click="switchVisibility" />
                 </div>
               </div>
+              <!-- Forgot Password -->
+              <div style="margin-left:35%">
+                  <a href="#" v-b-modal="'forgotpwModal'">Forgot your password?</a>
+              </div>
+              <!-- Modal -->
+              <forgotpwModal
+              id="forgotpwModal"
+              title="Forgot Your Password"
+              />
               <!-- Login button -->
-              <div class="form-group row mb-0">
+              <div class="form-group row mb-0" style="margin-top:2%">
                 <div class="col-md-8 offset-md-4">
                   <button type="submit" class="btn btn-primary">Login</button>
                 </div>
@@ -66,12 +75,10 @@
 </template>
 
 <script>
-import authnav from "../components/authnav";
+import authnav from "../components/authnav"
+import forgotpwModal from "../components/forgotpasswordmodal"
 import router from "../router"
 export default {
-  components: {
-    authnav
-  },
   data() {
     return {
       email: null,
@@ -82,8 +89,9 @@ export default {
       error: ""
     };
   },
-  mounted() {
-    //
+  components: {
+    authnav,
+    forgotpwModal
   },
   methods: {
     switchVisibility() {

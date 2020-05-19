@@ -22,6 +22,8 @@ Route::prefix('v1')->group(function () {
         Route::post('register', 'Users\AuthController@register');
         // Login User
         Route::post('login', 'Users\AuthController@login');
+        // Forgotten password
+        Route::get('forgotpassword', 'Users\AuthController@checkIfEmailExists');
         // Refresh the JWT Token
         Route::get('refresh', 'Users\AuthController@refresh');
         // Get all books

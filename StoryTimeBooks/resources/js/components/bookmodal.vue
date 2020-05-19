@@ -235,7 +235,7 @@ export default {
     },
     setPublisherOptions() {
       axios
-        .get("http://127.0.0.1:8000/api/v1/admin/publishers")
+        .get("../../../api/v1/admin/publishers")
         .then(response => {
           this.publishers = response.data.publishers;
           for (var i = 0; i < this.publishers.length; i++) {
@@ -256,7 +256,7 @@ export default {
     },
     setCategoryOptions() {
       axios
-        .get("http://127.0.0.1:8000/api/v1/admin/categories")
+        .get("../../../api/v1/admin/categories")
         .then(response => {
           this.categories = response.data.categories;
           for (var i = 0; i < this.categories.length; i++) {
@@ -307,13 +307,11 @@ export default {
       formData.append("is_deleted", this.deleteSelected);
 
       axios
-        .post("http://127.0.0.1:8000/api/v1/admin/newproduct", formData)
+        .post("../../../api/v1/admin/newproduct", formData)
         .then(function(response) {
           console.log(response);
           product.$refs['bookModel'].hide()  
           window.location.reload() // PROBLEM CHILD -> cannot find new image "module" path
-          //product.$emit('image', product.image)    
-          //product.$emit('refreshTables') // calls the event listener in Admin.vue, which calls the getAll() method
         })
         .catch(function(response) {
           console.log(response);
@@ -329,25 +327,28 @@ export default {
             });
           });
     },
-    updateProduct(bookid) {
-      const product = this;
+    updateProduct(bookid, e) {
+      var product = this;
+      let formData = new FormData();
+      formData.append("id", product.bookid);
+      formData.append("product_image", product.image);
+      formData.append("product_name", product.name);
+      formData.append("author", product.author);
+      formData.append("category_id", product.categorySelected);
+      formData.append("publisher_id", product.publisherSelected);
+      formData.append("isbn_13", product.isbn13);
+      formData.append("copyright_date", product.copyright);
+      formData.append("retail_price", product.retail);
+      formData.append("company_cost", product.cost);
+      formData.append("quantity_on_hand", product.quantity);
+      formData.append("is_deleted", product.deleteSelected);
+      formData.append("_method", "put");
+
       axios
-        .put("http://127.0.0.1:8000/api/v1/admin/updateproduct/{id}", {
-          id: product.bookid,
-          product_image: product.image,
-          product_name: product.name,
-          author: product.author,
-          category_id: product.categorySelected,
-          publisher_id: product.publisherSelected,
-          isbn_13: product.isbn13,
-          copyright_date: product.copyright,
-          retail_price: product.retail,
-          company_cost: product.cost,
-          quantity_on_hand: product.quantity,
-          is_deleted: product.deleteSelected
-        })
+        .post("../../../api/v1/admin/updateproduct/{id}", formData)
         .then(function(response) {
-          console.log(response);
+          console.log(response)
+          window.location.reload()
           product.$refs['bookModel'].hide()       
           product.$emit('refreshTables') // calls the event listener in Admin.vue, which calls the getAll() method
           product.$notify({

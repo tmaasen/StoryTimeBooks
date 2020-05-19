@@ -132,7 +132,7 @@ export default {
       } else {
       app.busy = true;
       axios
-        .post("http://127.0.0.1:8000/api/v1/auth/addtocart/{id}", {
+        .post("../../../api/v1/auth/addtocart/{id}", {
           product_id: product_id,
           user_id: app.$auth.user().id,
           quantity: quantity
