@@ -1,6 +1,5 @@
 <template>
   <b-modal
-    size="xl"
     centered
     scrollable
     ref="ProductDetailModal"
@@ -12,7 +11,7 @@
       <!-- Product Information -->
       <div class="book-detail-container">
         <div id="img-container" class="column1">
-          <b-img :src="getImgUrl(image)" />
+          <b-img id="image" :src="getImgUrl(image)" />
         </div>
 
         <div class="cloumn2">
@@ -23,14 +22,11 @@
             </div>
 
             <div class="detail-description-box">
-              <h5>
                 <strong>Publisher:</strong>
                 <span>{{ publisher }}</span>
-              </h5>
-              <h5>
+                <br>
                 <strong>Retail Price:</strong>
                 <span>$ {{ retail }}</span>
-              </h5>
             </div>
 
             <div class="cart-button-holder">
@@ -166,6 +162,42 @@ export default {
 </script>
 
 <style scoped>
+@media only screen and (max-width: 1000px) {
+    .block.detail-texts {
+      margin: 0%;
+      text-align: center;
+      display: inline-block;
+    }
+    .column1 {
+      float: none;
+      width: auto;
+      padding-left: 0%;
+      margin-right: 0%;
+    }
+    .spinbutton {
+      margin-left: 0%;
+      width: max-content;
+    }
+    .add-to-cart-btn, .add-to-cart-btn:hover {
+      width: auto;
+    }
+    .detail-table {
+      display: flex;
+      flex-direction: column;
+      width: min-content;
+    }
+    .book-detail-container {
+      margin: 0%;
+    }
+}
+@media only screen and (max-width: 484px) {
+  #image {width: 100px; height: 100px;}
+  .detail-table {display: flex; flex-direction: column; font-size: 10px;}
+  .detail-title-and-author {font-size: 14px;}
+  .detail-description-box {font-size: 12px;}
+  .add-to-cart-btn {font-size: 8px; width: 20%; margin-left: 5%;}
+  .spinbutton {margin-left: 2%; width: 28%;}  
+}
 .row:after {
   content: "";
   display: table;
@@ -173,13 +205,13 @@ export default {
 }
 .column1 {
   float: left;
-  width: 30% !important;
-  padding-bottom: 1.5rem !important;
-  padding-left: 3rem !important;
+  width: 30%;
+  padding-bottom: 1.5rem;
+  padding-left: 3rem;
   margin-right: 6rem;
 }
 .column2 {
-  padding-right: 3rem !important;
+  padding-right: 3rem;
   float: left;
   width: 20rem;
 }
@@ -188,10 +220,11 @@ export default {
   text-align: center;
 }
 .spinbutton {
-  width: 15% !important;
+  width: 18% !important;
   margin-left: 40%;
   margin-top: 5px;
   text-align: center;
+  padding: 0%;
 }
 .add-to-cart-btn {
   background-color: #ff8d1e;

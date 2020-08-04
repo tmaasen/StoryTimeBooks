@@ -93,7 +93,7 @@
       </div>
 
       <div class="profileContent">
-        <p class="profileTitle">Shipping Address Information</p>
+        <p class="profileTitle">Shipping Address</p>
         <form @submit.prevent="updateUser(userid)">
           <b-container fluid>
             <b-row class="my-1">
@@ -408,6 +408,14 @@ export default {
 </script>
 
 <style scoped>
+@media screen and (max-width: 1100px) {
+    .profileBody {
+      margin: 0 !important;
+      width: auto !important;
+      padding-left: 5% !important;
+      overflow-x: hidden; 
+    }
+}
 .tablebuttons {
   background: transparent;
   border: none;
@@ -437,46 +445,38 @@ svg {
   flex-wrap: wrap;
   margin: 0 -16px;
 }
-
 .col-25 {
   -ms-flex: 25%; /* IE10 */
   flex: 25%;
 }
-
 .col-50 {
   -ms-flex: 50%; /* IE10 */
   flex: 50%;
 }
-
 .col-75 {
   -ms-flex: 75%; /* IE10 */
   flex: 75%;
 }
-
 .col-25,
 .col-50,
 .col-75 {
   padding: 0 16px;
 }
-
 .container1 {
   background-color: #f2f2f2;
   padding: 5px 20px 15px 20px;
   border: 1px solid lightgrey;
   border-radius: 3px;
 }
-
 label {
   margin-bottom: 10px;
   display: block;
 }
-
 .icon-container {
   margin-bottom: 20px;
   padding: 7px 0;
   font-size: 24px;
 }
-
 .btn1 {
   background-color: #ff8d1e;
   color: white;
@@ -488,50 +488,40 @@ label {
   cursor: pointer;
   font-size: 17px;
 }
-
 .btn1:hover {
   background-color: #2196f3;
   color: white;
 }
 .profileBody {
-  border: 1px solid black;
   width: 80%;
   margin: auto;
   padding-left: 15%;
   font-family: Arial;
   font-size: 16px;
 }
-
 .profileContent {
   margin: 5% 25% 5% 0%;
 }
-
 #input-large {
   width: 500px;
 }
-
 #textarea {
   width: 500px;
 }
-
 .birthday {
   width: 500px;
 }
-
 .label {
   text-align: left;
   margin-top: auto;
   font-weight: bold;
 }
-
 .bio {
   height: 200px;
 }
-
 .bioLabel {
   margin: auto;
 }
-
 .profileTitle {
   font-size: 40px;
   margin-bottom: 5%;

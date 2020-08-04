@@ -291,6 +291,14 @@ export default {
 </script>
 
 <style scoped>
+@media only screen and (max-width: 1400px) {
+    .checkoutCard {
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      justify-content: center;
+    }
+}
 .checkoutCard {
   width: 20rem;
   font-size: 1rem;

@@ -46,7 +46,7 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', 'ec2-100-25-168-51.compute-1.amazonaws.com'),
+            'host' => env('DB_HOST', '100.25.168.51'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'storytimebooks'),
             'username' => env('DB_USERNAME', 'tmaasen'),

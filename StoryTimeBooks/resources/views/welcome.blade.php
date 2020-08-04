@@ -5,7 +5,7 @@
         <script src="https://code.iconify.design/1/1.0.5/iconify.min.js"></script>
         <link href="/css/app.css" rel="stylesheet">
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.00, maximum-scale=1.00, minimum-scale=1.00, user-scalable=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <div id="app">
@@ -16,3 +16,8 @@
             <script type="text/css" src="/js/bootstrap.js"></script>
     </body>
 </html>
+<style>
+    #app {
+        overflow-x: hidden;
+    }
+</style>

@@ -82,7 +82,7 @@
             <b-button variant="primary" v-scroll-to="'#computer'">Start Your Story</b-button>
           </div>
         </b-jumbotron>
-        <div style="width:70%; margin:0 15%; padding:10px;">
+        <div class="carousel-slide">
           <p class="title" id="computer">Computer Sciences</p>
           <!--Carousel Wrapper-->
           <div id="computerSience" class="carousel slide carousel-multi-item" data-ride="carousel">
@@ -217,7 +217,7 @@
           <!--/.Carousel Wrapper-->
         </div>
 
-        <div style="width:70%; margin:1% 15%; padding:10px;">
+        <div class="carousel-slide">
           <p id="businessScroll" class="title">Business</p>
           <!--Carousel Wrapper-->
           <div id="business" class="carousel slide carousel-multi-item" data-ride="carousel">
@@ -344,7 +344,7 @@
           <!--/.Carousel Wrapper-->
         </div>
 
-        <div style="width:70%; margin:0 15%; padding:10px;">
+        <div class="carousel-slide">
           <p class="title" id="psychologyScroll">Psychology</p>
           <!--Carousel Wrapper-->
           <div id="psychology" class="carousel slide carousel-multi-item" data-ride="carousel">
@@ -479,7 +479,7 @@
           <!--/.Carousel Wrapper-->
         </div>
 
-        <div style="width:70%; margin:0 15%; padding:10px;">
+        <div class="carousel-slide">
           <p class="title" id="engineeringScroll">Engineering</p>
           <!--Carousel Wrapper-->
           <div id="engineering" class="carousel slide carousel-multi-item" data-ride="carousel">
@@ -614,7 +614,7 @@
           <!--/.Carousel Wrapper-->
         </div>
 
-        <div style="width:70%; margin:0 15%; padding:10px;">
+        <div class="carousel-slide">
           <p class="title" id="musicTheatreScroll">Music & Theatre</p>
           <!--Carousel Wrapper-->
           <div id="musicTheatre" class="carousel slide carousel-multi-item" data-ride="carousel">
@@ -913,6 +913,19 @@ export default {
 </script>
 
 <style scoped>
+.carousel-slide {
+  width: max-content;
+  margin:0 15%;
+  padding:10px;
+}
+@media only screen and (max-width: 768px) {
+    .carousel-slide {
+      width: auto;
+    }
+    .header {
+      margin-bottom: -12% !important;
+    }
+}
 /* Header/Logo Title */
 .header {
   padding: 10px;

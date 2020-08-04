@@ -6,7 +6,7 @@
     </head>
       <!-- <adminnav v-on:getreport1="report1" v-on:getreport2="report2" v-on:getreport3="report3" /> -->
       <adminnav />
-      <b-overlay :show="busy" rounded="lg" opacity="1.0">
+      <b-overlay :show="busy" rounded="lg" opacity="1.0" class="centered">
       <br />
       <div id="wrapper">
         <!-- Users -->
@@ -42,6 +42,7 @@
           :fields="userfields"
           head-variant="light"
           class="w-85"
+          style="overflow-x:scroll;"
         >
         <template v-slot:cell(first_name)="users">
           <span>{{ users.item.first_name }}</span>
@@ -139,6 +140,7 @@
           :fields="bookfields"
           head-variant="light"
           class="w-85"
+          style="overflow-x:scroll;"
         >
           <template v-slot:cell(product_image)="books">
             <img :src="getImgUrl(books.item.product_image)" width="60" height="75" />
@@ -257,6 +259,7 @@
           :fields="publisherfields"
           head-variant="light"
           class="w-50"
+          style="overflow-x:scroll;"
         >
           <template v-slot:cell(publisher_name)="publisher">
             <span>{{ publisher.item.publisher_name }}</span>
@@ -311,6 +314,7 @@
           :fields="categoryfields"
           head-variant="light"
           class="w-50"
+          style="overflow-x:scroll;"
         >
           <template v-slot:cell(category_name)="category">
             <span>{{ category.item.category }}</span>
@@ -342,6 +346,7 @@
           :items="orderSummary"
           head-variant="light"
           class="w-50"
+          style="overflow-x:scroll;"
         ></b-table>
         <hr />
         <!-- Report 2: Customers by State -->
@@ -365,6 +370,7 @@
           :items="customersByState"
           head-variant="light"
           class="w-50"
+          style="overflow-x:scroll;"
         ></b-table>
         <hr />
         <!-- Report 3: Inventory by Product Category -->
@@ -388,6 +394,7 @@
           :items="inventoryByCategory"
           head-variant="light"
           class="w-50"
+          style="overflow-x:scroll;"
         ></b-table>
       </div>
       <hr />

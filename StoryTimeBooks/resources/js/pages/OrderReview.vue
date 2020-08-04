@@ -704,6 +704,12 @@ export default {
 </script>
 
 <style scoped>
+@media only screen and (max-width: 860px) {
+    img {
+      width: 50px;
+      height: 50px;
+    }
+}
 .b-form {
   text-align: center;
 }
@@ -726,7 +732,6 @@ export default {
   margin-bottom: 3%;
   width: 70%;
 }
-
 .column1 {
   float: left;
   width: 45%;
@@ -740,19 +745,20 @@ export default {
 }
 .column3 {
   float: left;
-  /*width: 20rem;*/
+  width: 220%;
   margin-right: 3rem;
   margin-bottom: 2rem;
-  min-width: 50rem;
 }
 .checkoutbtn {
   background-color: #ff8d1e;
   font-size: 1.4rem;
+  width: max-content;
 }
 .checkoutbtn:hover {
   background-color: #2196f3;
   font-size: 1.4rem;
   display: inline-block;
+  width: max-content;
 }
 .profileTitle {
   font-size: 40px;

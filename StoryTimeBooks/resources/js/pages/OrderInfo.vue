@@ -665,6 +665,24 @@ export default {
 </script>
 
 <style scoped>
+@media only screen and (max-width: 1200px) {
+    .container1 {
+      width: 92% !important;
+    }
+    .column2 {
+      margin-bottom: 55%;
+    }
+    .column3 {
+      margin-right: auto !important;
+      margin-left: auto !important;
+      margin-bottom: 2% !important;
+    }
+}
+@media only screen and (max-width: 750px) {
+    .column2 {
+      margin-bottom: 75% !important;
+    }
+}
 .checkoutCardHeader {
   font-size: 1.5rem;
 }

@@ -7,7 +7,7 @@
       <a
         title="View our source code on GitHub"
         target="_blank"
-        href="https://github.com/polyestercupcake/StoryTimeBooks/tree/master/StoryTimeBooks"
+        href="https://github.com/tmaasen/StoryTimeBooks/tree/master/StoryTimeBooks"
         id="githubButton"
       >
         <img img src="../assets/GitHub_Logo_White.png" width="60px" align="center" />
@@ -24,11 +24,12 @@
         <b-navbar-nav class="ml-auto">
           <!--search function-->
           <b-nav-form @submit.prevent="filterSearch" class="textField">
-            <b-form-select size="lg" class="mr-lg-10" v-model="searchFilter " :options="options"></b-form-select>
+            <b-form-select size="lg" id="selectSearch" class="mr-lg-10" v-model="searchFilter " :options="options"></b-form-select>
             <b-input
               size="lg"
               class="mr-lg-2"
               placeholder="Search"
+              id="searchBar"
               v-model="searchInput"
               v-on:change="filterSearch"
               @keyup.enter="filterSearch"
@@ -40,6 +41,7 @@
               type="submit"
               @click="filterSearch"
               href="#"
+              id="searchButton"
             >Search</b-button>
           </b-nav-form>
           <div>
@@ -66,7 +68,7 @@
           </div>
           <b-dropdown variant="primary" id="dropdown-right" text="Left align">
             <template v-slot:button-content>
-              <b-icon icon="person-fill" aria-hidden="true" font-scale="2"></b-icon>
+              <b-icon icon="person-fill" id="avatar" aria-hidden="true" font-scale="2"></b-icon>
               <span v-if="$auth.check()">{{ $auth.user().first_name }} {{$auth.user().last_name}}</span>
               <span v-if="!$auth.check()">My Account</span>
             </template>
@@ -202,29 +204,45 @@ export default {
 
 
 <style scoped>
+@media only screen and (max-width: 1315px) {
+    #searchButton, #selectSearch, #searchBar {
+      display: none !important;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .navbar {
+      width: 100%;
+    }
+    #githubButton {
+      display: none;
+    }
+}
+@media screen and (max-width: 468px) {
+  #selectSearch {display: none;}
+  #searchBar {display: none;}
+  #dropdown-right {width: 35%;}
+  #avatar {display: none;}
+  #searchButton {display: none;}
+  .btn-group {margin-right: auto;}
+}
 span {
   font-size: 1.125rem;
 }
-
 select {
   margin-right: 10px;
 }
-
 .link {
   text-decoration: none;
   color: #252525;
 }
-
 .link:hover {
   text-decoration: none;
   background-color: #fff;
   color: #252525;
 }
-
 .textField {
   margin-left: 10px;
 }
-
 #shoppingCart {
   color: #ff8d1e;
   padding-left: 5px;
@@ -234,35 +252,28 @@ select {
 b-navbar {
   margin-bottom: 0;
 }
-
 #githubButton {
   text-align: center;
   align-content: center;
   padding-left: 10%;
 }
-
 #shoppingCart:hover {
   border: 3px solid #fff;
   border-radius: 5px;
   background-color: #fff;
 }
-
 svg {
   fill: #ff8d1e;
 }
-
 .bg-info {
   background-color: #252525;
 }
-
 .btn {
   background-color: #ff8d1e;
 }
-
 .btn:hover {
   background-color: #2196f3;
 }
-
 .btn-group,
 .btn-group-vertical {
   position: relative;
@@ -271,17 +282,14 @@ svg {
   vertical-align: middle;
   margin-left: 30px;
 }
-
 .dropdown-menu a:hover {
   background-color: #fff;
   color: #252525;
   text-decoration: none;
 }
-
 .dropdown-menu a {
   font-size: 1rem;
 }
-
 .dropdown-menu {
   position: absolute;
   top: 100%;

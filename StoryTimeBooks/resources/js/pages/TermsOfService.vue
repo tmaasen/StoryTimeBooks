@@ -4,7 +4,7 @@
     <title>StoryTime | Terms of Service</title>
   </head>
   <authnav />
-  <div class="main-container" style="margin: 5px 300px;">
+  <div class="main-container">
     <h1 class="store-name">StoryTime Books</h1>
     <div class="box-container-terms">
       <div class="heading">Terms of Service</div>
@@ -173,12 +173,14 @@ a {
   text-decoration: none;
   background-color: transparent;
 }
-
 a:hover {
   color: #1d68a7;
   text-decoration: underline;
   background-color: transparent;
 
+}
+.main-container {
+  margin: 25px;
 }
 </style>
 
