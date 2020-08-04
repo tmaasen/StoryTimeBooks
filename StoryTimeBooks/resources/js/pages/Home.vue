@@ -46,9 +46,4 @@ export default {
   background-color: #2196f3;
   color: #fff;
 }
-@media only screen {
-  * {
-    overflow-x: hidden;
-  }
-}
 </style>
