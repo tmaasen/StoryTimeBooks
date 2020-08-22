@@ -5,7 +5,7 @@
         <script src="https://code.iconify.design/1/1.0.5/iconify.min.js"></script>
         <link href="/css/app.css" rel="stylesheet">
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
         <div id="app">
