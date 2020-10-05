@@ -54,7 +54,7 @@
 export default {
   data() {
     return {
-      busy:false,
+      busy: false,
       bookid1: this.bookid,
       name1: this.name,
       author1: this.author,
@@ -77,7 +77,7 @@ export default {
   props: {
     title: String,
     bookid: String,
-    image: Array,
+    image: String,
     name: String,
     author: String,
     category: String,
@@ -86,7 +86,7 @@ export default {
     copyright: String,
     retail: String,
     cost: String,
-    quantity: Number,
+    quantity: String,
   },
   methods: {
     getImgUrl(pic) {

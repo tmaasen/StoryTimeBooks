@@ -124,6 +124,7 @@ export default {
       searchInput: "",
       searchFilter: "a",
       searchResults: [],
+      books: [],
 
       options: [
         { value: "a", text: "All" },
@@ -131,7 +132,6 @@ export default {
         { value: "c", text: "Author" },
       ],
       name: "search",
-      books1: this.books,
       searchOptions: {
         shouldSort: true,
         includeMatches: true,
@@ -145,23 +145,33 @@ export default {
     };
   },
 
-  props: {
-    books: Array
-  },
+  // props: {
+  //   books: Array
+  // },
   created() {
     this.getItemsInCart();
+    this.getProducts();
   },
   methods: {
+    getProducts() {
+      axios
+        .get("../../../api/v1/auth/products")
+        .then(response => {
+          // loop through the array, setting each book into a category group
+          this.books = response.data.books;
+        })
+        .then(error => {
+          console.log(error)
+        });
+    },
     filterSearch() {
       console.log("filter search called, value is: " + this.searchInput);
-
-      //
       this.$search(this.searchInput, this.books, this.searchOptions).then(
         results => {
           this.searchResults = results;
         }
       );
-      //sends the data to HomePageEdit.vue
+      //sends the data to searchresults component
       this.$emit("childSearchResults", this.searchResults);
     },
     logout() {
