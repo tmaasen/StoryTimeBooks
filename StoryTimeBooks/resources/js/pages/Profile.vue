@@ -230,9 +230,6 @@ export default {
     this.getUserInfo();
     this.setStateOptions();
   },
-  mounted() {
-    console.log("Profile mounted.");
-  },
   components: {
     navtop,
     navbottom
@@ -246,21 +243,20 @@ export default {
           params: { id: this.$auth.user().id }
         })
         .then(function(response) {
-          console.log(response);
           if (response.data.user !== null) {
-          user.userid = response.data.user.id;
-          user.first_name = response.data.user.first_name;
-          user.last_name = response.data.user.last_name;
-          user.email = response.data.user.email;
+            user.userid = response.data.user.id;
+            user.first_name = response.data.user.first_name;
+            user.last_name = response.data.user.last_name;
+            user.email = response.data.user.email;
           }
           if (response.data.shipping !== null) {
-          user.addressLine1 = response.data.shipping.address_line_1;
-          user.suiteNo = response.data.shipping.suite_no;
-          user.city = response.data.shipping.city;
-          user.selected = response.data.shipping.state_id;
-          user.zip = response.data.shipping.zipcode;
-          user.homePhone = response.data.shipping.home_phone;
-          user.workPhone = response.data.shipping.work_phone;
+            user.addressLine1 = response.data.shipping.address_line_1;
+            user.suiteNo = response.data.shipping.suite_no;
+            user.city = response.data.shipping.city;
+            user.selected = response.data.shipping.state_id;
+            user.zip = response.data.shipping.zipcode;
+            user.homePhone = response.data.shipping.home_phone;
+            user.workPhone = response.data.shipping.work_phone;
           }
           user.setStateOptions();
         })
@@ -293,7 +289,6 @@ export default {
           id: user.userid
         })
         .then(function(response) {
-          console.log(response);
           user.busy = false;
         })
         .catch(error => {
@@ -322,7 +317,6 @@ export default {
           id: user.userid
         })
         .then(function(response) {
-          console.log(response);
           user.updateUserAddress(userid);
         })
         .catch(error => {
@@ -361,7 +355,6 @@ export default {
           id:  idToRemove 
         })
         .then(function(response) {
-          console.log(response);
           app.busy = false
           app.logout();
         })

@@ -135,7 +135,7 @@ export default {
       return valid;
     },
     handleOk(bvModalEvt) {
-      bvModalEvt.preventDefault(); // Prevent modal from closing
+      bvModalEvt.preventDefault();
       if (this.checkFormValidity()) {
         if (this.userid !== null) this.updateUser(this.userid);
         else this.registerUser();
@@ -157,7 +157,6 @@ export default {
             id: idToUpdate
           })
           .then(function(response) {
-            console.log(response);
             user.$refs["userModal"].hide();
             user.$emit("refreshTables"); // calls the event listener in Admin.vue, which calls the getAll() method
             user.$notify({
@@ -204,9 +203,8 @@ export default {
           is_Deleted: app.deleteSelected
         })
         .then(function(response) {
-          console.log(response);
           app.$refs["userModal"].hide();
-          app.$emit("refreshTables"); // calls the event listener in Admin.vue, which calls the getAll() method
+          app.$emit("refreshTables");
           app.$notify({
               message: "User successfully registered",
               type: "success",

@@ -276,7 +276,6 @@ export default {
           params: { user_id: app.$auth.user().id }
         })
         .then(function(response) {
-          console.log(response);
           app.totalItemsInCart = response.data.items;
         })
         .catch(error => {
@@ -293,7 +292,6 @@ export default {
           }
         })
         .then(function(response) {
-          console.log(response);
           user.products = response.data.products;
           user.subtotal = response.data.order.map(x => x.subtotal);
           user.discount = response.data.order.map(x => x.discount);
@@ -322,7 +320,6 @@ export default {
           params: { id: this.$auth.user().id }
         })
         .then(function(response) {
-          console.log(response);
           if (response.data.user !== null) {
             user.userid = response.data.user.id;
             user.firstname = response.data.user.first_name;

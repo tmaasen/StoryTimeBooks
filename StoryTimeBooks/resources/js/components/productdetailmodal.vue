@@ -134,7 +134,6 @@ export default {
           quantity: quantity
         })
         .then(function(response) {
-          console.log(response);
           app.busy = false;
           app.$refs['ProductDetailModal'].hide()
           app.$emit('refreshCartCounter')
@@ -190,13 +189,13 @@ export default {
       margin: 0%;
     }
 }
-@media only screen and (max-width: 484px) {
+@media screen and (max-width: 484px) {
   #image {width: 100px; height: 100px;}
-  .detail-table {display: flex; flex-direction: column; font-size: 10px;}
+  .detail-table {display: flex; flex-direction: column; font-size: 10px; margin-left: -5%;}
   .detail-title-and-author {font-size: 14px;}
   .detail-description-box {font-size: 12px;}
-  .add-to-cart-btn {font-size: 8px; width: 20%; margin-left: 5%;}
-  .spinbutton {margin-left: 2%; width: 28%;}  
+  .add-to-cart-btn {font-size: 1rem; width: 20%; margin-left: 5%;}
+  .spinbutton {margin-left: none; width: 30%;}  
 }
 .row:after {
   content: "";

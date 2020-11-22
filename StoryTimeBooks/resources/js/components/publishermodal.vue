@@ -145,7 +145,6 @@ export default {
         phone: this.phone,
       })
       .then(function(response) {
-        console.log(response);
         app.$refs['publisherModal'].hide()          
         app.$emit('refreshTables') // calls the event listener in Admin.vue, which calls the getAll() method
         app.$notify({

@@ -146,9 +146,6 @@ export default {
       quantityOnHand: null
     };
   },
-  mounted() {
-    console.log("Shopping Cart mounted.");
-  },
   components: {
     navtop,
     navbottom,
@@ -174,7 +171,6 @@ export default {
           params: { user_id: this.$auth.user().id }
         })
         .then(function(response) {
-          console.log(response);
           app.cart = response.data.products;
           app.quantityOnHand = response.data.products.map(x => x.quantity_on_hand);
           app.busy = false;
@@ -228,7 +224,6 @@ export default {
           user_id: app.$auth.user().id
         })
         .then(function(response) {
-          console.log(response);
           app.busy = false;
           app.getCartItems(app.$auth.user().id);
         })
@@ -257,7 +252,6 @@ export default {
           quantity: quantity
         })
         .then(function(response) {
-          console.log(response);
           app.calculatesubtotal(app.cart);
           app.totalsboxbusy = false;
         })

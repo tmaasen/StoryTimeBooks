@@ -17,7 +17,24 @@
     </body>
 </html>
 <style>
-    #app {
-        overflow-x: hidden;
-    }
+#app {
+    overflow-x: hidden;
+}
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 200%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.3rem;
+    outline: 0;
+}
+@media screen and (max-width: 500px) {
+  .modal-content {
+    width: 100%;
+  }
+}
 </style>

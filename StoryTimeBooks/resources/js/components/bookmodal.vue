@@ -288,7 +288,6 @@ export default {
       }
     },
     onFileChange(e) {
-      console.log(e.target.files[0]);
       this.image = e.target.files[0];
     },
     addProduct() {
@@ -305,16 +304,14 @@ export default {
       formData.append("company_cost", this.cost);
       formData.append("quantity_on_hand", this.quantity);
       formData.append("is_deleted", this.deleteSelected);
-
       axios
         .post("../../../api/v1/admin/newproduct", formData)
         .then(function(response) {
-          console.log(response);
           product.$refs['bookModel'].hide()  
           window.location.reload() // PROBLEM CHILD -> cannot find new image "module" path
         })
-        .catch(function(response) {
-          console.log(response);
+        .catch(function(error) {
+          console.log(error);
           product.$notify({
               message: "There has been an error adding this product",
               type: "error",
@@ -343,11 +340,9 @@ export default {
       formData.append("quantity_on_hand", product.quantity);
       formData.append("is_deleted", product.deleteSelected);
       formData.append("_method", "put");
-
       axios
         .post("../../../api/v1/admin/updateproduct/{id}", formData)
         .then(function(response) {
-          console.log(response)
           window.location.reload()
           product.$refs['bookModel'].hide()       
           product.$emit('refreshTables') // calls the event listener in Admin.vue, which calls the getAll() method

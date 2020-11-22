@@ -117,7 +117,6 @@ export default {
             quantity: 1
           })
           .then(function(response) {
-            console.log(response);
             app.busy = false;
             app.updateNavbarCart();
             app.showNotification();

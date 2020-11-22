@@ -44,7 +44,6 @@ export default {
         category_name: this.category_name
       })
       .then(function(response) {
-        console.log(response);
         app.$refs['categoryModal'].hide()          
         app.$emit('refreshTables') // calls the event listener in Admin.vue, which calls the getAll() method
         app.$notify({
@@ -58,8 +57,8 @@ export default {
               closeDelay: 4500,
             });
       })
-      .catch(function(response) {
-        console.log(response);
+      .catch(function(error) {
+        console.log(error);
         app.$refs['categoryModal'].hide()
         app.$notify({
               message: "There has been an error adding this product category",

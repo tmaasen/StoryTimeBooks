@@ -443,7 +443,6 @@ export default {
           params: { user_id: app.$auth.user().id }
         })
         .then(function(response) {
-          console.log(response);
           app.totalItemsInCart = response.data.items;
         })
         .catch(error => {
@@ -460,7 +459,6 @@ export default {
           params: { user_id: this.$auth.user().id }
         })
         .then(function(response) {
-          console.log(response);
           app.subtotalarray = response.data.products.map(x => x.retail_price);
           app.quantityarray = response.data.products.map(x => x.quantity);
           for (var i = 0; i < app.subtotalarray.length; i++) {
@@ -496,7 +494,6 @@ export default {
           params: { id: this.$auth.user().id }
         })
         .then(function(response) {
-          console.log(response);
           if (response.data.user !== null) {
             user.userid = response.data.user.id;
             user.firstname = response.data.user.first_name;
@@ -576,7 +573,6 @@ export default {
                 billing_zip: app.billingzip
               })
               .then(function(response) {
-                console.log(response);
                 app.$router.push({ path: `/user/${app.$auth.user().id}/${app.checked}/order/review` });
                 app.busy = false;
               })
@@ -616,7 +612,6 @@ export default {
                 exp_year: app.expyearselected,
               })
               .then(function(response) {
-                console.log(response);
                 app.busy = false;
               })
               .catch(error => {

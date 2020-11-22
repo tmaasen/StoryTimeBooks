@@ -44,7 +44,6 @@ export default {
         params:{email: this.email}
       })
       .then(function(response) {
-        console.log(response);
         if (response.data.email_exists === true) {
           app.$refs['forgotpwModal'].hide()
           app.$notify({
@@ -71,8 +70,8 @@ export default {
             });
         }
       })
-      .catch(function(response) {
-        console.log(response);
+      .catch(function(error) {
+        console.log(error);
       });
       }
     }

@@ -514,7 +514,6 @@ export default {
           params: { user_id: app.$auth.user().id }
         })
         .then(function(response) {
-          console.log(response);
           app.totalItemsInCart = response.data.items;
         })
         .catch(error => {
@@ -531,7 +530,6 @@ export default {
           params: { user_id: this.$auth.user().id }
         })
         .then(function(response) {
-          console.log(response);
           app.cart = response.data.products;
           app.quantityOnHand = response.data.products.map(
             x => x.quantity_on_hand
@@ -572,7 +570,6 @@ export default {
           params: { id: this.$auth.user().id }
         })
         .then(function(response) {
-          console.log(response);
           if (response.data.user !== null) {
             user.userid = response.data.user.id;
             user.firstname = response.data.user.first_name;
@@ -633,7 +630,6 @@ export default {
           confirmation_number: app.confirmation
         })
         .then(function(response) {
-          console.log(response);
           app.busy = false;
           app.$notify({
             message: "Your order has been placed!",

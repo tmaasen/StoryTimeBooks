@@ -505,12 +505,11 @@ export default {
           id: idToRemove
         })
         .then(function(response) {
-          console.log(response);
           app.busy = false;
           app.getAll();
         })
-        .catch(function(response) {
-          console.log(response);
+        .catch(function(error) {
+          console.log(error);
           app.busy = false;
           app.$notify({
             message: "There has been an error while removing this user. Please try again.",
@@ -532,12 +531,11 @@ export default {
          id:  idToRemove 
         })
         .then(function(response) {
-          console.log(response);
           app.busy = false;
           app.getAll();
         })
-        .catch(function(response) {
-          console.log(response);
+        .catch(function(error) {
+          console.log(error);
           app.busy = false;
           app.$notify({
               message: "There has been an error while removing this product. Please try again.",
@@ -564,7 +562,6 @@ export default {
           this.books = response.data.books;
           this.publishers = response.data.publishers;
           this.categories = response.data.categories;
-          console.log(response);
           app.busy = false;
         })
         .then(error => {
@@ -578,7 +575,6 @@ export default {
         .get("../../../api/v1/admin/reports/ordersummary")
         .then(response => {
           this.orderSummary = response.data.results;
-          console.log(response);
         })
         .then(error => {
           console.log(error);
@@ -590,7 +586,6 @@ export default {
         .get("../../../api/v1/admin/reports/customersbystate")
         .then(response => {
           this.customersByState = response.data.results;
-          console.log(response);
         })
         .then(error => {
           console.log(error);
@@ -602,7 +597,6 @@ export default {
         .get("../../../api/v1/admin/reports/inventorybycategory")
         .then(response => {
           this.inventoryByCategory = response.data.results;
-          console.log(response);
         })
         .then(error => {
           console.log(error);

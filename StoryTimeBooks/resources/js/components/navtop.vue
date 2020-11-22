@@ -144,10 +144,6 @@ export default {
       }
     };
   },
-
-  // props: {
-  //   books: Array
-  // },
   created() {
     this.getItemsInCart();
     this.getProducts();
@@ -157,7 +153,6 @@ export default {
       axios
         .get("../../../api/v1/auth/products")
         .then(response => {
-          // loop through the array, setting each book into a category group
           this.books = response.data.books;
         })
         .then(error => {
@@ -165,7 +160,6 @@ export default {
         });
     },
     filterSearch() {
-      console.log("filter search called, value is: " + this.searchInput);
       this.$search(this.searchInput, this.books, this.searchOptions).then(
         results => {
           this.searchResults = results;
@@ -199,7 +193,6 @@ export default {
           params: { user_id: this.$auth.user().id }
         })
         .then(function(response) {
-          console.log(response);
           app.cartCounter = response.data.items;
           app.$emit("updateItemCount", app.cartCounter);
         })
