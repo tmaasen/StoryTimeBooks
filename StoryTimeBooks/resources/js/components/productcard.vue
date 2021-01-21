@@ -142,6 +142,11 @@ export default {
 </script>
 
 <style scoped>
+@media screen and (max-width: 425px) {
+  .card-title, .card-text {
+    width: auto;
+  }
+}
 .card {
     min-height: 538px;
 }
