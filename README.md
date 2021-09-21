@@ -5,4 +5,4 @@ The purpose of this project was to create a database-driven application that was
 
 Our team developed a web application using PHP's Laravel and Vue.js, with a MySQL database hosted on AWS. 
 
-The finished project is also hosted on AWS. Visit our site here: http://storytimebooks.cberkstresser.name/
+The finished project is no longer hosted on AWS.
